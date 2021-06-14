@@ -1,0 +1,46 @@
+{
+    "name": "inktweb/bolcom-retailer-api-php",
+    "description": "Bol.com Retailer API PHP client",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "api",
+        "bol",
+        "bol.com",
+        "php",
+        "v5"
+    ],
+    "authors": [
+        {
+            "name": "Inktweb.nl",
+            "email": "info@inktweb.nl"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.3",
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "^7.3"
+    },
+    "require-dev": {
+        "nette/php-generator": "^3.5",
+        "phpunit/phpunit": "^9.5",
+        "illuminate/support": "^8.46",
+        "symfony/filesystem": "^5.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Inktweb\\Bolcom\\RetailerApi\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Inktweb\\Bolcom\\RetailerApi\\Development\\": "dev/src/",
+            "Inktweb\\Bolcom\\RetailerApi\\Development\\Tests\\": "dev/tests/"
+        }
+    },
+    "scripts": {
+        "generate": "Inktweb\\Bolcom\\RetailerApi\\Development\\Generator::generate"
+    }
+}
