@@ -21,6 +21,7 @@ use Inktweb\Bolcom\RetailerApi\Development\Exceptions\UnsupportedDefinitionTypeE
 use Inktweb\Bolcom\RetailerApi\Development\Exceptions\UnsupportedParameterTypeException;
 use Inktweb\Bolcom\RetailerApi\Development\Exceptions\UnsupportedPropertyTypeException;
 use Inktweb\Bolcom\RetailerApi\Development\Exceptions\UnsupportedVersionException;
+use Nette\IOException;
 use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\Method;
 use Nette\PhpGenerator\Parameter;
@@ -28,7 +29,7 @@ use Nette\PhpGenerator\PhpFile;
 use Nette\PhpGenerator\Property;
 use Nette\PhpGenerator\PsrPrinter;
 use Nette\PhpGenerator\Type;
-use Symfony\Component\Filesystem\Filesystem;
+use Nette\Utils\FileSystem;
 
 class Generator
 {
@@ -260,7 +261,7 @@ class Generator
     protected function writeModels(): void
     {
         $directory = Config::MODELS_PATH . DIRECTORY_SEPARATOR . $this->apiVersion;
-        $filesystem = $this->prepareDirectory($directory);
+        $this->prepareDirectory($directory);
 
         foreach ($this->models as $model) {
             $file = (new PhpFile());
@@ -270,24 +271,22 @@ class Generator
             $namespace->addUse(Model::class);
             $namespace->add($model);
 
-            $filesystem->dumpFile(
+            FileSystem::write(
                 $directory . DIRECTORY_SEPARATOR . $model->getName() . '.php',
                 (new PsrPrinter())->printFile($file)
             );
         }
     }
 
-    protected function prepareDirectory(string $directory): Filesystem
+    protected function prepareDirectory(string $directory): void
     {
-        $filesystem = new Filesystem();
-
-        if ($filesystem->exists($directory)) {
-            $filesystem->remove($directory);
+        try {
+            FileSystem::delete($directory);
+        } catch (IOException $e) {
+            // do nothing
         }
 
-        $filesystem->mkdir($directory);
-
-        return $filesystem;
+        FileSystem::createDir($directory);
     }
 
     protected function processPaths(?array $paths): array
@@ -421,7 +420,7 @@ class Generator
     protected function writeEndpoints(): void
     {
         $directory = Config::ENDPOINTS_PATH . DIRECTORY_SEPARATOR . $this->apiVersion;
-        $filesystem = $this->prepareDirectory($directory);
+        $this->prepareDirectory($directory);
 
         foreach ($this->endpoints as $endpoint) {
             $file = (new PhpFile());
@@ -436,7 +435,7 @@ class Generator
                 $namespace->addUse($usedClass);
             }
 
-            $filesystem->dumpFile(
+            FileSystem::write(
                 $directory . DIRECTORY_SEPARATOR . $endpoint->getName() . '.php',
                 (new PsrPrinter())->printFile($file)
             );
