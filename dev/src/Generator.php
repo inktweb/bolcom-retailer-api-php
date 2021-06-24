@@ -4,6 +4,7 @@ namespace Inktweb\Bolcom\RetailerApi\Development;
 
 use Generator as BaseGenerator;
 use Illuminate\Support\Str;
+use Inktweb\Bolcom\RetailerApi\Client\Config as ClientConfig;
 use Inktweb\Bolcom\RetailerApi\Contracts\Endpoint;
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 use Inktweb\Bolcom\RetailerApi\Development\Exceptions\FileReadException;
@@ -131,8 +132,9 @@ class Generator
             $className = $this->getClassName($name);
             $class = (new ClassType($className))
                 ->setFinal()
-                ->setComment($this->wrapText($definition['description'] ?? null))
-                ->addImplement(Model::class);
+                ->addComment($this->wrapText($definition['description'] ?? ''))
+                ->addComment("@method static {$className} fromArray(array \$data)")
+                ->addExtend(Model::class);
 
             $deferredProperties = array_merge(
                 $deferredProperties,
@@ -332,7 +334,7 @@ class Generator
         $endpoint
             ->setFinal()
             ->setName($endpointName)
-            ->addImplement(Endpoint::class);
+            ->addExtend(Endpoint::class);
 
         foreach ($path as $resource => $methodData) {
             foreach ($methodData as $methodVerb => $data) {
@@ -344,9 +346,9 @@ class Generator
                 $method->addComment($this->wrapText($data['description']));
 
                 $this->processParameters($data['parameters'], $method);
-                $this->processResponses($data['responses'], $method);
+                $errorResponses = $this->processResponses($data['responses'], $method);
 
-                $method->addBody($this->generateRequestCode($resource, $methodVerb, $data, $method));
+                $method->addBody($this->generateRequestCode($resource, $methodVerb, $data, $method, $errorResponses));
             }
         }
 
@@ -442,7 +444,7 @@ class Generator
         }
     }
 
-    protected function processResponses(array $responses, Method $method): void
+    protected function processResponses(array $responses, Method $method): array
     {
         $validResponses = array_filter(
             array_keys($responses),
@@ -465,11 +467,29 @@ class Generator
 
         try {
             $method->setReturnType(
-                $this->resolveType($validResponse['schema']['type'] ?? null, $validResponse['schema']['$ref'] ?? null)
+                $this->resolveType(
+                    $validResponse['schema']['type'] ?? null,
+                    $validResponse['schema']['$ref'] ?? null
+                )
             );
         } catch (UnresolvedTypeException $e) {
             $method->setReturnType(Type::STRING);
         }
+
+        $errorResponses = [];
+
+        foreach ($responses as $errorCode => $response) {
+            if ($errorCode === $validResponses[0]) {
+                continue;
+            }
+
+            $errorResponses[$errorCode] = $this->resolveType(
+                $response['schema']['type'] ?? null,
+                $response['schema']['$ref'] ?? null
+            );
+        }
+
+        return $errorResponses;
     }
 
     protected function getUsedClasses(ClassType $class): array
@@ -492,9 +512,19 @@ class Generator
         );
     }
 
-    protected function generateRequestCode(string $resource, string $verb, array $data, Method $method): string
-    {
-        $sanitizedResource = var_export($resource, true);
+    protected function generateRequestCode(
+        string $resource,
+        string $verb,
+        array $data,
+        Method $method,
+        array $errorResponses
+    ): string {
+        $strippedResource = preg_replace(
+            "#^" . preg_quote(ClientConfig::API_PATH, '#') . "/#",
+            '',
+            $resource
+        );
+        $sanitizedResource = var_export($strippedResource, true);
         $sanitizedVerb = var_export($verb, true);
 
         $pathParameters = $this->getParameters('path', $data['parameters']);
@@ -504,9 +534,11 @@ class Generator
         $requestHeader = var_export($data['consumes'][0] ?? null, true);
         $responseHeader = var_export($data['produces'][0] ?? null, true);
 
+        $errorResponsesArray = $this->getErrorResponseExport($errorResponses);
+
         $returnType = $method->getReturnType();
         if (strpos($returnType, '\\') !== false) {
-            $prepend = "new \\$returnType(";
+            $prepend = "\\$returnType::fromArray(";
             $append = ")";
         } else {
             $prepend = "($returnType)";
@@ -522,10 +554,24 @@ return {$prepend}
         $queryParameters,
         $bodyParameters,
         $requestHeader,
-        $responseHeader
+        $responseHeader,
+        $errorResponsesArray
     )
 $append;
 CODE;
+    }
+
+    protected function getErrorResponseExport(array $errorResponses): string
+    {
+        $result = [];
+
+        foreach ($errorResponses as $errorCode => $className) {
+            $result[] = "{$errorCode} => \\{$className}::class";
+        }
+
+        return empty($result)
+            ? '[]'
+            : "[\n" . implode(",\n", $result) . ",\n]";
     }
 
     protected function getParameters(string $in, array $parameters): string
@@ -550,9 +596,13 @@ CODE;
             throw new TooManyBodyParametersException();
         }
 
-        return $isBody
-            ? $result[0] ?? 'null'
-            : '[' . implode(',', $result) . ']';
+        if ($isBody) {
+            return $result[0] ?? 'null';
+        }
+
+        return empty($result)
+            ? '[]'
+            : "[\n" . implode(",\n", $result) . ",\n]";
     }
 
     protected function wrapText(?string $text, int $maxLength = 65, int $threshold = 5): ?string
