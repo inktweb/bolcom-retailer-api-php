@@ -62,7 +62,7 @@ class Generator
 
     protected function getApiSpec(): BaseGenerator
     {
-        $files = glob(Config::API_SPEC_PATH);
+        $files = glob(Config::API_SPEC_GLOB_PATTERN);
 
         foreach ($files as $file) {
             $contents = @file_get_contents($file);
