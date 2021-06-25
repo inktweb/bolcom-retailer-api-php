@@ -48,7 +48,7 @@
     "scripts": {
         "generate": [
             "Inktweb\\Bolcom\\RetailerApi\\Development\\Generator::generate",
-            "phpcbf src/Models/ src/Endpoints/"
+            "phpcbf src/Models/ src/Endpoints/ src/Clients/"
         ]
     }
 }
