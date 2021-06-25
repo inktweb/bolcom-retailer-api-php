@@ -3,6 +3,7 @@
 namespace Inktweb\Bolcom\RetailerApi\Contracts;
 
 use GuzzleHttp\RequestOptions;
+use Inktweb\Bolcom\RetailerApi\Client\JsonResponse;
 use Inktweb\Bolcom\RetailerApi\Exceptions\ApiException;
 
 abstract class Endpoint
@@ -26,7 +27,7 @@ abstract class Endpoint
         array $errorResponseModels
     ): array {
         try {
-            $this->client->request(
+            $response = $this->client->request(
                 $method,
                 $this->compilePath($uri, $pathParameters),
                 [
@@ -38,9 +39,25 @@ abstract class Endpoint
                 ]
             );
         } catch (ApiException $e) {
-            // todo, process according to error response models
+            if ($e->hasResponse()) {
+                $statusCode = $e->getResponse()->getStatusCode();
+                /** @var JsonResponse $body */
+                $body = $e->getResponse()->getBody();
+
+                $errorResponseModel = $errorResponseModels[$statusCode] ?? null;
+                if ($errorResponseModel !== null) {
+                    $e->setModel($errorResponseModel::fromArray($body->getJson()));
+                }
+            }
+
+            throw $e;
         }
-        return [];
+
+        // todo: responseContentType
+
+        /** @var JsonResponse $body */
+        $body = $response->getBody();
+        return $body->getJson();
     }
 
     protected function compilePath(string $uri, array $pathParameters): string
