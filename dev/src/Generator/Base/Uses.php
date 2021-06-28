@@ -6,7 +6,13 @@ use Illuminate\Support\Str;
 
 class Uses
 {
+    protected const DEFAULT_SCOPE = 'default';
+
     protected $uses = [];
+
+    protected $currentScope = self::DEFAULT_SCOPE;
+
+    protected $scopes = [];
 
     public function __construct(string ...$className)
     {
@@ -18,10 +24,12 @@ class Uses
         foreach ($className as $name) {
             $basename = $this->getClassBaseName($name);
             $this->uses[$basename][$name] = null;
+
+            $this->scopes[$this->currentScope][$name] = true;
         }
     }
 
-    public function all(string $className = null): array
+    public function all(string $scope, ?string $className = null): array
     {
         $aliasedClassNames = [];
 
@@ -29,6 +37,10 @@ class Uses
             $useAlias = count($classes) > 1;
 
             foreach ($classes as $class => $dummy) {
+                if (!$this->inScope($scope, $class)) {
+                    continue;
+                }
+
                 $aliasedClassNames[$class] = ($useAlias || $baseName === $className)
                     ? $baseName . Str::singular($this->getClassDirBaseName($class))
                     : null;
@@ -51,5 +63,17 @@ class Uses
     protected function getClassDirBaseName(string $className): string
     {
         return basename(dirname(dirname($this->getPathifiedClassName($className))));
+    }
+
+    protected function inScope(string $scope, string $className): bool
+    {
+        return isset($this->scopes[static::DEFAULT_SCOPE][$className])
+            || isset($this->scopes[$scope][$className]);
+    }
+
+    public function setCurrentScope(?string $scope): self
+    {
+        $this->currentScope = $scope ?? static::DEFAULT_SCOPE;
+        return $this;
     }
 }

@@ -23,6 +23,7 @@ class Models extends Base
     {
         parent::__construct($apiVersion, $data);
 
+        $this->uses->setCurrentScope(null);
         $this->uses->add(Model::class);
     }
 
@@ -50,6 +51,8 @@ class Models extends Base
                 ->addComment($this->wrapText($definition['description'] ?? ''))
                 ->addComment("@method static {$className} fromArray(array \$data)")
                 ->addExtend(Model::class);
+
+            $this->uses->setCurrentScope($class);
 
             $deferredProperties = array_merge(
                 $deferredProperties,

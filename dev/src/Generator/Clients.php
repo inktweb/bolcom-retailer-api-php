@@ -21,6 +21,7 @@ class Clients extends Base
 
         parent::__construct($apiVersion, null);
 
+        $this->uses->setCurrentScope(null);
         $this->uses->add(Client::class);
     }
 

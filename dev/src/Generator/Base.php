@@ -108,7 +108,7 @@ abstract class Base
             $namespace = $file->addNamespace($this->namespace);
             $namespace->add($class);
 
-            foreach ($this->uses->all($class->getName()) as $className => $alias) {
+            foreach ($this->uses->all($class->getName(), $class->getName()) as $className => $alias) {
                 $namespace->addUse($className, $alias);
             }
 

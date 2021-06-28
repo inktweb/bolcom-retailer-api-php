@@ -31,6 +31,7 @@ class Endpoints extends Base
 
         parent::__construct($apiVersion, $data);
 
+        $this->uses->setCurrentScope(null);
         $this->uses->add(Endpoint::class);
     }
 
@@ -72,6 +73,7 @@ class Endpoints extends Base
     protected function processEndpoint(string $name, array $path): ClassType
     {
         $endpointName = $this->getClassName($name);
+        $this->uses->setCurrentScope($endpointName);
 
         $endpoint = (new ClassType())
             ->setFinal()
