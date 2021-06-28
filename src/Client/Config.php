@@ -20,7 +20,7 @@ class Config
     protected $clientSecret;
 
     /** @var bool */
-    protected $demoMode = false;
+    protected $demoMode = true;
 
     /** @var CacheInterface */
     protected $cache;
@@ -31,10 +31,12 @@ class Config
     /** @var string */
     protected $userAgent = 'inktweb-bolcom-retailer-api';
 
-    public function __construct(string $clientId, string $clientSecret)
+    public function __construct(string $clientId, string $clientSecret, bool $demoMode = true)
     {
         $this->clientId = $clientId;
         $this->clientSecret = $clientSecret;
+
+        $this->setDemoMode($demoMode);
 
         $this->setCache(new Psr16Cache(new FilesystemAdapter()));
     }
