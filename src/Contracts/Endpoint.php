@@ -5,6 +5,7 @@ namespace Inktweb\Bolcom\RetailerApi\Contracts;
 use GuzzleHttp\RequestOptions;
 use Inktweb\Bolcom\RetailerApi\Client\JsonResponse;
 use Inktweb\Bolcom\RetailerApi\Exceptions\ApiException;
+use Inktweb\Bolcom\RetailerApi\Exceptions\UnexpectedResponseContentTypeException;
 
 abstract class Endpoint
 {
@@ -23,7 +24,7 @@ abstract class Endpoint
         array $queryParameters,
         ?Model $body,
         ?string $requestContentType,
-        string $responseContentType,
+        ?array $responseContentTypes,
         array $errorResponseModels
     ): array {
         try {
@@ -53,7 +54,9 @@ abstract class Endpoint
             throw $e;
         }
 
-        // todo: responseContentType
+        if ($responseContentTypes !== null && !in_array($response->getHeader('Content-Type'), $responseContentTypes)) {
+            throw new UnexpectedResponseContentTypeException();
+        }
 
         /** @var JsonResponse $body */
         $body = $response->getBody();

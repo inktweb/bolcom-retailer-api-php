@@ -229,7 +229,7 @@ class Endpoints extends Base
         $bodyParameters = $this->getParameters('body', $parameters);
 
         $requestHeader = var_export($data['consumes'][0] ?? null, true);
-        $responseHeader = var_export($data['produces'][0] ?? null, true);
+        $responseHeaders = $this->getArray($data['produces'] ?? null);
 
         $errorResponsesArray = $this->getErrorResponseExport($errorResponses);
 
@@ -253,7 +253,7 @@ return {$prepend}
         $queryParameters,
         $bodyParameters,
         $requestHeader,
-        $responseHeader,
+        $responseHeaders,
         $errorResponsesArray
     )
 $append;
@@ -301,6 +301,23 @@ CODE;
 
         foreach ($errorResponses as $errorCode => $className) {
             $result[] = "{$errorCode} => \\{$className}::class";
+        }
+
+        return empty($result)
+            ? '[]'
+            : "[\n" . implode(",\n", $result) . ",\n]";
+    }
+
+    protected function getArray(?array $data): string
+    {
+        if ($data === null) {
+            return 'null';
+        }
+
+        $result = [];
+
+        foreach ($data as $row) {
+            $result[] = var_export($row, true);
         }
 
         return empty($result)
