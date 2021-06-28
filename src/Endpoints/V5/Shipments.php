@@ -37,7 +37,9 @@ final class Shipments extends Endpoint
                 ],
                 null,
                 null,
+                [
                 'application/vnd.retailer.v5+json',
+                ],
                 [
                 400 => Problem::class,
                 ]
@@ -62,7 +64,9 @@ final class Shipments extends Endpoint
                 [],
                 null,
                 null,
+                [
                 'application/vnd.retailer.v5+json',
+                ],
                 [
                 404 => Problem::class,
                 ]

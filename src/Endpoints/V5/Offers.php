@@ -36,7 +36,9 @@ final class Offers extends Endpoint
                 [],
                 $body,
                 'application/vnd.retailer.v5+json',
+                [
                 'application/vnd.retailer.v5+json',
+                ],
                 [
                 400 => Problem::class,
                 ]
@@ -59,7 +61,9 @@ final class Offers extends Endpoint
                 [],
                 $body,
                 'application/vnd.retailer.v5+json',
+                [
                 'application/vnd.retailer.v5+json',
+                ],
                 [
                 400 => Problem::class,
                 ]
@@ -84,7 +88,9 @@ final class Offers extends Endpoint
                 [],
                 null,
                 null,
+                [
                 'application/vnd.retailer.v5+csv',
+                ],
                 [
                 400 => Problem::class,
                 404 => Problem::class,
@@ -111,7 +117,9 @@ final class Offers extends Endpoint
                 [],
                 null,
                 null,
+                [
                 'application/vnd.retailer.v5+json',
+                ],
                 [
                 404 => Problem::class,
                 ]
@@ -137,7 +145,9 @@ final class Offers extends Endpoint
                 [],
                 $body,
                 'application/vnd.retailer.v5+json',
+                [
                 'application/vnd.retailer.v5+json',
+                ],
                 [
                 400 => Problem::class,
                 ]
@@ -162,7 +172,9 @@ final class Offers extends Endpoint
                 [],
                 null,
                 null,
+                [
                 'application/vnd.retailer.v5+json',
+                ],
                 [
                 400 => Problem::class,
                 ]
@@ -187,7 +199,9 @@ final class Offers extends Endpoint
                 [],
                 $body,
                 'application/vnd.retailer.v5+json',
+                [
                 'application/vnd.retailer.v5+json',
+                ],
                 [
                 400 => Problem::class,
                 ]
@@ -212,7 +226,9 @@ final class Offers extends Endpoint
                 [],
                 $body,
                 'application/vnd.retailer.v5+json',
+                [
                 'application/vnd.retailer.v5+json',
+                ],
                 [
                 400 => Problem::class,
                 ]

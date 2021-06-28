@@ -37,7 +37,9 @@ final class Insights extends Endpoint
                 ],
                 null,
                 null,
+                [
                 'application/vnd.retailer.v5+json',
+                ],
                 [
                 400 => Problem::class,
                 ]
@@ -64,7 +66,9 @@ final class Insights extends Endpoint
                 ],
                 null,
                 null,
+                [
                 'application/vnd.retailer.v5+json',
+                ],
                 [
                 400 => Problem::class,
                 ]
@@ -91,7 +95,9 @@ final class Insights extends Endpoint
                 ],
                 null,
                 null,
+                [
                 'application/vnd.retailer.v5+json',
+                ],
                 [
                 400 => Problem::class,
                 ]
@@ -127,7 +133,9 @@ final class Insights extends Endpoint
                 ],
                 null,
                 null,
+                [
                 'application/vnd.retailer.v5+json',
+                ],
                 [
                 400 => Problem::class,
                 ]

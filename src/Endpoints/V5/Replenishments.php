@@ -48,7 +48,9 @@ final class Replenishments extends Endpoint
                 ],
                 null,
                 null,
+                [
                 'application/vnd.retailer.v5+json',
+                ],
                 [
                 400 => Problem::class,
                 ]
@@ -71,7 +73,9 @@ final class Replenishments extends Endpoint
                 [],
                 $body,
                 'application/vnd.retailer.v5+json',
+                [
                 'application/vnd.retailer.v5+json',
+                ],
                 [
                 400 => Problem::class,
                 ]
@@ -94,7 +98,9 @@ final class Replenishments extends Endpoint
                 [],
                 $body,
                 'application/vnd.retailer.v5+json',
+                [
                 'application/vnd.retailer.v5+json',
+                ],
                 [
                 400 => Problem::class,
                 ]
@@ -117,7 +123,9 @@ final class Replenishments extends Endpoint
                 [],
                 $body,
                 'application/vnd.retailer.v5+json',
+                [
                 'application/vnd.retailer.v5+pdf',
+                ],
                 [
                 400 => Problem::class,
                 404 => Problem::class,
@@ -143,7 +151,9 @@ final class Replenishments extends Endpoint
                 [],
                 null,
                 null,
+                [
                 'application/vnd.retailer.v5+json',
+                ],
                 [
                 400 => Problem::class,
                 404 => Problem::class,
@@ -169,7 +179,9 @@ final class Replenishments extends Endpoint
                 [],
                 $body,
                 'application/vnd.retailer.v5+json',
+                [
                 'application/vnd.retailer.v5+json',
+                ],
                 [
                 400 => Problem::class,
                 ]
@@ -196,7 +208,9 @@ final class Replenishments extends Endpoint
                 ],
                 null,
                 null,
+                [
                 'application/vnd.retailer.v5+pdf',
+                ],
                 [
                 400 => Problem::class,
                 404 => Problem::class,
@@ -222,7 +236,9 @@ final class Replenishments extends Endpoint
                 [],
                 null,
                 null,
+                [
                 'application/vnd.retailer.v5+pdf',
+                ],
                 [
                 400 => Problem::class,
                 404 => Problem::class,

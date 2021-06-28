@@ -41,7 +41,9 @@ final class Inventory extends Endpoint
                 ],
                 null,
                 null,
+                [
                 'application/vnd.retailer.v5+json',
+                ],
                 [
                 400 => Problem::class,
                 ]

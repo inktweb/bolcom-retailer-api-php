@@ -38,7 +38,9 @@ final class Invoices extends Endpoint
                 ],
                 null,
                 null,
+                [
                 'application/vnd.retailer.v5+json',
+                ],
                 [
                 400 => Problem::class,
                 ]
@@ -66,7 +68,10 @@ final class Invoices extends Endpoint
                 [],
                 null,
                 null,
+                [
                 'application/vnd.retailer.v5+json',
+                'application/vnd.retailer.v5+pdf',
+                ],
                 [
                 400 => Problem::class,
                 ]
@@ -97,7 +102,11 @@ final class Invoices extends Endpoint
                 ],
                 null,
                 null,
+                [
                 'application/vnd.retailer.v5+json',
+                'application/vnd.retailer.v5+pdf',
+                'application/vnd.retailer.v5+openxmlformats-officedocument.spreadsheetml.sheet',
+                ],
                 [
                 400 => Problem::class,
                 ]
