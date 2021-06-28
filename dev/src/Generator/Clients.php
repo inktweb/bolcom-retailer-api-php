@@ -34,7 +34,8 @@ class Clients extends Base
             $endpointName = $endpoint->getName();
             $propertyName = Str::camel($endpointName);
 
-            $this->uses->add($this->endpoints->getFullyQualifiedClassName($endpointName));
+            $fullyQualifiedClassName = $this->endpoints->getFullyQualifiedClassName($endpointName);
+            $this->uses->add($fullyQualifiedClassName);
 
             $clientClass->addProperty($propertyName)
                 ->setProtected()
@@ -42,7 +43,7 @@ class Clients extends Base
 
             $clientClass->addMethod($propertyName)
                 ->setPublic()
-                ->setReturnType($endpointName)
+                ->setReturnType($fullyQualifiedClassName)
                 ->setBody("return \$this->{$propertyName} ?? \$this->{$propertyName} = new {$endpointName}(\$this);");
         }
 
