@@ -35,7 +35,7 @@ abstract class Base
 
     public function __construct(string $apiVersion, ?array $data)
     {
-        $this->directory = realpath(static::BASE_PATH . DIRECTORY_SEPARATOR . $apiVersion);
+        $this->directory = static::BASE_PATH . DIRECTORY_SEPARATOR . $apiVersion;
         $this->namespace = static::BASE_NAMESPACE . '\\' . $apiVersion;
         $this->uses = new Uses();
         $this->classes = $this->process($data);

@@ -89,7 +89,7 @@ class Endpoints extends Base
                 $method->addComment('');
                 $method->addComment($this->wrapText($data['description']));
 
-                $this->processParameters($data['parameters'], $method);
+                $this->processParameters($data['parameters'] ?? null, $method);
                 $errorResponses = $this->processResponses($data['responses'], $method);
 
                 $method->addBody($this->generateRequestCode($resource, $methodVerb, $data, $method, $errorResponses));
@@ -99,8 +99,12 @@ class Endpoints extends Base
         return $endpoint;
     }
 
-    protected function processParameters($parameters, Method $method): void
+    protected function processParameters(?array $parameters, Method $method): void
     {
+        if (empty($parameters)) {
+            return;
+        }
+
         usort(
             $parameters,
             function (array $a, array $b) {
@@ -219,9 +223,10 @@ class Endpoints extends Base
         $sanitizedResource = var_export($strippedResource, true);
         $sanitizedVerb = var_export($verb, true);
 
-        $pathParameters = $this->getParameters('path', $data['parameters']);
-        $queryParameters = $this->getParameters('query', $data['parameters']);
-        $bodyParameters = $this->getParameters('body', $data['parameters']);
+        $parameters = $data['parameters'] ?? null;
+        $pathParameters = $this->getParameters('path', $parameters);
+        $queryParameters = $this->getParameters('query', $parameters);
+        $bodyParameters = $this->getParameters('body', $parameters);
 
         $requestHeader = var_export($data['consumes'][0] ?? null, true);
         $responseHeader = var_export($data['produces'][0] ?? null, true);
@@ -253,8 +258,12 @@ $append;
 CODE;
     }
 
-    protected function getParameters(string $in, array $parameters): string
+    protected function getParameters(string $in, ?array $parameters): string
     {
+        if (empty($parameters)) {
+            return '[]';
+        }
+
         $result = [];
         $isBody = $in === 'body';
 
