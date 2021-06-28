@@ -114,9 +114,21 @@ abstract class Base
 
             FileSystem::write(
                 $this->directory . DIRECTORY_SEPARATOR . $class->getName() . '.php',
-                (new PsrPrinter())->printFile($file)
+                $this->removeUnnecessaryQualifiers(
+                    $namespace->getUses(),
+                    (new PsrPrinter())->printFile($file)
+                )
             );
         }
+    }
+
+    protected function removeUnnecessaryQualifiers(array $uses, string $sourceCode): string
+    {
+        foreach ($uses as $alias => $class) {
+            $sourceCode = preg_replace('#\\\\' . preg_quote($class, '#') . '(\W)#', "{$alias}\$1", $sourceCode);
+        }
+
+        return $sourceCode;
     }
 
     protected function prepareDirectory(string $directory): void
