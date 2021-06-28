@@ -109,7 +109,7 @@ final class Replenishments extends Endpoint
      */
     public function postProductLabels(?ProductLabelsRequest $body = null): array
     {
-        return (array)
+        return
             $this->request(
                 'post',
                 'replenishments/product-labels',
@@ -184,7 +184,7 @@ final class Replenishments extends Endpoint
      */
     public function getLoadCarrierLabels(string $replenishmentId, string $labelType): array
     {
-        return (array)
+        return
             $this->request(
                 'get',
                 'replenishments/{replenishment-id}/load-carrier-labels',
@@ -212,7 +212,7 @@ final class Replenishments extends Endpoint
      */
     public function getPickList(string $replenishmentId): array
     {
-        return (array)
+        return
             $this->request(
                 'get',
                 'replenishments/{replenishment-id}/pick-list',

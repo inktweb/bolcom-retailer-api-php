@@ -238,7 +238,9 @@ class Endpoints extends Base
             $prepend = "\\$returnType::fromArray(";
             $append = ")";
         } else {
-            $prepend = "($returnType)";
+            $prepend = $returnType === 'array'
+                ? ""
+                : "($returnType)";
             $append = "";
         }
 

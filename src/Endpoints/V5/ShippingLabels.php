@@ -76,7 +76,7 @@ final class ShippingLabels extends Endpoint
      */
     public function getShippingLabel(string $shippingLabelId): array
     {
-        return (array)
+        return
             $this->request(
                 'get',
                 'shipping-labels/{shipping-label-id}',

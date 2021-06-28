@@ -27,7 +27,7 @@ final class Invoices extends Endpoint
      */
     public function getInvoices(?string $periodStartDate = null, ?string $periodEndDate = null): array
     {
-        return (array)
+        return
             $this->request(
                 'get',
                 'invoices',
@@ -56,7 +56,7 @@ final class Invoices extends Endpoint
      */
     public function getInvoice(string $invoiceId): array
     {
-        return (array)
+        return
             $this->request(
                 'get',
                 'invoices/{invoice-id}',
@@ -85,7 +85,7 @@ final class Invoices extends Endpoint
      */
     public function getInvoiceSpecification(string $invoiceId, ?int $page = null): array
     {
-        return (array)
+        return
             $this->request(
                 'get',
                 'invoices/{invoice-id}/specification',
