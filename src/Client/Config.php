@@ -65,8 +65,8 @@ class Config
     public function getApiBaseUri(): string
     {
         return $this->isDemoMode()
-            ? static::API_BASE_URI . static::API_DEMO_PATH
-            : static::API_BASE_URI . static::API_PATH;
+            ? static::API_BASE_URI . static::API_DEMO_PATH . '/'
+            : static::API_BASE_URI . static::API_PATH . '/';
     }
 
     public function getCache(): CacheInterface

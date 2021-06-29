@@ -15,12 +15,16 @@ abstract class Base
 {
     protected const BASE_PATH = __DIR__;
     protected const BASE_NAMESPACE = self::class;
+    protected const DEFAULT_CONTENT_TYPE_TEMPLATE = 'application/vnd.retailer.{version}+json';
 
     /** @var string */
     protected $directory;
 
     /** @var string */
     protected $namespace;
+
+    /** @var string */
+    protected $defaultContentType;
 
     /** @var Uses */
     protected $uses;
@@ -37,6 +41,11 @@ abstract class Base
     {
         $this->directory = static::BASE_PATH . DIRECTORY_SEPARATOR . $apiVersion;
         $this->namespace = static::BASE_NAMESPACE . '\\' . $apiVersion;
+        $this->defaultContentType = Str::replace(
+            '{version}',
+            Str::lower($apiVersion),
+            static::DEFAULT_CONTENT_TYPE_TEMPLATE
+        );
         $this->uses = new Uses();
         $this->classes = $this->process($data);
     }

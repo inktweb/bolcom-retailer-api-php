@@ -228,7 +228,7 @@ class Endpoints extends Base
         $queryParameters = $this->getParameters('query', $parameters);
         $bodyParameters = $this->getParameters('body', $parameters);
 
-        $requestHeader = var_export($data['consumes'][0] ?? null, true);
+        $requestHeaders = $this->getArray($data['consumes'] ?? [$this->defaultContentType]);
         $responseHeaders = $this->getArray($data['produces'] ?? null);
 
         $errorResponsesArray = $this->getErrorResponseExport($errorResponses);
@@ -252,7 +252,7 @@ return {$prepend}
         $pathParameters,
         $queryParameters,
         $bodyParameters,
-        $requestHeader,
+        $requestHeaders,
         $responseHeaders,
         $errorResponsesArray
     )

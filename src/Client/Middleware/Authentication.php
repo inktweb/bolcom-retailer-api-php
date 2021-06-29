@@ -2,6 +2,7 @@
 
 namespace Inktweb\Bolcom\RetailerApi\Client\Middleware;
 
+use Closure;
 use GuzzleHttp\Client;
 use kamermans\OAuth2\GrantType\ClientCredentials;
 use kamermans\OAuth2\OAuth2Middleware;
@@ -28,7 +29,7 @@ class Authentication
         $this->middleware->setTokenPersistence(new SimpleCacheTokenPersistence($cache));
     }
 
-    public function __invoke(callable $handler)
+    public function __invoke(callable $handler): Closure
     {
         return $this->middleware->__invoke($handler);
     }

@@ -23,7 +23,7 @@ abstract class Endpoint
         array $pathParameters,
         array $queryParameters,
         ?Model $body,
-        ?string $requestContentType,
+        array $requestContentTypes,
         ?array $responseContentTypes,
         array $errorResponseModels
     ): array {
@@ -35,7 +35,7 @@ abstract class Endpoint
                     RequestOptions::QUERY => $queryParameters,
                     RequestOptions::BODY => json_encode($body),
                     RequestOptions::HEADERS => [
-                        'Content-Type' => $requestContentType,
+                        'Accept' => $requestContentTypes,
                     ],
                 ]
             );
@@ -54,7 +54,11 @@ abstract class Endpoint
             throw $e;
         }
 
-        if ($responseContentTypes !== null && !in_array($response->getHeader('Content-Type'), $responseContentTypes)) {
+        [$contentType] = $response->getHeader('Content-Type');
+        [$contentType] = explode(';', $contentType);
+        $contentType = trim($contentType);
+
+        if ($responseContentTypes !== null && !in_array($contentType, $responseContentTypes)) {
             throw new UnexpectedResponseContentTypeException();
         }
 
