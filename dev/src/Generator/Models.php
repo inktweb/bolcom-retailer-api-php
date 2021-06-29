@@ -164,6 +164,7 @@ class Models extends Base
                         $this->getFullyQualifiedClassName(
                             $class->getName()
                         )
+                        . ' ...'
                     );
                     break;
                 default:

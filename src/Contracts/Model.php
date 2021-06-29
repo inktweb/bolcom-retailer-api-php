@@ -4,6 +4,7 @@ namespace Inktweb\Bolcom\RetailerApi\Contracts;
 
 use JsonSerializable;
 use ReflectionClass;
+use ReflectionNamedType;
 use ReflectionProperty;
 
 abstract class Model implements JsonSerializable
@@ -11,20 +12,29 @@ abstract class Model implements JsonSerializable
     public static function fromArray(array $data): self
     {
         $model = new static();
+        $reflection = new ReflectionClass($model);
 
         foreach ($data as $key => $value) {
             $methodName = "set{$key}";
 
-            if (!method_exists($model, $methodName)) {
+            if (!$reflection->hasMethod($methodName)) {
                 continue;
             }
 
-            if (is_array($value)) {
-                $model->{$methodName}(...$value);
+            [$parameter] = $reflection->getMethod($methodName)->getParameters();
+            $type = $parameter->getType();
+            $isBuiltin = $type instanceof ReflectionNamedType && $type->isBuiltin();
+
+            $values = is_array($value)
+                ? $value
+                : [$value];
+
+            if ($isBuiltin) {
+                $model->{$methodName}(...$values);
                 continue;
             }
 
-            $model->{$methodName}($value);
+            $model->{$methodName}(...array_map([$type->getName(), 'fromArray'], $values));
         }
 
         return $model;
