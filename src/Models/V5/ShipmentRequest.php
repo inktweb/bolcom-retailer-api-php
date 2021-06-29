@@ -35,7 +35,7 @@ final class ShipmentRequest extends Model
     protected $shippingLabelId;
     protected $transport;
 
-    public function setOrderItems(OrderItem $orderItems): self
+    public function setOrderItems(OrderItem ...$orderItems): self
     {
         $this->orderItems = $orderItems;
         return $this;

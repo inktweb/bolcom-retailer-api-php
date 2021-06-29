@@ -81,7 +81,7 @@ final class ReducedShipment extends Model
         return $this->order;
     }
 
-    public function setShipmentItems(ReducedShipmentItem $shipmentItems): self
+    public function setShipmentItems(ReducedShipmentItem ...$shipmentItems): self
     {
         $this->shipmentItems = $shipmentItems;
         return $this;

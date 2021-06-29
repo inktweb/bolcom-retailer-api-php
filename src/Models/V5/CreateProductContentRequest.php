@@ -40,7 +40,7 @@ final class CreateProductContentRequest extends Model
         return $this->language;
     }
 
-    public function setProductContents(ProductContent $productContents): self
+    public function setProductContents(ProductContent ...$productContents): self
     {
         $this->productContents = $productContents;
         return $this;

@@ -17,7 +17,7 @@ final class InventoryResponse extends Model
     /** @var Inventory[] */
     protected $inventory;
 
-    public function setInventory(Inventory $inventory): self
+    public function setInventory(Inventory ...$inventory): self
     {
         $this->inventory = $inventory;
         return $this;

@@ -122,7 +122,7 @@ final class Problem extends Model
         return $this->instance;
     }
 
-    public function setViolations(?Violation $violations): self
+    public function setViolations(?Violation ...$violations): self
     {
         $this->violations = $violations;
         return $this;

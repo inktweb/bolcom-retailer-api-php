@@ -69,7 +69,7 @@ final class ReturnMerchandise extends Model
         return $this->fulfilmentMethod;
     }
 
-    public function setReturnItems(ReturnItem $returnItems): self
+    public function setReturnItems(ReturnItem ...$returnItems): self
     {
         $this->returnItems = $returnItems;
         return $this;

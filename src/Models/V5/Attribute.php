@@ -37,7 +37,7 @@ final class Attribute extends Model
         return $this->id;
     }
 
-    public function setValues(AttributeValue $values): self
+    public function setValues(AttributeValue ...$values): self
     {
         $this->values = $values;
         return $this;

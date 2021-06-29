@@ -17,7 +17,7 @@ final class BulkCommissionRequest extends Model
     /** @var BulkCommissionQuery[] */
     protected $commissionQueries;
 
-    public function setCommissionQueries(BulkCommissionQuery $commissionQueries): self
+    public function setCommissionQueries(BulkCommissionQuery ...$commissionQueries): self
     {
         $this->commissionQueries = $commissionQueries;
         return $this;

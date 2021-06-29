@@ -18,7 +18,7 @@ final class OfferInsights extends Model
     /** @var OfferInsight[] */
     protected $offerInsights;
 
-    public function setOfferInsights(OfferInsight $offerInsights): self
+    public function setOfferInsights(OfferInsight ...$offerInsights): self
     {
         $this->offerInsights = $offerInsights;
         return $this;

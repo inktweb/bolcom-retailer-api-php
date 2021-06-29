@@ -122,7 +122,7 @@ final class Shipment extends Model
         return $this->billingDetails;
     }
 
-    public function setShipmentItems(ShipmentItem $shipmentItems): self
+    public function setShipmentItems(ShipmentItem ...$shipmentItems): self
     {
         $this->shipmentItems = $shipmentItems;
         return $this;

@@ -18,7 +18,7 @@ final class ReducedOrders extends Model
     /** @var ReducedOrder[] */
     protected $orders;
 
-    public function setOrders(ReducedOrder $orders): self
+    public function setOrders(ReducedOrder ...$orders): self
     {
         $this->orders = $orders;
         return $this;

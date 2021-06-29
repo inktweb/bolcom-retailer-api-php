@@ -36,7 +36,9 @@ final class Insights extends Endpoint
                 'name' => $name,
                 ],
                 null,
-                null,
+                [
+                'application/vnd.retailer.v5+json',
+                ],
                 [
                 'application/vnd.retailer.v5+json',
                 ],
@@ -65,7 +67,9 @@ final class Insights extends Endpoint
                 'week' => $week,
                 ],
                 null,
-                null,
+                [
+                'application/vnd.retailer.v5+json',
+                ],
                 [
                 'application/vnd.retailer.v5+json',
                 ],
@@ -94,7 +98,9 @@ final class Insights extends Endpoint
                 'weeks-ahead' => $weeksAhead,
                 ],
                 null,
-                null,
+                [
+                'application/vnd.retailer.v5+json',
+                ],
                 [
                 'application/vnd.retailer.v5+json',
                 ],
@@ -132,7 +138,9 @@ final class Insights extends Endpoint
                 'related-search-terms' => $relatedSearchTerms,
                 ],
                 null,
-                null,
+                [
+                'application/vnd.retailer.v5+json',
+                ],
                 [
                 'application/vnd.retailer.v5+json',
                 ],

@@ -66,7 +66,7 @@ final class SalesForecastResponse extends Model
         return $this->total;
     }
 
-    public function setCountries(Countries $countries): self
+    public function setCountries(Countries ...$countries): self
     {
         $this->countries = $countries;
         return $this;
@@ -77,7 +77,7 @@ final class SalesForecastResponse extends Model
         return $this->countries;
     }
 
-    public function setPeriods(SalesForecastPeriod $periods): self
+    public function setPeriods(SalesForecastPeriod ...$periods): self
     {
         $this->periods = $periods;
         return $this;

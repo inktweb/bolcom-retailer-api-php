@@ -34,7 +34,7 @@ final class Store extends Model
         return $this->productTitle;
     }
 
-    public function setVisible(CountryCode $visible): self
+    public function setVisible(CountryCode ...$visible): self
     {
         $this->visible = $visible;
         return $this;

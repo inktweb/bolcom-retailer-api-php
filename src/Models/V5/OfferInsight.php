@@ -72,7 +72,7 @@ final class OfferInsight extends Model
         return $this->total;
     }
 
-    public function setCountries(OfferInsightsCountry $countries): self
+    public function setCountries(OfferInsightsCountry ...$countries): self
     {
         $this->countries = $countries;
         return $this;
@@ -83,7 +83,7 @@ final class OfferInsight extends Model
         return $this->countries;
     }
 
-    public function setPeriods(Periods $periods): self
+    public function setPeriods(Periods ...$periods): self
     {
         $this->periods = $periods;
         return $this;

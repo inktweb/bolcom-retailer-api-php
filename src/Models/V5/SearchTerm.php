@@ -74,7 +74,7 @@ final class SearchTerm extends Model
         return $this->total;
     }
 
-    public function setCountries(SearchTermsCountry $countries): self
+    public function setCountries(SearchTermsCountry ...$countries): self
     {
         $this->countries = $countries;
         return $this;
@@ -85,7 +85,7 @@ final class SearchTerm extends Model
         return $this->countries;
     }
 
-    public function setPeriods(TotalPeriod $periods): self
+    public function setPeriods(TotalPeriod ...$periods): self
     {
         $this->periods = $periods;
         return $this;
@@ -96,7 +96,7 @@ final class SearchTerm extends Model
         return $this->periods;
     }
 
-    public function setRelatedSearchTerms(?RelatedSearchTerm $relatedSearchTerms): self
+    public function setRelatedSearchTerms(?RelatedSearchTerm ...$relatedSearchTerms): self
     {
         $this->relatedSearchTerms = $relatedSearchTerms;
         return $this;

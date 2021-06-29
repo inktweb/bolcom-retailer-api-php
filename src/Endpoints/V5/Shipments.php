@@ -36,7 +36,9 @@ final class Shipments extends Endpoint
                 'order-id' => $orderId,
                 ],
                 null,
-                null,
+                [
+                'application/vnd.retailer.v5+json',
+                ],
                 [
                 'application/vnd.retailer.v5+json',
                 ],
@@ -63,7 +65,9 @@ final class Shipments extends Endpoint
                 ],
                 [],
                 null,
-                null,
+                [
+                'application/vnd.retailer.v5+json',
+                ],
                 [
                 'application/vnd.retailer.v5+json',
                 ],

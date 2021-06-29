@@ -40,7 +40,9 @@ final class Inventory extends Endpoint
                 'query' => $query,
                 ],
                 null,
-                null,
+                [
+                'application/vnd.retailer.v5+json',
+                ],
                 [
                 'application/vnd.retailer.v5+json',
                 ],

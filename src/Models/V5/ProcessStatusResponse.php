@@ -17,7 +17,7 @@ final class ProcessStatusResponse extends Model
     /** @var ProcessStatus[] */
     protected $processStatuses;
 
-    public function setProcessStatuses(ProcessStatus $processStatuses): self
+    public function setProcessStatuses(ProcessStatus ...$processStatuses): self
     {
         $this->processStatuses = $processStatuses;
         return $this;

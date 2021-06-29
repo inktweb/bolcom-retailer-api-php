@@ -35,7 +35,7 @@ final class RejectedAttributeResponse extends Model
         return $this->attributeId;
     }
 
-    public function setRejectionErrors(RejectionError $rejectionErrors): self
+    public function setRejectionErrors(RejectionError ...$rejectionErrors): self
     {
         $this->rejectionErrors = $rejectionErrors;
         return $this;

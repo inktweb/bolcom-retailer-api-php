@@ -21,7 +21,7 @@ final class ContainerForTheOrderItemsThatHaveToBeCancelled extends Model
      */
     protected $orderItems;
 
-    public function setOrderItems(OrderItemCancellation $orderItems): self
+    public function setOrderItems(OrderItemCancellation ...$orderItems): self
     {
         $this->orderItems = $orderItems;
         return $this;

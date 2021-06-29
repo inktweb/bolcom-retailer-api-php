@@ -47,7 +47,7 @@ final class TotalPeriod extends Model
         return $this->total;
     }
 
-    public function setCountries(SearchTermsCountry $countries): self
+    public function setCountries(SearchTermsCountry ...$countries): self
     {
         $this->countries = $countries;
         return $this;

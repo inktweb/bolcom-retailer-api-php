@@ -17,7 +17,7 @@ final class BulkProcessStatusRequest extends Model
     /** @var ProcessStatusId[] */
     protected $processStatusQueries;
 
-    public function setProcessStatusQueries(ProcessStatusId $processStatusQueries): self
+    public function setProcessStatusQueries(ProcessStatusId ...$processStatusQueries): self
     {
         $this->processStatusQueries = $processStatusQueries;
         return $this;

@@ -169,7 +169,7 @@ final class ReturnItem extends Model
         return $this->handled;
     }
 
-    public function setProcessingResults(ReturnProcessingResult $processingResults): self
+    public function setProcessingResults(ReturnProcessingResult ...$processingResults): self
     {
         $this->processingResults = $processingResults;
         return $this;

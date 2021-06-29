@@ -17,7 +17,7 @@ final class ShipmentsResponse extends Model
     /** @var ReducedShipment[] */
     protected $shipments;
 
-    public function setShipments(ReducedShipment $shipments): self
+    public function setShipments(ReducedShipment ...$shipments): self
     {
         $this->shipments = $shipments;
         return $this;

@@ -18,7 +18,7 @@ final class DeliveryOptionsResponse extends Model
     /** @var DeliveryOption[] */
     protected $deliveryOptions;
 
-    public function setDeliveryOptions(DeliveryOption $deliveryOptions): self
+    public function setDeliveryOptions(DeliveryOption ...$deliveryOptions): self
     {
         $this->deliveryOptions = $deliveryOptions;
         return $this;

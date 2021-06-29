@@ -140,7 +140,7 @@ final class ProcessStatus extends Model
         return $this->createTimestamp;
     }
 
-    public function setLinks(Link $links): self
+    public function setLinks(Link ...$links): self
     {
         $this->links = $links;
         return $this;

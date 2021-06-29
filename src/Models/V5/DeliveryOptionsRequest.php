@@ -21,7 +21,7 @@ final class DeliveryOptionsRequest extends Model
      */
     protected $orderItems;
 
-    public function setOrderItems(OrderItem $orderItems): self
+    public function setOrderItems(OrderItem ...$orderItems): self
     {
         $this->orderItems = $orderItems;
         return $this;

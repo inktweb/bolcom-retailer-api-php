@@ -17,7 +17,7 @@ final class ReturnsResponse extends Model
     /** @var ReducedReturn[] */
     protected $returns;
 
-    public function setReturns(ReducedReturn $returns): self
+    public function setReturns(ReducedReturn ...$returns): self
     {
         $this->returns = $returns;
         return $this;

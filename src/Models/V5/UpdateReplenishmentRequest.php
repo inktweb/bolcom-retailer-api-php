@@ -64,7 +64,7 @@ final class UpdateReplenishmentRequest extends Model
         return $this->numberOfLoadCarriers;
     }
 
-    public function setLoadCarriers(?UpdateLoadCarrier $loadCarriers): self
+    public function setLoadCarriers(?UpdateLoadCarrier ...$loadCarriers): self
     {
         $this->loadCarriers = $loadCarriers;
         return $this;

@@ -17,7 +17,7 @@ final class BulkCommissionResponse extends Model
     /** @var Commission[] */
     protected $commissions;
 
-    public function setCommissions(Commission $commissions): self
+    public function setCommissions(Commission ...$commissions): self
     {
         $this->commissions = $commissions;
         return $this;

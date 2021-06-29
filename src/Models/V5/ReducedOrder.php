@@ -52,7 +52,7 @@ final class ReducedOrder extends Model
         return $this->orderPlacedDateTime;
     }
 
-    public function setOrderItems(ReducedOrderItem $orderItems): self
+    public function setOrderItems(ReducedOrderItem ...$orderItems): self
     {
         $this->orderItems = $orderItems;
         return $this;

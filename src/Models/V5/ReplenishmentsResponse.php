@@ -17,7 +17,7 @@ final class ReplenishmentsResponse extends Model
     /** @var ReducedReplenishment[] */
     protected $replenishments;
 
-    public function setReplenishments(ReducedReplenishment $replenishments): self
+    public function setReplenishments(ReducedReplenishment ...$replenishments): self
     {
         $this->replenishments = $replenishments;
         return $this;

@@ -21,7 +21,7 @@ final class Pricing extends Model
      */
     protected $bundlePrices;
 
-    public function setBundlePrices(BundlePrice $bundlePrices): self
+    public function setBundlePrices(BundlePrice ...$bundlePrices): self
     {
         $this->bundlePrices = $bundlePrices;
         return $this;

@@ -30,7 +30,9 @@ final class Commissions extends Endpoint
                 [],
                 [],
                 $body,
+                [
                 'application/vnd.retailer.v5+json',
+                ],
                 [
                 'application/vnd.retailer.v5+json',
                 ],
@@ -62,7 +64,9 @@ final class Commissions extends Endpoint
                 'unit-price' => $unitPrice,
                 ],
                 null,
-                null,
+                [
+                'application/vnd.retailer.v5+json',
+                ],
                 [
                 'application/vnd.retailer.v5+json',
                 ],

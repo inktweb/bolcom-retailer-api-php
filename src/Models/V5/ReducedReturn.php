@@ -69,7 +69,7 @@ final class ReducedReturn extends Model
         return $this->fulfilmentMethod;
     }
 
-    public function setReturnItems(ReducedReturnItem $returnItems): self
+    public function setReturnItems(ReducedReturnItem ...$returnItems): self
     {
         $this->returnItems = $returnItems;
         return $this;

@@ -17,7 +17,7 @@ final class PerformanceIndicators extends Model
     /** @var PerformanceIndicator[] */
     protected $performanceIndicators;
 
-    public function setPerformanceIndicators(PerformanceIndicator $performanceIndicators): self
+    public function setPerformanceIndicators(PerformanceIndicator ...$performanceIndicators): self
     {
         $this->performanceIndicators = $performanceIndicators;
         return $this;

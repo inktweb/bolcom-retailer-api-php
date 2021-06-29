@@ -17,7 +17,7 @@ final class PickupTimeSlotsResponse extends Model
     /** @var PickupTimeSlot[] */
     protected $timeSlots;
 
-    public function setTimeSlots(?PickupTimeSlot $timeSlots): self
+    public function setTimeSlots(?PickupTimeSlot ...$timeSlots): self
     {
         $this->timeSlots = $timeSlots;
         return $this;

@@ -153,7 +153,7 @@ final class ReplenishmentResponse extends Model
         return $this->numberOfLoadCarriers;
     }
 
-    public function setLoadCarriers(LoadCarrier $loadCarriers): self
+    public function setLoadCarriers(LoadCarrier ...$loadCarriers): self
     {
         $this->loadCarriers = $loadCarriers;
         return $this;
@@ -164,7 +164,7 @@ final class ReplenishmentResponse extends Model
         return $this->loadCarriers;
     }
 
-    public function setLines(ReplenishmentLine $lines): self
+    public function setLines(ReplenishmentLine ...$lines): self
     {
         $this->lines = $lines;
         return $this;
@@ -175,7 +175,7 @@ final class ReplenishmentResponse extends Model
         return $this->lines;
     }
 
-    public function setInvalidLines(InvalidReplenishmentLine $invalidLines): self
+    public function setInvalidLines(InvalidReplenishmentLine ...$invalidLines): self
     {
         $this->invalidLines = $invalidLines;
         return $this;
@@ -186,7 +186,7 @@ final class ReplenishmentResponse extends Model
         return $this->invalidLines;
     }
 
-    public function setStateTransitions(StateTransition $stateTransitions): self
+    public function setStateTransitions(StateTransition ...$stateTransitions): self
     {
         $this->stateTransitions = $stateTransitions;
         return $this;

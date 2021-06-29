@@ -169,7 +169,7 @@ final class RetailerOffer extends Model
         return $this->condition;
     }
 
-    public function setNotPublishableReasons(NotPublishableReason $notPublishableReasons): self
+    public function setNotPublishableReasons(NotPublishableReason ...$notPublishableReasons): self
     {
         $this->notPublishableReasons = $notPublishableReasons;
         return $this;

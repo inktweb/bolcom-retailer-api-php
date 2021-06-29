@@ -48,7 +48,7 @@ final class Periods extends Model
         return $this->total;
     }
 
-    public function setCountries(?OfferInsightsCountry $countries): self
+    public function setCountries(?OfferInsightsCountry ...$countries): self
     {
         $this->countries = $countries;
         return $this;

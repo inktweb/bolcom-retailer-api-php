@@ -93,7 +93,7 @@ final class Order extends Model
         return $this->billingDetails;
     }
 
-    public function setOrderItems(OrderOrderItem $orderItems): self
+    public function setOrderItems(OrderOrderItem ...$orderItems): self
     {
         $this->orderItems = $orderItems;
         return $this;

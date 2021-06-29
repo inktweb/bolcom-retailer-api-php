@@ -93,7 +93,7 @@ final class CreateReplenishmentRequest extends Model
         return $this->pickupAppointment;
     }
 
-    public function setLines(CreateReplenishmentLine $lines): self
+    public function setLines(CreateReplenishmentLine ...$lines): self
     {
         $this->lines = $lines;
         return $this;

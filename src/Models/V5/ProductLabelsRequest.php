@@ -34,7 +34,7 @@ final class ProductLabelsRequest extends Model
         return $this->labelFormat;
     }
 
-    public function setProducts(ProductLabelsProduct $products): self
+    public function setProducts(ProductLabelsProduct ...$products): self
     {
         $this->products = $products;
         return $this;

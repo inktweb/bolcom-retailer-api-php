@@ -174,7 +174,7 @@ final class OrderOrderItem extends Model
         return $this->commission;
     }
 
-    public function setAdditionalServices(?AdditionalService $additionalServices): self
+    public function setAdditionalServices(?AdditionalService ...$additionalServices): self
     {
         $this->additionalServices = $additionalServices;
         return $this;

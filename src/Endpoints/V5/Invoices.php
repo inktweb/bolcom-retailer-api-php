@@ -37,7 +37,9 @@ final class Invoices extends Endpoint
                 'period-end-date' => $periodEndDate,
                 ],
                 null,
-                null,
+                [
+                'application/vnd.retailer.v5+json',
+                ],
                 [
                 'application/vnd.retailer.v5+json',
                 ],
@@ -67,7 +69,9 @@ final class Invoices extends Endpoint
                 ],
                 [],
                 null,
-                null,
+                [
+                'application/vnd.retailer.v5+json',
+                ],
                 [
                 'application/vnd.retailer.v5+json',
                 'application/vnd.retailer.v5+pdf',
@@ -101,7 +105,9 @@ final class Invoices extends Endpoint
                 'page' => $page,
                 ],
                 null,
-                null,
+                [
+                'application/vnd.retailer.v5+json',
+                ],
                 [
                 'application/vnd.retailer.v5+json',
                 'application/vnd.retailer.v5+pdf',

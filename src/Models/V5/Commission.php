@@ -140,7 +140,7 @@ final class Commission extends Model
         return $this->totalCostWithoutReduction;
     }
 
-    public function setReductions(Reduction $reductions): self
+    public function setReductions(Reduction ...$reductions): self
     {
         $this->reductions = $reductions;
         return $this;

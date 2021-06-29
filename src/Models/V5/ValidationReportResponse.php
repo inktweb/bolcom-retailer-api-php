@@ -18,7 +18,7 @@ final class ValidationReportResponse extends Model
     /** @var ProductContentResponse[] */
     protected $productContents;
 
-    public function setProductContents(?ProductContentResponse $productContents): self
+    public function setProductContents(?ProductContentResponse ...$productContents): self
     {
         $this->productContents = $productContents;
         return $this;

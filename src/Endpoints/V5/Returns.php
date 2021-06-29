@@ -39,7 +39,9 @@ final class Returns extends Endpoint
                 'fulfilment-method' => $fulfilmentMethod,
                 ],
                 null,
-                null,
+                [
+                'application/vnd.retailer.v5+json',
+                ],
                 [
                 'application/vnd.retailer.v5+json',
                 ],
@@ -66,7 +68,9 @@ final class Returns extends Endpoint
                 [],
                 [],
                 $body,
-                null,
+                [
+                'application/vnd.retailer.v5+json',
+                ],
                 [
                 'application/vnd.retailer.v5+json',
                 ],
@@ -93,7 +97,9 @@ final class Returns extends Endpoint
                 ],
                 [],
                 null,
-                null,
+                [
+                'application/vnd.retailer.v5+json',
+                ],
                 [
                 'application/vnd.retailer.v5+json',
                 ],
@@ -123,7 +129,9 @@ final class Returns extends Endpoint
                 ],
                 [],
                 $body,
+                [
                 'application/vnd.retailer.v5+json',
+                ],
                 [
                 'application/vnd.retailer.v5+json',
                 ],

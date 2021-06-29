@@ -54,7 +54,7 @@ final class ProductContentResponse extends Model
         return $this->internalReference;
     }
 
-    public function setRejectedAttributes(?RejectedAttributeResponse $rejectedAttributes): self
+    public function setRejectedAttributes(?RejectedAttributeResponse ...$rejectedAttributes): self
     {
         $this->rejectedAttributes = $rejectedAttributes;
         return $this;

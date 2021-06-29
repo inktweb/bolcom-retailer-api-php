@@ -38,7 +38,7 @@ final class ProductContent extends Model
         return $this->internalReference;
     }
 
-    public function setAttributes(Attribute $attributes): self
+    public function setAttributes(Attribute ...$attributes): self
     {
         $this->attributes = $attributes;
         return $this;

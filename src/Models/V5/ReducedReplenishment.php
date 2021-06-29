@@ -72,7 +72,7 @@ final class ReducedReplenishment extends Model
         return $this->creationDateTime;
     }
 
-    public function setLines(ReducedReplenishmentLines $lines): self
+    public function setLines(ReducedReplenishmentLines ...$lines): self
     {
         $this->lines = $lines;
         return $this;
@@ -83,7 +83,7 @@ final class ReducedReplenishment extends Model
         return $this->lines;
     }
 
-    public function setInvalidLines(ReducedInvalidReplenishmentLine $invalidLines): self
+    public function setInvalidLines(ReducedInvalidReplenishmentLine ...$invalidLines): self
     {
         $this->invalidLines = $invalidLines;
         return $this;
