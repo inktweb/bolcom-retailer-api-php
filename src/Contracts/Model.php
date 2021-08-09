@@ -2,6 +2,7 @@
 
 namespace Inktweb\Bolcom\RetailerApi\Contracts;
 
+use Inktweb\Bolcom\RetailerApi\Models\V5\AttributeValue;
 use JsonSerializable;
 use ReflectionClass;
 use ReflectionNamedType;
@@ -22,19 +23,20 @@ abstract class Model implements JsonSerializable
             }
 
             [$parameter] = $reflection->getMethod($methodName)->getParameters();
+
             $type = $parameter->getType();
             $isBuiltin = $type instanceof ReflectionNamedType && $type->isBuiltin();
 
-            $values = is_array($value)
-                ? $value
-                : [$value];
-
             if ($isBuiltin) {
-                $model->{$methodName}(...$values);
+                $model->{$methodName}(...[$value]);
                 continue;
             }
 
-            $model->{$methodName}(...array_map([$type->getName(), 'fromArray'], $values));
+            if (!is_numeric(key($value))) {
+                $value = [$value];
+            }
+
+            $model->{$methodName}(...array_map([$type->getName(), 'fromArray'], $value));
         }
 
         return $model;
@@ -53,7 +55,12 @@ abstract class Model implements JsonSerializable
             }
 
             $key = $property->getName();
-            $value = $property->getValue($this);
+
+            if (!$reflection->hasMethod("get{$key}")) {
+                continue;
+            }
+
+            $value = $this->{"get{$key}"}();
 
             $toSerialize[$key] = $value;
         }

@@ -18,5 +18,8 @@ class Config
     public const MODELS_PATH = self::ROOT_PATH . '/Models';
     public const MODELS_NAMESPACE = self::ROOT_NAMESPACE . '\\Models';
 
+    public const ENUMS_PATH = self::ROOT_PATH . '/Enums';
+    public const ENUMS_NAMESPACE = self::ROOT_NAMESPACE . '\\Enums';
+
     public const VERSION_PREFIX = 'V';
 }

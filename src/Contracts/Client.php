@@ -14,6 +14,8 @@ use Inktweb\Bolcom\RetailerApi\Client\Middleware\JsonResponse;
 
 abstract class Client extends GuzzleHttpClient
 {
+    protected const DEFAULT_CONTENT_TYPE = 'application/json';
+
     public function __construct(Config $config)
     {
         parent::__construct(
@@ -23,6 +25,7 @@ abstract class Client extends GuzzleHttpClient
                 'auth' => 'oauth',
                 'headers' => [
                     'User-Agent' => $config->getUserAgent(),
+                    'Content-Type' => static::DEFAULT_CONTENT_TYPE,
                 ],
             ]
         );

@@ -25,9 +25,13 @@ class Endpoints extends Base
     /** @var Models */
     protected $models;
 
-    public function __construct(string $apiVersion, ?array $data, Models $models)
+    /** @var Enums */
+    protected $enums;
+
+    public function __construct(string $apiVersion, ?array $data, Models $models, Enums $enums)
     {
         $this->models = $models;
+        $this->enums = $enums;
 
         parent::__construct($apiVersion, $data);
 
@@ -89,7 +93,7 @@ class Endpoints extends Base
                 $method->addComment('');
                 $method->addComment($this->wrapText($data['description']));
 
-                $this->processParameters($data['parameters'] ?? null, $method);
+                $this->processParameters($data['parameters'] ?? null, $method, $endpoint);
                 $errorResponses = $this->processResponses($data['responses'], $method);
 
                 $method->addBody($this->generateRequestCode($resource, $methodVerb, $data, $method, $errorResponses));
@@ -99,7 +103,7 @@ class Endpoints extends Base
         return $endpoint;
     }
 
-    protected function processParameters(?array $parameters, Method $method): void
+    protected function processParameters(?array $parameters, Method $method, ClassType $endpoint): void
     {
         if (empty($parameters)) {
             return;
@@ -116,11 +120,12 @@ class Endpoints extends Base
             $parameterName = Str::camel($parameter['name']);
             $methodParameter = $method
                 ->addParameter($parameterName)
-                ->setNullable(!$parameter['required'])
+                ->setNullable($parameter['in'] !== 'body' && !$parameter['required'])
                 ->setType(
                     $this->resolveType(
                         $parameter['type'] ?? null,
-                        $parameter['schema']['$ref'] ?? null
+                        $parameter['schema']['$ref'] ?? null,
+                        $this->enums->getEnum($endpoint->getName(), $parameter['name'] ?? null)
                     )
                 );
 
@@ -130,8 +135,13 @@ class Endpoints extends Base
         }
     }
 
-    protected function resolveType(?string $type, ?string $ref): string
+    protected function resolveType(?string $type, ?string $ref, ?string $enum = null): string
     {
+        if ($enum !== null) {
+            $this->uses->add($enum);
+            return $enum;
+        }
+
         if ($type !== null) {
             switch ($type) {
                 case 'string':

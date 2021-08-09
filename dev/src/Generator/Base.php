@@ -4,6 +4,7 @@ namespace Inktweb\Bolcom\RetailerApi\Development\Generator;
 
 use ArrayIterator;
 use Illuminate\Support\Str;
+use Inktweb\Bolcom\RetailerApi\Development\Concerns\GetClassName;
 use Inktweb\Bolcom\RetailerApi\Development\Generator\Base\Uses;
 use Nette\IOException;
 use Nette\PhpGenerator\ClassType;
@@ -13,6 +14,8 @@ use Nette\Utils\FileSystem;
 
 abstract class Base
 {
+    use GetClassName;
+
     protected const BASE_PATH = __DIR__;
     protected const BASE_NAMESPACE = self::class;
     protected const DEFAULT_CONTENT_TYPE_TEMPLATE = 'application/vnd.retailer.{version}+json';
@@ -31,11 +34,6 @@ abstract class Base
 
     /** @var ClassType[] */
     protected $classes = [];
-
-    /** @var string[] */
-    protected $reservedStrings = [
-        'Return' => 'ReturnMerchandise',
-    ];
 
     public function __construct(string $apiVersion, ?array $data)
     {
@@ -58,12 +56,6 @@ abstract class Base
     public function getClass(string $index): ?ClassType
     {
         return $this->classes[$index] ?? null;
-    }
-
-    protected function getClassName(string $name): string
-    {
-        $className = Str::studly(preg_replace('/\W/', ' ', $name));
-        return $this->reservedStrings[$className] ?? $className;
     }
 
     public function getFullyQualifiedClassName(string $className): string

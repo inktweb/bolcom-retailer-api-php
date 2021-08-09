@@ -23,19 +23,18 @@ abstract class Endpoint
         array $pathParameters,
         array $queryParameters,
         ?Model $body,
-        array $requestContentTypes,
+        array $acceptedContentTypes,
         ?array $responseContentTypes,
         array $errorResponseModels
     ): array {
         try {
             $response = $this->client->request(
                 $method,
-                $this->compilePath($uri, $pathParameters),
+                $this->compileUri($uri, $pathParameters, $queryParameters),
                 [
-                    RequestOptions::QUERY => $queryParameters,
-                    RequestOptions::BODY => json_encode($body),
+                    RequestOptions::BODY => $body,
                     RequestOptions::HEADERS => [
-                        'Accept' => $requestContentTypes,
+                        'Accept' => $acceptedContentTypes,
                     ],
                 ]
             );
@@ -67,6 +66,11 @@ abstract class Endpoint
         return $body->getJson();
     }
 
+    protected function compileUri(string $uri, array $pathParameters, array $queryParameters): string
+    {
+        return $this->compilePath($uri, $pathParameters) . $this->compileQuery($queryParameters);
+    }
+
     protected function compilePath(string $uri, array $pathParameters): string
     {
         foreach ($pathParameters as $key => $value) {
@@ -74,5 +78,40 @@ abstract class Endpoint
         }
 
         return $uri;
+    }
+
+    protected function compileQuery(array $queryParameters): string
+    {
+        if (empty($queryParameters)) {
+            return '';
+        }
+
+        $parameters = [];
+
+        foreach ($queryParameters as $name => $value) {
+            if ($value instanceof Enum) {
+                $encodedName = urlencode($name);
+
+                foreach ($value->compile() as $item) {
+                    $parameters[] = $encodedName . '=' . urlencode($item);
+                }
+
+                continue;
+            }
+
+            if (is_array($value)) {
+                $encodedName = urlencode("{$name}[]");
+
+                foreach ($value as $item) {
+                    $parameters[] = $encodedName . '=' . urlencode($item);
+                }
+
+                continue;
+            }
+
+            $parameters[] = urlencode($name) . '=' . urlencode($value);
+        }
+
+        return '?' . implode('&', $parameters);
     }
 }

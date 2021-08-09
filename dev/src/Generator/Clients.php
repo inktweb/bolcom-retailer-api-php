@@ -31,6 +31,9 @@ class Clients extends Base
             ->setFinal()
             ->addExtend(Client::class);
 
+        $clientClass->addConstant('DEFAULT_CONTENT_TYPE', $this->defaultContentType)
+            ->setProtected();
+
         foreach ($this->endpoints->getIterator() as $endpoint) {
             $endpointName = $endpoint->getName();
             $propertyName = Str::camel($endpointName);

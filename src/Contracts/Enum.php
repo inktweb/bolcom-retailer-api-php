@@ -1,0 +1,95 @@
+<?php
+
+namespace Inktweb\Bolcom\RetailerApi\Contracts;
+
+use Inktweb\Bolcom\RetailerApi\Exceptions\Enum\MaxItemsException;
+use Inktweb\Bolcom\RetailerApi\Exceptions\Enum\MinItemsException;
+use Inktweb\Bolcom\RetailerApi\Exceptions\Enum\InvalidEnumValueException;
+use Inktweb\Bolcom\RetailerApi\Exceptions\Enum\UniqueItemsException;
+use Inktweb\Bolcom\RetailerApi\Exceptions\Enum\UnknownCollectionFormatException;
+
+abstract class Enum
+{
+    protected const COLLECTION_FORMAT_CSV = 'csv';
+    protected const COLLECTION_FORMAT_SSV = 'ssv';
+    protected const COLLECTION_FORMAT_TSV = 'tsv';
+    protected const COLLECTION_FORMAT_PIPES = 'pipes';
+    protected const COLLECTION_FORMAT_MULTI = 'multi';
+
+    protected const COLLECTION_FORMAT = self::COLLECTION_FORMAT_MULTI;
+
+    protected const MIN_ITEMS = 0;
+    protected const MAX_ITEMS = null;
+    protected const UNIQUE_ITEMS = false;
+
+    protected $delimiters = [
+        self::COLLECTION_FORMAT_CSV => ',',
+        self::COLLECTION_FORMAT_SSV => ' ',
+        self::COLLECTION_FORMAT_TSV => "\t",
+        self::COLLECTION_FORMAT_PIPES => '|',
+    ];
+
+    /** @var string[] */
+    protected $allowedValues = [];
+
+    /** @var string[] */
+    protected $values = [];
+
+    public function __construct(string ...$values)
+    {
+        if (!empty($values)) {
+            $this->set(...$values);
+        }
+    }
+
+    public function set(string ...$values): self
+    {
+        $this->validateValues($values);
+        $this->values = $values;
+        return $this;
+    }
+
+    protected function validateValues(array $values): void
+    {
+        foreach ($values as $value) {
+            if (!in_array($value, $this->allowedValues)) {
+                $allowedValues = '["' . implode('","', $this->allowedValues) . '"]';
+
+                throw new InvalidEnumValueException(
+                    "The value '{$value}' is not one of the allowed values: {$allowedValues}"
+                );
+            }
+        }
+
+        if (count($values) < static::MIN_ITEMS) {
+            throw new MinItemsException();
+        }
+
+        if (static::MAX_ITEMS !== null && count($values) > static::MAX_ITEMS) {
+            throw new MaxItemsException();
+        }
+
+        if (static::UNIQUE_ITEMS && array_unique($values) !== $values) {
+            throw new UniqueItemsException();
+        }
+    }
+
+    public function compile(): array
+    {
+        $collectionFormat = static::COLLECTION_FORMAT;
+        $delimiter = $this->delimiters[$collectionFormat] ?? null;
+
+        if ($delimiter !== null) {
+            return [implode($delimiter, $this->values)];
+        }
+
+        switch ($collectionFormat) {
+            case static::COLLECTION_FORMAT_MULTI:
+                return $this->values;
+        }
+
+        throw new UnknownCollectionFormatException(
+            "The collection format '{$collectionFormat}' is is unknown or not implemented."
+        );
+    }
+}

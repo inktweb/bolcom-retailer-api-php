@@ -10,6 +10,7 @@ use Inktweb\Bolcom\RetailerApi\Development\Exceptions\ReferenceNotFoundException
 use Inktweb\Bolcom\RetailerApi\Development\Exceptions\UnsupportedDefinitionTypeException;
 use Inktweb\Bolcom\RetailerApi\Development\Exceptions\UnsupportedPropertyTypeException;
 use Nette\PhpGenerator\ClassType;
+use Nette\PhpGenerator\Method;
 use Nette\PhpGenerator\Parameter;
 use Nette\PhpGenerator\Property;
 use Nette\PhpGenerator\Type;
@@ -95,6 +96,7 @@ class Models extends Base
             switch ($propertyType) {
                 case 'array':
                     $parameter->setType(Type::ARRAY);
+                    $classProperty->setValue([]);
 
                     if (!isset($property['items']['$ref'])) {
                         $classProperty->addComment('@var array');
@@ -106,26 +108,47 @@ class Models extends Base
                         'ref' => $property['items']['$ref'],
                         'property' => $classProperty,
                         'parameter' => $parameter,
+                        'getter' => $propertyGetter,
                     ];
                     break;
                 case 'string':
-                    $classProperty->addComment('@var string');
+                    $classProperty
+                        ->addComment('@var string')
+                        ->setValue('');
+
                     $parameter->setType(Type::STRING);
                     break;
                 case 'number':
-                    $classProperty->addComment('@var float');
+                    $classProperty
+                        ->addComment('@var float')
+                        ->setValue(0);
+
                     $parameter->setType(Type::FLOAT);
                     break;
                 case 'integer':
-                    $classProperty->addComment('@var int');
+                    $classProperty
+                        ->addComment('@var int')
+                        ->setValue(0);
+
                     $parameter->setType(Type::INT);
                     break;
                 case 'boolean':
-                    $classProperty->addComment('@var bool');
+                    $classProperty
+                        ->addComment('@var bool')
+                        ->setValue(false);
+
                     $parameter->setType(Type::BOOL);
                     break;
                 case null:
-                    // do nothing
+                    if (isset($property['$ref'])) {
+                        $deferredProperties[] = [
+                            'type' => 'object',
+                            'ref' => $property['$ref'],
+                            'property' => $classProperty,
+                            'parameter' => $parameter,
+                            'getter' => $propertyGetter,
+                        ];
+                    }
                     break;
                 default:
                     throw new UnsupportedPropertyTypeException("The property type '{$propertyType}' is not supported.");
@@ -157,7 +180,23 @@ class Models extends Base
             /** @var Parameter $parameter */
             $parameter = $deferredProperty['parameter'];
 
+            /** @var Method $getter */
+            $getter = $deferredProperty['getter'];
+
             switch ($type) {
+                case 'object':
+                    $property->addComment("@var {$class->getName()}");
+                    $parameter->setType(
+                        $this->getFullyQualifiedClassName(
+                            $class->getName()
+                        )
+                    );
+                    $getter->setReturnType(
+                        $this->getFullyQualifiedClassName(
+                            $class->getName()
+                        )
+                    );
+                    break;
                 case 'array':
                     $property->addComment("@var {$class->getName()}[]");
                     $parameter->setType(
