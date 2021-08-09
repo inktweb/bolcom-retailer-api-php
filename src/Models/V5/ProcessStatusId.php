@@ -18,7 +18,7 @@ final class ProcessStatusId extends Model
      * The process status id.
      * @var string
      */
-    protected $processStatusId;
+    protected $processStatusId = '';
 
     public function setProcessStatusId(?string $processStatusId): self
     {

@@ -20,14 +20,14 @@ final class UpdateOfferRequest extends Model
      * and has a maximum amount of 20 characters.
      * @var string
      */
-    protected $reference;
+    protected $reference = '';
 
     /**
      * Indicates whether or not you want to put this offer for sale on the
      * bol.com website. Defaults to false.
      * @var bool
      */
-    protected $onHoldByRetailer;
+    protected $onHoldByRetailer = false;
 
     /**
      * In case the item is not known to bol.com you can use this field to
@@ -35,7 +35,9 @@ final class UpdateOfferRequest extends Model
      * to bol.com, the unknown product title will not be stored.
      * @var string
      */
-    protected $unknownProductTitle;
+    protected $unknownProductTitle = '';
+
+    /** @var Fulfilment */
     protected $fulfilment;
 
     public function setReference(?string $reference): self
@@ -71,13 +73,13 @@ final class UpdateOfferRequest extends Model
         return $this->unknownProductTitle;
     }
 
-    public function setFulfilment($fulfilment): self
+    public function setFulfilment(Fulfilment $fulfilment): self
     {
         $this->fulfilment = $fulfilment;
         return $this;
     }
 
-    public function getFulfilment()
+    public function getFulfilment(): Fulfilment
     {
         return $this->fulfilment;
     }

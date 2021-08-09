@@ -14,24 +14,25 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
  */
 final class TotalPeriod extends Model
 {
+    /** @var SearchTermsPeriod */
     protected $period;
 
     /**
      * The number of customer visits on the search page.
      * @var int
      */
-    protected $total;
+    protected $total = 0;
 
     /** @var SearchTermsCountry[] */
-    protected $countries;
+    protected $countries = [];
 
-    public function setPeriod($period): self
+    public function setPeriod(SearchTermsPeriod $period): self
     {
         $this->period = $period;
         return $this;
     }
 
-    public function getPeriod()
+    public function getPeriod(): SearchTermsPeriod
     {
         return $this->period;
     }

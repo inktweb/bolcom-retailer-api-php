@@ -18,23 +18,23 @@ final class ReducedReturn extends Model
      * Unique identifier for a return.
      * @var string
      */
-    protected $returnId;
+    protected $returnId = '';
 
     /**
      * The date and time in ISO 8601 format when this return was registered.
      * @var string
      */
-    protected $registrationDateTime;
+    protected $registrationDateTime = '';
 
     /**
      * Specifies whether this shipment has been fulfilled by the retailer
      * (FBR) or fulfilled by bol.com (FBB). Defaults to FBR.
      * @var string
      */
-    protected $fulfilmentMethod;
+    protected $fulfilmentMethod = '';
 
     /** @var ReducedReturnItem[] */
-    protected $returnItems;
+    protected $returnItems = [];
 
     public function setReturnId(string $returnId): self
     {

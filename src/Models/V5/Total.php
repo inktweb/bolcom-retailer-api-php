@@ -19,14 +19,14 @@ final class Total extends Model
      * platform.
      * @var float
      */
-    protected $minimum;
+    protected $minimum = 0;
 
     /**
      * Maximum number of estimated sales expectations on the bol.com
      * platform.
      * @var float
      */
-    protected $maximum;
+    protected $maximum = 0;
 
     public function setMinimum(float $minimum): self
     {

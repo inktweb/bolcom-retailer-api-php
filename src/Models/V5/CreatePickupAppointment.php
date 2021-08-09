@@ -14,33 +14,36 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
  */
 final class CreatePickupAppointment extends Model
 {
+    /** @var CreateAddress */
     protected $address;
+
+    /** @var CreatePickupTimeSlot */
     protected $pickupTimeSlot;
 
     /**
      * A comment to the transporter regarding the pickup appointment.
      * @var string
      */
-    protected $commentToTransporter;
+    protected $commentToTransporter = '';
 
-    public function setAddress($address): self
+    public function setAddress(CreateAddress $address): self
     {
         $this->address = $address;
         return $this;
     }
 
-    public function getAddress()
+    public function getAddress(): CreateAddress
     {
         return $this->address;
     }
 
-    public function setPickupTimeSlot($pickupTimeSlot): self
+    public function setPickupTimeSlot(CreatePickupTimeSlot $pickupTimeSlot): self
     {
         $this->pickupTimeSlot = $pickupTimeSlot;
         return $this;
     }
 
-    public function getPickupTimeSlot()
+    public function getPickupTimeSlot(): CreatePickupTimeSlot
     {
         return $this->pickupTimeSlot;
     }

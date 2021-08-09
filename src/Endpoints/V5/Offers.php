@@ -26,7 +26,7 @@ final class Offers extends Endpoint
      * status information can be retrieved to review if the offer is valid
      * and published to the shop.
      */
-    public function postOffer(?CreateOfferRequest $body = null): ProcessStatus
+    public function postOffer(CreateOfferRequest $body): ProcessStatus
     {
         return ProcessStatus::fromArray(
             $this->request(
@@ -53,7 +53,7 @@ final class Offers extends Endpoint
      *
      * Request an offer export file containing all offers.
      */
-    public function postOfferExport(?CreateOfferExportRequest $body = null): ProcessStatus
+    public function postOfferExport(CreateOfferExportRequest $body): ProcessStatus
     {
         return ProcessStatus::fromArray(
             $this->request(
@@ -141,7 +141,7 @@ final class Offers extends Endpoint
      * Use this endpoint to send an offer update. This endpoint returns a
      * process status.
      */
-    public function putOffer(string $offerId, ?UpdateOfferRequest $body = null): ProcessStatus
+    public function putOffer(string $offerId, UpdateOfferRequest $body): ProcessStatus
     {
         return ProcessStatus::fromArray(
             $this->request(
@@ -199,7 +199,7 @@ final class Offers extends Endpoint
      *
      * Update price(s) for offer by id.
      */
-    public function updateOfferPrice(string $offerId, ?UpdateOfferPriceRequest $body = null): ProcessStatus
+    public function updateOfferPrice(string $offerId, UpdateOfferPriceRequest $body): ProcessStatus
     {
         return ProcessStatus::fromArray(
             $this->request(
@@ -228,7 +228,7 @@ final class Offers extends Endpoint
      *
      * Update stock for offer by id.
      */
-    public function updateOfferStock(string $offerId, ?UpdateOfferStockRequest $body = null): ProcessStatus
+    public function updateOfferStock(string $offerId, UpdateOfferStockRequest $body): ProcessStatus
     {
         return ProcessStatus::fromArray(
             $this->request(

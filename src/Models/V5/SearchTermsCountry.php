@@ -19,13 +19,13 @@ final class SearchTermsCountry extends Model
      * ISO-3166-1 format.
      * @var string
      */
-    protected $countryCode;
+    protected $countryCode = '';
 
     /**
      * The number of customer visits on the search page.
      * @var int
      */
-    protected $value;
+    protected $value = 0;
 
     public function setCountryCode(string $countryCode): self
     {

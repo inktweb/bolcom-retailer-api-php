@@ -18,14 +18,14 @@ final class StateTransition extends Model
      * Indicates the state of this replenishment order.
      * @var string
      */
-    protected $state;
+    protected $state = '';
 
     /**
      * The date and time in ISO 8601 format that indicates when this states
      * was updated for this replenishment.
      * @var string
      */
-    protected $stateDateTime;
+    protected $stateDateTime = '';
 
     public function setState(string $state): self
     {

@@ -18,13 +18,13 @@ final class PerformanceIndicatorPeriod extends Model
      * Week number in the ISO-8601 standard.
      * @var string
      */
-    protected $week;
+    protected $week = '';
 
     /**
      * Year number in the ISO-8601 standard.
      * @var string
      */
-    protected $year;
+    protected $year = '';
 
     public function setWeek(string $week): self
     {

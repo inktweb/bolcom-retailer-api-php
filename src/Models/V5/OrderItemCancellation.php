@@ -18,13 +18,13 @@ final class OrderItemCancellation extends Model
      * The id for the order item (1 order can have multiple order items).
      * @var string
      */
-    protected $orderItemId;
+    protected $orderItemId = '';
 
     /**
      * The code representing the reason for cancellation of this item.
      * @var string
      */
-    protected $reasonCode;
+    protected $reasonCode = '';
 
     public function setOrderItemId(string $orderItemId): self
     {

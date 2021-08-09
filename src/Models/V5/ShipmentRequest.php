@@ -19,20 +19,22 @@ final class ShipmentRequest extends Model
      * order.
      * @var OrderItem[]
      */
-    protected $orderItems;
+    protected $orderItems = [];
 
     /**
      * A user-defined reference that you can provide to add to the shipment.
      * Can be used for own administration purposes.
      * @var string
      */
-    protected $shipmentReference;
+    protected $shipmentReference = '';
 
     /**
      * The identifier of the purchased shipping label.
      * @var string
      */
-    protected $shippingLabelId;
+    protected $shippingLabelId = '';
+
+    /** @var TransportInstruction */
     protected $transport;
 
     public function setOrderItems(OrderItem ...$orderItems): self
@@ -68,13 +70,13 @@ final class ShipmentRequest extends Model
         return $this->shippingLabelId;
     }
 
-    public function setTransport($transport): self
+    public function setTransport(?TransportInstruction $transport): self
     {
         $this->transport = $transport;
         return $this;
     }
 
-    public function getTransport()
+    public function getTransport(): ?TransportInstruction
     {
         return $this->transport;
     }

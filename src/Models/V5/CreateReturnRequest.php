@@ -18,19 +18,19 @@ final class CreateReturnRequest extends Model
      * The id for the order item (1 order can have multiple order items).
      * @var string
      */
-    protected $orderItemId;
+    protected $orderItemId = '';
 
     /**
      * The quantity of items returned.
      * @var int
      */
-    protected $quantityReturned;
+    protected $quantityReturned = 0;
 
     /**
      * The handling result requested by the retailer.
      * @var string
      */
-    protected $handlingResult;
+    protected $handlingResult = '';
 
     public function setOrderItemId(string $orderItemId): self
     {

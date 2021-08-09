@@ -19,14 +19,14 @@ final class CreateDeliveryInfo extends Model
      * In ISO 8601 format.
      * @var string
      */
-    protected $expectedDeliveryDate;
+    protected $expectedDeliveryDate = '';
 
     /**
      * The transporter code that correlates to the transport used for this
      * replenishment.
      * @var string
      */
-    protected $transporterCode;
+    protected $transporterCode = '';
 
     public function setExpectedDeliveryDate(string $expectedDeliveryDate): self
     {

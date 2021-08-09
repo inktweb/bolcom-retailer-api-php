@@ -19,16 +19,16 @@ final class ReducedOrder extends Model
      * The order id.
      * @var string
      */
-    protected $orderId;
+    protected $orderId = '';
 
     /**
      * The date and time in ISO 8601 format when the order was placed.
      * @var string
      */
-    protected $orderPlacedDateTime;
+    protected $orderPlacedDateTime = '';
 
     /** @var ReducedOrderItem[] */
-    protected $orderItems;
+    protected $orderItems = [];
 
     public function setOrderId(?string $orderId): self
     {

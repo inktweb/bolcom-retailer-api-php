@@ -21,94 +21,94 @@ final class ShipmentDetails extends Model
      * The name of Pick Up Point location this order needs to be shipped to.
      * @var string
      */
-    protected $pickupPointName;
+    protected $pickupPointName = '';
 
     /**
      * The salutation of the customer.
      * @var string
      */
-    protected $salutation;
+    protected $salutation = '';
 
     /**
      * The first name of the customer.
      * @var string
      */
-    protected $firstName;
+    protected $firstName = '';
 
     /**
      * The surname of the customer.
      * @var string
      */
-    protected $surname;
+    protected $surname = '';
 
     /**
      * The street name.
      * @var string
      */
-    protected $streetName;
+    protected $streetName = '';
 
     /**
      * The house number.
      * @var string
      */
-    protected $houseNumber;
+    protected $houseNumber = '';
 
     /**
      * The extension on the house number.
      * @var string
      */
-    protected $houseNumberExtension;
+    protected $houseNumberExtension = '';
 
     /**
      * Additional information related to the address that helps in delivering
      * the package.
      * @var string
      */
-    protected $extraAddressInformation;
+    protected $extraAddressInformation = '';
 
     /**
      * The ZIP code in '1234AB' format for NL orders and '0000' format for BE
      * orders.
      * @var string
      */
-    protected $zipCode;
+    protected $zipCode = '';
 
     /**
      * The name of the city.
      * @var string
      */
-    protected $city;
+    protected $city = '';
 
     /**
      * The country code.
      * @var string
      */
-    protected $countryCode;
+    protected $countryCode = '';
 
     /**
      * A scrambled email address that can be used to contact the customer.
      * @var string
      */
-    protected $email;
+    protected $email = '';
 
     /**
      * The company name.
      * @var string
      */
-    protected $company;
+    protected $company = '';
 
     /**
      * The delivery phone number of the customer. Filled in case the order
      * requires an appointment for delivering the goods.
      * @var string
      */
-    protected $deliveryPhoneNumber;
+    protected $deliveryPhoneNumber = '';
 
     /**
      * The language of the customer in case of contact.
      * @var string
      */
-    protected $language;
+    protected $language = '';
 
     public function setPickupPointName(?string $pickupPointName): self
     {

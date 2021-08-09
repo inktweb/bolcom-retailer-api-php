@@ -18,7 +18,7 @@ final class ReducedReplenishmentLines extends Model
      * The EAN number associated with this product.
      * @var string
      */
-    protected $ean;
+    protected $ean = '';
 
     public function setEan(string $ean): self
     {

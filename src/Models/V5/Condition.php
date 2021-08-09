@@ -18,21 +18,21 @@ final class Condition extends Model
      * The condition of the offered product.
      * @var string
      */
-    protected $name;
+    protected $name = '';
 
     /**
      * The category of the condition. If not given NEW or SECONDHAND is
      * derived from NAME.
      * @var string
      */
-    protected $category;
+    protected $category = '';
 
     /**
      * The description of the condition of the product. Only allowed if name
      * is not NEW and may not contain e-mail addresses.
      * @var string
      */
-    protected $comment;
+    protected $comment = '';
 
     public function setName(string $name): self
     {

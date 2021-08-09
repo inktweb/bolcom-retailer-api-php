@@ -18,13 +18,13 @@ final class OrderOffer extends Model
      * Unique identifier for an offer.
      * @var string
      */
-    protected $offerId;
+    protected $offerId = '';
 
     /**
      * A user-defined reference tied to the offer upon creating the offer.
      * @var string
      */
-    protected $reference;
+    protected $reference = '';
 
     public function setOfferId(?string $offerId): self
     {

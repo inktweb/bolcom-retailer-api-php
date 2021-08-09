@@ -8,6 +8,8 @@
 namespace Inktweb\Bolcom\RetailerApi\Endpoints\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Endpoint;
+use Inktweb\Bolcom\RetailerApi\Enums\V5\Insights\Name;
+use Inktweb\Bolcom\RetailerApi\Enums\V5\Insights\Period;
 use Inktweb\Bolcom\RetailerApi\Models\V5\OfferInsights;
 use Inktweb\Bolcom\RetailerApi\Models\V5\PerformanceIndicators;
 use Inktweb\Bolcom\RetailerApi\Models\V5\Problem;
@@ -22,7 +24,7 @@ final class Insights extends Endpoint
      * Get the product visits and the buy box percentage for an offer during
      * a given period.
      */
-    public function getOfferInsights(string $offerId, string $period, int $numberOfPeriods, array $name): OfferInsights
+    public function getOfferInsights(string $offerId, Period $period, int $numberOfPeriods, Name $name): OfferInsights
     {
         return OfferInsights::fromArray(
             $this->request(
@@ -54,7 +56,7 @@ final class Insights extends Endpoint
      *
      * Gets the measurements for your performance indicators per week.
      */
-    public function getPerformanceIndicator(array $name, string $year, string $week): PerformanceIndicators
+    public function getPerformanceIndicator(Name $name, string $year, string $week): PerformanceIndicators
     {
         return PerformanceIndicators::fromArray(
             $this->request(
@@ -122,7 +124,7 @@ final class Insights extends Endpoint
      */
     public function getSearchTerms(
         string $searchTerm,
-        string $period,
+        Period $period,
         int $numberOfPeriods,
         ?bool $relatedSearchTerms = null
     ): SearchTerms {

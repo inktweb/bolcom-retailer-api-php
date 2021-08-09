@@ -19,19 +19,19 @@ final class ReducedReturnItem extends Model
      * particular return.
      * @var string
      */
-    protected $rmaId;
+    protected $rmaId = '';
 
     /**
      * The id of the customer order this return item is in.
      * @var string
      */
-    protected $orderId;
+    protected $orderId = '';
 
     /**
      * The EAN number associated with this product.
      * @var string
      */
-    protected $ean;
+    protected $ean = '';
 
     /**
      * The quantity that is expected to be returned by the customer. Note:
@@ -39,17 +39,19 @@ final class ReducedReturnItem extends Model
      * greater than 1 of the same product in the same customer order.
      * @var int
      */
-    protected $expectedQuantity;
+    protected $expectedQuantity = 0;
+
+    /** @var ReturnReason */
     protected $returnReason;
 
     /**
      * Indicates if this return item has been handled (by the retailer).
      * @var bool
      */
-    protected $handled;
+    protected $handled = false;
 
     /** @var ReturnProcessingResult[] */
-    protected $processingResults;
+    protected $processingResults = [];
 
     public function setRmaId(string $rmaId): self
     {
@@ -95,13 +97,13 @@ final class ReducedReturnItem extends Model
         return $this->expectedQuantity;
     }
 
-    public function setReturnReason($returnReason): self
+    public function setReturnReason(?ReturnReason $returnReason): self
     {
         $this->returnReason = $returnReason;
         return $this;
     }
 
-    public function getReturnReason()
+    public function getReturnReason(): ?ReturnReason
     {
         return $this->returnReason;
     }

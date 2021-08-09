@@ -18,25 +18,25 @@ final class SearchTermsPeriod extends Model
      * Day number in the ISO-8601 standard.
      * @var string
      */
-    protected $day;
+    protected $day = '';
 
     /**
      * Week number in the ISO-8601 standard.
      * @var string
      */
-    protected $week;
+    protected $week = '';
 
     /**
      * Month number in the ISO-8601 standard.
      * @var string
      */
-    protected $month;
+    protected $month = '';
 
     /**
      * Year number in the ISO-8601 standard.
      * @var string
      */
-    protected $year;
+    protected $year = '';
 
     public function setDay(?string $day): self
     {

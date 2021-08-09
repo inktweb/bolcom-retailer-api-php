@@ -23,7 +23,7 @@ final class Transports extends Endpoint
      */
     public function addTransportInformationByTransportId(
         string $transportId,
-        ?ChangeTransportRequest $body = null
+        ChangeTransportRequest $body
     ): ProcessStatus {
         return ProcessStatus::fromArray(
             $this->request(

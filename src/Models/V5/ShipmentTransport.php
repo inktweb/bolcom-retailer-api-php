@@ -18,25 +18,25 @@ final class ShipmentTransport extends Model
      * The transport id.
      * @var int
      */
-    protected $transportId;
+    protected $transportId = 0;
 
     /**
      * Specify the transporter that will carry out the shipment.
      * @var string
      */
-    protected $transporterCode;
+    protected $transporterCode = '';
 
     /**
      * The track and trace code that is associated with this transport.
      * @var string
      */
-    protected $trackAndTrace;
+    protected $trackAndTrace = '';
 
     /**
      * The shipping label id.
      * @var string
      */
-    protected $shippingLabelId;
+    protected $shippingLabelId = '';
 
     public function setTransportId(?int $transportId): self
     {

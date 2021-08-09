@@ -19,28 +19,28 @@ final class Reduction extends Model
      * reduction, including VAT.
      * @var float
      */
-    protected $maximumPrice;
+    protected $maximumPrice = 0;
 
     /**
      * A reduction to the commission if the maximum price criteria is met,
      * including VAT.
      * @var float
      */
-    protected $costReduction;
+    protected $costReduction = 0;
 
     /**
      * The start date from which the commission reduction is valid, in ISO
      * 8601 format.
      * @var string
      */
-    protected $startDate;
+    protected $startDate = '';
 
     /**
      * The end date from which the commission reduction is not valid anymore,
      * in ISO 8601 format.
      * @var string
      */
-    protected $endDate;
+    protected $endDate = '';
 
     public function setMaximumPrice(float $maximumPrice): self
     {

@@ -16,7 +16,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class ReducedOrders extends Model
 {
     /** @var ReducedOrder[] */
-    protected $orders;
+    protected $orders = [];
 
     public function setOrders(ReducedOrder ...$orders): self
     {

@@ -20,7 +20,7 @@ final class ProductContent extends Endpoint
      *
      * Create content for existing products or new products.
      */
-    public function postProductContent(?CreateProductContentRequest $body = null): ProcessStatus
+    public function postProductContent(CreateProductContentRequest $body): ProcessStatus
     {
         return ProcessStatus::fromArray(
             $this->request(

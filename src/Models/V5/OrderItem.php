@@ -18,7 +18,7 @@ final class OrderItem extends Model
      * The id for the order item (1 order can have multiple order items).
      * @var string
      */
-    protected $orderItemId;
+    protected $orderItemId = '';
 
     public function setOrderItemId(string $orderItemId): self
     {

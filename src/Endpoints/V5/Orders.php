@@ -8,6 +8,8 @@
 namespace Inktweb\Bolcom\RetailerApi\Endpoints\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Endpoint;
+use Inktweb\Bolcom\RetailerApi\Enums\V5\Orders\FulfilmentMethod as FulfilmentMethodV5;
+use Inktweb\Bolcom\RetailerApi\Enums\V5\Orders\Status;
 use Inktweb\Bolcom\RetailerApi\Models\V5\ContainerForTheOrderItemsThatHaveToBeCancelled;
 use Inktweb\Bolcom\RetailerApi\Models\V5\Order;
 use Inktweb\Bolcom\RetailerApi\Models\V5\Problem;
@@ -25,8 +27,8 @@ final class Orders extends Endpoint
      */
     public function getOrders(
         ?int $page = null,
-        ?string $fulfilmentMethod = null,
-        ?string $status = null
+        ?FulfilmentMethodV5 $fulfilmentMethod = null,
+        ?Status $status = null
     ): ReducedOrders {
         return ReducedOrders::fromArray(
             $this->request(
@@ -57,7 +59,7 @@ final class Orders extends Endpoint
      * the customer or to cancel an order item you yourself are unable to
      * fulfil.
      */
-    public function cancelOrderItem(?ContainerForTheOrderItemsThatHaveToBeCancelled $body = null): ProcessStatus
+    public function cancelOrderItem(ContainerForTheOrderItemsThatHaveToBeCancelled $body): ProcessStatus
     {
         return ProcessStatus::fromArray(
             $this->request(
@@ -88,7 +90,7 @@ final class Orders extends Endpoint
      * must be left empty. If you ship the item(s) using your own transporter
      * method you must omit the shippingLabelId entirely.
      */
-    public function shipOrderItem(?ShipmentRequest $body = null): ProcessStatus
+    public function shipOrderItem(ShipmentRequest $body): ProcessStatus
     {
         return ProcessStatus::fromArray(
             $this->request(

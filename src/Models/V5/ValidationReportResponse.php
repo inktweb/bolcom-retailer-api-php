@@ -16,7 +16,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class ValidationReportResponse extends Model
 {
     /** @var ProductContentResponse[] */
-    protected $productContents;
+    protected $productContents = [];
 
     public function setProductContents(?ProductContentResponse ...$productContents): self
     {

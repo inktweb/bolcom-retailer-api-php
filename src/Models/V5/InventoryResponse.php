@@ -15,7 +15,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class InventoryResponse extends Model
 {
     /** @var Inventory[] */
-    protected $inventory;
+    protected $inventory = [];
 
     public function setInventory(Inventory ...$inventory): self
     {

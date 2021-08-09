@@ -18,37 +18,37 @@ final class PickupTimeSlotsAddress extends Model
      * The street name of the pickup address.
      * @var string
      */
-    protected $streetName;
+    protected $streetName = '';
 
     /**
      * The house number of the pickup address.
      * @var string
      */
-    protected $houseNumber;
+    protected $houseNumber = '';
 
     /**
      * The extension of the house number.
      * @var string
      */
-    protected $houseNumberExtension;
+    protected $houseNumberExtension = '';
 
     /**
      * The zip code in '1234AB' format for NL and '0000' for BE addresses.
      * @var string
      */
-    protected $zipCode;
+    protected $zipCode = '';
 
     /**
      * The city of the pickup address.
      * @var string
      */
-    protected $city;
+    protected $city = '';
 
     /**
      * The ISO 3166-2 country code.
      * @var string
      */
-    protected $countryCode;
+    protected $countryCode = '';
 
     public function setStreetName(string $streetName): self
     {

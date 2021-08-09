@@ -18,13 +18,13 @@ final class PackageRestrictions extends Model
      * The weight of a package.
      * @var string
      */
-    protected $maxWeight;
+    protected $maxWeight = '';
 
     /**
      * The dimensions of a package.
      * @var string
      */
-    protected $maxDimensions;
+    protected $maxDimensions = '';
 
     public function setMaxWeight(?string $maxWeight): self
     {

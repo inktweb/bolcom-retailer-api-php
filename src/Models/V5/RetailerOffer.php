@@ -18,7 +18,7 @@ final class RetailerOffer extends Model
      * Unique identifier for an offer.
      * @var string
      */
-    protected $offerId;
+    protected $offerId = '';
 
     /**
      * The EAN number associated with this product. Note: in case an ISBN is
@@ -26,7 +26,7 @@ final class RetailerOffer extends Model
      * this ISBN.
      * @var string
      */
-    protected $ean;
+    protected $ean = '';
 
     /**
      * A user-defined reference that helps you identify this particular offer
@@ -34,14 +34,14 @@ final class RetailerOffer extends Model
      * and has a maximum amount of 20 characters.
      * @var string
      */
-    protected $reference;
+    protected $reference = '';
 
     /**
      * Indicates whether or not you want to put this offer for sale on the
      * bol.com website. Defaults to false.
      * @var bool
      */
-    protected $onHoldByRetailer;
+    protected $onHoldByRetailer = false;
 
     /**
      * In case the item is not known to bol.com you can use this field to
@@ -49,15 +49,25 @@ final class RetailerOffer extends Model
      * to bol.com, the unknown product title will not be stored.
      * @var string
      */
-    protected $unknownProductTitle;
+    protected $unknownProductTitle = '';
+
+    /** @var Pricing */
     protected $pricing;
+
+    /** @var Stock */
     protected $stock;
+
+    /** @var Fulfilment */
     protected $fulfilment;
+
+    /** @var Store */
     protected $store;
+
+    /** @var Condition */
     protected $condition;
 
     /** @var NotPublishableReason[] */
-    protected $notPublishableReasons;
+    protected $notPublishableReasons = [];
 
     public function setOfferId(string $offerId): self
     {
@@ -114,57 +124,57 @@ final class RetailerOffer extends Model
         return $this->unknownProductTitle;
     }
 
-    public function setPricing($pricing): self
+    public function setPricing(Pricing $pricing): self
     {
         $this->pricing = $pricing;
         return $this;
     }
 
-    public function getPricing()
+    public function getPricing(): Pricing
     {
         return $this->pricing;
     }
 
-    public function setStock($stock): self
+    public function setStock(Stock $stock): self
     {
         $this->stock = $stock;
         return $this;
     }
 
-    public function getStock()
+    public function getStock(): Stock
     {
         return $this->stock;
     }
 
-    public function setFulfilment($fulfilment): self
+    public function setFulfilment(Fulfilment $fulfilment): self
     {
         $this->fulfilment = $fulfilment;
         return $this;
     }
 
-    public function getFulfilment()
+    public function getFulfilment(): Fulfilment
     {
         return $this->fulfilment;
     }
 
-    public function setStore($store): self
+    public function setStore(Store $store): self
     {
         $this->store = $store;
         return $this;
     }
 
-    public function getStore()
+    public function getStore(): Store
     {
         return $this->store;
     }
 
-    public function setCondition($condition): self
+    public function setCondition(Condition $condition): self
     {
         $this->condition = $condition;
         return $this;
     }
 
-    public function getCondition()
+    public function getCondition(): Condition
     {
         return $this->condition;
     }

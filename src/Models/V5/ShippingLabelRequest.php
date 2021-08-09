@@ -19,13 +19,13 @@ final class ShippingLabelRequest extends Model
      * Order items for which the delivery options are requested.
      * @var OrderItem[]
      */
-    protected $orderItems;
+    protected $orderItems = [];
 
     /**
      * Shipping label offer id for which you request a shipping label.
      * @var string
      */
-    protected $shippingLabelOfferId;
+    protected $shippingLabelOfferId = '';
 
     public function setOrderItems(OrderItem ...$orderItems): self
     {

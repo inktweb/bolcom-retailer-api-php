@@ -18,13 +18,13 @@ final class AttributeValue extends Model
      * The value of the attribute.
      * @var string
      */
-    protected $value;
+    protected $value = '';
 
     /**
      * The unit identifier of the attribute.
      * @var string
      */
-    protected $unitId;
+    protected $unitId = '';
 
     public function setValue(string $value): self
     {

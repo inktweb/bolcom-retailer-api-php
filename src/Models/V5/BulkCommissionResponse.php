@@ -15,7 +15,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class BulkCommissionResponse extends Model
 {
     /** @var Commission[] */
-    protected $commissions;
+    protected $commissions = [];
 
     public function setCommissions(Commission ...$commissions): self
     {

@@ -19,7 +19,7 @@ final class ReducedInvalidReplenishmentLine extends Model
      * be determined for this replenishment line.
      * @var string
      */
-    protected $type;
+    protected $type = '';
 
     public function setType(string $type): self
     {

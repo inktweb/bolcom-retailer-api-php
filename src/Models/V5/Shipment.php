@@ -18,31 +18,39 @@ final class Shipment extends Model
      * A unique identifier for this shipment.
      * @var int
      */
-    protected $shipmentId;
+    protected $shipmentId = 0;
 
     /**
      * The date and time in ISO 8601 format when the order item was shipped.
      * @var string
      */
-    protected $shipmentDateTime;
+    protected $shipmentDateTime = '';
 
     /**
      * Reference supplied by the user when this item was shipped.
      * @var string
      */
-    protected $shipmentReference;
+    protected $shipmentReference = '';
 
     /**
      * Indicates whether this order is shipped to a Pick Up Point.
      * @var bool
      */
-    protected $pickupPoint;
+    protected $pickupPoint = false;
+
+    /** @var ShipmentOrder */
     protected $order;
+
+    /** @var ShipmentDetails */
     protected $shipmentDetails;
+
+    /** @var BillingDetails */
     protected $billingDetails;
 
     /** @var ShipmentItem[] */
-    protected $shipmentItems;
+    protected $shipmentItems = [];
+
+    /** @var ShipmentTransport */
     protected $transport;
 
     public function setShipmentId(?int $shipmentId): self
@@ -89,35 +97,35 @@ final class Shipment extends Model
         return $this->pickupPoint;
     }
 
-    public function setOrder($order): self
+    public function setOrder(ShipmentOrder $order): self
     {
         $this->order = $order;
         return $this;
     }
 
-    public function getOrder()
+    public function getOrder(): ShipmentOrder
     {
         return $this->order;
     }
 
-    public function setShipmentDetails($shipmentDetails): self
+    public function setShipmentDetails(?ShipmentDetails $shipmentDetails): self
     {
         $this->shipmentDetails = $shipmentDetails;
         return $this;
     }
 
-    public function getShipmentDetails()
+    public function getShipmentDetails(): ?ShipmentDetails
     {
         return $this->shipmentDetails;
     }
 
-    public function setBillingDetails($billingDetails): self
+    public function setBillingDetails(?BillingDetails $billingDetails): self
     {
         $this->billingDetails = $billingDetails;
         return $this;
     }
 
-    public function getBillingDetails()
+    public function getBillingDetails(): ?BillingDetails
     {
         return $this->billingDetails;
     }
@@ -133,13 +141,13 @@ final class Shipment extends Model
         return $this->shipmentItems;
     }
 
-    public function setTransport($transport): self
+    public function setTransport(?ShipmentTransport $transport): self
     {
         $this->transport = $transport;
         return $this;
     }
 
-    public function getTransport()
+    public function getTransport(): ?ShipmentTransport
     {
         return $this->transport;
     }

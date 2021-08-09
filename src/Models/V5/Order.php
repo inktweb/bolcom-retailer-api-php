@@ -19,24 +19,28 @@ final class Order extends Model
      * The order id.
      * @var string
      */
-    protected $orderId;
+    protected $orderId = '';
 
     /**
      * Indicates whether this order is shipped to a Pick Up Point.
      * @var bool
      */
-    protected $pickupPoint;
+    protected $pickupPoint = false;
 
     /**
      * The date and time in ISO 8601 format when the order was placed.
      * @var string
      */
-    protected $orderPlacedDateTime;
+    protected $orderPlacedDateTime = '';
+
+    /** @var ShipmentDetails */
     protected $shipmentDetails;
+
+    /** @var BillingDetails */
     protected $billingDetails;
 
     /** @var OrderOrderItem[] */
-    protected $orderItems;
+    protected $orderItems = [];
 
     public function setOrderId(?string $orderId): self
     {
@@ -71,24 +75,24 @@ final class Order extends Model
         return $this->orderPlacedDateTime;
     }
 
-    public function setShipmentDetails($shipmentDetails): self
+    public function setShipmentDetails(ShipmentDetails $shipmentDetails): self
     {
         $this->shipmentDetails = $shipmentDetails;
         return $this;
     }
 
-    public function getShipmentDetails()
+    public function getShipmentDetails(): ShipmentDetails
     {
         return $this->shipmentDetails;
     }
 
-    public function setBillingDetails($billingDetails): self
+    public function setBillingDetails(?BillingDetails $billingDetails): self
     {
         $this->billingDetails = $billingDetails;
         return $this;
     }
 
-    public function getBillingDetails()
+    public function getBillingDetails(): ?BillingDetails
     {
         return $this->billingDetails;
     }

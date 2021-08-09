@@ -22,7 +22,7 @@ final class HandoverDetails extends Model
      * delivered too early or too late.
      * @var bool
      */
-    protected $meetsCustomerExpectation;
+    protected $meetsCustomerExpectation = false;
 
     /**
      * The date and time at which the parcel must ultimately be at the
@@ -31,13 +31,13 @@ final class HandoverDetails extends Model
      * will be delivered too late.
      * @var string
      */
-    protected $latestHandoverDateTime;
+    protected $latestHandoverDateTime = '';
 
     /**
      * The type of collection for this parcel.
      * @var string
      */
-    protected $collectionMethod;
+    protected $collectionMethod = '';
 
     public function setMeetsCustomerExpectation(?bool $meetsCustomerExpectation): self
     {

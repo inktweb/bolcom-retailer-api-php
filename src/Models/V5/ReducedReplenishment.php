@@ -18,26 +18,26 @@ final class ReducedReplenishment extends Model
      * The unique identifier of the replenishment.
      * @var string
      */
-    protected $replenishmentId;
+    protected $replenishmentId = '';
 
     /**
      * Custom user defined reference to identify the replenishment.
      * @var string
      */
-    protected $reference;
+    protected $reference = '';
 
     /**
      * The date and time when this replenishment was created. In ISO 8601
      * format.
      * @var string
      */
-    protected $creationDateTime;
+    protected $creationDateTime = '';
 
     /** @var ReducedReplenishmentLines[] */
-    protected $lines;
+    protected $lines = [];
 
     /** @var ReducedInvalidReplenishmentLine[] */
-    protected $invalidLines;
+    protected $invalidLines = [];
 
     public function setReplenishmentId(string $replenishmentId): self
     {

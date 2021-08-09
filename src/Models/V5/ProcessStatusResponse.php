@@ -15,7 +15,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class ProcessStatusResponse extends Model
 {
     /** @var ProcessStatus[] */
-    protected $processStatuses;
+    protected $processStatuses = [];
 
     public function setProcessStatuses(ProcessStatus ...$processStatuses): self
     {

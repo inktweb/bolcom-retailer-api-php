@@ -18,13 +18,13 @@ final class NotPublishableReason extends Model
      * Error code signalling that the offer is invalid.
      * @var string
      */
-    protected $code;
+    protected $code = '';
 
     /**
      * Error message describing the reason the offer is invalid.
      * @var string
      */
-    protected $description;
+    protected $description = '';
 
     public function setCode(string $code): self
     {

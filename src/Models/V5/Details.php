@@ -14,47 +14,54 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
  */
 final class Details extends Model
 {
-    /** The period for which the performance is measured. */
+    /**
+     * The period for which the performance is measured.
+     * @var PerformanceIndicatorPeriod
+     */
     protected $period;
 
     /**
      * The score for this measurement. In case there are no scores for an
      * indicator, this element is omitted from the response.
+     * @var Score
      */
     protected $score;
 
-    /** Service norm for this indicator. */
+    /**
+     * Service norm for this indicator.
+     * @var Norm
+     */
     protected $norm;
 
-    public function setPeriod($period): self
+    public function setPeriod(PerformanceIndicatorPeriod $period): self
     {
         $this->period = $period;
         return $this;
     }
 
-    public function getPeriod()
+    public function getPeriod(): PerformanceIndicatorPeriod
     {
         return $this->period;
     }
 
-    public function setScore($score): self
+    public function setScore(?Score $score): self
     {
         $this->score = $score;
         return $this;
     }
 
-    public function getScore()
+    public function getScore(): ?Score
     {
         return $this->score;
     }
 
-    public function setNorm($norm): self
+    public function setNorm(Norm $norm): self
     {
         $this->norm = $norm;
         return $this;
     }
 
-    public function getNorm()
+    public function getNorm(): Norm
     {
         return $this->norm;
     }

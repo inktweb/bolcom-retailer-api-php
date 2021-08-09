@@ -15,7 +15,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class ReplenishmentsResponse extends Model
 {
     /** @var ReducedReplenishment[] */
-    protected $replenishments;
+    protected $replenishments = [];
 
     public function setReplenishments(ReducedReplenishment ...$replenishments): self
     {

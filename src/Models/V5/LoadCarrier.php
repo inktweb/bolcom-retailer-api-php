@@ -18,26 +18,26 @@ final class LoadCarrier extends Model
      * The Serial Shipping Container Code (SSCC) for this load carrier.
      * @var string
      */
-    protected $sscc;
+    protected $sscc = '';
 
     /**
      * The track and trace code for this load carrier.
      * @var string
      */
-    protected $transportLabelTrackAndTrace;
+    protected $transportLabelTrackAndTrace = '';
 
     /**
      * The current state of the transport for this load carrier.
      * @var string
      */
-    protected $transportState;
+    protected $transportState = '';
 
     /**
      * The date and time in ISO 8601 format when the latest update for this
      * transport was received.
      * @var string
      */
-    protected $transportStateUpdateDateTime;
+    protected $transportStateUpdateDateTime = '';
 
     public function setSscc(?string $sscc): self
     {

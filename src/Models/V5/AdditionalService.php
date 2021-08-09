@@ -19,7 +19,7 @@ final class AdditionalService extends Model
      * this order item.
      * @var string
      */
-    protected $serviceType;
+    protected $serviceType = '';
 
     public function setServiceType(?string $serviceType): self
     {

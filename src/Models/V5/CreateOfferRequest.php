@@ -20,7 +20,9 @@ final class CreateOfferRequest extends Model
      * this ISBN.
      * @var string
      */
-    protected $ean;
+    protected $ean = '';
+
+    /** @var Condition */
     protected $condition;
 
     /**
@@ -29,14 +31,14 @@ final class CreateOfferRequest extends Model
      * and has a maximum amount of 20 characters.
      * @var string
      */
-    protected $reference;
+    protected $reference = '';
 
     /**
      * Indicates whether or not you want to put this offer for sale on the
      * bol.com website. Defaults to false.
      * @var bool
      */
-    protected $onHoldByRetailer;
+    protected $onHoldByRetailer = false;
 
     /**
      * In case the item is not known to bol.com you can use this field to
@@ -44,9 +46,15 @@ final class CreateOfferRequest extends Model
      * to bol.com, the unknown product title will not be stored.
      * @var string
      */
-    protected $unknownProductTitle;
+    protected $unknownProductTitle = '';
+
+    /** @var Pricing */
     protected $pricing;
+
+    /** @var StockCreate */
     protected $stock;
+
+    /** @var Fulfilment */
     protected $fulfilment;
 
     public function setEan(string $ean): self
@@ -60,13 +68,13 @@ final class CreateOfferRequest extends Model
         return $this->ean;
     }
 
-    public function setCondition($condition): self
+    public function setCondition(Condition $condition): self
     {
         $this->condition = $condition;
         return $this;
     }
 
-    public function getCondition()
+    public function getCondition(): Condition
     {
         return $this->condition;
     }
@@ -104,35 +112,35 @@ final class CreateOfferRequest extends Model
         return $this->unknownProductTitle;
     }
 
-    public function setPricing($pricing): self
+    public function setPricing(Pricing $pricing): self
     {
         $this->pricing = $pricing;
         return $this;
     }
 
-    public function getPricing()
+    public function getPricing(): Pricing
     {
         return $this->pricing;
     }
 
-    public function setStock($stock): self
+    public function setStock(StockCreate $stock): self
     {
         $this->stock = $stock;
         return $this;
     }
 
-    public function getStock()
+    public function getStock(): StockCreate
     {
         return $this->stock;
     }
 
-    public function setFulfilment($fulfilment): self
+    public function setFulfilment(Fulfilment $fulfilment): self
     {
         $this->fulfilment = $fulfilment;
         return $this;
     }
 
-    public function getFulfilment()
+    public function getFulfilment(): Fulfilment
     {
         return $this->fulfilment;
     }

@@ -19,14 +19,14 @@ final class ShipmentFulfilment extends Model
      * (FBR) or fulfilled by bol.com (FBB). Defaults to FBR.
      * @var string
      */
-    protected $method;
+    protected $method = '';
 
     /**
      * The party that manages the distribution, either bol.com or the
      * retailer itself.
      * @var string
      */
-    protected $distributionParty;
+    protected $distributionParty = '';
 
     /**
      * The ultimate delivery date at which this order must be delivered at
@@ -34,7 +34,7 @@ final class ShipmentFulfilment extends Model
      * exactDeliveryDate is filled.
      * @var string
      */
-    protected $latestDeliveryDate;
+    protected $latestDeliveryDate = '';
 
     public function setMethod(?string $method): self
     {

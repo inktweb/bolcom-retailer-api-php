@@ -18,7 +18,7 @@ final class CreateOfferExportRequest extends Model
      * The file format in which to return the export.
      * @var string
      */
-    protected $format;
+    protected $format = '';
 
     public function setFormat(string $format): self
     {

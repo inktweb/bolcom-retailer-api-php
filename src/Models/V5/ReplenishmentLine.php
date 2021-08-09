@@ -18,47 +18,47 @@ final class ReplenishmentLine extends Model
      * The EAN number associated with this product.
      * @var string
      */
-    protected $ean;
+    protected $ean = '';
 
     /**
      * The state of the line indicating whether this line was announced
      * within this replenishment.
      * @var string
      */
-    protected $lineState;
+    protected $lineState = '';
 
     /**
      * The amount of announced quantity for this replenishment line.
      * @var int
      */
-    protected $quantityAnnounced;
+    protected $quantityAnnounced = 0;
 
     /**
      * The amount of received quantity for this replenishment line.
      * @var int
      */
-    protected $quantityReceived;
+    protected $quantityReceived = 0;
 
     /**
      * The amount of quantity that is still in progress at the warehouse for
      * this replenishment line.
      * @var int
      */
-    protected $quantityInProgress;
+    protected $quantityInProgress = 0;
 
     /**
      * The quantity within this shipment line that has a graded (unsalable)
      * state.
      * @var int
      */
-    protected $quantityWithGradedState;
+    protected $quantityWithGradedState = 0;
 
     /**
      * The quantity within this shipment line that has a regular (salable)
      * state.
      * @var int
      */
-    protected $quantityWithRegularState;
+    protected $quantityWithRegularState = 0;
 
     public function setEan(string $ean): self
     {

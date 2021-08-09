@@ -18,20 +18,22 @@ final class SalesForecastResponse extends Model
      * Indicator name.
      * @var string
      */
-    protected $name;
+    protected $name = '';
 
     /**
      * Interpretation of the data that applies to this measurement.
      * @var string
      */
-    protected $type;
+    protected $type = '';
+
+    /** @var Total */
     protected $total;
 
     /** @var Countries[] */
-    protected $countries;
+    protected $countries = [];
 
     /** @var SalesForecastPeriod[] */
-    protected $periods;
+    protected $periods = [];
 
     public function setName(string $name): self
     {
@@ -55,13 +57,13 @@ final class SalesForecastResponse extends Model
         return $this->type;
     }
 
-    public function setTotal($total): self
+    public function setTotal(Total $total): self
     {
         $this->total = $total;
         return $this;
     }
 
-    public function getTotal()
+    public function getTotal(): Total
     {
         return $this->total;
     }

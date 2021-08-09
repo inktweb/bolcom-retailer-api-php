@@ -18,50 +18,50 @@ final class ProcessStatus extends Model
      * The process status id.
      * @var string
      */
-    protected $processStatusId;
+    protected $processStatusId = '';
 
     /**
      * The id of the object being processed. E.g. in case of a shipment
      * process id, you will receive the id of the order item being processed.
      * @var string
      */
-    protected $entityId;
+    protected $entityId = '';
 
     /**
      * Name of the requested action that is being processed.
      * @var string
      */
-    protected $eventType;
+    protected $eventType = '';
 
     /**
      * Describes the action that is being processed.
      * @var string
      */
-    protected $description;
+    protected $description = '';
 
     /**
      * Status of the action being processed.
      * @var string
      */
-    protected $status;
+    protected $status = '';
 
     /**
      * Shows error message if applicable.
      * @var string
      */
-    protected $errorMessage;
+    protected $errorMessage = '';
 
     /**
      * Time of creation of the response.
      * @var string
      */
-    protected $createTimestamp;
+    protected $createTimestamp = '';
 
     /**
      * Lists available actions applicable to this endpoint.
      * @var Link[]
      */
-    protected $links;
+    protected $links = [];
 
     public function setProcessStatusId(?string $processStatusId): self
     {

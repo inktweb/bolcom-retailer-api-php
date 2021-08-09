@@ -14,6 +14,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
  */
 final class Periods extends Model
 {
+    /** @var OfferInsightsPeriod */
     protected $period;
 
     /**
@@ -21,18 +22,18 @@ final class Periods extends Model
      * the buy box over the requested period (excluding the current day).
      * @var float
      */
-    protected $total;
+    protected $total = 0;
 
     /** @var OfferInsightsCountry[] */
-    protected $countries;
+    protected $countries = [];
 
-    public function setPeriod($period): self
+    public function setPeriod(OfferInsightsPeriod $period): self
     {
         $this->period = $period;
         return $this;
     }
 
-    public function getPeriod()
+    public function getPeriod(): OfferInsightsPeriod
     {
         return $this->period;
     }

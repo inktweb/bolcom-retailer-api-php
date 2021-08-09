@@ -19,7 +19,7 @@ final class ContainerForTheOrderItemsThatHaveToBeCancelled extends Model
      * order.
      * @var OrderItemCancellation[]
      */
-    protected $orderItems;
+    protected $orderItems = [];
 
     public function setOrderItems(OrderItemCancellation ...$orderItems): self
     {

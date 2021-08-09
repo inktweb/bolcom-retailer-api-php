@@ -18,50 +18,50 @@ final class Commission extends Model
      * The EAN number associated with this product.
      * @var string
      */
-    protected $ean;
+    protected $ean = '';
 
     /**
      * The condition of the offer.
      * @var string
      */
-    protected $condition;
+    protected $condition = '';
 
     /**
      * The intended selling price per single unit up to 2 decimals precision,
      * including VAT.
      * @var float
      */
-    protected $unitPrice;
+    protected $unitPrice = 0;
 
     /**
      * A fixed commission fee, including VAT.
      * @var float
      */
-    protected $fixedAmount;
+    protected $fixedAmount = 0;
 
     /**
      * A percentage of commission, based on the intended selling price per
      * unit, including VAT.
      * @var float
      */
-    protected $percentage;
+    protected $percentage = 0;
 
     /**
      * The total commission for selling this product at bol.com. The price
      * includes VAT for Dutch sellers, and excludes VAT for Belgium sellers.
      * @var float
      */
-    protected $totalCost;
+    protected $totalCost = 0;
 
     /**
      * The total commission for selling this product at bol.com without
      * reductions including VAT.
      * @var float
      */
-    protected $totalCostWithoutReduction;
+    protected $totalCostWithoutReduction = 0;
 
     /** @var Reduction[] */
-    protected $reductions;
+    protected $reductions = [];
 
     public function setEan(string $ean): self
     {

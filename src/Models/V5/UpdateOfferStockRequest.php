@@ -20,7 +20,7 @@ final class UpdateOfferStockRequest extends Model
      * to 0.
      * @var int
      */
-    protected $amount;
+    protected $amount = 0;
 
     /**
      * Configures whether the retailer manages the stock levels or that
@@ -31,7 +31,7 @@ final class UpdateOfferStockRequest extends Model
      * update are taken into account.
      * @var bool
      */
-    protected $managedByRetailer;
+    protected $managedByRetailer = false;
 
     public function setAmount(int $amount): self
     {

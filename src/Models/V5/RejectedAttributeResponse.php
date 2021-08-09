@@ -19,10 +19,10 @@ final class RejectedAttributeResponse extends Model
      * Identifier of the attribute from the data model.
      * @var string
      */
-    protected $attributeId;
+    protected $attributeId = '';
 
     /** @var RejectionError[] */
-    protected $rejectionErrors;
+    protected $rejectionErrors = [];
 
     public function setAttributeId(string $attributeId): self
     {

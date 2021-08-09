@@ -20,28 +20,28 @@ final class ProductContentResponse extends Model
      * upload.
      * @var string
      */
-    protected $internalReference;
+    protected $internalReference = '';
 
     /** @var RejectedAttributeResponse[] */
-    protected $rejectedAttributes;
+    protected $rejectedAttributes = [];
 
     /**
      * The end status of the rejected attribute.
      * @var string
      */
-    protected $status;
+    protected $status = '';
 
     /**
      * The rejection error code.
      * @var int
      */
-    protected $errorCode;
+    protected $errorCode = 0;
 
     /**
      * The rejection error message explains why the value was rejected.
      * @var string
      */
-    protected $errorDescription;
+    protected $errorDescription = '';
 
     public function setInternalReference(string $internalReference): self
     {

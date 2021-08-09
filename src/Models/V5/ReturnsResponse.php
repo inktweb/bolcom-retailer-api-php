@@ -15,7 +15,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class ReturnsResponse extends Model
 {
     /** @var ReducedReturn[] */
-    protected $returns;
+    protected $returns = [];
 
     public function setReturns(ReducedReturn ...$returns): self
     {

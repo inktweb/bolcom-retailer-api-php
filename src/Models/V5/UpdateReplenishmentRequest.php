@@ -18,7 +18,9 @@ final class UpdateReplenishmentRequest extends Model
      * Update the state of the replenishment to cancel the replenishment.
      * @var string
      */
-    protected $state;
+    protected $state = '';
+
+    /** @var UpdateDeliveryInfo */
     protected $deliveryInfo;
 
     /**
@@ -26,10 +28,10 @@ final class UpdateReplenishmentRequest extends Model
      * is only a maximum of 20 load carriers.
      * @var int
      */
-    protected $numberOfLoadCarriers;
+    protected $numberOfLoadCarriers = 0;
 
     /** @var UpdateLoadCarrier[] */
-    protected $loadCarriers;
+    protected $loadCarriers = [];
 
     public function setState(?string $state): self
     {
@@ -42,13 +44,13 @@ final class UpdateReplenishmentRequest extends Model
         return $this->state;
     }
 
-    public function setDeliveryInfo($deliveryInfo): self
+    public function setDeliveryInfo(?UpdateDeliveryInfo $deliveryInfo): self
     {
         $this->deliveryInfo = $deliveryInfo;
         return $this;
     }
 
-    public function getDeliveryInfo()
+    public function getDeliveryInfo(): ?UpdateDeliveryInfo
     {
         return $this->deliveryInfo;
     }

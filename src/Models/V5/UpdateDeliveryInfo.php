@@ -19,7 +19,7 @@ final class UpdateDeliveryInfo extends Model
      * In ISO 8601 format.
      * @var string
      */
-    protected $expectedDeliveryDate;
+    protected $expectedDeliveryDate = '';
 
     public function setExpectedDeliveryDate(?string $expectedDeliveryDate): self
     {

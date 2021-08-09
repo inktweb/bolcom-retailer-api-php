@@ -18,7 +18,7 @@ final class ReducedTransport extends Model
      * The transport id.
      * @var int
      */
-    protected $transportId;
+    protected $transportId = 0;
 
     public function setTransportId(?int $transportId): self
     {

@@ -18,13 +18,13 @@ final class Norm extends Model
      * Condition norm for this indicator.
      * @var string
      */
-    protected $condition;
+    protected $condition = '';
 
     /**
      * Service norm for this indicator.
      * @var float
      */
-    protected $value;
+    protected $value = 0;
 
     public function setCondition(string $condition): self
     {

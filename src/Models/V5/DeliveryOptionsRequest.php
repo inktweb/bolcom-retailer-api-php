@@ -19,7 +19,7 @@ final class DeliveryOptionsRequest extends Model
      * Order items for which the delivery options are requested.
      * @var OrderItem[]
      */
-    protected $orderItems;
+    protected $orderItems = [];
 
     public function setOrderItems(OrderItem ...$orderItems): self
     {

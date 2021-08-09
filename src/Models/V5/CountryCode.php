@@ -19,7 +19,7 @@ final class CountryCode extends Model
      * ISO-3166-1 format.
      * @var string
      */
-    protected $countryCode;
+    protected $countryCode = '';
 
     public function setCountryCode(string $countryCode): self
     {

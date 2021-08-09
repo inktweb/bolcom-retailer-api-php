@@ -14,15 +14,16 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
  */
 final class SearchTerms extends Model
 {
+    /** @var SearchTerm */
     protected $searchTerms;
 
-    public function setSearchTerms($searchTerms): self
+    public function setSearchTerms(?SearchTerm $searchTerms): self
     {
         $this->searchTerms = $searchTerms;
         return $this;
     }
 
-    public function getSearchTerms()
+    public function getSearchTerms(): ?SearchTerm
     {
         return $this->searchTerms;
     }

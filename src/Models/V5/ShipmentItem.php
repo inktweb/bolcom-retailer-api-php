@@ -19,28 +19,34 @@ final class ShipmentItem extends Model
      * shipment.
      * @var string
      */
-    protected $orderItemId;
+    protected $orderItemId = '';
+
+    /** @var ShipmentFulfilment */
     protected $fulfilment;
+
+    /** @var OrderOffer */
     protected $offer;
+
+    /** @var OrderProduct */
     protected $product;
 
     /**
      * Amount of the product being ordered.
      * @var int
      */
-    protected $quantity;
+    protected $quantity = 0;
 
     /**
      * The selling price to the customer of a single unit including VAT.
      * @var float
      */
-    protected $unitPrice;
+    protected $unitPrice = 0;
 
     /**
      * The commission.
      * @var float
      */
-    protected $commission;
+    protected $commission = 0;
 
     public function setOrderItemId(?string $orderItemId): self
     {
@@ -53,35 +59,35 @@ final class ShipmentItem extends Model
         return $this->orderItemId;
     }
 
-    public function setFulfilment($fulfilment): self
+    public function setFulfilment(?ShipmentFulfilment $fulfilment): self
     {
         $this->fulfilment = $fulfilment;
         return $this;
     }
 
-    public function getFulfilment()
+    public function getFulfilment(): ?ShipmentFulfilment
     {
         return $this->fulfilment;
     }
 
-    public function setOffer($offer): self
+    public function setOffer(?OrderOffer $offer): self
     {
         $this->offer = $offer;
         return $this;
     }
 
-    public function getOffer()
+    public function getOffer(): ?OrderOffer
     {
         return $this->offer;
     }
 
-    public function setProduct($product): self
+    public function setProduct(?OrderProduct $product): self
     {
         $this->product = $product;
         return $this;
     }
 
-    public function getProduct()
+    public function getProduct(): ?OrderProduct
     {
         return $this->product;
     }

@@ -16,7 +16,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class DeliveryOptionsResponse extends Model
 {
     /** @var DeliveryOption[] */
-    protected $deliveryOptions;
+    protected $deliveryOptions = [];
 
     public function setDeliveryOptions(DeliveryOption ...$deliveryOptions): self
     {

@@ -15,7 +15,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class BulkCommissionRequest extends Model
 {
     /** @var BulkCommissionQuery[] */
-    protected $commissionQueries;
+    protected $commissionQueries = [];
 
     public function setCommissionQueries(BulkCommissionQuery ...$commissionQueries): self
     {

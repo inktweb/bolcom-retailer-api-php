@@ -18,28 +18,28 @@ final class SearchTerm extends Model
      * The search term for which you requested the search volume.
      * @var string
      */
-    protected $searchTerm;
+    protected $searchTerm = '';
 
     /**
      * Interpretation of the data that applies to this measurement.
      * @var string
      */
-    protected $type;
+    protected $type = '';
 
     /**
      * The number of customer visits on the search page.
      * @var int
      */
-    protected $total;
+    protected $total = 0;
 
     /** @var SearchTermsCountry[] */
-    protected $countries;
+    protected $countries = [];
 
     /** @var TotalPeriod[] */
-    protected $periods;
+    protected $periods = [];
 
     /** @var RelatedSearchTerm[] */
-    protected $relatedSearchTerms;
+    protected $relatedSearchTerms = [];
 
     public function setSearchTerm(string $searchTerm): self
     {

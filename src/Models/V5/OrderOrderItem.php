@@ -19,50 +19,56 @@ final class OrderOrderItem extends Model
      * The id for the order item (1 order can have multiple order items).
      * @var string
      */
-    protected $orderItemId;
+    protected $orderItemId = '';
 
     /**
      * Indicates whether the order was cancelled on request of the customer
      * before the retailer has shipped it.
      * @var bool
      */
-    protected $cancellationRequest;
+    protected $cancellationRequest = false;
+
+    /** @var OrderFulfilment */
     protected $fulfilment;
+
+    /** @var OrderOffer */
     protected $offer;
+
+    /** @var OrderProduct */
     protected $product;
 
     /**
      * Amount of ordered products for this order item id.
      * @var int
      */
-    protected $quantity;
+    protected $quantity = 0;
 
     /**
      * Amount of shipped products for this order item id.
      * @var int
      */
-    protected $quantityShipped;
+    protected $quantityShipped = 0;
 
     /**
      * Amount of cancelled products for this order item id.
      * @var int
      */
-    protected $quantityCancelled;
+    protected $quantityCancelled = 0;
 
     /**
      * The selling price to the customer of a single unit including VAT.
      * @var float
      */
-    protected $unitPrice;
+    protected $unitPrice = 0;
 
     /**
      * The commission for all quantities of this order item.
      * @var float
      */
-    protected $commission;
+    protected $commission = 0;
 
     /** @var AdditionalService[] */
-    protected $additionalServices;
+    protected $additionalServices = [];
 
     public function setOrderItemId(?string $orderItemId): self
     {
@@ -86,35 +92,35 @@ final class OrderOrderItem extends Model
         return $this->cancellationRequest;
     }
 
-    public function setFulfilment($fulfilment): self
+    public function setFulfilment(?OrderFulfilment $fulfilment): self
     {
         $this->fulfilment = $fulfilment;
         return $this;
     }
 
-    public function getFulfilment()
+    public function getFulfilment(): ?OrderFulfilment
     {
         return $this->fulfilment;
     }
 
-    public function setOffer($offer): self
+    public function setOffer(?OrderOffer $offer): self
     {
         $this->offer = $offer;
         return $this;
     }
 
-    public function getOffer()
+    public function getOffer(): ?OrderOffer
     {
         return $this->offer;
     }
 
-    public function setProduct($product): self
+    public function setProduct(?OrderProduct $product): self
     {
         $this->product = $product;
         return $this;
     }
 
-    public function getProduct()
+    public function getProduct(): ?OrderProduct
     {
         return $this->product;
     }

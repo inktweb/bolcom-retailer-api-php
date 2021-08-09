@@ -18,26 +18,26 @@ final class OfferInsight extends Model
      * The name of the requested offer insight.
      * @var string
      */
-    protected $name;
+    protected $name = '';
 
     /**
      * Interpretation of the data that applies to this measurement.
      * @var string
      */
-    protected $type;
+    protected $type = '';
 
     /**
      * Total number of customer visits on the product page when the offer had
      * the buy box over the requested period (excluding the current day).
      * @var float
      */
-    protected $total;
+    protected $total = 0;
 
     /** @var OfferInsightsCountry[] */
-    protected $countries;
+    protected $countries = [];
 
     /** @var Periods[] */
-    protected $periods;
+    protected $periods = [];
 
     public function setName(string $name): self
     {

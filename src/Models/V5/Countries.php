@@ -19,21 +19,21 @@ final class Countries extends Model
      * ISO-3166-1 format.
      * @var string
      */
-    protected $countryCode;
+    protected $countryCode = '';
 
     /**
      * Minimum number of estimated sales expectations on the bol.com
      * platform.
      * @var float
      */
-    protected $minimum;
+    protected $minimum = 0;
 
     /**
      * Maximum number of estimated sales expectations on the bol.com
      * platform.
      * @var float
      */
-    protected $maximum;
+    protected $maximum = 0;
 
     public function setCountryCode(?string $countryCode): self
     {

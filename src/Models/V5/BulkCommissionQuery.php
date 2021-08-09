@@ -18,20 +18,20 @@ final class BulkCommissionQuery extends Model
      * The EAN number associated with this product.
      * @var string
      */
-    protected $ean;
+    protected $ean = '';
 
     /**
      * The condition of the offer.
      * @var string
      */
-    protected $condition;
+    protected $condition = '';
 
     /**
      * The price of the product with a period as a decimal separator. The
      * price should always have two decimals precision.
      * @var float
      */
-    protected $unitPrice;
+    protected $unitPrice = 0;
 
     public function setEan(string $ean): self
     {

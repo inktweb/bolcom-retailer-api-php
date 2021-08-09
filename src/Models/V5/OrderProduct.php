@@ -18,13 +18,13 @@ final class OrderProduct extends Model
      * The EAN number associated with this product.
      * @var string
      */
-    protected $ean;
+    protected $ean = '';
 
     /**
      * Title of the product as shown on the webshop.
      * @var string
      */
-    protected $title;
+    protected $title = '';
 
     public function setEan(?string $ean): self
     {

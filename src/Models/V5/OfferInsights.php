@@ -16,7 +16,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class OfferInsights extends Model
 {
     /** @var OfferInsight[] */
-    protected $offerInsights;
+    protected $offerInsights = [];
 
     public function setOfferInsights(OfferInsight ...$offerInsights): self
     {

@@ -18,13 +18,13 @@ final class ProductLabelsProduct extends Model
      * The EAN number associated with this product.
      * @var string
      */
-    protected $ean;
+    protected $ean = '';
 
     /**
      * The number of products to generate labels for.
      * @var int
      */
-    protected $quantity;
+    protected $quantity = 0;
 
     public function setEan(?string $ean): self
     {

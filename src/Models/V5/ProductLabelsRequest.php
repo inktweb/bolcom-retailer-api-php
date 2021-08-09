@@ -18,10 +18,10 @@ final class ProductLabelsRequest extends Model
      * The printer format to create labels for.
      * @var string
      */
-    protected $labelFormat;
+    protected $labelFormat = '';
 
     /** @var ProductLabelsProduct[] */
-    protected $products;
+    protected $products = [];
 
     public function setLabelFormat(string $labelFormat): self
     {

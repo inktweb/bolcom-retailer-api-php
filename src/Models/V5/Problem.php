@@ -19,42 +19,42 @@ final class Problem extends Model
      * Type URI for this problem. Fixed value: https://api.bol.com/problems.
      * @var string
      */
-    protected $type;
+    protected $type = '';
 
     /**
      * Title describing the nature of the problem.
      * @var string
      */
-    protected $title;
+    protected $title = '';
 
     /**
      * HTTP status returned from the endpoint causing the problem.
      * @var int
      */
-    protected $status;
+    protected $status = 0;
 
     /**
      * Detailed error message describing in additional detail what caused the
      * service to return this problem.
      * @var string
      */
-    protected $detail;
+    protected $detail = '';
 
     /**
      * Host identifier describing the server instance that reported the
      * problem.
      * @var string
      */
-    protected $host;
+    protected $host = '';
 
     /**
      * Full URI path of the resource that reported the problem.
      * @var string
      */
-    protected $instance;
+    protected $instance = '';
 
     /** @var Violation[] */
-    protected $violations;
+    protected $violations = [];
 
     public function setType(?string $type): self
     {

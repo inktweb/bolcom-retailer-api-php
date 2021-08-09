@@ -18,13 +18,13 @@ final class TransportInstruction extends Model
      * Specify the transporter that will carry out the shipment.
      * @var string
      */
-    protected $transporterCode;
+    protected $transporterCode = '';
 
     /**
      * The track and trace code that is associated with this transport.
      * @var string
      */
-    protected $trackAndTrace;
+    protected $trackAndTrace = '';
 
     public function setTransporterCode(?string $transporterCode): self
     {

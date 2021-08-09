@@ -19,13 +19,13 @@ final class ReducedShipmentItem extends Model
      * shipment.
      * @var string
      */
-    protected $orderItemId;
+    protected $orderItemId = '';
 
     /**
      * The EAN number associated with this product.
      * @var string
      */
-    protected $ean;
+    protected $ean = '';
 
     public function setOrderItemId(?string $orderItemId): self
     {

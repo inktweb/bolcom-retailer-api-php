@@ -19,14 +19,14 @@ final class Fulfilment extends Model
      * (FBR) or fulfilled by bol.com (FBB). Defaults to FBR.
      * @var string
      */
-    protected $method;
+    protected $method = '';
 
     /**
      * The delivery promise that applies to this offer. This value will only
      * be used in combination with fulfilmentMethod 'FBR'.
      * @var string
      */
-    protected $deliveryCode;
+    protected $deliveryCode = '';
 
     public function setMethod(string $method): self
     {

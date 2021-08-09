@@ -8,6 +8,8 @@
 namespace Inktweb\Bolcom\RetailerApi\Endpoints\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Endpoint;
+use Inktweb\Bolcom\RetailerApi\Enums\V5\Inventory\State;
+use Inktweb\Bolcom\RetailerApi\Enums\V5\Inventory\Stock;
 use Inktweb\Bolcom\RetailerApi\Models\V5\InventoryResponse;
 use Inktweb\Bolcom\RetailerApi\Models\V5\Problem;
 
@@ -23,8 +25,8 @@ final class Inventory extends Endpoint
     public function getInventory(
         ?int $page = null,
         ?array $quantity = null,
-        ?string $stock = null,
-        ?string $state = null,
+        ?Stock $stock = null,
+        ?State $state = null,
         ?string $query = null
     ): InventoryResponse {
         return InventoryResponse::fromArray(

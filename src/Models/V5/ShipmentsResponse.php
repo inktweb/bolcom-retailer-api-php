@@ -15,7 +15,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class ShipmentsResponse extends Model
 {
     /** @var ReducedShipment[] */
-    protected $shipments;
+    protected $shipments = [];
 
     public function setShipments(ReducedShipment ...$shipments): self
     {

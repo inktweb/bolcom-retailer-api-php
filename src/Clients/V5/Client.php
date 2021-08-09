@@ -24,6 +24,8 @@ use Inktweb\Bolcom\RetailerApi\Endpoints\V5\Transports;
 
 final class Client extends ClientRetailerApi
 {
+    protected const DEFAULT_CONTENT_TYPE = 'application/vnd.retailer.v5+json';
+
     /** @var Commissions */
     protected $commissions;
 

@@ -18,7 +18,7 @@ final class LabelPrice extends Model
      * The price that is charged for this delivery option, excluding VAT.
      * @var float
      */
-    protected $totalPrice;
+    protected $totalPrice = 0;
 
     public function setTotalPrice(?float $totalPrice): self
     {

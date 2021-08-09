@@ -8,6 +8,7 @@
 namespace Inktweb\Bolcom\RetailerApi\Endpoints\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Endpoint;
+use Inktweb\Bolcom\RetailerApi\Enums\V5\Replenishments\LabelType;
 use Inktweb\Bolcom\RetailerApi\Models\V5\CreateReplenishmentRequest;
 use Inktweb\Bolcom\RetailerApi\Models\V5\PickupTimeSlotsRequest;
 use Inktweb\Bolcom\RetailerApi\Models\V5\PickupTimeSlotsResponse;
@@ -65,7 +66,7 @@ final class Replenishments extends Endpoint
      *
      * Create a replenishment.
      */
-    public function postReplenishment(?CreateReplenishmentRequest $body = null): ProcessStatus
+    public function postReplenishment(CreateReplenishmentRequest $body): ProcessStatus
     {
         return ProcessStatus::fromArray(
             $this->request(
@@ -92,7 +93,7 @@ final class Replenishments extends Endpoint
      *
      * Retrieve pickup time slots.
      */
-    public function postPickupTimeSlots(?PickupTimeSlotsRequest $body = null): PickupTimeSlotsResponse
+    public function postPickupTimeSlots(PickupTimeSlotsRequest $body): PickupTimeSlotsResponse
     {
         return PickupTimeSlotsResponse::fromArray(
             $this->request(
@@ -119,7 +120,7 @@ final class Replenishments extends Endpoint
      *
      * Retrieve product labels.
      */
-    public function postProductLabels(?ProductLabelsRequest $body = null): array
+    public function postProductLabels(ProductLabelsRequest $body): array
     {
         return
             $this->request(
@@ -177,7 +178,7 @@ final class Replenishments extends Endpoint
      *
      * Update a replenishment.
      */
-    public function putReplenishment(string $replenishmentId, ?UpdateReplenishmentRequest $body = null): ProcessStatus
+    public function putReplenishment(string $replenishmentId, UpdateReplenishmentRequest $body): ProcessStatus
     {
         return ProcessStatus::fromArray(
             $this->request(
@@ -206,7 +207,7 @@ final class Replenishments extends Endpoint
      *
      * Retrieve the load carrier labels.
      */
-    public function getLoadCarrierLabels(string $replenishmentId, string $labelType): array
+    public function getLoadCarrierLabels(string $replenishmentId, LabelType $labelType): array
     {
         return
             $this->request(

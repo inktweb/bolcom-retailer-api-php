@@ -18,23 +18,27 @@ final class ReducedShipment extends Model
      * A unique identifier for this shipment.
      * @var int
      */
-    protected $shipmentId;
+    protected $shipmentId = 0;
 
     /**
      * The date and time in ISO 8601 format when the order item was shipped.
      * @var string
      */
-    protected $shipmentDateTime;
+    protected $shipmentDateTime = '';
 
     /**
      * Reference supplied by the user when this item was shipped.
      * @var string
      */
-    protected $shipmentReference;
+    protected $shipmentReference = '';
+
+    /** @var ReducedShipmentOrder */
     protected $order;
 
     /** @var ReducedShipmentItem[] */
-    protected $shipmentItems;
+    protected $shipmentItems = [];
+
+    /** @var ReducedTransport */
     protected $transport;
 
     public function setShipmentId(?int $shipmentId): self
@@ -70,13 +74,13 @@ final class ReducedShipment extends Model
         return $this->shipmentReference;
     }
 
-    public function setOrder($order): self
+    public function setOrder(ReducedShipmentOrder $order): self
     {
         $this->order = $order;
         return $this;
     }
 
-    public function getOrder()
+    public function getOrder(): ReducedShipmentOrder
     {
         return $this->order;
     }
@@ -92,13 +96,13 @@ final class ReducedShipment extends Model
         return $this->shipmentItems;
     }
 
-    public function setTransport($transport): self
+    public function setTransport(ReducedTransport $transport): self
     {
         $this->transport = $transport;
         return $this;
     }
 
-    public function getTransport()
+    public function getTransport(): ReducedTransport
     {
         return $this->transport;
     }

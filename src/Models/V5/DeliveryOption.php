@@ -20,20 +20,20 @@ final class DeliveryOption extends Model
      * Unique identifier for the shipping label offer.
      * @var string
      */
-    protected $shippingLabelOfferId;
+    protected $shippingLabelOfferId = '';
 
     /**
      * The date until the delivery option (incl total price) is valid.
      * @var string
      */
-    protected $validUntilDate;
+    protected $validUntilDate = '';
 
     /**
      * A code representing the transporter which is being used for
      * transportation.
      * @var string
      */
-    protected $transporterCode;
+    protected $transporterCode = '';
 
     /**
      * The type of the label, representing the way an item is being
@@ -42,9 +42,15 @@ final class DeliveryOption extends Model
      * normal package.
      * @var string
      */
-    protected $labelType;
+    protected $labelType = '';
+
+    /** @var LabelPrice */
     protected $labelPrice;
+
+    /** @var PackageRestrictions */
     protected $packageRestrictions;
+
+    /** @var HandoverDetails */
     protected $handoverDetails;
 
     public function setShippingLabelOfferId(?string $shippingLabelOfferId): self
@@ -91,35 +97,35 @@ final class DeliveryOption extends Model
         return $this->labelType;
     }
 
-    public function setLabelPrice($labelPrice): self
+    public function setLabelPrice(LabelPrice $labelPrice): self
     {
         $this->labelPrice = $labelPrice;
         return $this;
     }
 
-    public function getLabelPrice()
+    public function getLabelPrice(): LabelPrice
     {
         return $this->labelPrice;
     }
 
-    public function setPackageRestrictions($packageRestrictions): self
+    public function setPackageRestrictions(PackageRestrictions $packageRestrictions): self
     {
         $this->packageRestrictions = $packageRestrictions;
         return $this;
     }
 
-    public function getPackageRestrictions()
+    public function getPackageRestrictions(): PackageRestrictions
     {
         return $this->packageRestrictions;
     }
 
-    public function setHandoverDetails($handoverDetails): self
+    public function setHandoverDetails(?HandoverDetails $handoverDetails): self
     {
         $this->handoverDetails = $handoverDetails;
         return $this;
     }
 
-    public function getHandoverDetails()
+    public function getHandoverDetails(): ?HandoverDetails
     {
         return $this->handoverDetails;
     }

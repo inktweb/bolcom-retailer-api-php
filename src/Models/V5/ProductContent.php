@@ -19,13 +19,13 @@ final class ProductContent extends Model
      * upload.
      * @var string
      */
-    protected $internalReference;
+    protected $internalReference = '';
 
     /**
      * A list of attributes.
      * @var Attribute[]
      */
-    protected $attributes;
+    protected $attributes = [];
 
     public function setInternalReference(string $internalReference): self
     {

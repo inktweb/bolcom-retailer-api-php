@@ -18,52 +18,56 @@ final class ReplenishmentResponse extends Model
      * The unique identifier of the replenishment.
      * @var string
      */
-    protected $replenishmentId;
+    protected $replenishmentId = '';
 
     /**
      * The date and time when this replenishment was created. In ISO 8601
      * format.
      * @var string
      */
-    protected $creationDateTime;
+    protected $creationDateTime = '';
 
     /**
      * Custom user defined reference to identify the replenishment.
      * @var string
      */
-    protected $reference;
+    protected $reference = '';
 
     /**
      * Indicates whether the replenishment will be labeled by bol.com or not.
      * @var bool
      */
-    protected $labelingByBol;
+    protected $labelingByBol = false;
 
     /**
      * Indicates the state of this replenishment order.
      * @var string
      */
-    protected $state;
+    protected $state = '';
+
+    /** @var DeliveryInformation */
     protected $deliveryInformation;
+
+    /** @var PickupAppointment */
     protected $pickupAppointment;
 
     /**
      * The number of load carriers in this shipment.
      * @var int
      */
-    protected $numberOfLoadCarriers;
+    protected $numberOfLoadCarriers = 0;
 
     /** @var LoadCarrier[] */
-    protected $loadCarriers;
+    protected $loadCarriers = [];
 
     /** @var ReplenishmentLine[] */
-    protected $lines;
+    protected $lines = [];
 
     /** @var InvalidReplenishmentLine[] */
-    protected $invalidLines;
+    protected $invalidLines = [];
 
     /** @var StateTransition[] */
-    protected $stateTransitions;
+    protected $stateTransitions = [];
 
     public function setReplenishmentId(string $replenishmentId): self
     {
@@ -120,24 +124,24 @@ final class ReplenishmentResponse extends Model
         return $this->state;
     }
 
-    public function setDeliveryInformation($deliveryInformation): self
+    public function setDeliveryInformation(DeliveryInformation $deliveryInformation): self
     {
         $this->deliveryInformation = $deliveryInformation;
         return $this;
     }
 
-    public function getDeliveryInformation()
+    public function getDeliveryInformation(): DeliveryInformation
     {
         return $this->deliveryInformation;
     }
 
-    public function setPickupAppointment($pickupAppointment): self
+    public function setPickupAppointment(?PickupAppointment $pickupAppointment): self
     {
         $this->pickupAppointment = $pickupAppointment;
         return $this;
     }
 
-    public function getPickupAppointment()
+    public function getPickupAppointment(): ?PickupAppointment
     {
         return $this->pickupAppointment;
     }

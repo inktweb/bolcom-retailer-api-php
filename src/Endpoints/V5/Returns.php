@@ -8,6 +8,7 @@
 namespace Inktweb\Bolcom\RetailerApi\Endpoints\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Endpoint;
+use Inktweb\Bolcom\RetailerApi\Enums\V5\Returns\FulfilmentMethod as FulfilmentMethodV5;
 use Inktweb\Bolcom\RetailerApi\Models\V5\CreateReturnRequest;
 use Inktweb\Bolcom\RetailerApi\Models\V5\Problem;
 use Inktweb\Bolcom\RetailerApi\Models\V5\ProcessStatus;
@@ -26,7 +27,7 @@ final class Returns extends Endpoint
     public function getReturns(
         ?int $page = null,
         ?bool $handled = null,
-        ?string $fulfilmentMethod = null
+        ?FulfilmentMethodV5 $fulfilmentMethod = null
     ): ReturnsResponse {
         return ReturnsResponse::fromArray(
             $this->request(
@@ -59,7 +60,7 @@ final class Returns extends Endpoint
      * handling result. When successfully created, the resulting return id is
      * provided in the process status.
      */
-    public function createReturn(?CreateReturnRequest $body = null): ProcessStatus
+    public function createReturn(CreateReturnRequest $body): ProcessStatus
     {
         return ProcessStatus::fromArray(
             $this->request(
@@ -118,7 +119,7 @@ final class Returns extends Endpoint
      * return. The latter is only possible in limited scenarios, please check
      * the returns documentation for a complete list.
      */
-    public function handleReturn(int $rmaId, ?ReturnRequest $body = null): ProcessStatus
+    public function handleReturn(int $rmaId, ReturnRequest $body): ProcessStatus
     {
         return ProcessStatus::fromArray(
             $this->request(

@@ -22,7 +22,7 @@ final class ShippingLabels extends Endpoint
      * Create a shipping label with a shipping label offer id retrieved from
      * get delivery options.
      */
-    public function postShippingLabel(?ShippingLabelRequest $body = null): ProcessStatus
+    public function postShippingLabel(ShippingLabelRequest $body): ProcessStatus
     {
         return ProcessStatus::fromArray(
             $this->request(
@@ -51,7 +51,7 @@ final class ShippingLabels extends Endpoint
      * Retrieves all available delivery options based on the supplied
      * configuration of order items that has to be shipped.
      */
-    public function getDeliveryOptions(?DeliveryOptionsRequest $body = null): DeliveryOptionsResponse
+    public function getDeliveryOptions(DeliveryOptionsRequest $body): DeliveryOptionsResponse
     {
         return DeliveryOptionsResponse::fromArray(
             $this->request(

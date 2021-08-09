@@ -21,7 +21,7 @@ final class BundlePrice extends Model
      * increasing order.
      * @var int
      */
-    protected $quantity;
+    protected $quantity = 0;
 
     /**
      * The price per single unit including VAT in case the customer orders at
@@ -30,7 +30,7 @@ final class BundlePrice extends Model
      * precision and dot separated.
      * @var float
      */
-    protected $unitPrice;
+    protected $unitPrice = 0;
 
     public function setQuantity(int $quantity): self
     {

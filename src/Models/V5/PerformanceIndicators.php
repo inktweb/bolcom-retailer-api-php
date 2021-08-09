@@ -15,7 +15,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class PerformanceIndicators extends Model
 {
     /** @var PerformanceIndicator[] */
-    protected $performanceIndicators;
+    protected $performanceIndicators = [];
 
     public function setPerformanceIndicators(PerformanceIndicator ...$performanceIndicators): self
     {

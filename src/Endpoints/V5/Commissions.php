@@ -8,6 +8,7 @@
 namespace Inktweb\Bolcom\RetailerApi\Endpoints\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Endpoint;
+use Inktweb\Bolcom\RetailerApi\Enums\V5\Commissions\Condition;
 use Inktweb\Bolcom\RetailerApi\Models\V5\BulkCommissionRequest;
 use Inktweb\Bolcom\RetailerApi\Models\V5\BulkCommissionResponse;
 use Inktweb\Bolcom\RetailerApi\Models\V5\Commission;
@@ -21,7 +22,7 @@ final class Commissions extends Endpoint
      * Gets all commissions and possible reductions by EAN, price, and
      * optionally condition.
      */
-    public function getCommissions(?BulkCommissionRequest $body = null): BulkCommissionResponse
+    public function getCommissions(BulkCommissionRequest $body): BulkCommissionResponse
     {
         return BulkCommissionResponse::fromArray(
             $this->request(
@@ -50,7 +51,7 @@ final class Commissions extends Endpoint
      * Commissions can be filtered by condition, which defaults to NEW. We
      * will calculate the commission amount from the EAN and price.
      */
-    public function getCommission(string $ean, float $unitPrice, ?string $condition = null): Commission
+    public function getCommission(string $ean, float $unitPrice, ?Condition $condition = null): Commission
     {
         return Commission::fromArray(
             $this->request(

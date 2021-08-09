@@ -18,13 +18,13 @@ final class Attribute extends Model
      * Identifier of the attribute from the data model.
      * @var string
      */
-    protected $id;
+    protected $id = '';
 
     /**
      * A list of attribute values.
      * @var AttributeValue[]
      */
-    protected $values;
+    protected $values = [];
 
     public function setId(string $id): self
     {

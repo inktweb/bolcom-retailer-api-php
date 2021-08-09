@@ -18,31 +18,31 @@ final class Inventory extends Model
      * The EAN number associated with this product.
      * @var string
      */
-    protected $ean;
+    protected $ean = '';
 
     /**
      * The BSKU number associated with this product.
      * @var string
      */
-    protected $bsku;
+    protected $bsku = '';
 
     /**
      * The stock that is not available for sale anymore.
      * @var int
      */
-    protected $gradedStock;
+    protected $gradedStock = 0;
 
     /**
      * The stock that is available for sale.
      * @var int
      */
-    protected $regularStock;
+    protected $regularStock = 0;
 
     /**
      * The product title.
      * @var string
      */
-    protected $title;
+    protected $title = '';
 
     public function setEan(string $ean): self
     {

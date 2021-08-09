@@ -19,14 +19,14 @@ final class CreatePickupTimeSlot extends Model
      * appointment. In ISO 8601 format.
      * @var string
      */
-    protected $fromDateTime;
+    protected $fromDateTime = '';
 
     /**
      * The selected end date and time for the replenishment pickup
      * appointment. In ISO 8601 format.
      * @var string
      */
-    protected $untilDateTime;
+    protected $untilDateTime = '';
 
     public function setFromDateTime(string $fromDateTime): self
     {

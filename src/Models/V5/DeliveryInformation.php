@@ -19,13 +19,15 @@ final class DeliveryInformation extends Model
      * ISO 8601 format.
      * @var string
      */
-    protected $expectedDeliveryDate;
+    protected $expectedDeliveryDate = '';
 
     /**
      * The transporter that will pickup this replenishment.
      * @var string
      */
-    protected $transporterCode;
+    protected $transporterCode = '';
+
+    /** @var DestinationWarehouse */
     protected $destinationWarehouse;
 
     public function setExpectedDeliveryDate(string $expectedDeliveryDate): self
@@ -50,13 +52,13 @@ final class DeliveryInformation extends Model
         return $this->transporterCode;
     }
 
-    public function setDestinationWarehouse($destinationWarehouse): self
+    public function setDestinationWarehouse(DestinationWarehouse $destinationWarehouse): self
     {
         $this->destinationWarehouse = $destinationWarehouse;
         return $this;
     }
 
-    public function getDestinationWarehouse()
+    public function getDestinationWarehouse(): DestinationWarehouse
     {
         return $this->destinationWarehouse;
     }

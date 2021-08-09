@@ -8,6 +8,7 @@
 namespace Inktweb\Bolcom\RetailerApi\Endpoints\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Endpoint;
+use Inktweb\Bolcom\RetailerApi\Enums\V5\ProcessStatus\EventType;
 use Inktweb\Bolcom\RetailerApi\Models\V5\BulkProcessStatusRequest;
 use Inktweb\Bolcom\RetailerApi\Models\V5\Problem;
 use Inktweb\Bolcom\RetailerApi\Models\V5\ProcessStatus as ProcessStatusModel;
@@ -29,7 +30,7 @@ final class ProcessStatus extends Endpoint
      */
     public function getProcessStatusEntityId(
         string $entityId,
-        string $eventType,
+        EventType $eventType,
         ?int $page = null
     ): ProcessStatusResponse {
         return ProcessStatusResponse::fromArray(
@@ -68,7 +69,7 @@ final class ProcessStatus extends Endpoint
      * statuses will no longer be returned. Please handle this accordingly,
      * by stopping any active polling for these statuses.
      */
-    public function getProcessStatusBulk(?BulkProcessStatusRequest $body = null): ProcessStatusResponse
+    public function getProcessStatusBulk(BulkProcessStatusRequest $body): ProcessStatusResponse
     {
         return ProcessStatusResponse::fromArray(
             $this->request(

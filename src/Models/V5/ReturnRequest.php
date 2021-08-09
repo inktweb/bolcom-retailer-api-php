@@ -15,10 +15,10 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class ReturnRequest extends Model
 {
     /** @var string */
-    protected $handlingResult;
+    protected $handlingResult = '';
 
     /** @var int */
-    protected $quantityReturned;
+    protected $quantityReturned = 0;
 
     public function setHandlingResult(?string $handlingResult): self
     {

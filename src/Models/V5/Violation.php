@@ -20,13 +20,13 @@ final class Violation extends Model
      * parameter validation error.
      * @var string
      */
-    protected $name;
+    protected $name = '';
 
     /**
      * Detailed description of the validation error that caused the problem.
      * @var string
      */
-    protected $reason;
+    protected $reason = '';
 
     public function setName(?string $name): self
     {

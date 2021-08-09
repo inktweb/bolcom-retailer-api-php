@@ -18,25 +18,25 @@ final class OfferInsightsPeriod extends Model
      * Day of the month.
      * @var int
      */
-    protected $day;
+    protected $day = 0;
 
     /**
      * Week of the year.
      * @var int
      */
-    protected $week;
+    protected $week = 0;
 
     /**
      * Month of the year.
      * @var int
      */
-    protected $month;
+    protected $month = 0;
 
     /**
      * Year.
      * @var int
      */
-    protected $year;
+    protected $year = 0;
 
     public function setDay(?int $day): self
     {

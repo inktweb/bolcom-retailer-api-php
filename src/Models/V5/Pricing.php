@@ -19,7 +19,7 @@ final class Pricing extends Model
      * to this offer.
      * @var BundlePrice[]
      */
-    protected $bundlePrices;
+    protected $bundlePrices = [];
 
     public function setBundlePrices(BundlePrice ...$bundlePrices): self
     {

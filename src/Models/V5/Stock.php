@@ -20,7 +20,7 @@ final class Stock extends Model
      * to 0.
      * @var int
      */
-    protected $amount;
+    protected $amount = 0;
 
     /**
      * The amount of items in stock minus handled order and minus open
@@ -28,7 +28,7 @@ final class Stock extends Model
      * your offer will not be for sale on the shop.
      * @var int
      */
-    protected $correctedStock;
+    protected $correctedStock = 0;
 
     /**
      * Configures whether the retailer manages the stock levels or that
@@ -39,7 +39,7 @@ final class Stock extends Model
      * update are taken into account.
      * @var bool
      */
-    protected $managedByRetailer;
+    protected $managedByRetailer = false;
 
     public function setAmount(?int $amount): self
     {

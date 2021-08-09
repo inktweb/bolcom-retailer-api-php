@@ -18,13 +18,13 @@ final class RelatedSearchTerm extends Model
      * The number of customer visits on the search page.
      * @var int
      */
-    protected $total;
+    protected $total = 0;
 
     /**
      * The search term for which you requested the search volume.
      * @var string
      */
-    protected $searchTerm;
+    protected $searchTerm = '';
 
     public function setTotal(int $total): self
     {

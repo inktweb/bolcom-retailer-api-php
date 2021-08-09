@@ -18,7 +18,7 @@ final class UpdateLoadCarrier extends Model
      * The Serial Shipping Container Code (SSCC) for this load carrier.
      * @var string
      */
-    protected $sscc;
+    protected $sscc = '';
 
     public function setSscc(?string $sscc): self
     {

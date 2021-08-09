@@ -18,25 +18,25 @@ final class ReturnProcessingResult extends Model
      * The processed quantity.
      * @var int
      */
-    protected $quantity;
+    protected $quantity = 0;
 
     /**
      * The processing result of the return.
      * @var string
      */
-    protected $processingResult;
+    protected $processingResult = '';
 
     /**
      * The handling result requested by the retailer.
      * @var string
      */
-    protected $handlingResult;
+    protected $handlingResult = '';
 
     /**
      * The date and time in ISO 8601 format when the return was processed.
      * @var string
      */
-    protected $processingDateTime;
+    protected $processingDateTime = '';
 
     public function setQuantity(int $quantity): self
     {

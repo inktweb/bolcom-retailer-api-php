@@ -19,14 +19,14 @@ final class PickupTimeSlot extends Model
      * 8601 format.
      * @var string
      */
-    protected $fromDateTime;
+    protected $fromDateTime = '';
 
     /**
      * The available end date and time for the pickup appointment. In ISO
      * 8601 format.
      * @var string
      */
-    protected $untilDateTime;
+    protected $untilDateTime = '';
 
     public function setFromDateTime(string $fromDateTime): self
     {

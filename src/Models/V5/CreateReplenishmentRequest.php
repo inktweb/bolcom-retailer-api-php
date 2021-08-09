@@ -19,24 +19,28 @@ final class CreateReplenishmentRequest extends Model
      * digit and only upper case characters allowed.
      * @var string
      */
-    protected $reference;
+    protected $reference = '';
+
+    /** @var CreateDeliveryInfo */
     protected $deliveryInfo;
 
     /**
      * Indicates whether the replenishment will be labeled by bol.com or not.
      * @var bool
      */
-    protected $labelingByBol;
+    protected $labelingByBol = false;
 
     /**
      * The number of parcels in this replenishment.
      * @var int
      */
-    protected $numberOfLoadCarriers;
+    protected $numberOfLoadCarriers = 0;
+
+    /** @var CreatePickupAppointment */
     protected $pickupAppointment;
 
     /** @var CreateReplenishmentLine[] */
-    protected $lines;
+    protected $lines = [];
 
     public function setReference(string $reference): self
     {
@@ -49,13 +53,13 @@ final class CreateReplenishmentRequest extends Model
         return $this->reference;
     }
 
-    public function setDeliveryInfo($deliveryInfo): self
+    public function setDeliveryInfo(?CreateDeliveryInfo $deliveryInfo): self
     {
         $this->deliveryInfo = $deliveryInfo;
         return $this;
     }
 
-    public function getDeliveryInfo()
+    public function getDeliveryInfo(): ?CreateDeliveryInfo
     {
         return $this->deliveryInfo;
     }
@@ -82,13 +86,13 @@ final class CreateReplenishmentRequest extends Model
         return $this->numberOfLoadCarriers;
     }
 
-    public function setPickupAppointment($pickupAppointment): self
+    public function setPickupAppointment(?CreatePickupAppointment $pickupAppointment): self
     {
         $this->pickupAppointment = $pickupAppointment;
         return $this;
     }
 
-    public function getPickupAppointment()
+    public function getPickupAppointment(): ?CreatePickupAppointment
     {
         return $this->pickupAppointment;
     }

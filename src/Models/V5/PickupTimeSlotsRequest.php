@@ -14,21 +14,22 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
  */
 final class PickupTimeSlotsRequest extends Model
 {
+    /** @var PickupTimeSlotsAddress */
     protected $address;
 
     /**
      * The number of load carriers in this shipment.
      * @var int
      */
-    protected $numberOfLoadCarriers;
+    protected $numberOfLoadCarriers = 0;
 
-    public function setAddress($address): self
+    public function setAddress(PickupTimeSlotsAddress $address): self
     {
         $this->address = $address;
         return $this;
     }
 
-    public function getAddress()
+    public function getAddress(): PickupTimeSlotsAddress
     {
         return $this->address;
     }

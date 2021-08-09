@@ -15,13 +15,13 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class ChangeTransportRequest extends Model
 {
     /** @var string */
-    protected $transporterCode;
+    protected $transporterCode = '';
 
     /**
      * The track and trace code that is associated with this transport.
      * @var string
      */
-    protected $trackAndTrace;
+    protected $trackAndTrace = '';
 
     public function setTransporterCode(?string $transporterCode): self
     {

@@ -20,82 +20,82 @@ final class BillingDetails extends Model
      * The salutation of the customer.
      * @var string
      */
-    protected $salutation;
+    protected $salutation = '';
 
     /**
      * The first name of the customer.
      * @var string
      */
-    protected $firstName;
+    protected $firstName = '';
 
     /**
      * The surname of the customer.
      * @var string
      */
-    protected $surname;
+    protected $surname = '';
 
     /**
      * The street name.
      * @var string
      */
-    protected $streetName;
+    protected $streetName = '';
 
     /**
      * The house number.
      * @var string
      */
-    protected $houseNumber;
+    protected $houseNumber = '';
 
     /**
      * The extension on the house number.
      * @var string
      */
-    protected $houseNumberExtension;
+    protected $houseNumberExtension = '';
 
     /**
      * Additional information related to the address that helps in delivering
      * the package.
      * @var string
      */
-    protected $extraAddressInformation;
+    protected $extraAddressInformation = '';
 
     /**
      * The ZIP code in '1234AB' format for NL orders and '0000' format for BE
      * orders.
      * @var string
      */
-    protected $zipCode;
+    protected $zipCode = '';
 
     /**
      * The name of the city.
      * @var string
      */
-    protected $city;
+    protected $city = '';
 
     /**
      * The country code.
      * @var string
      */
-    protected $countryCode;
+    protected $countryCode = '';
 
     /**
      * A scrambled email address that can be used to contact the customer.
      * @var string
      */
-    protected $email;
+    protected $email = '';
 
     /**
      * The company name.
      * @var string
      */
-    protected $company;
+    protected $company = '';
 
     /**
      * The Value Added Tax (VAT) / BTW number for business sellers situated
      * in the Netherlands.
      * @var string
      */
-    protected $vatNumber;
+    protected $vatNumber = '';
 
     /**
      * The Kamer van Koophandel (kvk) number for organizations situated in
@@ -103,13 +103,13 @@ final class BillingDetails extends Model
      * Belgium.
      * @var string
      */
-    protected $kvkNumber;
+    protected $kvkNumber = '';
 
     /**
      * The order reference specified by the customer when ordering a product.
      * @var string
      */
-    protected $orderReference;
+    protected $orderReference = '';
 
     public function setSalutation(?string $salutation): self
     {

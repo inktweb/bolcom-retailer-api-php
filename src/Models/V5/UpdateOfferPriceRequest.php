@@ -14,15 +14,16 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
  */
 final class UpdateOfferPriceRequest extends Model
 {
+    /** @var Pricing */
     protected $pricing;
 
-    public function setPricing($pricing): self
+    public function setPricing(Pricing $pricing): self
     {
         $this->pricing = $pricing;
         return $this;
     }
 
-    public function getPricing()
+    public function getPricing(): Pricing
     {
         return $this->pricing;
     }

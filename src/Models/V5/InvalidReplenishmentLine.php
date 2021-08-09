@@ -19,40 +19,40 @@ final class InvalidReplenishmentLine extends Model
      * be determined for this replenishment line.
      * @var string
      */
-    protected $type;
+    protected $type = '';
 
     /**
      * The amount of announced quantity for this replenishment line.
      * @var int
      */
-    protected $quantityAnnounced;
+    protected $quantityAnnounced = 0;
 
     /**
      * The amount of received quantity for this replenishment line.
      * @var int
      */
-    protected $quantityReceived;
+    protected $quantityReceived = 0;
 
     /**
      * The amount of quantity that is still in progress at the warehouse for
      * this replenishment line.
      * @var int
      */
-    protected $quantityInProgress;
+    protected $quantityInProgress = 0;
 
     /**
      * The quantity within this shipment line that has a graded (unsalable)
      * state.
      * @var int
      */
-    protected $quantityWithGradedState;
+    protected $quantityWithGradedState = 0;
 
     /**
      * The quantity within this shipment line that has a regular (salable)
      * state.
      * @var int
      */
-    protected $quantityWithRegularState;
+    protected $quantityWithRegularState = 0;
 
     public function setType(string $type): self
     {

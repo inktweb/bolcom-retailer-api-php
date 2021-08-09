@@ -18,13 +18,13 @@ final class CreateReplenishmentLine extends Model
      * The EAN number associated with this product.
      * @var string
      */
-    protected $ean;
+    protected $ean = '';
 
     /**
      * The number of announced items.
      * @var int
      */
-    protected $quantity;
+    protected $quantity = 0;
 
     public function setEan(string $ean): self
     {

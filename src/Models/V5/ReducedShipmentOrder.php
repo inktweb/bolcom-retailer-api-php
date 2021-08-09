@@ -18,13 +18,13 @@ final class ReducedShipmentOrder extends Model
      * A unique identifier for the order this shipment is related to.
      * @var string
      */
-    protected $orderId;
+    protected $orderId = '';
 
     /**
      * The date and time in ISO 8601 format when the order was placed.
      * @var string
      */
-    protected $orderPlacedDateTime;
+    protected $orderPlacedDateTime = '';
 
     public function setOrderId(?string $orderId): self
     {

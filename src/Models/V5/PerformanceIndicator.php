@@ -18,15 +18,18 @@ final class PerformanceIndicator extends Model
      * Indicator name.
      * @var string
      */
-    protected $name;
+    protected $name = '';
 
     /**
      * Interpretation of the data that applies to this measurement.
      * @var string
      */
-    protected $type;
+    protected $type = '';
 
-    /** Details of the indicator. */
+    /**
+     * Details of the indicator.
+     * @var Details
+     */
     protected $details;
 
     public function setName(string $name): self
@@ -51,13 +54,13 @@ final class PerformanceIndicator extends Model
         return $this->type;
     }
 
-    public function setDetails($details): self
+    public function setDetails(Details $details): self
     {
         $this->details = $details;
         return $this;
     }
 
-    public function getDetails()
+    public function getDetails(): Details
     {
         return $this->details;
     }

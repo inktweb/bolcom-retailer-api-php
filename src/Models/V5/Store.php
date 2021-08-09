@@ -18,10 +18,10 @@ final class Store extends Model
      * The product title for the product associated with this offer.
      * @var string
      */
-    protected $productTitle;
+    protected $productTitle = '';
 
     /** @var CountryCode[] */
-    protected $visible;
+    protected $visible = [];
 
     public function setProductTitle(?string $productTitle): self
     {

@@ -18,19 +18,19 @@ final class Link extends Model
      * The link relation.
      * @var string
      */
-    protected $rel;
+    protected $rel = '';
 
     /**
      * The URI for the resource linked to.
      * @var string
      */
-    protected $href;
+    protected $href = '';
 
     /**
      * The HTTP method to use when accessing the link.
      * @var string
      */
-    protected $method;
+    protected $method = '';
 
     public function setRel(string $rel): self
     {

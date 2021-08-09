@@ -19,13 +19,13 @@ final class OfferInsightsCountry extends Model
      * ISO-3166-1 format.
      * @var string
      */
-    protected $countryCode;
+    protected $countryCode = '';
 
     /**
      * The total value of offer insight.
      * @var float
      */
-    protected $value;
+    protected $value = 0;
 
     public function setCountryCode(string $countryCode): self
     {

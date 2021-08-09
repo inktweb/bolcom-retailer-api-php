@@ -19,20 +19,20 @@ final class ReturnReason extends Model
      * The main reason describing why the customer returned this product.
      * @var string
      */
-    protected $mainReason;
+    protected $mainReason = '';
 
     /**
      * The sub reason describing why the customer returned this product in
      * more detail.
      * @var string
      */
-    protected $detailedReason;
+    protected $detailedReason = '';
 
     /**
      * Additional details from the customer as to why this item was returned.
      * @var string
      */
-    protected $customerComments;
+    protected $customerComments = '';
 
     public function setMainReason(?string $mainReason): self
     {

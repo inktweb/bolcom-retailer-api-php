@@ -19,31 +19,31 @@ final class ReducedOrderItem extends Model
      * The id for the order item (1 order can have multiple order items).
      * @var string
      */
-    protected $orderItemId;
+    protected $orderItemId = '';
 
     /**
      * The EAN number associated with this product.
      * @var string
      */
-    protected $ean;
+    protected $ean = '';
 
     /**
      * Amount of ordered products for this order item id.
      * @var int
      */
-    protected $quantity;
+    protected $quantity = 0;
 
     /**
      * Amount of shipped products for this order item id.
      * @var int
      */
-    protected $quantityShipped;
+    protected $quantityShipped = 0;
 
     /**
      * Amount of cancelled products for this order item id.
      * @var int
      */
-    protected $quantityCancelled;
+    protected $quantityCancelled = 0;
 
     public function setOrderItemId(?string $orderItemId): self
     {

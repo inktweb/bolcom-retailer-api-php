@@ -19,7 +19,7 @@ final class CreateProductContentRequest extends Model
      * are selling to the Wallonian region, you should use `fr-BE`.
      * @var string
      */
-    protected $language;
+    protected $language = '';
 
     /**
      * A list of supplied products and their attributes. Attributes that are
@@ -27,7 +27,7 @@ final class CreateProductContentRequest extends Model
      * model.
      * @var ProductContent[]
      */
-    protected $productContents;
+    protected $productContents = [];
 
     public function setLanguage(string $language): self
     {

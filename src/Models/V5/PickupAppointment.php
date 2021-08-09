@@ -18,8 +18,12 @@ final class PickupAppointment extends Model
      * A comment to the transporter regarding the pickup appointment.
      * @var string
      */
-    protected $commentToTransporter;
+    protected $commentToTransporter = '';
+
+    /** @var Address */
     protected $address;
+
+    /** @var ReplenishmentPickupTimeSlot */
     protected $pickupTimeSlot;
 
     /**
@@ -27,14 +31,14 @@ final class PickupAppointment extends Model
      * picked up by the transporter.
      * @var string
      */
-    protected $pickupDateTime;
+    protected $pickupDateTime = '';
 
     /**
      * In case of a pickup cancellation this field indicates the reason for
      * cancelling this pickup.
      * @var string
      */
-    protected $cancellationReason;
+    protected $cancellationReason = '';
 
     public function setCommentToTransporter(?string $commentToTransporter): self
     {
@@ -47,24 +51,24 @@ final class PickupAppointment extends Model
         return $this->commentToTransporter;
     }
 
-    public function setAddress($address): self
+    public function setAddress(Address $address): self
     {
         $this->address = $address;
         return $this;
     }
 
-    public function getAddress()
+    public function getAddress(): Address
     {
         return $this->address;
     }
 
-    public function setPickupTimeSlot($pickupTimeSlot): self
+    public function setPickupTimeSlot(ReplenishmentPickupTimeSlot $pickupTimeSlot): self
     {
         $this->pickupTimeSlot = $pickupTimeSlot;
         return $this;
     }
 
-    public function getPickupTimeSlot()
+    public function getPickupTimeSlot(): ReplenishmentPickupTimeSlot
     {
         return $this->pickupTimeSlot;
     }

@@ -18,13 +18,13 @@ final class RejectionError extends Model
      * The rejection error code.
      * @var int
      */
-    protected $code;
+    protected $code = 0;
 
     /**
      * The rejection error message explains why the value was rejected.
      * @var string
      */
-    protected $message;
+    protected $message = '';
 
     public function setCode(int $code): self
     {

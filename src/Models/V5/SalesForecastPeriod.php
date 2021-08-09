@@ -18,11 +18,13 @@ final class SalesForecastPeriod extends Model
      * The number of weeks into the future, starting from today.
      * @var int
      */
-    protected $weeksAhead;
+    protected $weeksAhead = 0;
+
+    /** @var Total */
     protected $total;
 
     /** @var Countries[] */
-    protected $countries;
+    protected $countries = [];
 
     public function setWeeksAhead(int $weeksAhead): self
     {
@@ -35,13 +37,13 @@ final class SalesForecastPeriod extends Model
         return $this->weeksAhead;
     }
 
-    public function setTotal($total): self
+    public function setTotal(Total $total): self
     {
         $this->total = $total;
         return $this;
     }
 
-    public function getTotal()
+    public function getTotal(): Total
     {
         return $this->total;
     }

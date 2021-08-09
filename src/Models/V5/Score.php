@@ -21,33 +21,33 @@ final class Score extends Model
      * not.
      * @var bool
      */
-    protected $conforms;
+    protected $conforms = false;
 
     /**
      * The top part of the fraction (above the line). This usually is the
      * smaller number compared to the denominator.
      * @var int
      */
-    protected $numerator;
+    protected $numerator = 0;
 
     /**
      * The lower part of the fraction (below the line). This usually is the
      * larger number compared to the the numerator.
      * @var int
      */
-    protected $denominator;
+    protected $denominator = 0;
 
     /**
      * The score for this measurement (denominator divided by the numerator).
      * @var float
      */
-    protected $value;
+    protected $value = 0;
 
     /**
      * The difference between the score and the bol.com service norm.
      * @var float
      */
-    protected $distanceToNorm;
+    protected $distanceToNorm = 0;
 
     public function setConforms(bool $conforms): self
     {
