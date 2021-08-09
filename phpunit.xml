@@ -15,6 +15,12 @@
         <testsuite name="default">
             <directory suffix="Test.php">dev/tests</directory>
         </testsuite>
+        <testsuite name="endpoints">
+            <directory suffix="Test.php">dev/tests/Endpoints</directory>
+        </testsuite>
+        <testsuite name="models">
+            <directory suffix="Test.php">dev/tests/Models</directory>
+        </testsuite>
     </testsuites>
 
     <coverage cacheDirectory=".phpunit.cache/code-coverage"
