@@ -1,7 +1,7 @@
 {
   "swagger" : "2.0",
   "host": "api.bol.com",
-  "schemes": ["https"], 
+  "schemes": ["https"],
   "info" : {
     "description" : "The bol.com API for Retailers.",
     "version" : "5.0",
@@ -3420,7 +3420,7 @@
         "status" : {
           "type" : "integer",
           "format" : "int32",
-          "example" : "40X",
+          "example" : "404",
           "description" : "HTTP status returned from the endpoint causing the problem."
         },
         "detail" : {
