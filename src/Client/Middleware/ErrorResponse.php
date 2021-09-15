@@ -18,7 +18,11 @@ class ErrorResponse
                             return $response;
                         }
 
-                        throw ApiException::create($request, $response);
+                        throw new ApiException(
+                            $response->getReasonPhrase(),
+                            $request,
+                            $response
+                        );
                     }
                 );
         };
