@@ -32,7 +32,9 @@ abstract class Endpoint
                 $method,
                 $this->compileUri($uri, $pathParameters, $queryParameters),
                 [
-                    RequestOptions::BODY => $body,
+                    RequestOptions::BODY => $body === null
+                        ? null
+                        : json_encode($body),
                     RequestOptions::HEADERS => [
                         'Accept' => $acceptedContentTypes,
                     ],
