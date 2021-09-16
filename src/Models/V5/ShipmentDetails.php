@@ -8,6 +8,8 @@
 namespace Inktweb\Bolcom\RetailerApi\Models\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\ShipmentDetails\Language;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\ShipmentDetails\Salutation;
 
 /**
  * The address details where this order needs to be shipped to. This can
@@ -25,9 +27,9 @@ final class ShipmentDetails extends Model
 
     /**
      * The salutation of the customer.
-     * @var string
+     * @var Salutation
      */
-    protected $salutation = '';
+    protected $salutation;
 
     /**
      * The first name of the customer.
@@ -106,9 +108,9 @@ final class ShipmentDetails extends Model
 
     /**
      * The language of the customer in case of contact.
-     * @var string
+     * @var Language
      */
-    protected $language = '';
+    protected $language;
 
     public function setPickupPointName(?string $pickupPointName): self
     {
@@ -121,13 +123,13 @@ final class ShipmentDetails extends Model
         return $this->pickupPointName;
     }
 
-    public function setSalutation(?string $salutation): self
+    public function setSalutation(?Salutation $salutation): self
     {
         $this->salutation = $salutation;
         return $this;
     }
 
-    public function getSalutation(): ?string
+    public function getSalutation(): ?Salutation
     {
         return $this->salutation;
     }
@@ -264,13 +266,13 @@ final class ShipmentDetails extends Model
         return $this->deliveryPhoneNumber;
     }
 
-    public function setLanguage(?string $language): self
+    public function setLanguage(?Language $language): self
     {
         $this->language = $language;
         return $this;
     }
 
-    public function getLanguage(): ?string
+    public function getLanguage(): ?Language
     {
         return $this->language;
     }

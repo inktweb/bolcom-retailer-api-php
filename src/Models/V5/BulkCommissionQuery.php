@@ -8,6 +8,7 @@
 namespace Inktweb\Bolcom\RetailerApi\Models\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\BulkCommissionQuery\Condition;
 
 /**
  * @method static BulkCommissionQuery fromArray(array $data)
@@ -22,9 +23,9 @@ final class BulkCommissionQuery extends Model
 
     /**
      * The condition of the offer.
-     * @var string
+     * @var Condition
      */
-    protected $condition = '';
+    protected $condition;
 
     /**
      * The price of the product with a period as a decimal separator. The
@@ -44,13 +45,13 @@ final class BulkCommissionQuery extends Model
         return $this->ean;
     }
 
-    public function setCondition(?string $condition): self
+    public function setCondition(?Condition $condition): self
     {
         $this->condition = $condition;
         return $this;
     }
 
-    public function getCondition(): ?string
+    public function getCondition(): ?Condition
     {
         return $this->condition;
     }

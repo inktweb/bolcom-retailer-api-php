@@ -8,6 +8,8 @@
 namespace Inktweb\Bolcom\RetailerApi\Models\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\ShipmentFulfilment\DistributionParty;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\ShipmentFulfilment\Method;
 
 /**
  * @method static ShipmentFulfilment fromArray(array $data)
@@ -17,16 +19,16 @@ final class ShipmentFulfilment extends Model
     /**
      * Specifies whether this shipment has been fulfilled by the retailer
      * (FBR) or fulfilled by bol.com (FBB). Defaults to FBR.
-     * @var string
+     * @var Method
      */
-    protected $method = '';
+    protected $method;
 
     /**
      * The party that manages the distribution, either bol.com or the
      * retailer itself.
-     * @var string
+     * @var DistributionParty
      */
-    protected $distributionParty = '';
+    protected $distributionParty;
 
     /**
      * The ultimate delivery date at which this order must be delivered at
@@ -36,24 +38,24 @@ final class ShipmentFulfilment extends Model
      */
     protected $latestDeliveryDate = '';
 
-    public function setMethod(?string $method): self
+    public function setMethod(?Method $method): self
     {
         $this->method = $method;
         return $this;
     }
 
-    public function getMethod(): ?string
+    public function getMethod(): ?Method
     {
         return $this->method;
     }
 
-    public function setDistributionParty(?string $distributionParty): self
+    public function setDistributionParty(?DistributionParty $distributionParty): self
     {
         $this->distributionParty = $distributionParty;
         return $this;
     }
 
-    public function getDistributionParty(): ?string
+    public function getDistributionParty(): ?DistributionParty
     {
         return $this->distributionParty;
     }

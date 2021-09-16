@@ -8,6 +8,7 @@
 namespace Inktweb\Bolcom\RetailerApi\Models\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\ReplenishmentLine\LineState;
 
 /**
  * @method static ReplenishmentLine fromArray(array $data)
@@ -23,9 +24,9 @@ final class ReplenishmentLine extends Model
     /**
      * The state of the line indicating whether this line was announced
      * within this replenishment.
-     * @var string
+     * @var LineState
      */
-    protected $lineState = '';
+    protected $lineState;
 
     /**
      * The amount of announced quantity for this replenishment line.
@@ -71,13 +72,13 @@ final class ReplenishmentLine extends Model
         return $this->ean;
     }
 
-    public function setLineState(string $lineState): self
+    public function setLineState(LineState $lineState): self
     {
         $this->lineState = $lineState;
         return $this;
     }
 
-    public function getLineState(): string
+    public function getLineState(): LineState
     {
         return $this->lineState;
     }

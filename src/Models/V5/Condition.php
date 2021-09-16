@@ -8,6 +8,8 @@
 namespace Inktweb\Bolcom\RetailerApi\Models\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\Condition\Category;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\Condition\Name;
 
 /**
  * @method static Condition fromArray(array $data)
@@ -16,16 +18,16 @@ final class Condition extends Model
 {
     /**
      * The condition of the offered product.
-     * @var string
+     * @var Name
      */
-    protected $name = '';
+    protected $name;
 
     /**
      * The category of the condition. If not given NEW or SECONDHAND is
      * derived from NAME.
-     * @var string
+     * @var Category
      */
-    protected $category = '';
+    protected $category;
 
     /**
      * The description of the condition of the product. Only allowed if name
@@ -34,24 +36,24 @@ final class Condition extends Model
      */
     protected $comment = '';
 
-    public function setName(string $name): self
+    public function setName(Name $name): self
     {
         $this->name = $name;
         return $this;
     }
 
-    public function getName(): string
+    public function getName(): Name
     {
         return $this->name;
     }
 
-    public function setCategory(?string $category): self
+    public function setCategory(?Category $category): self
     {
         $this->category = $category;
         return $this;
     }
 
-    public function getCategory(): ?string
+    public function getCategory(): ?Category
     {
         return $this->category;
     }

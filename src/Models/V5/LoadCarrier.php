@@ -8,6 +8,7 @@
 namespace Inktweb\Bolcom\RetailerApi\Models\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\LoadCarrier\TransportState;
 
 /**
  * @method static LoadCarrier fromArray(array $data)
@@ -28,9 +29,9 @@ final class LoadCarrier extends Model
 
     /**
      * The current state of the transport for this load carrier.
-     * @var string
+     * @var TransportState
      */
-    protected $transportState = '';
+    protected $transportState;
 
     /**
      * The date and time in ISO 8601 format when the latest update for this
@@ -61,13 +62,13 @@ final class LoadCarrier extends Model
         return $this->transportLabelTrackAndTrace;
     }
 
-    public function setTransportState(string $transportState): self
+    public function setTransportState(TransportState $transportState): self
     {
         $this->transportState = $transportState;
         return $this;
     }
 
-    public function getTransportState(): string
+    public function getTransportState(): TransportState
     {
         return $this->transportState;
     }

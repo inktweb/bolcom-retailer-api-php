@@ -8,14 +8,15 @@
 namespace Inktweb\Bolcom\RetailerApi\Models\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\ChangeTransportRequest\TransporterCode;
 
 /**
  * @method static ChangeTransportRequest fromArray(array $data)
  */
 final class ChangeTransportRequest extends Model
 {
-    /** @var string */
-    protected $transporterCode = '';
+    /** @var TransporterCode */
+    protected $transporterCode;
 
     /**
      * The track and trace code that is associated with this transport.
@@ -23,13 +24,13 @@ final class ChangeTransportRequest extends Model
      */
     protected $trackAndTrace = '';
 
-    public function setTransporterCode(?string $transporterCode): self
+    public function setTransporterCode(?TransporterCode $transporterCode): self
     {
         $this->transporterCode = $transporterCode;
         return $this;
     }
 
-    public function getTransporterCode(): ?string
+    public function getTransporterCode(): ?TransporterCode
     {
         return $this->transporterCode;
     }

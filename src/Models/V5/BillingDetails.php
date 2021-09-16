@@ -8,6 +8,7 @@
 namespace Inktweb\Bolcom\RetailerApi\Models\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\BillingDetails\Salutation;
 
 /**
  * The details of the customer that is responsible for the financial
@@ -18,9 +19,9 @@ final class BillingDetails extends Model
 {
     /**
      * The salutation of the customer.
-     * @var string
+     * @var Salutation
      */
-    protected $salutation = '';
+    protected $salutation;
 
     /**
      * The first name of the customer.
@@ -111,13 +112,13 @@ final class BillingDetails extends Model
      */
     protected $orderReference = '';
 
-    public function setSalutation(?string $salutation): self
+    public function setSalutation(?Salutation $salutation): self
     {
         $this->salutation = $salutation;
         return $this;
     }
 
-    public function getSalutation(): ?string
+    public function getSalutation(): ?Salutation
     {
         return $this->salutation;
     }

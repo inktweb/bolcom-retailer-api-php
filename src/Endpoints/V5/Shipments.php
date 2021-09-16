@@ -8,7 +8,7 @@
 namespace Inktweb\Bolcom\RetailerApi\Endpoints\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Endpoint;
-use Inktweb\Bolcom\RetailerApi\Enums\V5\Shipments\FulfilmentMethod as FulfilmentMethodV5;
+use Inktweb\Bolcom\RetailerApi\Enums\Endpoints\V5\Shipments\FulfilmentMethod;
 use Inktweb\Bolcom\RetailerApi\Models\V5\Problem;
 use Inktweb\Bolcom\RetailerApi\Models\V5\Shipment;
 use Inktweb\Bolcom\RetailerApi\Models\V5\ShipmentsResponse;
@@ -23,7 +23,7 @@ final class Shipments extends Endpoint
      */
     public function getShipments(
         ?int $page = null,
-        ?FulfilmentMethodV5 $fulfilmentMethod = null,
+        ?FulfilmentMethod $fulfilmentMethod = null,
         ?string $orderId = null
     ): ShipmentsResponse {
         return ShipmentsResponse::fromArray(

@@ -8,8 +8,8 @@
 namespace Inktweb\Bolcom\RetailerApi\Endpoints\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Endpoint;
-use Inktweb\Bolcom\RetailerApi\Enums\V5\Insights\Name;
-use Inktweb\Bolcom\RetailerApi\Enums\V5\Insights\Period;
+use Inktweb\Bolcom\RetailerApi\Enums\Endpoints\V5\Insights\Name;
+use Inktweb\Bolcom\RetailerApi\Enums\Endpoints\V5\Insights\Period;
 use Inktweb\Bolcom\RetailerApi\Models\V5\OfferInsights;
 use Inktweb\Bolcom\RetailerApi\Models\V5\PerformanceIndicators;
 use Inktweb\Bolcom\RetailerApi\Models\V5\Problem;

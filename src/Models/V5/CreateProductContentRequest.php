@@ -8,6 +8,7 @@
 namespace Inktweb\Bolcom\RetailerApi\Models\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\CreateProductContentRequest\Language;
 
 /**
  * @method static CreateProductContentRequest fromArray(array $data)
@@ -17,9 +18,9 @@ final class CreateProductContentRequest extends Model
     /**
      * The language to indicate the language of the supplied content. If you
      * are selling to the Wallonian region, you should use `fr-BE`.
-     * @var string
+     * @var Language
      */
-    protected $language = '';
+    protected $language;
 
     /**
      * A list of supplied products and their attributes. Attributes that are
@@ -29,13 +30,13 @@ final class CreateProductContentRequest extends Model
      */
     protected $productContents = [];
 
-    public function setLanguage(string $language): self
+    public function setLanguage(Language $language): self
     {
         $this->language = $language;
         return $this;
     }
 
-    public function getLanguage(): string
+    public function getLanguage(): Language
     {
         return $this->language;
     }

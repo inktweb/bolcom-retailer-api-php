@@ -8,6 +8,8 @@
 namespace Inktweb\Bolcom\RetailerApi\Models\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\Fulfilment\DeliveryCode;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\Fulfilment\Method;
 
 /**
  * @method static Fulfilment fromArray(array $data)
@@ -17,35 +19,35 @@ final class Fulfilment extends Model
     /**
      * Specifies whether this shipment has been fulfilled by the retailer
      * (FBR) or fulfilled by bol.com (FBB). Defaults to FBR.
-     * @var string
+     * @var Method
      */
-    protected $method = '';
+    protected $method;
 
     /**
      * The delivery promise that applies to this offer. This value will only
      * be used in combination with fulfilmentMethod 'FBR'.
-     * @var string
+     * @var DeliveryCode
      */
-    protected $deliveryCode = '';
+    protected $deliveryCode;
 
-    public function setMethod(string $method): self
+    public function setMethod(Method $method): self
     {
         $this->method = $method;
         return $this;
     }
 
-    public function getMethod(): string
+    public function getMethod(): Method
     {
         return $this->method;
     }
 
-    public function setDeliveryCode(?string $deliveryCode): self
+    public function setDeliveryCode(?DeliveryCode $deliveryCode): self
     {
         $this->deliveryCode = $deliveryCode;
         return $this;
     }
 
-    public function getDeliveryCode(): ?string
+    public function getDeliveryCode(): ?DeliveryCode
     {
         return $this->deliveryCode;
     }

@@ -8,8 +8,8 @@
 namespace Inktweb\Bolcom\RetailerApi\Endpoints\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Endpoint;
-use Inktweb\Bolcom\RetailerApi\Enums\V5\Inventory\State;
-use Inktweb\Bolcom\RetailerApi\Enums\V5\Inventory\Stock;
+use Inktweb\Bolcom\RetailerApi\Enums\Endpoints\V5\Inventory\State;
+use Inktweb\Bolcom\RetailerApi\Enums\Endpoints\V5\Inventory\Stock;
 use Inktweb\Bolcom\RetailerApi\Models\V5\InventoryResponse;
 use Inktweb\Bolcom\RetailerApi\Models\V5\Problem;
 

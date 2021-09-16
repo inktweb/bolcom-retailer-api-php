@@ -8,6 +8,7 @@
 namespace Inktweb\Bolcom\RetailerApi\Models\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\DeliveryOption\LabelType;
 
 /**
  * A delivery option shows how and the costs of a transport for a
@@ -40,9 +41,9 @@ final class DeliveryOption extends Model
      * transported. MAILBOX is a mailbox package with delivery scan.
      * MAILBOX_LIGHT is a mailbox package without delivery scan. PARCEL is a
      * normal package.
-     * @var string
+     * @var LabelType
      */
-    protected $labelType = '';
+    protected $labelType;
 
     /** @var LabelPrice */
     protected $labelPrice;
@@ -86,13 +87,13 @@ final class DeliveryOption extends Model
         return $this->transporterCode;
     }
 
-    public function setLabelType(?string $labelType): self
+    public function setLabelType(?LabelType $labelType): self
     {
         $this->labelType = $labelType;
         return $this;
     }
 
-    public function getLabelType(): ?string
+    public function getLabelType(): ?LabelType
     {
         return $this->labelType;
     }

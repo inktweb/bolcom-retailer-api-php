@@ -7,7 +7,7 @@
 
 namespace Inktweb\Bolcom\RetailerApi\Clients\V5;
 
-use Inktweb\Bolcom\RetailerApi\Contracts\Client as ClientRetailerApi;
+use Inktweb\Bolcom\RetailerApi\Contracts\Client as ClientContract;
 use Inktweb\Bolcom\RetailerApi\Endpoints\V5\Commissions;
 use Inktweb\Bolcom\RetailerApi\Endpoints\V5\Insights;
 use Inktweb\Bolcom\RetailerApi\Endpoints\V5\Inventory;
@@ -22,7 +22,7 @@ use Inktweb\Bolcom\RetailerApi\Endpoints\V5\Shipments;
 use Inktweb\Bolcom\RetailerApi\Endpoints\V5\ShippingLabels;
 use Inktweb\Bolcom\RetailerApi\Endpoints\V5\Transports;
 
-final class Client extends ClientRetailerApi
+final class Client extends ClientContract
 {
     protected const DEFAULT_CONTENT_TYPE = 'application/vnd.retailer.v5+json';
 

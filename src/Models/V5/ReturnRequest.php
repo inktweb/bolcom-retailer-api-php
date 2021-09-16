@@ -8,25 +8,26 @@
 namespace Inktweb\Bolcom\RetailerApi\Models\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\ReturnRequest\HandlingResult;
 
 /**
  * @method static ReturnRequest fromArray(array $data)
  */
 final class ReturnRequest extends Model
 {
-    /** @var string */
-    protected $handlingResult = '';
+    /** @var HandlingResult */
+    protected $handlingResult;
 
     /** @var int */
     protected $quantityReturned = 0;
 
-    public function setHandlingResult(?string $handlingResult): self
+    public function setHandlingResult(?HandlingResult $handlingResult): self
     {
         $this->handlingResult = $handlingResult;
         return $this;
     }
 
-    public function getHandlingResult(): ?string
+    public function getHandlingResult(): ?HandlingResult
     {
         return $this->handlingResult;
     }

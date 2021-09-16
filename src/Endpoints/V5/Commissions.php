@@ -8,7 +8,7 @@
 namespace Inktweb\Bolcom\RetailerApi\Endpoints\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Endpoint;
-use Inktweb\Bolcom\RetailerApi\Enums\V5\Commissions\Condition;
+use Inktweb\Bolcom\RetailerApi\Enums\Endpoints\V5\Commissions\Condition;
 use Inktweb\Bolcom\RetailerApi\Models\V5\BulkCommissionRequest;
 use Inktweb\Bolcom\RetailerApi\Models\V5\BulkCommissionResponse;
 use Inktweb\Bolcom\RetailerApi\Models\V5\Commission;

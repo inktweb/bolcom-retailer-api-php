@@ -8,6 +8,7 @@
 namespace Inktweb\Bolcom\RetailerApi\Models\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\PickupAppointment\CancellationReason;
 
 /**
  * @method static PickupAppointment fromArray(array $data)
@@ -36,9 +37,9 @@ final class PickupAppointment extends Model
     /**
      * In case of a pickup cancellation this field indicates the reason for
      * cancelling this pickup.
-     * @var string
+     * @var CancellationReason
      */
-    protected $cancellationReason = '';
+    protected $cancellationReason;
 
     public function setCommentToTransporter(?string $commentToTransporter): self
     {
@@ -84,13 +85,13 @@ final class PickupAppointment extends Model
         return $this->pickupDateTime;
     }
 
-    public function setCancellationReason(?string $cancellationReason): self
+    public function setCancellationReason(?CancellationReason $cancellationReason): self
     {
         $this->cancellationReason = $cancellationReason;
         return $this;
     }
 
-    public function getCancellationReason(): ?string
+    public function getCancellationReason(): ?CancellationReason
     {
         return $this->cancellationReason;
     }

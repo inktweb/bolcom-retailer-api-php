@@ -8,6 +8,7 @@
 namespace Inktweb\Bolcom\RetailerApi\Models\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\HandoverDetails\CollectionMethod;
 
 /**
  * @method static HandoverDetails fromArray(array $data)
@@ -35,9 +36,9 @@ final class HandoverDetails extends Model
 
     /**
      * The type of collection for this parcel.
-     * @var string
+     * @var CollectionMethod
      */
-    protected $collectionMethod = '';
+    protected $collectionMethod;
 
     public function setMeetsCustomerExpectation(?bool $meetsCustomerExpectation): self
     {
@@ -61,13 +62,13 @@ final class HandoverDetails extends Model
         return $this->latestHandoverDateTime;
     }
 
-    public function setCollectionMethod(?string $collectionMethod): self
+    public function setCollectionMethod(?CollectionMethod $collectionMethod): self
     {
         $this->collectionMethod = $collectionMethod;
         return $this;
     }
 
-    public function getCollectionMethod(): ?string
+    public function getCollectionMethod(): ?CollectionMethod
     {
         return $this->collectionMethod;
     }

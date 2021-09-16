@@ -8,6 +8,7 @@
 namespace Inktweb\Bolcom\RetailerApi\Models\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\CreateDeliveryInfo\TransporterCode;
 
 /**
  * @method static CreateDeliveryInfo fromArray(array $data)
@@ -24,9 +25,9 @@ final class CreateDeliveryInfo extends Model
     /**
      * The transporter code that correlates to the transport used for this
      * replenishment.
-     * @var string
+     * @var TransporterCode
      */
-    protected $transporterCode = '';
+    protected $transporterCode;
 
     public function setExpectedDeliveryDate(string $expectedDeliveryDate): self
     {
@@ -39,13 +40,13 @@ final class CreateDeliveryInfo extends Model
         return $this->expectedDeliveryDate;
     }
 
-    public function setTransporterCode(string $transporterCode): self
+    public function setTransporterCode(TransporterCode $transporterCode): self
     {
         $this->transporterCode = $transporterCode;
         return $this;
     }
 
-    public function getTransporterCode(): string
+    public function getTransporterCode(): TransporterCode
     {
         return $this->transporterCode;
     }

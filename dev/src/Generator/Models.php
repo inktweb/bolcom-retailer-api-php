@@ -20,8 +20,13 @@ class Models extends Base
     protected const BASE_PATH = Config::MODELS_PATH;
     protected const BASE_NAMESPACE = Config::MODELS_NAMESPACE;
 
-    public function __construct(string $apiVersion, ?array $data)
+    /** @var Enums\Models */
+    protected $enums;
+
+    public function __construct(string $apiVersion, ?array $data, Enums\Models $enums)
     {
+        $this->enums = $enums;
+
         parent::__construct($apiVersion, $data);
 
         $this->uses->setCurrentScope(null);
@@ -53,7 +58,7 @@ class Models extends Base
                 ->addComment("@method static {$className} fromArray(array \$data)")
                 ->addExtend(Model::class);
 
-            $this->uses->setCurrentScope($class);
+            $this->uses->setCurrentScope($className);
 
             $deferredProperties = array_merge(
                 $deferredProperties,
@@ -112,6 +117,16 @@ class Models extends Base
                     ];
                     break;
                 case 'string':
+                    if (isset($property['enum'])) {
+                        $type = $this->enums->getEnum($class->getName(), $classProperty->getName());
+
+                        $classProperty->addComment("@var \\{$type}");
+                        $parameter->setType($type);
+
+                        $this->uses->add($type);
+                        break;
+                    }
+
                     $classProperty
                         ->addComment('@var string')
                         ->setValue('');

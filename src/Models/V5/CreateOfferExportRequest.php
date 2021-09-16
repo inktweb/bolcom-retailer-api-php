@@ -8,6 +8,7 @@
 namespace Inktweb\Bolcom\RetailerApi\Models\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\CreateOfferExportRequest\Format;
 
 /**
  * @method static CreateOfferExportRequest fromArray(array $data)
@@ -16,17 +17,17 @@ final class CreateOfferExportRequest extends Model
 {
     /**
      * The file format in which to return the export.
-     * @var string
+     * @var Format
      */
-    protected $format = '';
+    protected $format;
 
-    public function setFormat(string $format): self
+    public function setFormat(Format $format): self
     {
         $this->format = $format;
         return $this;
     }
 
-    public function getFormat(): string
+    public function getFormat(): Format
     {
         return $this->format;
     }

@@ -8,6 +8,7 @@
 namespace Inktweb\Bolcom\RetailerApi\Models\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\CreateReturnRequest\HandlingResult;
 
 /**
  * @method static CreateReturnRequest fromArray(array $data)
@@ -28,9 +29,9 @@ final class CreateReturnRequest extends Model
 
     /**
      * The handling result requested by the retailer.
-     * @var string
+     * @var HandlingResult
      */
-    protected $handlingResult = '';
+    protected $handlingResult;
 
     public function setOrderItemId(string $orderItemId): self
     {
@@ -54,13 +55,13 @@ final class CreateReturnRequest extends Model
         return $this->quantityReturned;
     }
 
-    public function setHandlingResult(string $handlingResult): self
+    public function setHandlingResult(HandlingResult $handlingResult): self
     {
         $this->handlingResult = $handlingResult;
         return $this;
     }
 
-    public function getHandlingResult(): string
+    public function getHandlingResult(): HandlingResult
     {
         return $this->handlingResult;
     }

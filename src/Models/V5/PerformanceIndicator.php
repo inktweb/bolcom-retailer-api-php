@@ -8,6 +8,8 @@
 namespace Inktweb\Bolcom\RetailerApi\Models\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\PerformanceIndicator\Name;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\PerformanceIndicator\Type;
 
 /**
  * @method static PerformanceIndicator fromArray(array $data)
@@ -16,15 +18,15 @@ final class PerformanceIndicator extends Model
 {
     /**
      * Indicator name.
-     * @var string
+     * @var Name
      */
-    protected $name = '';
+    protected $name;
 
     /**
      * Interpretation of the data that applies to this measurement.
-     * @var string
+     * @var Type
      */
-    protected $type = '';
+    protected $type;
 
     /**
      * Details of the indicator.
@@ -32,24 +34,24 @@ final class PerformanceIndicator extends Model
      */
     protected $details;
 
-    public function setName(string $name): self
+    public function setName(Name $name): self
     {
         $this->name = $name;
         return $this;
     }
 
-    public function getName(): string
+    public function getName(): Name
     {
         return $this->name;
     }
 
-    public function setType(string $type): self
+    public function setType(Type $type): self
     {
         $this->type = $type;
         return $this;
     }
 
-    public function getType(): string
+    public function getType(): Type
     {
         return $this->type;
     }

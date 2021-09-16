@@ -8,7 +8,7 @@
 namespace Inktweb\Bolcom\RetailerApi\Endpoints\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Endpoint;
-use Inktweb\Bolcom\RetailerApi\Enums\V5\Returns\FulfilmentMethod as FulfilmentMethodV5;
+use Inktweb\Bolcom\RetailerApi\Enums\Endpoints\V5\Returns\FulfilmentMethod;
 use Inktweb\Bolcom\RetailerApi\Models\V5\CreateReturnRequest;
 use Inktweb\Bolcom\RetailerApi\Models\V5\Problem;
 use Inktweb\Bolcom\RetailerApi\Models\V5\ProcessStatus;
@@ -27,7 +27,7 @@ final class Returns extends Endpoint
     public function getReturns(
         ?int $page = null,
         ?bool $handled = null,
-        ?FulfilmentMethodV5 $fulfilmentMethod = null
+        ?FulfilmentMethod $fulfilmentMethod = null
     ): ReturnsResponse {
         return ReturnsResponse::fromArray(
             $this->request(

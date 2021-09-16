@@ -8,6 +8,7 @@
 namespace Inktweb\Bolcom\RetailerApi\Models\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\OrderItemCancellation\ReasonCode;
 
 /**
  * @method static OrderItemCancellation fromArray(array $data)
@@ -22,9 +23,9 @@ final class OrderItemCancellation extends Model
 
     /**
      * The code representing the reason for cancellation of this item.
-     * @var string
+     * @var ReasonCode
      */
-    protected $reasonCode = '';
+    protected $reasonCode;
 
     public function setOrderItemId(string $orderItemId): self
     {
@@ -37,13 +38,13 @@ final class OrderItemCancellation extends Model
         return $this->orderItemId;
     }
 
-    public function setReasonCode(string $reasonCode): self
+    public function setReasonCode(ReasonCode $reasonCode): self
     {
         $this->reasonCode = $reasonCode;
         return $this;
     }
 
-    public function getReasonCode(): string
+    public function getReasonCode(): ReasonCode
     {
         return $this->reasonCode;
     }

@@ -25,10 +25,10 @@ class Endpoints extends Base
     /** @var Models */
     protected $models;
 
-    /** @var Enums */
+    /** @var Endpoints */
     protected $enums;
 
-    public function __construct(string $apiVersion, ?array $data, Models $models, Enums $enums)
+    public function __construct(string $apiVersion, ?array $data, Models $models, Enums\Endpoints $enums)
     {
         $this->models = $models;
         $this->enums = $enums;

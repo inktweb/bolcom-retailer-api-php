@@ -8,6 +8,7 @@
 namespace Inktweb\Bolcom\RetailerApi\Models\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\UpdateReplenishmentRequest\State;
 
 /**
  * @method static UpdateReplenishmentRequest fromArray(array $data)
@@ -16,9 +17,9 @@ final class UpdateReplenishmentRequest extends Model
 {
     /**
      * Update the state of the replenishment to cancel the replenishment.
-     * @var string
+     * @var State
      */
-    protected $state = '';
+    protected $state;
 
     /** @var UpdateDeliveryInfo */
     protected $deliveryInfo;
@@ -33,13 +34,13 @@ final class UpdateReplenishmentRequest extends Model
     /** @var UpdateLoadCarrier[] */
     protected $loadCarriers = [];
 
-    public function setState(?string $state): self
+    public function setState(?State $state): self
     {
         $this->state = $state;
         return $this;
     }
 
-    public function getState(): ?string
+    public function getState(): ?State
     {
         return $this->state;
     }

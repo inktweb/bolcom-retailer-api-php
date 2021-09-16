@@ -8,7 +8,7 @@
 namespace Inktweb\Bolcom\RetailerApi\Endpoints\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Endpoint;
-use Inktweb\Bolcom\RetailerApi\Enums\V5\ProcessStatus\EventType;
+use Inktweb\Bolcom\RetailerApi\Enums\Endpoints\V5\ProcessStatus\EventType;
 use Inktweb\Bolcom\RetailerApi\Models\V5\BulkProcessStatusRequest;
 use Inktweb\Bolcom\RetailerApi\Models\V5\Problem;
 use Inktweb\Bolcom\RetailerApi\Models\V5\ProcessStatus as ProcessStatusModel;

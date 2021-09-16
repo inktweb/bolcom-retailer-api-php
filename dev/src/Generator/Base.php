@@ -44,7 +44,7 @@ abstract class Base
             Str::lower($apiVersion),
             static::DEFAULT_CONTENT_TYPE_TEMPLATE
         );
-        $this->uses = new Uses();
+        $this->uses = new Uses($apiVersion);
         $this->classes = $this->process($data);
     }
 

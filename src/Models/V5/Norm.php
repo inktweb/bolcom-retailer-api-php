@@ -8,6 +8,7 @@
 namespace Inktweb\Bolcom\RetailerApi\Models\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\Norm\Condition;
 
 /**
  * @method static Norm fromArray(array $data)
@@ -16,9 +17,9 @@ final class Norm extends Model
 {
     /**
      * Condition norm for this indicator.
-     * @var string
+     * @var Condition
      */
-    protected $condition = '';
+    protected $condition;
 
     /**
      * Service norm for this indicator.
@@ -26,13 +27,13 @@ final class Norm extends Model
      */
     protected $value = 0;
 
-    public function setCondition(string $condition): self
+    public function setCondition(Condition $condition): self
     {
         $this->condition = $condition;
         return $this;
     }
 
-    public function getCondition(): string
+    public function getCondition(): Condition
     {
         return $this->condition;
     }

@@ -21,5 +21,11 @@ class Config
     public const ENUMS_PATH = self::ROOT_PATH . '/Enums';
     public const ENUMS_NAMESPACE = self::ROOT_NAMESPACE . '\\Enums';
 
+    public const ENUMS_ENDPOINTS_PATH = self::ENUMS_PATH . '/Endpoints';
+    public const ENUMS_ENDPOINTS_NAMESPACE = self::ENUMS_NAMESPACE . '\\Endpoints';
+
+    public const ENUMS_MODELS_PATH = self::ENUMS_PATH . '/Models';
+    public const ENUMS_MODELS_NAMESPACE = self::ENUMS_NAMESPACE . '\\Models';
+
     public const VERSION_PREFIX = 'V';
 }

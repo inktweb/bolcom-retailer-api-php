@@ -8,6 +8,7 @@
 namespace Inktweb\Bolcom\RetailerApi\Models\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\ReplenishmentResponse\State;
 
 /**
  * @method static ReplenishmentResponse fromArray(array $data)
@@ -41,9 +42,9 @@ final class ReplenishmentResponse extends Model
 
     /**
      * Indicates the state of this replenishment order.
-     * @var string
+     * @var State
      */
-    protected $state = '';
+    protected $state;
 
     /** @var DeliveryInformation */
     protected $deliveryInformation;
@@ -113,13 +114,13 @@ final class ReplenishmentResponse extends Model
         return $this->labelingByBol;
     }
 
-    public function setState(string $state): self
+    public function setState(State $state): self
     {
         $this->state = $state;
         return $this;
     }
 
-    public function getState(): string
+    public function getState(): State
     {
         return $this->state;
     }

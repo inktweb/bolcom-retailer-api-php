@@ -8,6 +8,8 @@
 namespace Inktweb\Bolcom\RetailerApi\Models\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\OrderFulfilment\DistributionParty;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\OrderFulfilment\TimeFrameType;
 
 /**
  * @method static OrderFulfilment fromArray(array $data)
@@ -24,9 +26,9 @@ final class OrderFulfilment extends Model
     /**
      * The party that manages the distribution, either bol.com or the
      * retailer itself.
-     * @var string
+     * @var DistributionParty
      */
-    protected $distributionParty = '';
+    protected $distributionParty;
 
     /**
      * The ultimate delivery date at which this order must be delivered at
@@ -54,9 +56,9 @@ final class OrderFulfilment extends Model
 
     /**
      * The selected delivery option.
-     * @var string
+     * @var TimeFrameType
      */
-    protected $timeFrameType = '';
+    protected $timeFrameType;
 
     public function setMethod(?string $method): self
     {
@@ -69,13 +71,13 @@ final class OrderFulfilment extends Model
         return $this->method;
     }
 
-    public function setDistributionParty(?string $distributionParty): self
+    public function setDistributionParty(?DistributionParty $distributionParty): self
     {
         $this->distributionParty = $distributionParty;
         return $this;
     }
 
-    public function getDistributionParty(): ?string
+    public function getDistributionParty(): ?DistributionParty
     {
         return $this->distributionParty;
     }
@@ -113,13 +115,13 @@ final class OrderFulfilment extends Model
         return $this->expiryDate;
     }
 
-    public function setTimeFrameType(?string $timeFrameType): self
+    public function setTimeFrameType(?TimeFrameType $timeFrameType): self
     {
         $this->timeFrameType = $timeFrameType;
         return $this;
     }
 
-    public function getTimeFrameType(): ?string
+    public function getTimeFrameType(): ?TimeFrameType
     {
         return $this->timeFrameType;
     }

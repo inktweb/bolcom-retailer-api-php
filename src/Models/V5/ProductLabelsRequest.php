@@ -8,6 +8,7 @@
 namespace Inktweb\Bolcom\RetailerApi\Models\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\ProductLabelsRequest\LabelFormat;
 
 /**
  * @method static ProductLabelsRequest fromArray(array $data)
@@ -16,20 +17,20 @@ final class ProductLabelsRequest extends Model
 {
     /**
      * The printer format to create labels for.
-     * @var string
+     * @var LabelFormat
      */
-    protected $labelFormat = '';
+    protected $labelFormat;
 
     /** @var ProductLabelsProduct[] */
     protected $products = [];
 
-    public function setLabelFormat(string $labelFormat): self
+    public function setLabelFormat(LabelFormat $labelFormat): self
     {
         $this->labelFormat = $labelFormat;
         return $this;
     }
 
-    public function getLabelFormat(): string
+    public function getLabelFormat(): LabelFormat
     {
         return $this->labelFormat;
     }

@@ -8,6 +8,7 @@
 namespace Inktweb\Bolcom\RetailerApi\Models\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
+use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\ProductContentResponse\Status;
 
 /**
  * An rejected product content.
@@ -27,9 +28,9 @@ final class ProductContentResponse extends Model
 
     /**
      * The end status of the rejected attribute.
-     * @var string
+     * @var Status
      */
-    protected $status = '';
+    protected $status;
 
     /**
      * The rejection error code.
@@ -65,13 +66,13 @@ final class ProductContentResponse extends Model
         return $this->rejectedAttributes;
     }
 
-    public function setStatus(string $status): self
+    public function setStatus(Status $status): self
     {
         $this->status = $status;
         return $this;
     }
 
-    public function getStatus(): string
+    public function getStatus(): Status
     {
         return $this->status;
     }
