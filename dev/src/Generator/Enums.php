@@ -33,8 +33,8 @@ class Enums extends Base
 
         $enums = [];
 
-        foreach ($data as $resource => $methods) {
-            foreach ($methods as $method => $endpoint) {
+        foreach ($data as $methods) {
+            foreach ($methods as $endpoint) {
                 foreach ($endpoint['parameters'] as $parameter) {
                     $namespace = $this->getClassName($endpoint['tags'][0]);
                     $name = $parameter['name'];
