@@ -12,24 +12,24 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 class DeliveryCode extends Enum
 {
     protected const MAX_ITEMS = 1;
-    public const DELIVERYCODE_24UURS_23 = '24uurs-23';
-    public const DELIVERYCODE_24UURS_22 = '24uurs-22';
-    public const DELIVERYCODE_24UURS_21 = '24uurs-21';
-    public const DELIVERYCODE_24UURS_20 = '24uurs-20';
-    public const DELIVERYCODE_24UURS_19 = '24uurs-19';
-    public const DELIVERYCODE_24UURS_18 = '24uurs-18';
-    public const DELIVERYCODE_24UURS_17 = '24uurs-17';
-    public const DELIVERYCODE_24UURS_16 = '24uurs-16';
-    public const DELIVERYCODE_24UURS_15 = '24uurs-15';
-    public const DELIVERYCODE_24UURS_14 = '24uurs-14';
-    public const DELIVERYCODE_24UURS_13 = '24uurs-13';
-    public const DELIVERYCODE_24UURS_12 = '24uurs-12';
-    public const DELIVERYCODE_1_2D = '1-2d';
-    public const DELIVERYCODE_2_3D = '2-3d';
-    public const DELIVERYCODE_3_5D = '3-5d';
-    public const DELIVERYCODE_4_8D = '4-8d';
-    public const DELIVERYCODE_1_8D = '1-8d';
-    public const MIJNLEVERBELOFTE = 'MijnLeverbelofte';
+    public const DELIVERY_CODE_24UURS_23 = '24uurs-23';
+    public const DELIVERY_CODE_24UURS_22 = '24uurs-22';
+    public const DELIVERY_CODE_24UURS_21 = '24uurs-21';
+    public const DELIVERY_CODE_24UURS_20 = '24uurs-20';
+    public const DELIVERY_CODE_24UURS_19 = '24uurs-19';
+    public const DELIVERY_CODE_24UURS_18 = '24uurs-18';
+    public const DELIVERY_CODE_24UURS_17 = '24uurs-17';
+    public const DELIVERY_CODE_24UURS_16 = '24uurs-16';
+    public const DELIVERY_CODE_24UURS_15 = '24uurs-15';
+    public const DELIVERY_CODE_24UURS_14 = '24uurs-14';
+    public const DELIVERY_CODE_24UURS_13 = '24uurs-13';
+    public const DELIVERY_CODE_24UURS_12 = '24uurs-12';
+    public const DELIVERY_CODE_1_2D = '1-2d';
+    public const DELIVERY_CODE_2_3D = '2-3d';
+    public const DELIVERY_CODE_3_5D = '3-5d';
+    public const DELIVERY_CODE_4_8D = '4-8d';
+    public const DELIVERY_CODE_1_8D = '1-8d';
+    public const MIJN_LEVERBELOFTE = 'MijnLeverbelofte';
     public const VVB = 'VVB';
 
     protected $allowedValues = [
@@ -54,94 +54,94 @@ class DeliveryCode extends Enum
         'VVB',
     ];
 
-    public static function deliverycode_24uurs_23(): self
+    public static function deliveryCode24uurs23(): self
     {
-        return (new static())->set(static::DELIVERYCODE_24UURS_23);
+        return (new static())->set(static::DELIVERY_CODE_24UURS_23);
     }
 
-    public static function deliverycode_24uurs_22(): self
+    public static function deliveryCode24uurs22(): self
     {
-        return (new static())->set(static::DELIVERYCODE_24UURS_22);
+        return (new static())->set(static::DELIVERY_CODE_24UURS_22);
     }
 
-    public static function deliverycode_24uurs_21(): self
+    public static function deliveryCode24uurs21(): self
     {
-        return (new static())->set(static::DELIVERYCODE_24UURS_21);
+        return (new static())->set(static::DELIVERY_CODE_24UURS_21);
     }
 
-    public static function deliverycode_24uurs_20(): self
+    public static function deliveryCode24uurs20(): self
     {
-        return (new static())->set(static::DELIVERYCODE_24UURS_20);
+        return (new static())->set(static::DELIVERY_CODE_24UURS_20);
     }
 
-    public static function deliverycode_24uurs_19(): self
+    public static function deliveryCode24uurs19(): self
     {
-        return (new static())->set(static::DELIVERYCODE_24UURS_19);
+        return (new static())->set(static::DELIVERY_CODE_24UURS_19);
     }
 
-    public static function deliverycode_24uurs_18(): self
+    public static function deliveryCode24uurs18(): self
     {
-        return (new static())->set(static::DELIVERYCODE_24UURS_18);
+        return (new static())->set(static::DELIVERY_CODE_24UURS_18);
     }
 
-    public static function deliverycode_24uurs_17(): self
+    public static function deliveryCode24uurs17(): self
     {
-        return (new static())->set(static::DELIVERYCODE_24UURS_17);
+        return (new static())->set(static::DELIVERY_CODE_24UURS_17);
     }
 
-    public static function deliverycode_24uurs_16(): self
+    public static function deliveryCode24uurs16(): self
     {
-        return (new static())->set(static::DELIVERYCODE_24UURS_16);
+        return (new static())->set(static::DELIVERY_CODE_24UURS_16);
     }
 
-    public static function deliverycode_24uurs_15(): self
+    public static function deliveryCode24uurs15(): self
     {
-        return (new static())->set(static::DELIVERYCODE_24UURS_15);
+        return (new static())->set(static::DELIVERY_CODE_24UURS_15);
     }
 
-    public static function deliverycode_24uurs_14(): self
+    public static function deliveryCode24uurs14(): self
     {
-        return (new static())->set(static::DELIVERYCODE_24UURS_14);
+        return (new static())->set(static::DELIVERY_CODE_24UURS_14);
     }
 
-    public static function deliverycode_24uurs_13(): self
+    public static function deliveryCode24uurs13(): self
     {
-        return (new static())->set(static::DELIVERYCODE_24UURS_13);
+        return (new static())->set(static::DELIVERY_CODE_24UURS_13);
     }
 
-    public static function deliverycode_24uurs_12(): self
+    public static function deliveryCode24uurs12(): self
     {
-        return (new static())->set(static::DELIVERYCODE_24UURS_12);
+        return (new static())->set(static::DELIVERY_CODE_24UURS_12);
     }
 
-    public static function deliverycode_1_2d(): self
+    public static function deliveryCode12d(): self
     {
-        return (new static())->set(static::DELIVERYCODE_1_2D);
+        return (new static())->set(static::DELIVERY_CODE_1_2D);
     }
 
-    public static function deliverycode_2_3d(): self
+    public static function deliveryCode23d(): self
     {
-        return (new static())->set(static::DELIVERYCODE_2_3D);
+        return (new static())->set(static::DELIVERY_CODE_2_3D);
     }
 
-    public static function deliverycode_3_5d(): self
+    public static function deliveryCode35d(): self
     {
-        return (new static())->set(static::DELIVERYCODE_3_5D);
+        return (new static())->set(static::DELIVERY_CODE_3_5D);
     }
 
-    public static function deliverycode_4_8d(): self
+    public static function deliveryCode48d(): self
     {
-        return (new static())->set(static::DELIVERYCODE_4_8D);
+        return (new static())->set(static::DELIVERY_CODE_4_8D);
     }
 
-    public static function deliverycode_1_8d(): self
+    public static function deliveryCode18d(): self
     {
-        return (new static())->set(static::DELIVERYCODE_1_8D);
+        return (new static())->set(static::DELIVERY_CODE_1_8D);
     }
 
-    public static function mijnleverbelofte(): self
+    public static function mijnLeverbelofte(): self
     {
-        return (new static())->set(static::MIJNLEVERBELOFTE);
+        return (new static())->set(static::MIJN_LEVERBELOFTE);
     }
 
     public static function vvb(): self

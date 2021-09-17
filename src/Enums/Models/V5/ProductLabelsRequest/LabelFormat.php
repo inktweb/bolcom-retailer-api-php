@@ -38,12 +38,12 @@ class LabelFormat extends Enum
         return (new static())->set(static::AVERY_J8160);
     }
 
-    public static function avery_3474(): self
+    public static function avery3474(): self
     {
         return (new static())->set(static::AVERY_3474);
     }
 
-    public static function dymo_99012(): self
+    public static function dymo99012(): self
     {
         return (new static())->set(static::DYMO_99012);
     }
@@ -53,7 +53,7 @@ class LabelFormat extends Enum
         return (new static())->set(static::BROTHER_DK11208D);
     }
 
-    public static function zebraZPerform_1000t(): self
+    public static function zebraZPerform1000t(): self
     {
         return (new static())->set(static::ZEBRA_Z_PERFORM_1000T);
     }

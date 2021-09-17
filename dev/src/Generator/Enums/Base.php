@@ -68,13 +68,7 @@ abstract class Base extends GeneratorBase
             $enum->addConstant($constantName, $value)
                 ->setPublic();
 
-            $methodName = preg_replace_callback(
-                '/_([a-z])/',
-                function (array $matches) {
-                    return Str::upper($matches[1]);
-                },
-                Str::lower($constantName)
-            );
+            $methodName = $this->getMethodName($value, $enumName);
             $enum->addMethod($methodName)
                 ->setPublic()
                 ->setStatic()
@@ -129,16 +123,28 @@ abstract class Base extends GeneratorBase
         }
     }
 
-    protected function getConstantName($value, string $enumName): string
+    protected function getConstantName(string $value, string $enumName): string
     {
         if (isset($this->constantNames[$value])) {
             return $this->constantNames[$value];
         }
 
-        $constantName = Str::upper(Str::replace('-', '_', Str::slug($value)));
+        if (preg_match('/^([0-9A-Z_-]+|[a-z]{2}-[A-Z]{2})$/', $value)) {
+            $value = Str::lower($value);
+        }
+
+        $constantName = Str::upper(
+            Str::snake(
+                Str::replace(
+                    '-',
+                    '_',
+                    $value
+                )
+            )
+        );
 
         if ($this->startsWithDigit($constantName)) {
-            $constantName = Str::upper(Str::replace('-', '_', Str::slug("{$enumName}_{$value}")));
+            $constantName = Str::upper(Str::replace('-', '_', Str::slug(Str::snake($enumName) . "_{$value}")));
         }
 
         return $constantName;
@@ -148,6 +154,15 @@ abstract class Base extends GeneratorBase
     {
         return ctype_digit(
             substr($constantName, 0, 1)
+        );
+    }
+
+    protected function getMethodName(string $value, string $enumName): string
+    {
+        return Str::camel(
+            Str::lower(
+                $this->getConstantName($value, $enumName)
+            )
         );
     }
 }
