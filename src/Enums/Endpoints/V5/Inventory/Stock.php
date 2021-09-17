@@ -21,8 +21,18 @@ class Stock extends Enum
         return (new static())->set(static::SUFFICIENT);
     }
 
+    public function isSufficient(): bool
+    {
+        return $this->is(static::SUFFICIENT);
+    }
+
     public static function insufficient(): self
     {
         return (new static())->set(static::INSUFFICIENT);
+    }
+
+    public function isInsufficient(): bool
+    {
+        return $this->is(static::INSUFFICIENT);
     }
 }

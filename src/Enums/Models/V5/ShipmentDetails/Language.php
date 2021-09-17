@@ -24,9 +24,19 @@ class Language extends Enum
         return (new static())->set(static::NL);
     }
 
+    public function isNl(): bool
+    {
+        return $this->is(static::NL);
+    }
+
     public static function nlBe(): self
     {
         return (new static())->set(static::NL_BE);
+    }
+
+    public function isNlBe(): bool
+    {
+        return $this->is(static::NL_BE);
     }
 
     public static function fr(): self
@@ -34,8 +44,18 @@ class Language extends Enum
         return (new static())->set(static::FR);
     }
 
+    public function isFr(): bool
+    {
+        return $this->is(static::FR);
+    }
+
     public static function frBe(): self
     {
         return (new static())->set(static::FR_BE);
+    }
+
+    public function isFrBe(): bool
+    {
+        return $this->is(static::FR_BE);
     }
 }

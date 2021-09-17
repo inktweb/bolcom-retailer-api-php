@@ -22,8 +22,18 @@ class Category extends Enum
         return (new static())->set(static::NEW);
     }
 
+    public function isNew(): bool
+    {
+        return $this->is(static::NEW);
+    }
+
     public static function secondhand(): self
     {
         return (new static())->set(static::SECONDHAND);
+    }
+
+    public function isSecondhand(): bool
+    {
+        return $this->is(static::SECONDHAND);
     }
 }

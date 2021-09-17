@@ -23,13 +23,28 @@ class LabelType extends Enum
         return (new static())->set(static::PARCEL);
     }
 
+    public function isParcel(): bool
+    {
+        return $this->is(static::PARCEL);
+    }
+
     public static function mailbox(): self
     {
         return (new static())->set(static::MAILBOX);
     }
 
+    public function isMailbox(): bool
+    {
+        return $this->is(static::MAILBOX);
+    }
+
     public static function mailboxLight(): self
     {
         return (new static())->set(static::MAILBOX_LIGHT);
+    }
+
+    public function isMailboxLight(): bool
+    {
+        return $this->is(static::MAILBOX_LIGHT);
     }
 }

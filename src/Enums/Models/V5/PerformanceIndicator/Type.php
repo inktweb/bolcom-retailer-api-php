@@ -22,8 +22,18 @@ class Type extends Enum
         return (new static())->set(static::PERCENTAGE);
     }
 
+    public function isPercentage(): bool
+    {
+        return $this->is(static::PERCENTAGE);
+    }
+
     public static function average(): self
     {
         return (new static())->set(static::AVERAGE);
+    }
+
+    public function isAverage(): bool
+    {
+        return $this->is(static::AVERAGE);
     }
 }

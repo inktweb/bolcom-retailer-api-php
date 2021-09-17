@@ -21,8 +21,18 @@ class FulfilmentMethod extends Enum
         return (new static())->set(static::FBR);
     }
 
+    public function isFbr(): bool
+    {
+        return $this->is(static::FBR);
+    }
+
     public static function fbb(): self
     {
         return (new static())->set(static::FBB);
+    }
+
+    public function isFbb(): bool
+    {
+        return $this->is(static::FBB);
     }
 }

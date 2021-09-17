@@ -22,8 +22,18 @@ class LabelType extends Enum
         return (new static())->set(static::WAREHOUSE);
     }
 
+    public function isWarehouse(): bool
+    {
+        return $this->is(static::WAREHOUSE);
+    }
+
     public static function transport(): self
     {
         return (new static())->set(static::TRANSPORT);
+    }
+
+    public function isTransport(): bool
+    {
+        return $this->is(static::TRANSPORT);
     }
 }

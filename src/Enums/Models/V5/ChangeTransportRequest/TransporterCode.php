@@ -75,9 +75,19 @@ class TransporterCode extends Enum
         return (new static())->set(static::BRIEFPOST);
     }
 
+    public function isBriefpost(): bool
+    {
+        return $this->is(static::BRIEFPOST);
+    }
+
     public static function ups(): self
     {
         return (new static())->set(static::UPS);
+    }
+
+    public function isUps(): bool
+    {
+        return $this->is(static::UPS);
     }
 
     public static function tnt(): self
@@ -85,9 +95,19 @@ class TransporterCode extends Enum
         return (new static())->set(static::TNT);
     }
 
+    public function isTnt(): bool
+    {
+        return $this->is(static::TNT);
+    }
+
     public static function tntExtra(): self
     {
         return (new static())->set(static::TNT_EXTRA);
+    }
+
+    public function isTntExtra(): bool
+    {
+        return $this->is(static::TNT_EXTRA);
     }
 
     public static function tntBrief(): self
@@ -95,9 +115,19 @@ class TransporterCode extends Enum
         return (new static())->set(static::TNT_BRIEF);
     }
 
+    public function isTntBrief(): bool
+    {
+        return $this->is(static::TNT_BRIEF);
+    }
+
     public static function tntExpress(): self
     {
         return (new static())->set(static::TNT_EXPRESS);
+    }
+
+    public function isTntExpress(): bool
+    {
+        return $this->is(static::TNT_EXPRESS);
     }
 
     public static function dyl(): self
@@ -105,9 +135,19 @@ class TransporterCode extends Enum
         return (new static())->set(static::DYL);
     }
 
+    public function isDyl(): bool
+    {
+        return $this->is(static::DYL);
+    }
+
     public static function dpdNl(): self
     {
         return (new static())->set(static::DPD_NL);
+    }
+
+    public function isDpdNl(): bool
+    {
+        return $this->is(static::DPD_NL);
     }
 
     public static function dpdBe(): self
@@ -115,9 +155,19 @@ class TransporterCode extends Enum
         return (new static())->set(static::DPD_BE);
     }
 
+    public function isDpdBe(): bool
+    {
+        return $this->is(static::DPD_BE);
+    }
+
     public static function bpostBe(): self
     {
         return (new static())->set(static::BPOST_BE);
+    }
+
+    public function isBpostBe(): bool
+    {
+        return $this->is(static::BPOST_BE);
     }
 
     public static function bpostBrief(): self
@@ -125,9 +175,19 @@ class TransporterCode extends Enum
         return (new static())->set(static::BPOST_BRIEF);
     }
 
+    public function isBpostBrief(): bool
+    {
+        return $this->is(static::BPOST_BRIEF);
+    }
+
     public static function dhlforyou(): self
     {
         return (new static())->set(static::DHLFORYOU);
+    }
+
+    public function isDhlforyou(): bool
+    {
+        return $this->is(static::DHLFORYOU);
     }
 
     public static function gls(): self
@@ -135,9 +195,19 @@ class TransporterCode extends Enum
         return (new static())->set(static::GLS);
     }
 
+    public function isGls(): bool
+    {
+        return $this->is(static::GLS);
+    }
+
     public static function fedexNl(): self
     {
         return (new static())->set(static::FEDEX_NL);
+    }
+
+    public function isFedexNl(): bool
+    {
+        return $this->is(static::FEDEX_NL);
     }
 
     public static function fedexBe(): self
@@ -145,9 +215,19 @@ class TransporterCode extends Enum
         return (new static())->set(static::FEDEX_BE);
     }
 
+    public function isFedexBe(): bool
+    {
+        return $this->is(static::FEDEX_BE);
+    }
+
     public static function other(): self
     {
         return (new static())->set(static::OTHER);
+    }
+
+    public function isOther(): bool
+    {
+        return $this->is(static::OTHER);
     }
 
     public static function dhl(): self
@@ -155,9 +235,19 @@ class TransporterCode extends Enum
         return (new static())->set(static::DHL);
     }
 
+    public function isDhl(): bool
+    {
+        return $this->is(static::DHL);
+    }
+
     public static function dhlDe(): self
     {
         return (new static())->set(static::DHL_DE);
+    }
+
+    public function isDhlDe(): bool
+    {
+        return $this->is(static::DHL_DE);
     }
 
     public static function dhlGlobalMail(): self
@@ -165,9 +255,19 @@ class TransporterCode extends Enum
         return (new static())->set(static::DHL_GLOBAL_MAIL);
     }
 
+    public function isDhlGlobalMail(): bool
+    {
+        return $this->is(static::DHL_GLOBAL_MAIL);
+    }
+
     public static function tsn(): self
     {
         return (new static())->set(static::TSN);
+    }
+
+    public function isTsn(): bool
+    {
+        return $this->is(static::TSN);
     }
 
     public static function fiege(): self
@@ -175,9 +275,19 @@ class TransporterCode extends Enum
         return (new static())->set(static::FIEGE);
     }
 
+    public function isFiege(): bool
+    {
+        return $this->is(static::FIEGE);
+    }
+
     public static function transmission(): self
     {
         return (new static())->set(static::TRANSMISSION);
+    }
+
+    public function isTransmission(): bool
+    {
+        return $this->is(static::TRANSMISSION);
     }
 
     public static function parcelNl(): self
@@ -185,9 +295,19 @@ class TransporterCode extends Enum
         return (new static())->set(static::PARCEL_NL);
     }
 
+    public function isParcelNl(): bool
+    {
+        return $this->is(static::PARCEL_NL);
+    }
+
     public static function logoix(): self
     {
         return (new static())->set(static::LOGOIX);
+    }
+
+    public function isLogoix(): bool
+    {
+        return $this->is(static::LOGOIX);
     }
 
     public static function packs(): self
@@ -195,13 +315,28 @@ class TransporterCode extends Enum
         return (new static())->set(static::PACKS);
     }
 
+    public function isPacks(): bool
+    {
+        return $this->is(static::PACKS);
+    }
+
     public static function courier(): self
     {
         return (new static())->set(static::COURIER);
     }
 
+    public function isCourier(): bool
+    {
+        return $this->is(static::COURIER);
+    }
+
     public static function rjp(): self
     {
         return (new static())->set(static::RJP);
+    }
+
+    public function isRjp(): bool
+    {
+        return $this->is(static::RJP);
     }
 }

@@ -20,4 +20,9 @@ class State extends Enum
     {
         return (new static())->set(static::CANCELLED);
     }
+
+    public function isCancelled(): bool
+    {
+        return $this->is(static::CANCELLED);
+    }
 }

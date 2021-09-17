@@ -45,9 +45,19 @@ class ReasonCode extends Enum
         return (new static())->set(static::OUT_OF_STOCK);
     }
 
+    public function isOutOfStock(): bool
+    {
+        return $this->is(static::OUT_OF_STOCK);
+    }
+
     public static function requestedByCustomer(): self
     {
         return (new static())->set(static::REQUESTED_BY_CUSTOMER);
+    }
+
+    public function isRequestedByCustomer(): bool
+    {
+        return $this->is(static::REQUESTED_BY_CUSTOMER);
     }
 
     public static function badCondition(): self
@@ -55,9 +65,19 @@ class ReasonCode extends Enum
         return (new static())->set(static::BAD_CONDITION);
     }
 
+    public function isBadCondition(): bool
+    {
+        return $this->is(static::BAD_CONDITION);
+    }
+
     public static function higherShipcost(): self
     {
         return (new static())->set(static::HIGHER_SHIPCOST);
+    }
+
+    public function isHigherShipcost(): bool
+    {
+        return $this->is(static::HIGHER_SHIPCOST);
     }
 
     public static function incorrectPrice(): self
@@ -65,9 +85,19 @@ class ReasonCode extends Enum
         return (new static())->set(static::INCORRECT_PRICE);
     }
 
+    public function isIncorrectPrice(): bool
+    {
+        return $this->is(static::INCORRECT_PRICE);
+    }
+
     public static function notAvailInTime(): self
     {
         return (new static())->set(static::NOT_AVAIL_IN_TIME);
+    }
+
+    public function isNotAvailInTime(): bool
+    {
+        return $this->is(static::NOT_AVAIL_IN_TIME);
     }
 
     public static function noBolGuarantee(): self
@@ -75,9 +105,19 @@ class ReasonCode extends Enum
         return (new static())->set(static::NO_BOL_GUARANTEE);
     }
 
+    public function isNoBolGuarantee(): bool
+    {
+        return $this->is(static::NO_BOL_GUARANTEE);
+    }
+
     public static function orderedTwice(): self
     {
         return (new static())->set(static::ORDERED_TWICE);
+    }
+
+    public function isOrderedTwice(): bool
+    {
+        return $this->is(static::ORDERED_TWICE);
     }
 
     public static function retainItem(): self
@@ -85,9 +125,19 @@ class ReasonCode extends Enum
         return (new static())->set(static::RETAIN_ITEM);
     }
 
+    public function isRetainItem(): bool
+    {
+        return $this->is(static::RETAIN_ITEM);
+    }
+
     public static function techIssue(): self
     {
         return (new static())->set(static::TECH_ISSUE);
+    }
+
+    public function isTechIssue(): bool
+    {
+        return $this->is(static::TECH_ISSUE);
     }
 
     public static function unfindableItem(): self
@@ -95,8 +145,18 @@ class ReasonCode extends Enum
         return (new static())->set(static::UNFINDABLE_ITEM);
     }
 
+    public function isUnfindableItem(): bool
+    {
+        return $this->is(static::UNFINDABLE_ITEM);
+    }
+
     public static function other(): self
     {
         return (new static())->set(static::OTHER);
+    }
+
+    public function isOther(): bool
+    {
+        return $this->is(static::OTHER);
     }
 }

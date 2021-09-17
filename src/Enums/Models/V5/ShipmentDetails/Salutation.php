@@ -23,13 +23,28 @@ class Salutation extends Enum
         return (new static())->set(static::MALE);
     }
 
+    public function isMale(): bool
+    {
+        return $this->is(static::MALE);
+    }
+
     public static function female(): self
     {
         return (new static())->set(static::FEMALE);
     }
 
+    public function isFemale(): bool
+    {
+        return $this->is(static::FEMALE);
+    }
+
     public static function unknown(): self
     {
         return (new static())->set(static::UNKNOWN);
+    }
+
+    public function isUnknown(): bool
+    {
+        return $this->is(static::UNKNOWN);
     }
 }

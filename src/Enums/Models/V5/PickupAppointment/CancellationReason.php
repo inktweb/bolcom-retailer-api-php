@@ -35,9 +35,19 @@ class CancellationReason extends Enum
         return (new static())->set(static::UNKNOWN_ADDRESS);
     }
 
+    public function isUnknownAddress(): bool
+    {
+        return $this->is(static::UNKNOWN_ADDRESS);
+    }
+
     public static function notReady(): self
     {
         return (new static())->set(static::NOT_READY);
+    }
+
+    public function isNotReady(): bool
+    {
+        return $this->is(static::NOT_READY);
     }
 
     public static function noLabel(): self
@@ -45,9 +55,19 @@ class CancellationReason extends Enum
         return (new static())->set(static::NO_LABEL);
     }
 
+    public function isNoLabel(): bool
+    {
+        return $this->is(static::NO_LABEL);
+    }
+
     public static function wrongPackage(): self
     {
         return (new static())->set(static::WRONG_PACKAGE);
+    }
+
+    public function isWrongPackage(): bool
+    {
+        return $this->is(static::WRONG_PACKAGE);
     }
 
     public static function notAtHome(): self
@@ -55,13 +75,28 @@ class CancellationReason extends Enum
         return (new static())->set(static::NOT_AT_HOME);
     }
 
+    public function isNotAtHome(): bool
+    {
+        return $this->is(static::NOT_AT_HOME);
+    }
+
     public static function otherReason(): self
     {
         return (new static())->set(static::OTHER_REASON);
     }
 
+    public function isOtherReason(): bool
+    {
+        return $this->is(static::OTHER_REASON);
+    }
+
     public static function requestFromRetailer(): self
     {
         return (new static())->set(static::REQUEST_FROM_RETAILER);
+    }
+
+    public function isRequestFromRetailer(): bool
+    {
+        return $this->is(static::REQUEST_FROM_RETAILER);
     }
 }

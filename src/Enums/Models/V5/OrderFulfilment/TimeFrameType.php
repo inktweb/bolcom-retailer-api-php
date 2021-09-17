@@ -25,9 +25,19 @@ class TimeFrameType extends Enum
         return (new static())->set(static::REGULAR);
     }
 
+    public function isRegular(): bool
+    {
+        return $this->is(static::REGULAR);
+    }
+
     public static function evening(): self
     {
         return (new static())->set(static::EVENING);
+    }
+
+    public function isEvening(): bool
+    {
+        return $this->is(static::EVENING);
     }
 
     public static function appointment(): self
@@ -35,13 +45,28 @@ class TimeFrameType extends Enum
         return (new static())->set(static::APPOINTMENT);
     }
 
+    public function isAppointment(): bool
+    {
+        return $this->is(static::APPOINTMENT);
+    }
+
     public static function sameday(): self
     {
         return (new static())->set(static::SAMEDAY);
     }
 
+    public function isSameday(): bool
+    {
+        return $this->is(static::SAMEDAY);
+    }
+
     public static function sunday(): self
     {
         return (new static())->set(static::SUNDAY);
+    }
+
+    public function isSunday(): bool
+    {
+        return $this->is(static::SUNDAY);
     }
 }

@@ -37,9 +37,19 @@ class Name extends Enum
         return (new static())->set(static::CANCELLATIONS);
     }
 
+    public function isCancellations(): bool
+    {
+        return $this->is(static::CANCELLATIONS);
+    }
+
     public static function fulfilment(): self
     {
         return (new static())->set(static::FULFILMENT);
+    }
+
+    public function isFulfilment(): bool
+    {
+        return $this->is(static::FULFILMENT);
     }
 
     public static function phoneAvailability(): self
@@ -47,9 +57,19 @@ class Name extends Enum
         return (new static())->set(static::PHONE_AVAILABILITY);
     }
 
+    public function isPhoneAvailability(): bool
+    {
+        return $this->is(static::PHONE_AVAILABILITY);
+    }
+
     public static function responseTime(): self
     {
         return (new static())->set(static::RESPONSE_TIME);
+    }
+
+    public function isResponseTime(): bool
+    {
+        return $this->is(static::RESPONSE_TIME);
     }
 
     public static function caseItemRatio(): self
@@ -57,9 +77,19 @@ class Name extends Enum
         return (new static())->set(static::CASE_ITEM_RATIO);
     }
 
+    public function isCaseItemRatio(): bool
+    {
+        return $this->is(static::CASE_ITEM_RATIO);
+    }
+
     public static function trackAndTrace(): self
     {
         return (new static())->set(static::TRACK_AND_TRACE);
+    }
+
+    public function isTrackAndTrace(): bool
+    {
+        return $this->is(static::TRACK_AND_TRACE);
     }
 
     public static function returns(): self
@@ -67,8 +97,18 @@ class Name extends Enum
         return (new static())->set(static::RETURNS);
     }
 
+    public function isReturns(): bool
+    {
+        return $this->is(static::RETURNS);
+    }
+
     public static function reviews(): self
     {
         return (new static())->set(static::REVIEWS);
+    }
+
+    public function isReviews(): bool
+    {
+        return $this->is(static::REVIEWS);
     }
 }

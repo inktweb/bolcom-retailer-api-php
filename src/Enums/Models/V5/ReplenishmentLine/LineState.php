@@ -23,13 +23,28 @@ class LineState extends Enum
         return (new static())->set(static::ANNOUNCED);
     }
 
+    public function isAnnounced(): bool
+    {
+        return $this->is(static::ANNOUNCED);
+    }
+
     public static function unannounced(): self
     {
         return (new static())->set(static::UNANNOUNCED);
     }
 
+    public function isUnannounced(): bool
+    {
+        return $this->is(static::UNANNOUNCED);
+    }
+
     public static function unknown(): self
     {
         return (new static())->set(static::UNKNOWN);
+    }
+
+    public function isUnknown(): bool
+    {
+        return $this->is(static::UNKNOWN);
     }
 }

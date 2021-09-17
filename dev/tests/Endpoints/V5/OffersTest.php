@@ -6,7 +6,6 @@ use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\Condition\Category;
 use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\Condition\Name;
 use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\Fulfilment\DeliveryCode;
 use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\Fulfilment\Method;
-use Inktweb\Bolcom\RetailerApi\Enums\Models\V5\ProcessStatus\Status;
 use Inktweb\Bolcom\RetailerApi\Models\V5\BundlePrice;
 use Inktweb\Bolcom\RetailerApi\Models\V5\Condition;
 use Inktweb\Bolcom\RetailerApi\Models\V5\CreateOfferRequest;
@@ -54,11 +53,11 @@ class OffersTest extends BaseTest
                                 Method::fbr()
                             )
                             ->setDeliveryCode(
-                                DeliveryCode::deliverycode_4_8d()
+                                DeliveryCode::deliveryCode48d()
                             )
                     )
             );
 
-        $this->assertTrue($processStatus->getStatus()->is(Status::PENDING));
+        $this->assertTrue($processStatus->getStatus()->isPending());
     }
 }

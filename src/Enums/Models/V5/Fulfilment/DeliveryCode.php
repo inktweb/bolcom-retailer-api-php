@@ -59,9 +59,19 @@ class DeliveryCode extends Enum
         return (new static())->set(static::DELIVERY_CODE_24UURS_23);
     }
 
+    public function isDeliveryCode24uurs23(): bool
+    {
+        return $this->is(static::DELIVERY_CODE_24UURS_23);
+    }
+
     public static function deliveryCode24uurs22(): self
     {
         return (new static())->set(static::DELIVERY_CODE_24UURS_22);
+    }
+
+    public function isDeliveryCode24uurs22(): bool
+    {
+        return $this->is(static::DELIVERY_CODE_24UURS_22);
     }
 
     public static function deliveryCode24uurs21(): self
@@ -69,9 +79,19 @@ class DeliveryCode extends Enum
         return (new static())->set(static::DELIVERY_CODE_24UURS_21);
     }
 
+    public function isDeliveryCode24uurs21(): bool
+    {
+        return $this->is(static::DELIVERY_CODE_24UURS_21);
+    }
+
     public static function deliveryCode24uurs20(): self
     {
         return (new static())->set(static::DELIVERY_CODE_24UURS_20);
+    }
+
+    public function isDeliveryCode24uurs20(): bool
+    {
+        return $this->is(static::DELIVERY_CODE_24UURS_20);
     }
 
     public static function deliveryCode24uurs19(): self
@@ -79,9 +99,19 @@ class DeliveryCode extends Enum
         return (new static())->set(static::DELIVERY_CODE_24UURS_19);
     }
 
+    public function isDeliveryCode24uurs19(): bool
+    {
+        return $this->is(static::DELIVERY_CODE_24UURS_19);
+    }
+
     public static function deliveryCode24uurs18(): self
     {
         return (new static())->set(static::DELIVERY_CODE_24UURS_18);
+    }
+
+    public function isDeliveryCode24uurs18(): bool
+    {
+        return $this->is(static::DELIVERY_CODE_24UURS_18);
     }
 
     public static function deliveryCode24uurs17(): self
@@ -89,9 +119,19 @@ class DeliveryCode extends Enum
         return (new static())->set(static::DELIVERY_CODE_24UURS_17);
     }
 
+    public function isDeliveryCode24uurs17(): bool
+    {
+        return $this->is(static::DELIVERY_CODE_24UURS_17);
+    }
+
     public static function deliveryCode24uurs16(): self
     {
         return (new static())->set(static::DELIVERY_CODE_24UURS_16);
+    }
+
+    public function isDeliveryCode24uurs16(): bool
+    {
+        return $this->is(static::DELIVERY_CODE_24UURS_16);
     }
 
     public static function deliveryCode24uurs15(): self
@@ -99,9 +139,19 @@ class DeliveryCode extends Enum
         return (new static())->set(static::DELIVERY_CODE_24UURS_15);
     }
 
+    public function isDeliveryCode24uurs15(): bool
+    {
+        return $this->is(static::DELIVERY_CODE_24UURS_15);
+    }
+
     public static function deliveryCode24uurs14(): self
     {
         return (new static())->set(static::DELIVERY_CODE_24UURS_14);
+    }
+
+    public function isDeliveryCode24uurs14(): bool
+    {
+        return $this->is(static::DELIVERY_CODE_24UURS_14);
     }
 
     public static function deliveryCode24uurs13(): self
@@ -109,9 +159,19 @@ class DeliveryCode extends Enum
         return (new static())->set(static::DELIVERY_CODE_24UURS_13);
     }
 
+    public function isDeliveryCode24uurs13(): bool
+    {
+        return $this->is(static::DELIVERY_CODE_24UURS_13);
+    }
+
     public static function deliveryCode24uurs12(): self
     {
         return (new static())->set(static::DELIVERY_CODE_24UURS_12);
+    }
+
+    public function isDeliveryCode24uurs12(): bool
+    {
+        return $this->is(static::DELIVERY_CODE_24UURS_12);
     }
 
     public static function deliveryCode12d(): self
@@ -119,9 +179,19 @@ class DeliveryCode extends Enum
         return (new static())->set(static::DELIVERY_CODE_1_2D);
     }
 
+    public function isDeliveryCode12d(): bool
+    {
+        return $this->is(static::DELIVERY_CODE_1_2D);
+    }
+
     public static function deliveryCode23d(): self
     {
         return (new static())->set(static::DELIVERY_CODE_2_3D);
+    }
+
+    public function isDeliveryCode23d(): bool
+    {
+        return $this->is(static::DELIVERY_CODE_2_3D);
     }
 
     public static function deliveryCode35d(): self
@@ -129,9 +199,19 @@ class DeliveryCode extends Enum
         return (new static())->set(static::DELIVERY_CODE_3_5D);
     }
 
+    public function isDeliveryCode35d(): bool
+    {
+        return $this->is(static::DELIVERY_CODE_3_5D);
+    }
+
     public static function deliveryCode48d(): self
     {
         return (new static())->set(static::DELIVERY_CODE_4_8D);
+    }
+
+    public function isDeliveryCode48d(): bool
+    {
+        return $this->is(static::DELIVERY_CODE_4_8D);
     }
 
     public static function deliveryCode18d(): self
@@ -139,13 +219,28 @@ class DeliveryCode extends Enum
         return (new static())->set(static::DELIVERY_CODE_1_8D);
     }
 
+    public function isDeliveryCode18d(): bool
+    {
+        return $this->is(static::DELIVERY_CODE_1_8D);
+    }
+
     public static function mijnLeverbelofte(): self
     {
         return (new static())->set(static::MIJN_LEVERBELOFTE);
     }
 
+    public function isMijnLeverbelofte(): bool
+    {
+        return $this->is(static::MIJN_LEVERBELOFTE);
+    }
+
     public static function vvb(): self
     {
         return (new static())->set(static::VVB);
+    }
+
+    public function isVvb(): bool
+    {
+        return $this->is(static::VVB);
     }
 }

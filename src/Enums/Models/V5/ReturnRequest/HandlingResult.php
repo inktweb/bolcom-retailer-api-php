@@ -33,9 +33,19 @@ class HandlingResult extends Enum
         return (new static())->set(static::RETURN_RECEIVED);
     }
 
+    public function isReturnReceived(): bool
+    {
+        return $this->is(static::RETURN_RECEIVED);
+    }
+
     public static function exchangeProduct(): self
     {
         return (new static())->set(static::EXCHANGE_PRODUCT);
+    }
+
+    public function isExchangeProduct(): bool
+    {
+        return $this->is(static::EXCHANGE_PRODUCT);
     }
 
     public static function returnDoesNotMeetConditions(): self
@@ -43,9 +53,19 @@ class HandlingResult extends Enum
         return (new static())->set(static::RETURN_DOES_NOT_MEET_CONDITIONS);
     }
 
+    public function isReturnDoesNotMeetConditions(): bool
+    {
+        return $this->is(static::RETURN_DOES_NOT_MEET_CONDITIONS);
+    }
+
     public static function repairProduct(): self
     {
         return (new static())->set(static::REPAIR_PRODUCT);
+    }
+
+    public function isRepairProduct(): bool
+    {
+        return $this->is(static::REPAIR_PRODUCT);
     }
 
     public static function customerKeepsProductPaid(): self
@@ -53,8 +73,18 @@ class HandlingResult extends Enum
         return (new static())->set(static::CUSTOMER_KEEPS_PRODUCT_PAID);
     }
 
+    public function isCustomerKeepsProductPaid(): bool
+    {
+        return $this->is(static::CUSTOMER_KEEPS_PRODUCT_PAID);
+    }
+
     public static function stillApproved(): self
     {
         return (new static())->set(static::STILL_APPROVED);
+    }
+
+    public function isStillApproved(): bool
+    {
+        return $this->is(static::STILL_APPROVED);
     }
 }

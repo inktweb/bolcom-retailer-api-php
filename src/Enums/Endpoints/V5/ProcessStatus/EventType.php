@@ -59,9 +59,19 @@ class EventType extends Enum
         return (new static())->set(static::CONFIRM_SHIPMENT);
     }
 
+    public function isConfirmShipment(): bool
+    {
+        return $this->is(static::CONFIRM_SHIPMENT);
+    }
+
     public static function cancelOrder(): self
     {
         return (new static())->set(static::CANCEL_ORDER);
+    }
+
+    public function isCancelOrder(): bool
+    {
+        return $this->is(static::CANCEL_ORDER);
     }
 
     public static function changeTransport(): self
@@ -69,9 +79,19 @@ class EventType extends Enum
         return (new static())->set(static::CHANGE_TRANSPORT);
     }
 
+    public function isChangeTransport(): bool
+    {
+        return $this->is(static::CHANGE_TRANSPORT);
+    }
+
     public static function handleReturnItem(): self
     {
         return (new static())->set(static::HANDLE_RETURN_ITEM);
+    }
+
+    public function isHandleReturnItem(): bool
+    {
+        return $this->is(static::HANDLE_RETURN_ITEM);
     }
 
     public static function createReturnItem(): self
@@ -79,9 +99,19 @@ class EventType extends Enum
         return (new static())->set(static::CREATE_RETURN_ITEM);
     }
 
+    public function isCreateReturnItem(): bool
+    {
+        return $this->is(static::CREATE_RETURN_ITEM);
+    }
+
     public static function createInbound(): self
     {
         return (new static())->set(static::CREATE_INBOUND);
+    }
+
+    public function isCreateInbound(): bool
+    {
+        return $this->is(static::CREATE_INBOUND);
     }
 
     public static function deleteOffer(): self
@@ -89,9 +119,19 @@ class EventType extends Enum
         return (new static())->set(static::DELETE_OFFER);
     }
 
+    public function isDeleteOffer(): bool
+    {
+        return $this->is(static::DELETE_OFFER);
+    }
+
     public static function createOffer(): self
     {
         return (new static())->set(static::CREATE_OFFER);
+    }
+
+    public function isCreateOffer(): bool
+    {
+        return $this->is(static::CREATE_OFFER);
     }
 
     public static function updateOffer(): self
@@ -99,9 +139,19 @@ class EventType extends Enum
         return (new static())->set(static::UPDATE_OFFER);
     }
 
+    public function isUpdateOffer(): bool
+    {
+        return $this->is(static::UPDATE_OFFER);
+    }
+
     public static function updateOfferStock(): self
     {
         return (new static())->set(static::UPDATE_OFFER_STOCK);
+    }
+
+    public function isUpdateOfferStock(): bool
+    {
+        return $this->is(static::UPDATE_OFFER_STOCK);
     }
 
     public static function updateOfferPrice(): self
@@ -109,9 +159,19 @@ class EventType extends Enum
         return (new static())->set(static::UPDATE_OFFER_PRICE);
     }
 
+    public function isUpdateOfferPrice(): bool
+    {
+        return $this->is(static::UPDATE_OFFER_PRICE);
+    }
+
     public static function createOfferExport(): self
     {
         return (new static())->set(static::CREATE_OFFER_EXPORT);
+    }
+
+    public function isCreateOfferExport(): bool
+    {
+        return $this->is(static::CREATE_OFFER_EXPORT);
     }
 
     public static function unpublishedOfferReport(): self
@@ -119,9 +179,19 @@ class EventType extends Enum
         return (new static())->set(static::UNPUBLISHED_OFFER_REPORT);
     }
 
+    public function isUnpublishedOfferReport(): bool
+    {
+        return $this->is(static::UNPUBLISHED_OFFER_REPORT);
+    }
+
     public static function createProductContent(): self
     {
         return (new static())->set(static::CREATE_PRODUCT_CONTENT);
+    }
+
+    public function isCreateProductContent(): bool
+    {
+        return $this->is(static::CREATE_PRODUCT_CONTENT);
     }
 
     public static function createSubscription(): self
@@ -129,9 +199,19 @@ class EventType extends Enum
         return (new static())->set(static::CREATE_SUBSCRIPTION);
     }
 
+    public function isCreateSubscription(): bool
+    {
+        return $this->is(static::CREATE_SUBSCRIPTION);
+    }
+
     public static function updateSubscription(): self
     {
         return (new static())->set(static::UPDATE_SUBSCRIPTION);
+    }
+
+    public function isUpdateSubscription(): bool
+    {
+        return $this->is(static::UPDATE_SUBSCRIPTION);
     }
 
     public static function deleteSubscription(): self
@@ -139,13 +219,28 @@ class EventType extends Enum
         return (new static())->set(static::DELETE_SUBSCRIPTION);
     }
 
+    public function isDeleteSubscription(): bool
+    {
+        return $this->is(static::DELETE_SUBSCRIPTION);
+    }
+
     public static function sendSubscriptionTstMsg(): self
     {
         return (new static())->set(static::SEND_SUBSCRIPTION_TST_MSG);
     }
 
+    public function isSendSubscriptionTstMsg(): bool
+    {
+        return $this->is(static::SEND_SUBSCRIPTION_TST_MSG);
+    }
+
     public static function createShippingLabel(): self
     {
         return (new static())->set(static::CREATE_SHIPPING_LABEL);
+    }
+
+    public function isCreateShippingLabel(): bool
+    {
+        return $this->is(static::CREATE_SHIPPING_LABEL);
     }
 }

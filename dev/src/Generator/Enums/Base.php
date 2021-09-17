@@ -74,6 +74,11 @@ abstract class Base extends GeneratorBase
                 ->setStatic()
                 ->setReturnType(Type::SELF)
                 ->setBody("return (new static())->set(static::$constantName);");
+
+            $enum->addMethod('is' . Str::ucfirst($methodName))
+                ->setPublic()
+                ->setReturnType(Type::BOOL)
+                ->setBody("return \$this->is(static::$constantName);");
         }
 
         $enum->addProperty('allowedValues', $values)

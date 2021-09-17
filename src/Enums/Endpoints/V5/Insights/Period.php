@@ -23,13 +23,28 @@ class Period extends Enum
         return (new static())->set(static::DAY);
     }
 
+    public function isDay(): bool
+    {
+        return $this->is(static::DAY);
+    }
+
     public static function week(): self
     {
         return (new static())->set(static::WEEK);
     }
 
+    public function isWeek(): bool
+    {
+        return $this->is(static::WEEK);
+    }
+
     public static function month(): self
     {
         return (new static())->set(static::MONTH);
+    }
+
+    public function isMonth(): bool
+    {
+        return $this->is(static::MONTH);
     }
 }

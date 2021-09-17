@@ -26,9 +26,19 @@ class TransportState extends Enum
         return (new static())->set(static::ANNOUNCED);
     }
 
+    public function isAnnounced(): bool
+    {
+        return $this->is(static::ANNOUNCED);
+    }
+
     public static function pickedUp(): self
     {
         return (new static())->set(static::PICKED_UP);
+    }
+
+    public function isPickedUp(): bool
+    {
+        return $this->is(static::PICKED_UP);
     }
 
     public static function underway(): self
@@ -36,9 +46,19 @@ class TransportState extends Enum
         return (new static())->set(static::UNDERWAY);
     }
 
+    public function isUnderway(): bool
+    {
+        return $this->is(static::UNDERWAY);
+    }
+
     public static function delayed(): self
     {
         return (new static())->set(static::DELAYED);
+    }
+
+    public function isDelayed(): bool
+    {
+        return $this->is(static::DELAYED);
     }
 
     public static function arrived(): self
@@ -46,8 +66,18 @@ class TransportState extends Enum
         return (new static())->set(static::ARRIVED);
     }
 
+    public function isArrived(): bool
+    {
+        return $this->is(static::ARRIVED);
+    }
+
     public static function error(): self
     {
         return (new static())->set(static::ERROR);
+    }
+
+    public function isError(): bool
+    {
+        return $this->is(static::ERROR);
     }
 }

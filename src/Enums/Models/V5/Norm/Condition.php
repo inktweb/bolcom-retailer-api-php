@@ -22,8 +22,18 @@ class Condition extends Enum
         return (new static())->set(static::LESS_THAN_OR_EQUAL_TO);
     }
 
+    public function isLessThanOrEqualTo(): bool
+    {
+        return $this->is(static::LESS_THAN_OR_EQUAL_TO);
+    }
+
     public static function greaterThanOrEqualTo(): self
     {
         return (new static())->set(static::GREATER_THAN_OR_EQUAL_TO);
+    }
+
+    public function isGreaterThanOrEqualTo(): bool
+    {
+        return $this->is(static::GREATER_THAN_OR_EQUAL_TO);
     }
 }

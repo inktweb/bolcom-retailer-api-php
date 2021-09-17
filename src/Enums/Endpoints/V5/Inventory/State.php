@@ -21,8 +21,18 @@ class State extends Enum
         return (new static())->set(static::REGULAR);
     }
 
+    public function isRegular(): bool
+    {
+        return $this->is(static::REGULAR);
+    }
+
     public static function graded(): self
     {
         return (new static())->set(static::GRADED);
+    }
+
+    public function isGraded(): bool
+    {
+        return $this->is(static::GRADED);
     }
 }

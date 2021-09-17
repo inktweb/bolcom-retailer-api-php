@@ -24,9 +24,19 @@ class Condition extends Enum
         return (new static())->set(static::NEW);
     }
 
+    public function isNew(): bool
+    {
+        return $this->is(static::NEW);
+    }
+
     public static function asNew(): self
     {
         return (new static())->set(static::AS_NEW);
+    }
+
+    public function isAsNew(): bool
+    {
+        return $this->is(static::AS_NEW);
     }
 
     public static function good(): self
@@ -34,13 +44,28 @@ class Condition extends Enum
         return (new static())->set(static::GOOD);
     }
 
+    public function isGood(): bool
+    {
+        return $this->is(static::GOOD);
+    }
+
     public static function reasonable(): self
     {
         return (new static())->set(static::REASONABLE);
     }
 
+    public function isReasonable(): bool
+    {
+        return $this->is(static::REASONABLE);
+    }
+
     public static function moderate(): self
     {
         return (new static())->set(static::MODERATE);
+    }
+
+    public function isModerate(): bool
+    {
+        return $this->is(static::MODERATE);
     }
 }

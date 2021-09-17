@@ -33,9 +33,19 @@ class LabelFormat extends Enum
         return (new static())->set(static::AVERY_J8159);
     }
 
+    public function isAveryJ8159(): bool
+    {
+        return $this->is(static::AVERY_J8159);
+    }
+
     public static function averyJ8160(): self
     {
         return (new static())->set(static::AVERY_J8160);
+    }
+
+    public function isAveryJ8160(): bool
+    {
+        return $this->is(static::AVERY_J8160);
     }
 
     public static function avery3474(): self
@@ -43,9 +53,19 @@ class LabelFormat extends Enum
         return (new static())->set(static::AVERY_3474);
     }
 
+    public function isAvery3474(): bool
+    {
+        return $this->is(static::AVERY_3474);
+    }
+
     public static function dymo99012(): self
     {
         return (new static())->set(static::DYMO_99012);
+    }
+
+    public function isDymo99012(): bool
+    {
+        return $this->is(static::DYMO_99012);
     }
 
     public static function brotherDk11208d(): self
@@ -53,8 +73,18 @@ class LabelFormat extends Enum
         return (new static())->set(static::BROTHER_DK11208D);
     }
 
+    public function isBrotherDk11208d(): bool
+    {
+        return $this->is(static::BROTHER_DK11208D);
+    }
+
     public static function zebraZPerform1000t(): self
     {
         return (new static())->set(static::ZEBRA_Z_PERFORM_1000T);
+    }
+
+    public function isZebraZPerform1000t(): bool
+    {
+        return $this->is(static::ZEBRA_Z_PERFORM_1000T);
     }
 }

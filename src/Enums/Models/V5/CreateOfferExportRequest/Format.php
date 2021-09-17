@@ -20,4 +20,9 @@ class Format extends Enum
     {
         return (new static())->set(static::CSV);
     }
+
+    public function isCsv(): bool
+    {
+        return $this->is(static::CSV);
+    }
 }

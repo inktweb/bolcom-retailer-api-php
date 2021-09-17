@@ -22,8 +22,18 @@ class Type extends Enum
         return (new static())->set(static::UNKNOWN_FBB_PRODUCT);
     }
 
+    public function isUnknownFbbProduct(): bool
+    {
+        return $this->is(static::UNKNOWN_FBB_PRODUCT);
+    }
+
     public static function unknownEanInventoryRelation(): self
     {
         return (new static())->set(static::UNKNOWN_EAN_INVENTORY_RELATION);
+    }
+
+    public function isUnknownEanInventoryRelation(): bool
+    {
+        return $this->is(static::UNKNOWN_EAN_INVENTORY_RELATION);
     }
 }

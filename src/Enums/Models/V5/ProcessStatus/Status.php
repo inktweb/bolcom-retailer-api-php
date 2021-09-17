@@ -24,9 +24,19 @@ class Status extends Enum
         return (new static())->set(static::PENDING);
     }
 
+    public function isPending(): bool
+    {
+        return $this->is(static::PENDING);
+    }
+
     public static function success(): self
     {
         return (new static())->set(static::SUCCESS);
+    }
+
+    public function isSuccess(): bool
+    {
+        return $this->is(static::SUCCESS);
     }
 
     public static function failure(): self
@@ -34,8 +44,18 @@ class Status extends Enum
         return (new static())->set(static::FAILURE);
     }
 
+    public function isFailure(): bool
+    {
+        return $this->is(static::FAILURE);
+    }
+
     public static function timeout(): self
     {
         return (new static())->set(static::TIMEOUT);
+    }
+
+    public function isTimeout(): bool
+    {
+        return $this->is(static::TIMEOUT);
     }
 }

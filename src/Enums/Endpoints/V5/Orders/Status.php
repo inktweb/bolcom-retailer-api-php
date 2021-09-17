@@ -21,8 +21,18 @@ class Status extends Enum
         return (new static())->set(static::OPEN);
     }
 
+    public function isOpen(): bool
+    {
+        return $this->is(static::OPEN);
+    }
+
     public static function all(): self
     {
         return (new static())->set(static::ALL);
+    }
+
+    public function isAll(): bool
+    {
+        return $this->is(static::ALL);
     }
 }

@@ -22,8 +22,18 @@ class CollectionMethod extends Enum
         return (new static())->set(static::DROP_OFF);
     }
 
+    public function isDropOff(): bool
+    {
+        return $this->is(static::DROP_OFF);
+    }
+
     public static function pickUp(): self
     {
         return (new static())->set(static::PICK_UP);
+    }
+
+    public function isPickUp(): bool
+    {
+        return $this->is(static::PICK_UP);
     }
 }

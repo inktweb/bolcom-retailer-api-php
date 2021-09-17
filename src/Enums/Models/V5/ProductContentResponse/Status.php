@@ -29,9 +29,19 @@ class Status extends Enum
         return (new static())->set(static::VALIDATED_OK);
     }
 
+    public function isValidatedOk(): bool
+    {
+        return $this->is(static::VALIDATED_OK);
+    }
+
     public static function validatedWithAttributeFailures(): self
     {
         return (new static())->set(static::VALIDATED_WITH_ATTRIBUTE_FAILURES);
+    }
+
+    public function isValidatedWithAttributeFailures(): bool
+    {
+        return $this->is(static::VALIDATED_WITH_ATTRIBUTE_FAILURES);
     }
 
     public static function rejected(): self
@@ -39,8 +49,18 @@ class Status extends Enum
         return (new static())->set(static::REJECTED);
     }
 
+    public function isRejected(): bool
+    {
+        return $this->is(static::REJECTED);
+    }
+
     public static function rejectedWithAttributeFailures(): self
     {
         return (new static())->set(static::REJECTED_WITH_ATTRIBUTE_FAILURES);
+    }
+
+    public function isRejectedWithAttributeFailures(): bool
+    {
+        return $this->is(static::REJECTED_WITH_ATTRIBUTE_FAILURES);
     }
 }

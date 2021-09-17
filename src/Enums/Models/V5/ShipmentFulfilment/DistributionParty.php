@@ -22,8 +22,18 @@ class DistributionParty extends Enum
         return (new static())->set(static::RETAILER);
     }
 
+    public function isRetailer(): bool
+    {
+        return $this->is(static::RETAILER);
+    }
+
     public static function bol(): self
     {
         return (new static())->set(static::BOL);
+    }
+
+    public function isBol(): bool
+    {
+        return $this->is(static::BOL);
     }
 }
