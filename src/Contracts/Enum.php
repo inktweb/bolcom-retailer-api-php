@@ -42,11 +42,67 @@ abstract class Enum
         }
     }
 
+    public function add(string $value): self
+    {
+        return $this->set(
+            array_merge(
+                $this->values,
+                $value
+            )
+        );
+    }
+
     public function set(string ...$values): self
     {
         $this->validateValues($values);
         $this->values = $values;
         return $this;
+    }
+
+    public function get(): array
+    {
+        return $this->values;
+    }
+
+    /**
+     * The enum contains at least this value.
+     */
+    public function contains(string $value): bool
+    {
+        return in_array($value, $this->values, true);
+    }
+
+    /**
+     * The enum has only these values (in any order.)
+     */
+    public function has(string ...$values): bool
+    {
+        if (count($this->values) !== count($values)) {
+            return false;
+        }
+
+        return array_reduce(
+            $this->values,
+            function (bool $carry, string $value) use ($values) {
+                return $carry
+                    && in_array($value, $values, true);
+            },
+            true
+        );
+    }
+
+    /**
+     * The enum has only this value.
+     */
+    public function is(string $value): bool
+    {
+        return count($this->values) === 1
+            && $this->has($value);
+    }
+
+    public function isEmpty(): bool
+    {
+        return count($this->values) === 0;
     }
 
     protected function validateValues(array $values): void
