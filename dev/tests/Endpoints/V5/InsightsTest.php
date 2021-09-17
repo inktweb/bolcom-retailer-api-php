@@ -2,8 +2,8 @@
 
 namespace Inktweb\Bolcom\RetailerApi\Development\Tests\Endpoints\V5;
 
-use GuzzleHttp\Exception\ClientException;
-use Inktweb\Bolcom\RetailerApi\Enums\V5\Insights\Name;
+use Inktweb\Bolcom\RetailerApi\Enums\Endpoints\V5\Insights\Name;
+use Inktweb\Bolcom\RetailerApi\Models\V5\PerformanceIndicator;
 use Inktweb\Bolcom\RetailerApi\Models\V5\PerformanceIndicators;
 
 /**
@@ -23,5 +23,9 @@ class InsightsTest extends BaseTest
             ->getPerformanceIndicator(Name::returns(), 2021, 29);
 
         $this->assertInstanceOf(PerformanceIndicators::class, $indicators);
+
+        [$indicator] = $indicators->getPerformanceIndicators();
+
+        $this->assertInstanceOf(PerformanceIndicator::class, $indicator);
     }
 }

@@ -28,7 +28,17 @@ abstract class Model implements JsonSerializable
             $isBuiltin = $type instanceof ReflectionNamedType && $type->isBuiltin();
 
             if ($isBuiltin) {
-                $model->{$methodName}(...[$value]);
+                $model->{$methodName}($value);
+                continue;
+            }
+
+            if (is_string($value)) {
+                $enumClassName = $type->getName();
+
+                $model->{$methodName}(
+                    (new $enumClassName())->set($value)
+                );
+
                 continue;
             }
 
