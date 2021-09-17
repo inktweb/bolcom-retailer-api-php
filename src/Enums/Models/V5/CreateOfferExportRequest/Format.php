@@ -11,6 +11,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 
 class Format extends Enum
 {
+    protected const MAX_ITEMS = 1;
     public const CSV = 'CSV';
 
     protected $allowedValues = ['CSV'];

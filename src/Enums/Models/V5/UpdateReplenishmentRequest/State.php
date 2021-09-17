@@ -11,6 +11,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 
 class State extends Enum
 {
+    protected const MAX_ITEMS = 1;
     public const CANCELLED = 'CANCELLED';
 
     protected $allowedValues = ['CANCELLED'];

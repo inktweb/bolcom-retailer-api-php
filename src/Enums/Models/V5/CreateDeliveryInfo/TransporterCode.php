@@ -11,6 +11,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 
 class TransporterCode extends Enum
 {
+    protected const MAX_ITEMS = 1;
     public const POSTNL = 'POSTNL';
     public const DHL = 'DHL';
     public const DPD = 'DPD';

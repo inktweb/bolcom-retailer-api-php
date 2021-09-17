@@ -11,6 +11,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 
 class Category extends Enum
 {
+    protected const MAX_ITEMS = 1;
     public const NEW = 'NEW';
     public const SECONDHAND = 'SECONDHAND';
 

@@ -11,6 +11,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 
 class LabelFormat extends Enum
 {
+    protected const MAX_ITEMS = 1;
     public const AVERY_J8159 = 'AVERY_J8159';
     public const AVERY_J8160 = 'AVERY_J8160';
     public const AVERY_3474 = 'AVERY_3474';

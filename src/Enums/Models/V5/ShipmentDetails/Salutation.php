@@ -11,6 +11,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 
 class Salutation extends Enum
 {
+    protected const MAX_ITEMS = 1;
     public const MALE = 'MALE';
     public const FEMALE = 'FEMALE';
     public const UNKNOWN = 'UNKNOWN';

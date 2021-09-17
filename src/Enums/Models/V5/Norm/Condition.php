@@ -11,6 +11,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 
 class Condition extends Enum
 {
+    protected const MAX_ITEMS = 1;
     public const LESS_THAN_OR_EQUAL_TO = '<=';
     public const GREATER_THAN_OR_EQUAL_TO = '>=';
 

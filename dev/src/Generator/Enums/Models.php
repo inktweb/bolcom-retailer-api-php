@@ -39,7 +39,7 @@ class Models extends Base
                     $fieldName,
                     $fieldData['enum'],
                     $fieldData['minItems'] ?? ($required ? 1 : 0),
-                    $fieldData['maxItems'] ?? null,
+                    $fieldData['maxItems'] ?? ($fieldData['type'] === 'string' ? 1 : null),
                     $fieldData['uniqueItems'] ?? false,
                     $fieldData['collectionFormat'] ?? Enum\Constants::collectionFormat()
                 );

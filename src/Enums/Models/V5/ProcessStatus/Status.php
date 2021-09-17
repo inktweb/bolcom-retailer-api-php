@@ -11,6 +11,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 
 class Status extends Enum
 {
+    protected const MAX_ITEMS = 1;
     public const PENDING = 'PENDING';
     public const SUCCESS = 'SUCCESS';
     public const FAILURE = 'FAILURE';

@@ -11,6 +11,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 
 class DistributionParty extends Enum
 {
+    protected const MAX_ITEMS = 1;
     public const RETAILER = 'RETAILER';
     public const BOL = 'BOL';
 

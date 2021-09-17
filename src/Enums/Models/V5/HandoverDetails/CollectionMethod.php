@@ -11,6 +11,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 
 class CollectionMethod extends Enum
 {
+    protected const MAX_ITEMS = 1;
     public const DROP_OFF = 'DROP_OFF';
     public const PICK_UP = 'PICK_UP';
 

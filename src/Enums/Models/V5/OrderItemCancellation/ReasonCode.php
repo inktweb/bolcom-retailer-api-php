@@ -11,6 +11,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 
 class ReasonCode extends Enum
 {
+    protected const MAX_ITEMS = 1;
     public const OUT_OF_STOCK = 'OUT_OF_STOCK';
     public const REQUESTED_BY_CUSTOMER = 'REQUESTED_BY_CUSTOMER';
     public const BAD_CONDITION = 'BAD_CONDITION';

@@ -11,6 +11,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 
 class Type extends Enum
 {
+    protected const MAX_ITEMS = 1;
     public const UNKNOWN_FBB_PRODUCT = 'UNKNOWN_FBB_PRODUCT';
     public const UNKNOWN_EAN_INVENTORY_RELATION = 'UNKNOWN_EAN_INVENTORY_RELATION';
 

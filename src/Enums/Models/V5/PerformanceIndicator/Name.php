@@ -11,6 +11,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 
 class Name extends Enum
 {
+    protected const MAX_ITEMS = 1;
     public const CANCELLATIONS = 'CANCELLATIONS';
     public const FULFILMENT = 'FULFILMENT';
     public const PHONE_AVAILABILITY = 'PHONE_AVAILABILITY';

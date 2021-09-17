@@ -11,6 +11,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 
 class TimeFrameType extends Enum
 {
+    protected const MAX_ITEMS = 1;
     public const REGULAR = 'REGULAR';
     public const EVENING = 'EVENING';
     public const APPOINTMENT = 'APPOINTMENT';

@@ -11,6 +11,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 
 class TransportState extends Enum
 {
+    protected const MAX_ITEMS = 1;
     public const ANNOUNCED = 'ANNOUNCED';
     public const PICKED_UP = 'PICKED_UP';
     public const UNDERWAY = 'UNDERWAY';

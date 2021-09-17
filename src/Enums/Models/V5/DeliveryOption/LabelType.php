@@ -11,6 +11,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 
 class LabelType extends Enum
 {
+    protected const MAX_ITEMS = 1;
     public const PARCEL = 'PARCEL';
     public const MAILBOX = 'MAILBOX';
     public const MAILBOX_LIGHT = 'MAILBOX_LIGHT';

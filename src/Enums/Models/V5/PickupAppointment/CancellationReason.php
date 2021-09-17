@@ -11,6 +11,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 
 class CancellationReason extends Enum
 {
+    protected const MAX_ITEMS = 1;
     public const UNKNOWN_ADDRESS = 'UNKNOWN_ADDRESS';
     public const NOT_READY = 'NOT_READY';
     public const NO_LABEL = 'NO_LABEL';

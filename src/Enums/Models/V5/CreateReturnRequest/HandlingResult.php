@@ -11,6 +11,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 
 class HandlingResult extends Enum
 {
+    protected const MAX_ITEMS = 1;
     public const RETURN_RECEIVED = 'RETURN_RECEIVED';
     public const EXCHANGE_PRODUCT = 'EXCHANGE_PRODUCT';
     public const RETURN_DOES_NOT_MEET_CONDITIONS = 'RETURN_DOES_NOT_MEET_CONDITIONS';

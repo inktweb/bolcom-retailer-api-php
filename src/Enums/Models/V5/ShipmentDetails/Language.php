@@ -11,6 +11,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 
 class Language extends Enum
 {
+    protected const MAX_ITEMS = 1;
     public const NL = 'nl';
     public const NL_BE = 'nl-BE';
     public const FR = 'fr';

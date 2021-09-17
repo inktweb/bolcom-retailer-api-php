@@ -11,6 +11,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 
 class Status extends Enum
 {
+    protected const MAX_ITEMS = 1;
     public const VALIDATED_OK = 'VALIDATED_OK';
     public const VALIDATED_WITH_ATTRIBUTE_FAILURES = 'VALIDATED_WITH_ATTRIBUTE_FAILURES';
     public const REJECTED = 'REJECTED';

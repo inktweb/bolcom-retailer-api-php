@@ -11,6 +11,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 
 class Method extends Enum
 {
+    protected const MAX_ITEMS = 1;
     public const FBR = 'FBR';
     public const FBB = 'FBB';
 

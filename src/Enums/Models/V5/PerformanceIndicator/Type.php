@@ -11,6 +11,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 
 class Type extends Enum
 {
+    protected const MAX_ITEMS = 1;
     public const PERCENTAGE = 'PERCENTAGE';
     public const AVERAGE = 'AVERAGE';
 

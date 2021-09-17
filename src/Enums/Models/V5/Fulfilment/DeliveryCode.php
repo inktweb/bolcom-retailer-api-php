@@ -11,6 +11,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 
 class DeliveryCode extends Enum
 {
+    protected const MAX_ITEMS = 1;
     public const DELIVERYCODE_24UURS_23 = '24uurs-23';
     public const DELIVERYCODE_24UURS_22 = '24uurs-22';
     public const DELIVERYCODE_24UURS_21 = '24uurs-21';

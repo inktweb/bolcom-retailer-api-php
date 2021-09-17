@@ -11,6 +11,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 
 class LineState extends Enum
 {
+    protected const MAX_ITEMS = 1;
     public const ANNOUNCED = 'ANNOUNCED';
     public const UNANNOUNCED = 'UNANNOUNCED';
     public const UNKNOWN = 'UNKNOWN';
