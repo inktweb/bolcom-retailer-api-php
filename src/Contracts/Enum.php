@@ -7,8 +7,9 @@ use Inktweb\Bolcom\RetailerApi\Exceptions\Enum\MinItemsException;
 use Inktweb\Bolcom\RetailerApi\Exceptions\Enum\InvalidEnumValueException;
 use Inktweb\Bolcom\RetailerApi\Exceptions\Enum\UniqueItemsException;
 use Inktweb\Bolcom\RetailerApi\Exceptions\Enum\UnknownCollectionFormatException;
+use JsonSerializable;
 
-abstract class Enum
+abstract class Enum implements JsonSerializable
 {
     protected const COLLECTION_FORMAT_CSV = 'csv';
     protected const COLLECTION_FORMAT_SSV = 'ssv';
@@ -147,5 +148,10 @@ abstract class Enum
         throw new UnknownCollectionFormatException(
             "The collection format '{$collectionFormat}' is is unknown or not implemented."
         );
+    }
+
+    public function jsonSerialize(): string
+    {
+        return implode(' ', $this->compile());
     }
 }
