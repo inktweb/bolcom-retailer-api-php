@@ -38,7 +38,13 @@ class Config
 
         $this->setDemoMode($demoMode);
 
-        $this->setCache(new Psr16Cache(new FilesystemAdapter()));
+        $this->setCache(
+            new Psr16Cache(
+                new FilesystemAdapter(
+                    sha1($clientId . $clientSecret)
+                )
+            )
+        );
     }
 
     public function getClientId(): string
