@@ -61,7 +61,8 @@ abstract class Endpoint
         $contentType = trim($contentType);
 
         if ($responseContentTypes !== null && !in_array($contentType, $responseContentTypes)) {
-            throw new UnexpectedResponseContentTypeException();
+            throw (new UnexpectedResponseContentTypeException("Unexpected response content type: '{$contentType}'"))
+                ->setResponse($response);
         }
 
         return $response;
