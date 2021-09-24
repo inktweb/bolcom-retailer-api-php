@@ -51,7 +51,7 @@ final class Inventory extends Endpoint
                 [
                 400 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 }

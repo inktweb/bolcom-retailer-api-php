@@ -47,7 +47,7 @@ final class Insights extends Endpoint
                 [
                 400 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 
@@ -78,7 +78,7 @@ final class Insights extends Endpoint
                 [
                 400 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 
@@ -109,7 +109,7 @@ final class Insights extends Endpoint
                 [
                 400 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 
@@ -149,7 +149,7 @@ final class Insights extends Endpoint
                 [
                 400 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 }

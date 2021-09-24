@@ -9,6 +9,7 @@ namespace Inktweb\Bolcom\RetailerApi\Endpoints\V5;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Endpoint;
 use Inktweb\Bolcom\RetailerApi\Models\V5\Problem;
+use Psr\Http\Message\StreamInterface;
 
 final class Invoices extends Endpoint
 {
@@ -25,7 +26,7 @@ final class Invoices extends Endpoint
      * listed per invoice within the response. Note: the media types listed
      * in the response must be given in our standard API format.
      */
-    public function getInvoices(?string $periodStartDate = null, ?string $periodEndDate = null): array
+    public function getInvoices(?string $periodStartDate = null, ?string $periodEndDate = null): StreamInterface
     {
         return
             $this->request(
@@ -46,8 +47,7 @@ final class Invoices extends Endpoint
                 [
                 400 => Problem::class,
                 ]
-            )
-        ;
+            )->getBody();
     }
 
     /**
@@ -58,7 +58,7 @@ final class Invoices extends Endpoint
      * call. Note: the media types listed in the response must be given in
      * our standard API format.
      */
-    public function getInvoice(string $invoiceId): array
+    public function getInvoice(string $invoiceId): StreamInterface
     {
         return
             $this->request(
@@ -71,6 +71,7 @@ final class Invoices extends Endpoint
                 null,
                 [
                 'application/vnd.retailer.v5+json',
+                'application/vnd.retailer.v5+pdf',
                 ],
                 [
                 'application/vnd.retailer.v5+json',
@@ -79,8 +80,7 @@ final class Invoices extends Endpoint
                 [
                 400 => Problem::class,
                 ]
-            )
-        ;
+            )->getBody();
     }
 
     /**
@@ -92,7 +92,7 @@ final class Invoices extends Endpoint
      * invoices’ call. Note, the media types listed in the response must be
      * given in our standard API format.
      */
-    public function getInvoiceSpecification(string $invoiceId, ?int $page = null): array
+    public function getInvoiceSpecification(string $invoiceId, ?int $page = null): StreamInterface
     {
         return
             $this->request(
@@ -107,6 +107,8 @@ final class Invoices extends Endpoint
                 null,
                 [
                 'application/vnd.retailer.v5+json',
+                'application/vnd.retailer.v5+pdf',
+                'application/vnd.retailer.v5+openxmlformats-officedocument.spreadsheetml.sheet',
                 ],
                 [
                 'application/vnd.retailer.v5+json',
@@ -116,7 +118,6 @@ final class Invoices extends Endpoint
                 [
                 400 => Problem::class,
                 ]
-            )
-        ;
+            )->getBody();
     }
 }

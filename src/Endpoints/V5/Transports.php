@@ -43,7 +43,7 @@ final class Transports extends Endpoint
                 [
                 400 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 }

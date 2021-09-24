@@ -16,6 +16,7 @@ use Inktweb\Bolcom\RetailerApi\Models\V5\RetailerOffer;
 use Inktweb\Bolcom\RetailerApi\Models\V5\UpdateOfferPriceRequest;
 use Inktweb\Bolcom\RetailerApi\Models\V5\UpdateOfferRequest;
 use Inktweb\Bolcom\RetailerApi\Models\V5\UpdateOfferStockRequest;
+use Psr\Http\Message\StreamInterface;
 
 final class Offers extends Endpoint
 {
@@ -44,7 +45,7 @@ final class Offers extends Endpoint
                 [
                 400 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 
@@ -71,7 +72,7 @@ final class Offers extends Endpoint
                 [
                 400 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 
@@ -80,9 +81,9 @@ final class Offers extends Endpoint
      *
      * Retrieve an offer export file containing all offers.
      */
-    public function getOfferExport(string $reportId): string
+    public function getOfferExport(string $reportId): StreamInterface
     {
-        return (string)
+        return
             $this->request(
                 'get',
                 'offers/export/{report-id}',
@@ -92,7 +93,7 @@ final class Offers extends Endpoint
                 [],
                 null,
                 [
-                'application/vnd.retailer.v5+json',
+                'application/vnd.retailer.v5+csv',
                 ],
                 [
                 'application/vnd.retailer.v5+csv',
@@ -101,8 +102,7 @@ final class Offers extends Endpoint
                 400 => Problem::class,
                 404 => Problem::class,
                 ]
-            )
-        ;
+            )->getBody();
     }
 
     /**
@@ -131,7 +131,7 @@ final class Offers extends Endpoint
                 [
                 404 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 
@@ -161,7 +161,7 @@ final class Offers extends Endpoint
                 [
                 400 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 
@@ -190,7 +190,7 @@ final class Offers extends Endpoint
                 [
                 400 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 
@@ -219,7 +219,7 @@ final class Offers extends Endpoint
                 [
                 400 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 
@@ -248,7 +248,7 @@ final class Offers extends Endpoint
                 [
                 400 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 }

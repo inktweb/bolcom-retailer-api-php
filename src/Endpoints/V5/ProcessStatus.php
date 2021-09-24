@@ -53,7 +53,7 @@ final class ProcessStatus extends Endpoint
                 [
                 400 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 
@@ -87,7 +87,7 @@ final class ProcessStatus extends Endpoint
                 [
                 400 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 
@@ -124,7 +124,7 @@ final class ProcessStatus extends Endpoint
                 [
                 404 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 }

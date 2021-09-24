@@ -6,6 +6,7 @@ use GuzzleHttp\RequestOptions;
 use Inktweb\Bolcom\RetailerApi\Client\JsonResponse;
 use Inktweb\Bolcom\RetailerApi\Exceptions\ApiException;
 use Inktweb\Bolcom\RetailerApi\Exceptions\UnexpectedResponseContentTypeException;
+use Psr\Http\Message\ResponseInterface;
 
 abstract class Endpoint
 {
@@ -23,10 +24,10 @@ abstract class Endpoint
         array $pathParameters,
         array $queryParameters,
         ?Model $body,
-        array $acceptedContentTypes,
+        ?array $acceptedContentTypes,
         ?array $responseContentTypes,
         array $errorResponseModels
-    ): array {
+    ): ResponseInterface {
         try {
             $response = $this->client->request(
                 $method,
@@ -36,7 +37,7 @@ abstract class Endpoint
                         ? null
                         : json_encode($body),
                     RequestOptions::HEADERS => [
-                        'Accept' => $acceptedContentTypes,
+                        'Accept' => $acceptedContentTypes ?: '*/*',
                     ],
                 ]
             );
@@ -63,9 +64,7 @@ abstract class Endpoint
             throw new UnexpectedResponseContentTypeException();
         }
 
-        /** @var JsonResponse $body */
-        $body = $response->getBody();
-        return $body->getJson();
+        return $response;
     }
 
     protected function compileUri(string $uri, array $pathParameters, array $queryParameters): string

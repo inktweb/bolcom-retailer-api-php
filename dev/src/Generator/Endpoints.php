@@ -16,6 +16,7 @@ use Inktweb\Bolcom\RetailerApi\Development\Exceptions\UnsupportedParameterTypeEx
 use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\Method;
 use Nette\PhpGenerator\Type;
+use Psr\Http\Message\StreamInterface;
 
 class Endpoints extends Base
 {
@@ -238,19 +239,20 @@ class Endpoints extends Base
         $queryParameters = $this->getParameters('query', $parameters);
         $bodyParameters = $this->getParameters('body', $parameters);
 
-        $requestHeaders = $this->getArray($data['consumes'] ?? [$this->defaultContentType]);
-        $responseHeaders = $this->getArray($data['produces'] ?? null);
+        $produces = $data['produces'] ?? null;
+        $responseHeaders = $this->getArray($produces);
+        $requestHeaders = $this->getArray($data['consumes'] ?? $produces);
 
         $errorResponsesArray = $this->getErrorResponseExport($errorResponses);
 
         $returnType = $method->getReturnType();
         if (strpos($returnType, '\\') !== false) {
             $prepend = "\\$returnType::fromArray(";
-            $append = ")";
+            $append = "->getJson()\n)";
         } else {
-            $prepend = $returnType === 'array'
-                ? ""
-                : "($returnType)";
+            $method->setReturnType(StreamInterface::class);
+            $this->uses->add(StreamInterface::class);
+            $prepend = "";
             $append = "";
         }
 
@@ -265,8 +267,7 @@ return {$prepend}
         $requestHeaders,
         $responseHeaders,
         $errorResponsesArray
-    )
-$append;
+    )->getBody(){$append};
 CODE;
     }
 

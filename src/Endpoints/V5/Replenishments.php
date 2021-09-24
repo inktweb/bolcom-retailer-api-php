@@ -18,6 +18,7 @@ use Inktweb\Bolcom\RetailerApi\Models\V5\ProductLabelsRequest;
 use Inktweb\Bolcom\RetailerApi\Models\V5\ReplenishmentResponse;
 use Inktweb\Bolcom\RetailerApi\Models\V5\ReplenishmentsResponse;
 use Inktweb\Bolcom\RetailerApi\Models\V5\UpdateReplenishmentRequest;
+use Psr\Http\Message\StreamInterface;
 
 final class Replenishments extends Endpoint
 {
@@ -57,7 +58,7 @@ final class Replenishments extends Endpoint
                 [
                 400 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 
@@ -84,7 +85,7 @@ final class Replenishments extends Endpoint
                 [
                 400 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 
@@ -111,7 +112,7 @@ final class Replenishments extends Endpoint
                 [
                 400 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 
@@ -120,7 +121,7 @@ final class Replenishments extends Endpoint
      *
      * Retrieve product labels.
      */
-    public function postProductLabels(ProductLabelsRequest $body): array
+    public function postProductLabels(ProductLabelsRequest $body): StreamInterface
     {
         return
             $this->request(
@@ -139,8 +140,7 @@ final class Replenishments extends Endpoint
                 400 => Problem::class,
                 404 => Problem::class,
                 ]
-            )
-        ;
+            )->getBody();
     }
 
     /**
@@ -169,7 +169,7 @@ final class Replenishments extends Endpoint
                 400 => Problem::class,
                 404 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 
@@ -198,7 +198,7 @@ final class Replenishments extends Endpoint
                 [
                 400 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 
@@ -207,7 +207,7 @@ final class Replenishments extends Endpoint
      *
      * Retrieve the load carrier labels.
      */
-    public function getLoadCarrierLabels(string $replenishmentId, LabelType $labelType): array
+    public function getLoadCarrierLabels(string $replenishmentId, LabelType $labelType): StreamInterface
     {
         return
             $this->request(
@@ -221,7 +221,7 @@ final class Replenishments extends Endpoint
                 ],
                 null,
                 [
-                'application/vnd.retailer.v5+json',
+                'application/vnd.retailer.v5+pdf',
                 ],
                 [
                 'application/vnd.retailer.v5+pdf',
@@ -230,8 +230,7 @@ final class Replenishments extends Endpoint
                 400 => Problem::class,
                 404 => Problem::class,
                 ]
-            )
-        ;
+            )->getBody();
     }
 
     /**
@@ -239,7 +238,7 @@ final class Replenishments extends Endpoint
      *
      * Retrieve the pick list.
      */
-    public function getPickList(string $replenishmentId): array
+    public function getPickList(string $replenishmentId): StreamInterface
     {
         return
             $this->request(
@@ -251,7 +250,7 @@ final class Replenishments extends Endpoint
                 [],
                 null,
                 [
-                'application/vnd.retailer.v5+json',
+                'application/vnd.retailer.v5+pdf',
                 ],
                 [
                 'application/vnd.retailer.v5+pdf',
@@ -260,7 +259,6 @@ final class Replenishments extends Endpoint
                 400 => Problem::class,
                 404 => Problem::class,
                 ]
-            )
-        ;
+            )->getBody();
     }
 }

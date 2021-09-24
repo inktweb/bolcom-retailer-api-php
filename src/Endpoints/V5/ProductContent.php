@@ -38,7 +38,7 @@ final class ProductContent extends Endpoint
                 [
                 400 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 
@@ -68,7 +68,7 @@ final class ProductContent extends Endpoint
                 [
                 404 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 }

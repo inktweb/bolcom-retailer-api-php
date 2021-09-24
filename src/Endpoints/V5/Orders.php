@@ -48,7 +48,7 @@ final class Orders extends Endpoint
                 'application/vnd.retailer.v5+json',
                 ],
                 []
-            )
+            )->getBody()->getJson()
         );
     }
 
@@ -77,7 +77,7 @@ final class Orders extends Endpoint
                 [
                 400 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 
@@ -108,7 +108,7 @@ final class Orders extends Endpoint
                 [
                 400 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 
@@ -139,7 +139,7 @@ final class Orders extends Endpoint
                 [
                 404 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 }

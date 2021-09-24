@@ -13,6 +13,7 @@ use Inktweb\Bolcom\RetailerApi\Models\V5\DeliveryOptionsResponse;
 use Inktweb\Bolcom\RetailerApi\Models\V5\Problem;
 use Inktweb\Bolcom\RetailerApi\Models\V5\ProcessStatus;
 use Inktweb\Bolcom\RetailerApi\Models\V5\ShippingLabelRequest;
+use Psr\Http\Message\StreamInterface;
 
 final class ShippingLabels extends Endpoint
 {
@@ -40,7 +41,7 @@ final class ShippingLabels extends Endpoint
                 [
                 400 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 
@@ -70,7 +71,7 @@ final class ShippingLabels extends Endpoint
                 400 => Problem::class,
                 404 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 
@@ -82,7 +83,7 @@ final class ShippingLabels extends Endpoint
      * interested in the metadata, you can do a HEAD request to retrieve only
      * the headers without the label data.
      */
-    public function getShippingLabel(string $shippingLabelId): array
+    public function getShippingLabel(string $shippingLabelId): StreamInterface
     {
         return
             $this->request(
@@ -94,7 +95,7 @@ final class ShippingLabels extends Endpoint
                 [],
                 null,
                 [
-                'application/vnd.retailer.v5+json',
+                'application/vnd.retailer.v5+pdf',
                 ],
                 [
                 'application/vnd.retailer.v5+pdf',
@@ -103,7 +104,6 @@ final class ShippingLabels extends Endpoint
                 400 => Problem::class,
                 404 => Problem::class,
                 ]
-            )
-        ;
+            )->getBody();
     }
 }

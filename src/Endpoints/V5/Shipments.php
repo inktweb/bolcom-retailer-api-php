@@ -46,7 +46,7 @@ final class Shipments extends Endpoint
                 [
                 400 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 
@@ -75,7 +75,7 @@ final class Shipments extends Endpoint
                 [
                 404 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 }

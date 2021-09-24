@@ -41,7 +41,7 @@ final class Commissions extends Endpoint
                 400 => Problem::class,
                 404 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 
@@ -75,7 +75,7 @@ final class Commissions extends Endpoint
                 400 => Problem::class,
                 404 => Problem::class,
                 ]
-            )
+            )->getBody()->getJson()
         );
     }
 }
