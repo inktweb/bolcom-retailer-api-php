@@ -72,6 +72,10 @@ abstract class Model implements JsonSerializable
 
             $value = $this->{"get{$key}"}();
 
+            if (empty($value)) {
+                continue;
+            }
+
             $toSerialize[$key] = $value;
         }
 
