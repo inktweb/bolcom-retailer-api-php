@@ -91,6 +91,10 @@ abstract class Endpoint
         $parameters = [];
 
         foreach ($queryParameters as $name => $value) {
+            if ($value === null) {
+                continue;
+            }
+
             if ($value instanceof Enum) {
                 $encodedName = urlencode($name);
 
