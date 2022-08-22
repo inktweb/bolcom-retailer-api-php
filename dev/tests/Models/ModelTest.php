@@ -3,6 +3,7 @@
 namespace Inktweb\Bolcom\RetailerApi\Development\Tests\Models;
 
 use Exception;
+use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 use Inktweb\Bolcom\RetailerApi\Development\Concerns\CheckSwaggerVersion;
 use Inktweb\Bolcom\RetailerApi\Development\Concerns\GetApiSpec;
@@ -97,7 +98,14 @@ class ModelTest extends TestCase
             $getter = "get{$key}";
 
             if (!is_array($value)) {
-                $this->assertEquals($value, $class->{$getter}());
+                $result = $class->{$getter}();
+
+                if ($result instanceof Enum) {
+                    $this->assertTrue($result->is($value));
+                    continue;
+                }
+
+                $this->assertEquals($value, $result);
                 continue;
             }
 
