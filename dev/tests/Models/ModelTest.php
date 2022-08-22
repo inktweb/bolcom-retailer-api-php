@@ -10,7 +10,9 @@ use Inktweb\Bolcom\RetailerApi\Development\Concerns\GetApiSpec;
 use Inktweb\Bolcom\RetailerApi\Development\Concerns\GetApiVersion;
 use Inktweb\Bolcom\RetailerApi\Development\Concerns\GetClassName;
 use Inktweb\Bolcom\RetailerApi\Development\Config;
+use JsonException;
 use PHPUnit\Framework\TestCase;
+use RuntimeException;
 
 /**
  * @coversDefaultClass \Inktweb\Bolcom\RetailerApi\Contracts\Model
@@ -56,7 +58,7 @@ class ModelTest extends TestCase
 
         foreach ($properties as $key => $value) {
             if (isset($value['example'])) {
-                $data[$key] = $value['example'];
+                $data[$key] = $this->castToType($value['type'], $value['example']);
                 continue;
             }
 
@@ -117,8 +119,48 @@ class ModelTest extends TestCase
             }
 
             foreach ($value as $arrayKey => $arrayValue) {
-                $this->assertArrayEqualsObject($objects[$arrayKey], $arrayValue);
+                if ($objects[$arrayKey] instanceof Model) {
+                    $this->assertArrayEqualsObject($objects[$arrayKey], $arrayValue);
+                } else {
+                    $this->assertEquals($objects[$arrayKey], $arrayValue);
+                }
             }
+        }
+    }
+
+    protected function castToType(string $type, string $data)
+    {
+        switch ($type) {
+            case 'string':
+                return $data;
+
+            case 'number':
+                // no break
+            case 'integer':
+                return (int)$data;
+
+            case 'boolean':
+                return (bool)$data;
+
+            case 'array':
+                try {
+                    return json_decode($data, null, 512, JSON_THROW_ON_ERROR);
+                } catch (JsonException $e) {
+                    try {
+                        return json_decode(
+                            str_replace("'", '"', $data),
+                            null,
+                            512,
+                            JSON_THROW_ON_ERROR
+                        );
+                    } catch (JsonException $e) {
+                        return [$data];
+                    }
+                }
+                // no break
+
+            default:
+                throw new RuntimeException("Unknown casting type: {$type}");
         }
     }
 }
