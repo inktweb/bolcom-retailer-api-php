@@ -273,12 +273,15 @@ CODE;
 
     protected function getParameters(string $in, ?array $parameters): string
     {
+        $isBody = $in === 'body';
+
         if (empty($parameters)) {
-            return '[]';
+            return $isBody
+                ? 'null'
+                : '[]';
         }
 
         $result = [];
-        $isBody = $in === 'body';
 
         foreach ($parameters as $parameter) {
             if ($parameter['in'] !== $in) {
