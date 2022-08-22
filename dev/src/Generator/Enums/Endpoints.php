@@ -21,6 +21,10 @@ class Endpoints extends Base
 
         foreach ($data as $methods) {
             foreach ($methods as $endpoint) {
+                if (!isset($endpoint['parameters'])) {
+                    continue;
+                }
+
                 foreach ($endpoint['parameters'] as $parameter) {
                     $namespace = $this->getClassName($endpoint['tags'][0]);
                     $name = $parameter['name'];
