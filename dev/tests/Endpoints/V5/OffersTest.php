@@ -18,6 +18,9 @@ use Inktweb\Bolcom\RetailerApi\Models\V5\StockCreate;
  */
 class OffersTest extends BaseTest
 {
+    /**
+     * @covers ::postOffer
+     */
     public function testPostOffer(): void
     {
         $processStatus = $this->getClient()
