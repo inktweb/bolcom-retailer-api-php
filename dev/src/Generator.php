@@ -32,7 +32,7 @@ class Generator
     {
         $this->checkSwaggerVersion($apiSpec['swagger'] ?? null);
 
-        $apiVersion = $this->getApiVersion($apiSpec['info']['version'] ?? null);
+        $apiVersion = $this->getApiVersion(intval($apiSpec['info']['version'] ?? null));
 
         $modelEnums = new Enums\Models($apiVersion, $apiSpec['definitions'] ?? null);
         $models = new Models($apiVersion, $apiSpec['definitions'] ?? null, $modelEnums);

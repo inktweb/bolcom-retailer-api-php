@@ -32,7 +32,7 @@ class ModelTest extends TestCase
         foreach ($this->getApiSpec() as $apiSpec) {
             $this->checkSwaggerVersion($apiSpec['swagger'] ?? null);
 
-            $apiVersion = $this->getApiVersion($apiSpec['info']['version'] ?? null);
+            $apiVersion = $this->getApiVersion(intval($apiSpec['info']['version'] ?? null));
 
             $path = Config::MODELS_PATH . DIRECTORY_SEPARATOR . $apiVersion;
             $namespace = Config::MODELS_NAMESPACE . '\\' . $apiVersion;
