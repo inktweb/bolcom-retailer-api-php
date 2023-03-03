@@ -7,135 +7,34 @@
 
 namespace Inktweb\Bolcom\RetailerApi\Clients\V7;
 
+use Inktweb\Bolcom\RetailerApi\Apis\V7\Advertiser;
+use Inktweb\Bolcom\RetailerApi\Apis\V7\Retailer;
+use Inktweb\Bolcom\RetailerApi\Apis\V7\Shared;
 use Inktweb\Bolcom\RetailerApi\Contracts\Client as ClientContract;
-use Inktweb\Bolcom\RetailerApi\Endpoints\V7\Commissions;
-use Inktweb\Bolcom\RetailerApi\Endpoints\V7\Insights;
-use Inktweb\Bolcom\RetailerApi\Endpoints\V7\Inventory;
-use Inktweb\Bolcom\RetailerApi\Endpoints\V7\Invoices;
-use Inktweb\Bolcom\RetailerApi\Endpoints\V7\Offers;
-use Inktweb\Bolcom\RetailerApi\Endpoints\V7\Orders;
-use Inktweb\Bolcom\RetailerApi\Endpoints\V7\ProductContent;
-use Inktweb\Bolcom\RetailerApi\Endpoints\V7\Promotions;
-use Inktweb\Bolcom\RetailerApi\Endpoints\V7\Replenishments;
-use Inktweb\Bolcom\RetailerApi\Endpoints\V7\Returns;
-use Inktweb\Bolcom\RetailerApi\Endpoints\V7\Shipments;
-use Inktweb\Bolcom\RetailerApi\Endpoints\V7\ShippingLabels;
-use Inktweb\Bolcom\RetailerApi\Endpoints\V7\Subscriptions;
-use Inktweb\Bolcom\RetailerApi\Endpoints\V7\Transports;
 
 final class Client extends ClientContract
 {
     protected const DEFAULT_CONTENT_TYPE = 'application/vnd.retailer.v7+json';
 
-    /** @var Commissions */
-    protected $commissions;
+    protected Advertiser $advertiser;
+    protected Retailer $retailer;
+    protected Shared $shared;
 
-    /** @var ProductContent */
-    protected $productContent;
-
-    /** @var Insights */
-    protected $insights;
-
-    /** @var Inventory */
-    protected $inventory;
-
-    /** @var Invoices */
-    protected $invoices;
-
-    /** @var Offers */
-    protected $offers;
-
-    /** @var Orders */
-    protected $orders;
-
-    /** @var Promotions */
-    protected $promotions;
-
-    /** @var Replenishments */
-    protected $replenishments;
-
-    /** @var Returns */
-    protected $returns;
-
-    /** @var Shipments */
-    protected $shipments;
-
-    /** @var ShippingLabels */
-    protected $shippingLabels;
-
-    /** @var Subscriptions */
-    protected $subscriptions;
-
-    /** @var Transports */
-    protected $transports;
-
-    public function commissions(): Commissions
+    public function advertiser(): Advertiser
     {
-        return $this->commissions ?? $this->commissions = new Commissions($this);
+        return $this->advertiser
+            ?? $this->advertiser = new Advertiser($this);
     }
 
-    public function productContent(): ProductContent
+    public function retailer(): Retailer
     {
-        return $this->productContent ?? $this->productContent = new ProductContent($this);
+        return $this->retailer
+            ?? $this->retailer = new Retailer($this);
     }
 
-    public function insights(): Insights
+    public function shared(): Shared
     {
-        return $this->insights ?? $this->insights = new Insights($this);
-    }
-
-    public function inventory(): Inventory
-    {
-        return $this->inventory ?? $this->inventory = new Inventory($this);
-    }
-
-    public function invoices(): Invoices
-    {
-        return $this->invoices ?? $this->invoices = new Invoices($this);
-    }
-
-    public function offers(): Offers
-    {
-        return $this->offers ?? $this->offers = new Offers($this);
-    }
-
-    public function orders(): Orders
-    {
-        return $this->orders ?? $this->orders = new Orders($this);
-    }
-
-    public function promotions(): Promotions
-    {
-        return $this->promotions ?? $this->promotions = new Promotions($this);
-    }
-
-    public function replenishments(): Replenishments
-    {
-        return $this->replenishments ?? $this->replenishments = new Replenishments($this);
-    }
-
-    public function returns(): Returns
-    {
-        return $this->returns ?? $this->returns = new Returns($this);
-    }
-
-    public function shipments(): Shipments
-    {
-        return $this->shipments ?? $this->shipments = new Shipments($this);
-    }
-
-    public function shippingLabels(): ShippingLabels
-    {
-        return $this->shippingLabels ?? $this->shippingLabels = new ShippingLabels($this);
-    }
-
-    public function subscriptions(): Subscriptions
-    {
-        return $this->subscriptions ?? $this->subscriptions = new Subscriptions($this);
-    }
-
-    public function transports(): Transports
-    {
-        return $this->transports ?? $this->transports = new Transports($this);
+        return $this->shared
+            ?? $this->shared = new Shared($this);
     }
 }
