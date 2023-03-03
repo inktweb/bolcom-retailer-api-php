@@ -1,7 +1,7 @@
 {
   "swagger" : "2.0",
   "host": "api.bol.com",
-  "schemes": ["https"], 
+  "schemes": ["https"],
   "info" : {
     "description" : "The bol.com API for advertisers.",
     "version" : "7.x",
@@ -2153,7 +2153,7 @@
         },
         "keywordMatchType" : {
           "type" : "string",
-          "example" : "exact",
+          "example" : "EXACT",
           "description" : "The match type that relates the keyword and the search term.",
           "enum" : [ "EXACT", "PHRASE" ]
         }
@@ -2384,7 +2384,7 @@
       "properties" : {
         "state" : {
           "type" : "string",
-          "example" : "ACCOUNT_OUT_OF_BUDGET",
+          "example" : "PAUSED",
           "description" : "The current state of the target product.",
           "enum" : [ "ENABLED", "PAUSED", "ARCHIVED" ]
         },

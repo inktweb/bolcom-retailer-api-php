@@ -7,7 +7,6 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 use Inktweb\Bolcom\RetailerApi\Development\Concerns\CheckSwaggerVersion;
 use Inktweb\Bolcom\RetailerApi\Development\Concerns\GetApiSpec;
-use Inktweb\Bolcom\RetailerApi\Development\Concerns\GetApiVersion;
 use Inktweb\Bolcom\RetailerApi\Development\Concerns\GetClassName;
 use Inktweb\Bolcom\RetailerApi\Development\Config;
 use JsonException;
@@ -21,7 +20,6 @@ class ModelTest extends TestCase
 {
     use GetApiSpec;
     use CheckSwaggerVersion;
-    use GetApiVersion;
     use GetClassName;
 
     /**
@@ -29,25 +27,27 @@ class ModelTest extends TestCase
      */
     public function testModel(): void
     {
-        foreach ($this->getApiSpec() as $apiSpec) {
-            $this->checkSwaggerVersion($apiSpec['swagger'] ?? null);
+        foreach ($this->getApiSpec() as $spec) {
+            $apiVersion = $spec['version'];
 
-            $apiVersion = $this->getApiVersion(intval($apiSpec['info']['version'] ?? null));
+            foreach ($spec['namespaces'] as $apiNamespace => $apiSpec) {
+                $this->checkSwaggerVersion($apiSpec['swagger'] ?? null);
 
-            $path = Config::MODELS_PATH . DIRECTORY_SEPARATOR . $apiVersion;
-            $namespace = Config::MODELS_NAMESPACE . '\\' . $apiVersion;
+                $path = Config::MODELS_PATH . DIRECTORY_SEPARATOR . $apiVersion;
+                $namespace = Config::MODELS_NAMESPACE . '\\' . $apiVersion . '\\' . $apiNamespace;
 
-            $this->assertDirectoryExists($path);
+                $this->assertDirectoryExists($path);
 
-            foreach ($apiSpec['definitions'] as $definition => $data) {
-                $className = $this->getClassName($definition);
-                $className = "{$namespace}\\{$className}";
-                $exampleData = $this->getExampleData($data['properties'], $apiSpec['definitions']);
+                foreach ($apiSpec['definitions'] as $definition => $data) {
+                    $className = $this->getClassName($definition);
+                    $className = "{$namespace}\\{$className}";
+                    $exampleData = $this->getExampleData($data['properties'], $apiSpec['definitions']);
 
-                /** @noinspection PhpUndefinedMethodInspection */
-                $class = $className::fromArray($exampleData);
+                    /** @noinspection PhpUndefinedMethodInspection */
+                    $class = $className::fromArray($exampleData);
 
-                $this->assertArrayEqualsObject($class, $exampleData);
+                    $this->assertArrayEqualsObject($class, $exampleData);
+                }
             }
         }
     }

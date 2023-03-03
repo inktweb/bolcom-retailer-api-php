@@ -1,7 +1,7 @@
 {
   "swagger" : "2.0",
   "host": "api.bol.com",
-  "schemes": ["https"], 
+  "schemes": ["https"],
   "info" : {
     "description" : "The bol.com API for advertisers.",
     "version" : "8.x",
@@ -2153,7 +2153,7 @@
         },
         "keywordMatchType" : {
           "type" : "string",
-          "example" : "exact",
+          "example" : "EXACT",
           "description" : "The match type that relates the keyword and the search term.",
           "enum" : [ "EXACT", "PHRASE" ]
         }
