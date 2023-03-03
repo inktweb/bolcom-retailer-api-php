@@ -7,8 +7,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Client;
 
 abstract class TestCaseWithClient extends TestCaseWithEnvironment
 {
-    /** @var Client */
-    protected static $client;
+    protected static Client $client;
 
     protected const DEMO_MODE = true;
 
@@ -23,9 +22,8 @@ abstract class TestCaseWithClient extends TestCaseWithEnvironment
             $_ENV['CLIENT_SECRET'],
             static::DEMO_MODE
         );
-        static::$client = new (static::getClientName())(
-            $config
-        );
+        $clientName = static::getClientName();
+        static::$client = new $clientName($config);
     }
 
     abstract public static function getClientName(): string;

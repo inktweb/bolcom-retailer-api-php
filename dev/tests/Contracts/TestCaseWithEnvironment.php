@@ -7,8 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 abstract class TestCaseWithEnvironment extends TestCase
 {
-    /** @var Dotenv */
-    protected static $dotEnv;
+    protected static Dotenv $dotEnv;
 
     public static function setUpBeforeClass(): void
     {
