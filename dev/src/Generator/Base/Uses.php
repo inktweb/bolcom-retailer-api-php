@@ -9,14 +9,10 @@ class Uses
 {
     protected const DEFAULT_SCOPE = 'default';
 
-    /** @var string */
-    protected $apiVersion;
-
-    protected $currentScope = self::DEFAULT_SCOPE;
-
-    protected $uses = [];
-
-    protected $scopes = [];
+    protected string $apiVersion;
+    protected string $currentScope = self::DEFAULT_SCOPE;
+    protected array $uses = [];
+    protected array $scopes = [];
 
     public function __construct(string $apiVersion)
     {

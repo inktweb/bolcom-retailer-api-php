@@ -20,8 +20,7 @@ class Models extends Base
     protected const BASE_PATH = Config::MODELS_PATH;
     protected const BASE_NAMESPACE = Config::MODELS_NAMESPACE;
 
-    /** @var Enums\Models */
-    protected $enums;
+    protected Enums\Models $enums;
 
     public function __construct(string $apiVersion, string $namespace, ?array $data, Enums\Models $enums)
     {
@@ -33,6 +32,12 @@ class Models extends Base
         $this->uses->add(Model::class);
     }
 
+    /**
+     * @throws UnsupportedDefinitionTypeException
+     * @throws UnsupportedPropertyTypeException
+     * @throws MissingDefinitionsException
+     * @throws ReferenceNotFoundException
+     */
     protected function process(?array $data): array
     {
         if ($data === null) {
@@ -73,6 +78,9 @@ class Models extends Base
         return $classes;
     }
 
+    /**
+     * @throws UnsupportedPropertyTypeException
+     */
     protected function addProperties(ClassType $class, array $properties, array $required): array
     {
         $deferredProperties = [];
@@ -104,7 +112,7 @@ class Models extends Base
                     $classProperty->setValue([]);
 
                     if (!isset($property['items']['$ref'])) {
-                        $classProperty->addComment('@var array');
+                        $classProperty->setType(Type::ARRAY);
                         break;
                     }
 
@@ -120,7 +128,7 @@ class Models extends Base
                     if (isset($property['enum'])) {
                         $type = $this->enums->getEnum($class->getName(), $classProperty->getName());
 
-                        $classProperty->addComment("@var \\{$type}");
+                        $classProperty->setType($type);
                         $parameter->setType($type);
 
                         $this->uses->add($type);
@@ -128,28 +136,28 @@ class Models extends Base
                     }
 
                     $classProperty
-                        ->addComment('@var string')
+                        ->setType(Type::STRING)
                         ->setValue('');
 
                     $parameter->setType(Type::STRING);
                     break;
                 case 'number':
                     $classProperty
-                        ->addComment('@var float')
+                        ->setType(Type::FLOAT)
                         ->setValue(0);
 
                     $parameter->setType(Type::FLOAT);
                     break;
                 case 'integer':
                     $classProperty
-                        ->addComment('@var int')
+                        ->setType(Type::INT)
                         ->setValue(0);
 
                     $parameter->setType(Type::INT);
                     break;
                 case 'boolean':
                     $classProperty
-                        ->addComment('@var bool')
+                        ->setType(Type::BOOL)
                         ->setValue(false);
 
                     $parameter->setType(Type::BOOL);
@@ -177,6 +185,10 @@ class Models extends Base
         return $deferredProperties;
     }
 
+    /**
+     * @throws ReferenceNotFoundException
+     * @throws UnsupportedPropertyTypeException
+     */
     protected function processDeferredProperties(array $deferredProperties, array $classes): void
     {
         foreach ($deferredProperties as $deferredProperty) {
@@ -200,20 +212,21 @@ class Models extends Base
 
             switch ($type) {
                 case 'object':
-                    $property->addComment("@var {$class->getName()}");
-                    $parameter->setType(
+                    $property->setType(
                         $this->getFullyQualifiedClassName(
                             $class->getName()
                         )
                     );
+                    $parameter->setType(
+                        $property->getType()
+                    );
                     $getter->setReturnType(
-                        $this->getFullyQualifiedClassName(
-                            $class->getName()
-                        )
+                        $property->getType()
                     );
                     break;
                 case 'array':
                     $property->addComment("@var {$class->getName()}[]");
+                    $property->setType(Type::ARRAY);
                     $parameter->setType(
                         $this->getFullyQualifiedClassName(
                             $class->getName()

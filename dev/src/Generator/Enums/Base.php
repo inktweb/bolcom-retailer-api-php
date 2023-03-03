@@ -17,7 +17,7 @@ abstract class Base extends GeneratorBase
     protected const BASE_PATH = Config::ENUMS_PATH;
     protected const BASE_NAMESPACE = Config::ENUMS_NAMESPACE;
 
-    protected $constantNames = [
+    protected array $constantNames = [
         '<=' => 'LESS_THAN_OR_EQUAL_TO',
         '>=' => 'GREATER_THAN_OR_EQUAL_TO',
     ];

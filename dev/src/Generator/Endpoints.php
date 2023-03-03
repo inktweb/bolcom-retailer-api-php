@@ -23,11 +23,8 @@ class Endpoints extends Base
     protected const BASE_PATH = Config::ENDPOINTS_PATH;
     protected const BASE_NAMESPACE = Config::ENDPOINTS_NAMESPACE;
 
-    /** @var Models */
-    protected $models;
-
-    /** @var Endpoints */
-    protected $enums;
+    protected Models $models;
+    protected Enums\Endpoints $enums;
 
     public function __construct(
         string $apiVersion,
@@ -45,6 +42,15 @@ class Endpoints extends Base
         $this->uses->add(Endpoint::class);
     }
 
+    /**
+     * @throws MissingPathsException
+     * @throws MissingTagException
+     * @throws MissingValidResponseException
+     * @throws TooManyValidResponsesException
+     * @throws UnresolvedTypeException
+     * @throws UnsupportedParameterTypeException
+     * @throws TooManyBodyParametersException
+     */
     protected function process(?array $data): array
     {
         if ($data === null) {
@@ -61,6 +67,9 @@ class Endpoints extends Base
         return $endpoints;
     }
 
+    /**
+     * @throws MissingTagException
+     */
     protected function groupByEndpoint(array $paths): array
     {
         $endpoints = [];
@@ -80,6 +89,13 @@ class Endpoints extends Base
         return $endpoints;
     }
 
+    /**
+     * @throws MissingValidResponseException
+     * @throws TooManyValidResponsesException
+     * @throws UnresolvedTypeException
+     * @throws UnsupportedParameterTypeException
+     * @throws TooManyBodyParametersException
+     */
     protected function processEndpoint(string $name, array $path): ClassType
     {
         $endpointName = $this->getClassName($name);
@@ -109,6 +125,10 @@ class Endpoints extends Base
         return $endpoint;
     }
 
+    /**
+     * @throws UnresolvedTypeException
+     * @throws UnsupportedParameterTypeException
+     */
     protected function processParameters(?array $parameters, Method $method, ClassType $endpoint): void
     {
         if (empty($parameters)) {
@@ -141,6 +161,10 @@ class Endpoints extends Base
         }
     }
 
+    /**
+     * @throws UnsupportedParameterTypeException
+     * @throws UnresolvedTypeException
+     */
     protected function resolveType(?string $type, ?string $ref, ?string $enum = null): string
     {
         if ($enum !== null) {
@@ -176,6 +200,12 @@ class Endpoints extends Base
         throw new UnresolvedTypeException("Nothing found for type '{$type}' or reference '{$ref}'.");
     }
 
+    /**
+     * @throws MissingValidResponseException
+     * @throws TooManyValidResponsesException
+     * @throws UnsupportedParameterTypeException
+     * @throws UnresolvedTypeException
+     */
     protected function processResponses(array $responses, Method $method): array
     {
         $validResponses = array_filter(
@@ -224,6 +254,9 @@ class Endpoints extends Base
         return $errorResponses;
     }
 
+    /**
+     * @throws TooManyBodyParametersException
+     */
     protected function generateRequestCode(
         string $resource,
         string $verb,
@@ -276,6 +309,9 @@ return {$prepend}
 CODE;
     }
 
+    /**
+     * @throws TooManyBodyParametersException
+     */
     protected function getParameters(string $in, ?array $parameters): string
     {
         $isBody = $in === 'body';

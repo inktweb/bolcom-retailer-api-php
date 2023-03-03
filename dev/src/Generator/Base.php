@@ -20,20 +20,12 @@ abstract class Base
     protected const BASE_NAMESPACE = self::class;
     protected const DEFAULT_CONTENT_TYPE_TEMPLATE = 'application/vnd.retailer.{version}+json';
 
-    /** @var string */
-    protected $directory;
-
-    /** @var string */
-    protected $namespace;
-
-    /** @var string */
-    protected $defaultContentType;
-
-    /** @var Uses */
-    protected $uses;
-
+    protected string $directory;
+    protected string $namespace;
+    protected string $defaultContentType;
+    protected Uses $uses;
     /** @var ClassType[] */
-    protected $classes = [];
+    protected array $classes = [];
 
     public function __construct(string $apiVersion, ?string $namespace, ?array $data)
     {
@@ -75,7 +67,7 @@ abstract class Base
             return '';
         }
 
-        $spacedText = preg_split('/[\s]+/u', $text, -1, PREG_SPLIT_NO_EMPTY);
+        $spacedText = preg_split('/\s+/u', $text, -1, PREG_SPLIT_NO_EMPTY);
 
         return implode(
             "\n",

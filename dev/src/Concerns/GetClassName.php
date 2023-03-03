@@ -6,8 +6,7 @@ use Illuminate\Support\Str;
 
 trait GetClassName
 {
-    /** @var string[] */
-    protected $reservedStrings = [
+    protected array $reservedStrings = [
         'Return' => 'ReturnMerchandise',
     ];
 
