@@ -4,13 +4,17 @@ namespace Inktweb\Bolcom\RetailerApi\Development;
 
 class Config
 {
-    public const API_SPEC_GLOB_PATTERN = __DIR__ . '/../resources/api-spec/*.json';
+    public const API_SPEC_DIR_GLOB_PATTERN = __DIR__ . '/../resources/api-spec/v*/';
+    public const API_SPEC_FILE_GLOB_PATTERN = '*.json';
 
     public const ROOT_PATH = __DIR__ . '/../../src';
     public const ROOT_NAMESPACE = 'Inktweb\\Bolcom\\RetailerApi';
 
     public const CLIENTS_PATH = self::ROOT_PATH . '/Clients';
     public const CLIENTS_NAMESPACE = self::ROOT_NAMESPACE . '\\Clients';
+
+    public const APIS_PATH = self::ROOT_PATH . '/Apis';
+    public const APIS_NAMESPACE = self::ROOT_NAMESPACE . '\\Apis';
 
     public const ENDPOINTS_PATH = self::ROOT_PATH . '/Endpoints';
     public const ENDPOINTS_NAMESPACE = self::ROOT_NAMESPACE . '\\Endpoints';

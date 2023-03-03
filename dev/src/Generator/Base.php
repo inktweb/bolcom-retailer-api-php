@@ -35,10 +35,12 @@ abstract class Base
     /** @var ClassType[] */
     protected $classes = [];
 
-    public function __construct(string $apiVersion, ?array $data)
+    public function __construct(string $apiVersion, ?string $namespace, ?array $data)
     {
-        $this->directory = static::BASE_PATH . DIRECTORY_SEPARATOR . $apiVersion;
-        $this->namespace = static::BASE_NAMESPACE . '\\' . $apiVersion;
+        $this->directory = static::BASE_PATH . DIRECTORY_SEPARATOR . $apiVersion . DIRECTORY_SEPARATOR . $namespace;
+        $this->namespace = $namespace !== null
+            ? static::BASE_NAMESPACE . '\\' . $apiVersion . '\\' . $namespace
+            : static::BASE_NAMESPACE . '\\' . $apiVersion;
         $this->defaultContentType = Str::replace(
             '{version}',
             Str::lower($apiVersion),

@@ -29,12 +29,17 @@ class Endpoints extends Base
     /** @var Endpoints */
     protected $enums;
 
-    public function __construct(string $apiVersion, ?array $data, Models $models, Enums\Endpoints $enums)
-    {
+    public function __construct(
+        string $apiVersion,
+        string $namespace,
+        ?array $data,
+        Models $models,
+        Enums\Endpoints $enums
+    ) {
         $this->models = $models;
         $this->enums = $enums;
 
-        parent::__construct($apiVersion, $data);
+        parent::__construct($apiVersion, $namespace, $data);
 
         $this->uses->setCurrentScope(null);
         $this->uses->add(Endpoint::class);

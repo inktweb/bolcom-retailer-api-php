@@ -23,11 +23,11 @@ class Models extends Base
     /** @var Enums\Models */
     protected $enums;
 
-    public function __construct(string $apiVersion, ?array $data, Enums\Models $enums)
+    public function __construct(string $apiVersion, string $namespace, ?array $data, Enums\Models $enums)
     {
         $this->enums = $enums;
 
-        parent::__construct($apiVersion, $data);
+        parent::__construct($apiVersion, $namespace, $data);
 
         $this->uses->setCurrentScope(null);
         $this->uses->add(Model::class);

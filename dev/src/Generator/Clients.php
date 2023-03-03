@@ -12,14 +12,13 @@ class Clients extends Base
     protected const BASE_PATH = Config::CLIENTS_PATH;
     protected const BASE_NAMESPACE = Config::CLIENTS_NAMESPACE;
 
-    /** @var Endpoints */
-    protected $endpoints;
+    protected Apis $apis;
 
-    public function __construct(string $apiVersion, Endpoints $endpoints)
+    public function __construct(string $apiVersion, Apis $apis)
     {
-        $this->endpoints = $endpoints;
+        $this->apis = $apis;
 
-        parent::__construct($apiVersion, null);
+        parent::__construct($apiVersion, null, null);
 
         $this->uses->setCurrentScope(null);
         $this->uses->add(Client::class);
@@ -34,21 +33,26 @@ class Clients extends Base
         $clientClass->addConstant('DEFAULT_CONTENT_TYPE', $this->defaultContentType)
             ->setProtected();
 
-        foreach ($this->endpoints->getIterator() as $endpoint) {
-            $endpointName = $endpoint->getName();
-            $propertyName = Str::camel($endpointName);
+        foreach ($this->apis->getIterator() as $api) {
+            $apiName = $api->getName();
+            $propertyName = Str::camel($apiName);
 
-            $fullyQualifiedClassName = $this->endpoints->getFullyQualifiedClassName($endpointName);
+            $fullyQualifiedClassName = $this->apis->getFullyQualifiedClassName($apiName);
             $this->uses->add($fullyQualifiedClassName);
 
             $clientClass->addProperty($propertyName)
                 ->setProtected()
-                ->addComment("@var {$endpointName}");
+                ->setType($fullyQualifiedClassName);
 
             $clientClass->addMethod($propertyName)
                 ->setPublic()
                 ->setReturnType($fullyQualifiedClassName)
-                ->setBody("return \$this->{$propertyName} ?? \$this->{$propertyName} = new {$endpointName}(\$this);");
+                ->setBody(
+                    <<<BODY
+return \$this->{$propertyName}
+    ?? \$this->{$propertyName} = new {$apiName}(\$this);
+BODY
+                );
         }
 
         return [$clientClass];

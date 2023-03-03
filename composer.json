@@ -19,7 +19,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^7.3 || ^8.0",
+        "php": "^7.4 || ^8.0",
         "ext-json": "*",
         "guzzlehttp/guzzle": "^7.3",
         "psr/log": "^1.1",
@@ -49,7 +49,7 @@
     "scripts": {
         "generate": [
             "Inktweb\\Bolcom\\RetailerApi\\Development\\Generator::generate",
-            "phpcbf src/Enums/ src/Models/ src/Endpoints/ src/Clients/"
+            "phpcbf src/Enums/ src/Models/ src/Endpoints/ src/Apis/ src/Clients/"
         ],
         "test": [
             "phpunit"

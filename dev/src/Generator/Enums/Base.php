@@ -22,9 +22,9 @@ abstract class Base extends GeneratorBase
         '>=' => 'GREATER_THAN_OR_EQUAL_TO',
     ];
 
-    public function __construct(string $apiVersion, ?array $data)
+    public function __construct(string $apiVersion, string $namespace, ?array $data)
     {
-        parent::__construct($apiVersion, $data);
+        parent::__construct($apiVersion, $namespace, $data);
 
         $this->uses->setCurrentScope(null);
         $this->uses->add(Enum::class);

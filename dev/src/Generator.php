@@ -4,7 +4,7 @@ namespace Inktweb\Bolcom\RetailerApi\Development;
 
 use Inktweb\Bolcom\RetailerApi\Development\Concerns\CheckSwaggerVersion;
 use Inktweb\Bolcom\RetailerApi\Development\Concerns\GetApiSpec;
-use Inktweb\Bolcom\RetailerApi\Development\Concerns\GetApiVersion;
+use Inktweb\Bolcom\RetailerApi\Development\Generator\Apis;
 use Inktweb\Bolcom\RetailerApi\Development\Generator\Clients;
 use Inktweb\Bolcom\RetailerApi\Development\Generator\Endpoints;
 use Inktweb\Bolcom\RetailerApi\Development\Generator\Enums;
@@ -14,7 +14,6 @@ class Generator
 {
     use GetApiSpec;
     use CheckSwaggerVersion;
-    use GetApiVersion;
 
     public static function generate(): void
     {
@@ -30,20 +29,28 @@ class Generator
 
     protected function process(array $apiSpec): void
     {
-        $this->checkSwaggerVersion($apiSpec['swagger'] ?? null);
+        $apiVersion = $apiSpec['version'];
+        $apis = new Apis($apiVersion);
 
-        $apiVersion = $this->getApiVersion(intval($apiSpec['info']['version'] ?? null));
+        foreach ($apiSpec['namespaces'] as $namespace => $spec) {
+            $this->checkSwaggerVersion($spec['swagger'] ?? null);
 
-        $modelEnums = new Enums\Models($apiVersion, $apiSpec['definitions'] ?? null);
-        $models = new Models($apiVersion, $apiSpec['definitions'] ?? null, $modelEnums);
-        $endpointEnums = new Enums\Endpoints($apiVersion, $apiSpec['paths'] ?? null);
-        $endpoints = new Endpoints($apiVersion, $apiSpec['paths'] ?? null, $models, $endpointEnums);
-        $clients = new Clients($apiVersion, $endpoints);
+            $modelEnums = new Enums\Models($apiVersion, $namespace, $spec['definitions'] ?? null);
+            $models = new Models($apiVersion, $namespace, $spec['definitions'] ?? null, $modelEnums);
+            $endpointEnums = new Enums\Endpoints($apiVersion, $namespace, $spec['paths'] ?? null);
+            $endpoints = new Endpoints($apiVersion, $namespace, $spec['paths'] ?? null, $models, $endpointEnums);
 
-        $modelEnums->write();
-        $models->write();
-        $endpointEnums->write();
-        $endpoints->write();
+            $modelEnums->write();
+            $models->write();
+            $endpointEnums->write();
+            $endpoints->write();
+
+            $apis->addEndpoints($namespace, $endpoints);
+        }
+
+        $clients = new Clients($apiVersion, $apis);
+
+        $apis->write();
         $clients->write();
     }
 }
