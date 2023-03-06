@@ -23,7 +23,7 @@ abstract class Enum implements JsonSerializable
     protected const MAX_ITEMS = null;
     protected const UNIQUE_ITEMS = false;
 
-    protected $delimiters = [
+    protected array $delimiters = [
         self::COLLECTION_FORMAT_CSV => ',',
         self::COLLECTION_FORMAT_SSV => ' ',
         self::COLLECTION_FORMAT_TSV => "\t",
@@ -31,11 +31,17 @@ abstract class Enum implements JsonSerializable
     ];
 
     /** @var string[] */
-    protected $allowedValues = [];
+    protected array $allowedValues = [];
 
     /** @var string[] */
-    protected $values = [];
+    protected array $values = [];
 
+    /**
+     * @throws UniqueItemsException
+     * @throws MaxItemsException
+     * @throws InvalidEnumValueException
+     * @throws MinItemsException
+     */
     public function __construct(string ...$values)
     {
         if (!empty($values)) {
@@ -43,16 +49,28 @@ abstract class Enum implements JsonSerializable
         }
     }
 
+    /**
+     * @throws UniqueItemsException
+     * @throws MaxItemsException
+     * @throws MinItemsException
+     * @throws InvalidEnumValueException
+     */
     public function add(string $value): self
     {
         return $this->set(
-            array_merge(
+            ...array_merge(
                 $this->values,
-                $value
+                [$value]
             )
         );
     }
 
+    /**
+     * @throws UniqueItemsException
+     * @throws MaxItemsException
+     * @throws InvalidEnumValueException
+     * @throws MinItemsException
+     */
     public function set(string ...$values): self
     {
         $this->validateValues($values);
@@ -106,6 +124,12 @@ abstract class Enum implements JsonSerializable
         return count($this->values) === 0;
     }
 
+    /**
+     * @throws UniqueItemsException
+     * @throws MaxItemsException
+     * @throws InvalidEnumValueException
+     * @throws MinItemsException
+     */
     protected function validateValues(array $values): void
     {
         foreach ($values as $value) {
@@ -131,6 +155,9 @@ abstract class Enum implements JsonSerializable
         }
     }
 
+    /**
+     * @throws UnknownCollectionFormatException
+     */
     public function compile(): array
     {
         $collectionFormat = static::COLLECTION_FORMAT;
@@ -143,6 +170,8 @@ abstract class Enum implements JsonSerializable
         switch ($collectionFormat) {
             case static::COLLECTION_FORMAT_MULTI:
                 return $this->values;
+            default:
+                // do nothing
         }
 
         throw new UnknownCollectionFormatException(
@@ -150,6 +179,9 @@ abstract class Enum implements JsonSerializable
         );
     }
 
+    /**
+     * @throws UnknownCollectionFormatException
+     */
     public function jsonSerialize(): string
     {
         return implode(' ', $this->compile());

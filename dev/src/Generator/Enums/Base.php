@@ -82,7 +82,8 @@ abstract class Base extends GeneratorBase
         }
 
         $enum->addProperty('allowedValues', $values)
-            ->setProtected();
+            ->setProtected()
+            ->setType(Type::ARRAY);
 
         return $enum;
     }
