@@ -17,7 +17,7 @@ class Config
     protected string $clientSecret;
     protected bool $demoMode = true;
     protected CacheInterface $cache;
-    protected ?LoggerInterface $logger;
+    protected ?LoggerInterface $logger = null;
     protected string $userAgent = 'inktweb-bolcom-retailer-api';
 
     public function __construct(string $clientId, string $clientSecret, bool $demoMode = true)
