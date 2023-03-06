@@ -31,6 +31,8 @@ class Apis extends Base
 
     protected function processEndpoints(string $namespace, Endpoints $endpoints): ClassType
     {
+        $this->uses->setCurrentScope($namespace);
+
         $apiClass = (new ClassType($namespace))
             ->setFinal()
             ->setExtends(Contracts\Api::class);
@@ -56,6 +58,8 @@ return \$this->{$propertyName}
 BODY
                 );
         }
+
+        $this->uses->setCurrentScope(null);
 
         return $apiClass;
     }
