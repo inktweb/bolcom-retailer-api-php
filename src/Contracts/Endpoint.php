@@ -6,13 +6,13 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\RequestOptions;
 use Inktweb\Bolcom\RetailerApi\Client\JsonResponse;
 use Inktweb\Bolcom\RetailerApi\Exceptions\ApiException;
+use Inktweb\Bolcom\RetailerApi\Exceptions\Enum\UnknownCollectionFormatException;
 use Inktweb\Bolcom\RetailerApi\Exceptions\UnexpectedResponseContentTypeException;
 use Psr\Http\Message\ResponseInterface;
 
 abstract class Endpoint
 {
-    /** @var Client */
-    protected $client;
+    protected Client $client;
 
     /**
      * @throws ApiException
@@ -70,6 +70,14 @@ abstract class Endpoint
         return $response;
     }
 
+    public function __construct(Client $client)
+    {
+        $this->client = $client;
+    }
+
+    /**
+     * @throws UnknownCollectionFormatException
+     */
     protected function compileUri(string $uri, array $pathParameters, array $queryParameters): string
     {
         return $this->compilePath($uri, $pathParameters) . $this->compileQuery($queryParameters);
@@ -84,6 +92,9 @@ abstract class Endpoint
         return $uri;
     }
 
+    /**
+     * @throws UnknownCollectionFormatException
+     */
     protected function compileQuery(array $queryParameters): string
     {
         if (empty($queryParameters)) {

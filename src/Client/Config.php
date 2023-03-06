@@ -13,23 +13,12 @@ class Config
     public const API_DEMO_PATH = '/retailer-demo';
     public const API_PATH = '/retailer';
 
-    /** @var string */
-    protected $clientId;
-
-    /** @var string */
-    protected $clientSecret;
-
-    /** @var bool */
-    protected $demoMode = true;
-
-    /** @var CacheInterface */
-    protected $cache;
-
-    /** @var LoggerInterface|null */
-    protected $logger;
-
-    /** @var string */
-    protected $userAgent = 'inktweb-bolcom-retailer-api';
+    protected string $clientId;
+    protected string $clientSecret;
+    protected bool $demoMode = true;
+    protected CacheInterface $cache;
+    protected ?LoggerInterface $logger;
+    protected string $userAgent = 'inktweb-bolcom-retailer-api';
 
     public function __construct(string $clientId, string $clientSecret, bool $demoMode = true)
     {

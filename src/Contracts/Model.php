@@ -2,7 +2,6 @@
 
 namespace Inktweb\Bolcom\RetailerApi\Contracts;
 
-use Inktweb\Bolcom\RetailerApi\Models\V5\AttributeValue;
 use JsonSerializable;
 use ReflectionClass;
 use ReflectionNamedType;

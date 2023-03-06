@@ -11,8 +11,7 @@ use Psr\SimpleCache\CacheInterface;
 
 class Authentication
 {
-    /** @var OAuth2Middleware */
-    protected $middleware;
+    protected OAuth2Middleware $middleware;
 
     public function __construct(string $clientId, string $clientSecret, CacheInterface $cache)
     {

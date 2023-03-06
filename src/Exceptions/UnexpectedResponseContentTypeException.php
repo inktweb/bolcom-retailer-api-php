@@ -6,8 +6,7 @@ use Psr\Http\Message\ResponseInterface;
 
 class UnexpectedResponseContentTypeException extends EndpointException
 {
-    /** @var ResponseInterface */
-    protected $response;
+    protected ResponseInterface $response;
 
     public function getResponse(): ResponseInterface
     {

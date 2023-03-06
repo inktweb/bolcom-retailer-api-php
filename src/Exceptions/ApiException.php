@@ -7,8 +7,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 
 class ApiException extends RequestException
 {
-    /** @var Model|null */
-    protected $model;
+    protected ?Model $model;
 
     public function getModel(): ?Model
     {
