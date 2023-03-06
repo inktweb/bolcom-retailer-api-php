@@ -2,6 +2,7 @@
 
 namespace Inktweb\Bolcom\RetailerApi\Contracts;
 
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\RequestOptions;
 use Inktweb\Bolcom\RetailerApi\Client\JsonResponse;
 use Inktweb\Bolcom\RetailerApi\Exceptions\ApiException;
@@ -13,11 +14,12 @@ abstract class Endpoint
     /** @var Client */
     protected $client;
 
-    public function __construct(Client $client)
-    {
-        $this->client = $client;
-    }
-
+    /**
+     * @throws ApiException
+     * @throws GuzzleException
+     * @throws UnexpectedResponseContentTypeException
+     * @throws UnknownCollectionFormatException
+     */
     protected function request(
         string $method,
         string $uri,

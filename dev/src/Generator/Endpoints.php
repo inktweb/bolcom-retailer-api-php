@@ -2,6 +2,7 @@
 
 namespace Inktweb\Bolcom\RetailerApi\Development\Generator;
 
+use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Str;
 use Inktweb\Bolcom\RetailerApi\Client\Config as ClientConfig;
 use Inktweb\Bolcom\RetailerApi\Contracts\Endpoint;
@@ -13,6 +14,9 @@ use Inktweb\Bolcom\RetailerApi\Development\Exceptions\TooManyBodyParametersExcep
 use Inktweb\Bolcom\RetailerApi\Development\Exceptions\TooManyValidResponsesException;
 use Inktweb\Bolcom\RetailerApi\Development\Exceptions\UnresolvedTypeException;
 use Inktweb\Bolcom\RetailerApi\Development\Exceptions\UnsupportedParameterTypeException;
+use Inktweb\Bolcom\RetailerApi\Exceptions\ApiException;
+use Inktweb\Bolcom\RetailerApi\Exceptions\Enum\UnknownCollectionFormatException;
+use Inktweb\Bolcom\RetailerApi\Exceptions\UnexpectedResponseContentTypeException;
 use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\Method;
 use Nette\PhpGenerator\Type;
@@ -22,6 +26,12 @@ class Endpoints extends Base
 {
     protected const BASE_PATH = Config::ENDPOINTS_PATH;
     protected const BASE_NAMESPACE = Config::ENDPOINTS_NAMESPACE;
+    protected const REQUEST_EXCEPTIONS = [
+        ApiException::class => 'ApiException',
+        GuzzleException::class => 'GuzzleException',
+        UnexpectedResponseContentTypeException::class => 'UnexpectedResponseContentTypeException',
+        UnknownCollectionFormatException::class => 'UnknownCollectionFormatException',
+    ];
 
     protected Models $models;
     protected Enums\Endpoints $enums;
@@ -114,10 +124,12 @@ class Endpoints extends Base
                 $method->addComment($this->wrapText(rtrim($data['summary'], '.')) . '.');
                 $method->addComment('');
                 $method->addComment($this->wrapText($data['description']));
+                $method->addComment('');
 
                 $this->processParameters($data['parameters'] ?? null, $method, $endpoint);
                 $errorResponses = $this->processResponses($data['responses'], $method);
 
+                $this->addRequestThrows($method);
                 $method->addBody($this->generateRequestCode($resource, $methodVerb, $data, $method, $errorResponses));
             }
         }
@@ -252,6 +264,14 @@ class Endpoints extends Base
         }
 
         return $errorResponses;
+    }
+
+    protected function addRequestThrows(Method $method): void
+    {
+        foreach (static::REQUEST_EXCEPTIONS as $className => $shortName) {
+            $this->uses->add($className);
+            $method->addComment("@throws {$shortName}");
+        }
     }
 
     /**
