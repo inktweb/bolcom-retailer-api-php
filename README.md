@@ -18,7 +18,7 @@ specification as supplied by Bol.com.
 
 ## Supported versions
 
-Currently clients, endpoints, models and other related objects have been generated for API v5 through v7.
+Currently clients, endpoints, models and other related objects have been generated for API v7 and v8.
 Later versions will be generated and released as soon as they go into production.
 Similarly, API versions removed by Bol.com will also be removed from this package to keep things nice and tidy.
 
@@ -31,10 +31,10 @@ for further information on the lifecycle stage of each version.
 ## Usage
 
 All versions of the API will get their own namespace. So if you have to upgrade (or downgrade) to another API version,
-in theory you could simply change the namespace from `V5` to `V6` or vice versa.
+in theory you could simply change the namespace from `V7` to `V8` or vice versa.
 
 ```php
-$client = new \Inktweb\Bolcom\RetailerApi\Clients\V5\Client(
+$client = new \Inktweb\Bolcom\RetailerApi\Clients\V7\Client(
     new \Inktweb\Bolcom\RetailerApi\Client\Config(
         "your-client-id",
         "your-client-secret",
@@ -46,17 +46,22 @@ After creating the client, you can access the various endpoints as a method. For
 
 ```php
 // Get a paginated list of all orders
-$orders = $client->orders()->getOrders();
+$orders = $client->retailer()->orders()->getOrders();
 
 // Get a paginated list of open orders
-$orders = $client->orders()->getOrders(
+$orders = $client->retailer()->orders()->getOrders(
     null,
     null,
-    \Inktweb\Bolcom\RetailerApi\Enums\V5\Orders\Status::open()
+    \Inktweb\Bolcom\RetailerApi\Enums\V7\Orders\Status::open()
 );
 ```
 
 In the case of an error, the client will always throw an exception.
+
+**Note:** Bol.com introduced breaking changes starting with version 7. The API is now split off in three components:
+Advertiser, Retailer and Shared. If you are migrating from version 6 or lower, you should add the appropriate component
+to each call. Using the above example, in version 6 you would use `$client->orders()->getOrders()` whereas in version 7
+and up you should use `$client->retailer()->orders()->getOrders()`.
 
 ## Available endpoints
 
