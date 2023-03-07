@@ -27,7 +27,7 @@ final class DeliveryOption extends Model
     protected bool $recommended = false;
 
     /** The date until the delivery option (incl total price) is valid. */
-    protected string $validUntilDate = '';
+    protected ?string $validUntilDate = '';
 
     /**
      * A code representing the transporter which is being used for
@@ -47,7 +47,7 @@ final class DeliveryOption extends Model
     protected string $labelDisplayName = '';
     protected LabelPrice $labelPrice;
     protected PackageRestrictions $packageRestrictions;
-    protected HandoverDetails $handoverDetails;
+    protected ?HandoverDetails $handoverDetails = null;
 
     public function setShippingLabelOfferId(string $shippingLabelOfferId): self
     {

@@ -18,10 +18,10 @@ final class ReducedShipmentItem extends Model
      * A unique identifier for the item of the order that was shipped in this
      * shipment.
      */
-    protected string $orderItemId = '';
+    protected ?string $orderItemId = '';
 
     /** The EAN number associated with this product. */
-    protected string $ean = '';
+    protected ?string $ean = '';
 
     public function setOrderItemId(?string $orderItemId): self
     {

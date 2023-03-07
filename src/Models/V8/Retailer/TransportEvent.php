@@ -19,10 +19,10 @@ final class TransportEvent extends Model
      * The transport event code indicates the location of the parcel within
      * the distribution process.
      */
-    protected EventCode $eventCode;
+    protected ?EventCode $eventCode = null;
 
     /** The date time of the transport event. */
-    protected string $eventDateTime = '';
+    protected ?string $eventDateTime = '';
 
     public function setEventCode(?EventCode $eventCode): self
     {

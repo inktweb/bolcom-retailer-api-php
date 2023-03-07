@@ -16,17 +16,17 @@ use Inktweb\Bolcom\RetailerApi\Enums\Models\V8\Retailer\UpdateReplenishmentReque
 final class UpdateReplenishmentRequest extends Model
 {
     /** Update the state of the replenishment to cancel the replenishment. */
-    protected State $state;
-    protected UpdateDeliveryInfo $deliveryInfo;
+    protected ?State $state = null;
+    protected ?UpdateDeliveryInfo $deliveryInfo = null;
 
     /**
      * The number of parcels in this replenishment. Note: if you are using
      * the bol.com pickup service, the maximum number is 20.
      */
-    protected int $numberOfLoadCarriers = 0;
+    protected ?int $numberOfLoadCarriers = 0;
 
     /** @var UpdateLoadCarrier[] */
-    protected array $loadCarriers = [];
+    protected ?array $loadCarriers = [];
 
     public function setState(?State $state): self
     {

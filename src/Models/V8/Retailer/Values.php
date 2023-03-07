@@ -18,10 +18,10 @@ final class Values extends Model
     protected string $value = '';
 
     /** The unit identifier of the attribute. */
-    protected string $unitId = '';
+    protected ?string $unitId = '';
 
     /** The identifier of the attribute's value. */
-    protected string $valueId = '';
+    protected ?string $valueId = '';
 
     public function setValue(string $value): self
     {

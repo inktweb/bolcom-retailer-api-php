@@ -15,10 +15,10 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class TransportInstruction extends Model
 {
     /** Specify the transporter that will carry out the shipment. */
-    protected string $transporterCode = '';
+    protected ?string $transporterCode = '';
 
     /** The track and trace code that is associated with this transport. */
-    protected string $trackAndTrace = '';
+    protected ?string $trackAndTrace = '';
 
     public function setTransporterCode(?string $transporterCode): self
     {

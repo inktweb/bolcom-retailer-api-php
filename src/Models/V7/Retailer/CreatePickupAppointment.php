@@ -18,7 +18,7 @@ final class CreatePickupAppointment extends Model
     protected CreatePickupTimeSlot $pickupTimeSlot;
 
     /** A comment to the transporter regarding the pickup appointment. */
-    protected string $commentToTransporter = '';
+    protected ?string $commentToTransporter = '';
 
     public function setAddress(CreateAddress $address): self
     {

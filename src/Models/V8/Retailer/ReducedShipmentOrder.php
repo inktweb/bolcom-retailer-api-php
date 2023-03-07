@@ -15,10 +15,10 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class ReducedShipmentOrder extends Model
 {
     /** A unique identifier for the order this shipment is related to. */
-    protected string $orderId = '';
+    protected ?string $orderId = '';
 
     /** The date and time in ISO 8601 format when the order was placed. */
-    protected string $orderPlacedDateTime = '';
+    protected ?string $orderPlacedDateTime = '';
 
     public function setOrderId(?string $orderId): self
     {

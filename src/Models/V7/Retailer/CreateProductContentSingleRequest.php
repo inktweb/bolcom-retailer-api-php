@@ -25,7 +25,7 @@ final class CreateProductContentSingleRequest extends Model
     protected array $attributes = [];
 
     /** @var Asset[] */
-    protected array $assets = [];
+    protected ?array $assets = [];
 
     public function setLanguage(Language $language): self
     {

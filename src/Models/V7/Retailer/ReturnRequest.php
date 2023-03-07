@@ -16,7 +16,7 @@ use Inktweb\Bolcom\RetailerApi\Enums\Models\V7\Retailer\ReturnRequest\HandlingRe
 final class ReturnRequest extends Model
 {
     /** The handling result requested by the retailer. */
-    protected HandlingResult $handlingResult;
+    protected ?HandlingResult $handlingResult = null;
 
     /** The quantity of items returned. */
     protected int $quantityReturned = 0;

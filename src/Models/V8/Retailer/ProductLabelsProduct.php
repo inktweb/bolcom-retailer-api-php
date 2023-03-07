@@ -15,7 +15,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class ProductLabelsProduct extends Model
 {
     /** The EAN number associated with this product. */
-    protected string $ean = '';
+    protected ?string $ean = '';
 
     /** The number of products to generate labels for. */
     protected int $quantity = 0;

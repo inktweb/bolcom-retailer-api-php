@@ -33,10 +33,10 @@ final class ReplenishmentResponse extends Model
     /** Indicates the state of this replenishment order. */
     protected State $state;
     protected DeliveryInformation $deliveryInformation;
-    protected PickupAppointment $pickupAppointment;
+    protected ?PickupAppointment $pickupAppointment = null;
 
     /** The number of load carriers in this shipment. */
-    protected int $numberOfLoadCarriers = 0;
+    protected ?int $numberOfLoadCarriers = 0;
 
     /** @var LoadCarrier[] */
     protected array $loadCarriers = [];

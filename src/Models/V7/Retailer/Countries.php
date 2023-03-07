@@ -18,7 +18,7 @@ final class Countries extends Model
      * Countries in which this offer is currently on sale in the webshop, in
      * ISO-3166-1 format.
      */
-    protected string $countryCode = '';
+    protected ?string $countryCode = '';
 
     /**
      * Minimum number of estimated sales expectations on the bol.com

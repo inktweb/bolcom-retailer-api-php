@@ -26,19 +26,19 @@ final class Keyword extends Model
     protected string $adGroupId = '';
 
     /** The current state of the keyword. */
-    protected State $state;
+    protected ?State $state = null;
 
     /**
      * The text or phrase used in the keyword that caused the ad to be
      * displayed to the user.
      */
-    protected string $keywordText = '';
+    protected ?string $keywordText = '';
 
     /** The match type that relates the keyword and the search term. */
-    protected MatchType $matchType;
+    protected ?MatchType $matchType = null;
 
     /** The bid price. The price should always have two decimals of precision. */
-    protected float $bid = 0;
+    protected ?float $bid = 0;
 
     public function setKeywordId(string $keywordId): self
     {

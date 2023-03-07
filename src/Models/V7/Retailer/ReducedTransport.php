@@ -15,7 +15,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class ReducedTransport extends Model
 {
     /** The transport id. */
-    protected string $transportId = '';
+    protected ?string $transportId = '';
 
     public function setTransportId(?string $transportId): self
     {

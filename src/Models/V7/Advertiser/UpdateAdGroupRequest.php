@@ -16,16 +16,16 @@ use Inktweb\Bolcom\RetailerApi\Enums\Models\V7\Advertiser\UpdateAdGroupRequest\S
 final class UpdateAdGroupRequest extends Model
 {
     /** The name of the ad group. */
-    protected string $name = '';
+    protected ?string $name = '';
 
     /** The state of the ad group. */
-    protected State $state;
+    protected ?State $state = null;
 
     /**
      * The default bid price. The price should always have two decimals
      * precision.
      */
-    protected float $defaultBid = 0;
+    protected ?float $defaultBid = 0;
 
     public function setName(?string $name): self
     {

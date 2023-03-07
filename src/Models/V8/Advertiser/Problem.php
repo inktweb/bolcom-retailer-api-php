@@ -16,28 +16,28 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class Problem extends Model
 {
     /** Type URI for this problem. Fixed value: https://api.bol.com/problems. */
-    protected string $type = '';
+    protected ?string $type = '';
 
     /** Title describing the nature of the problem. */
-    protected string $title = '';
+    protected ?string $title = '';
 
     /** HTTP status returned from the endpoint causing the problem. */
-    protected int $status = 0;
+    protected ?int $status = 0;
 
     /**
      * Detailed error message describing in additional detail what caused the
      * service to return this problem.
      */
-    protected string $detail = '';
+    protected ?string $detail = '';
 
     /**
      * Host identifier describing the server instance that reported the
      * problem.
      */
-    protected string $host = '';
+    protected ?string $host = '';
 
     /** Full URI path of the resource that reported the problem. */
-    protected string $instance = '';
+    protected ?string $instance = '';
 
     /** @var Violation[] */
     protected array $violations = [];

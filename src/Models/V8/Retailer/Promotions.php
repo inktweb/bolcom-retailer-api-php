@@ -16,7 +16,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class Promotions extends Model
 {
     /** @var ReducedPromotion[] */
-    protected array $promotions = [];
+    protected ?array $promotions = [];
 
     public function setPromotions(?ReducedPromotion ...$promotions): self
     {

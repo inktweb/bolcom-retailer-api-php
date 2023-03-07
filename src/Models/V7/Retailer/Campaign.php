@@ -21,7 +21,7 @@ final class Campaign extends Model
     protected string $startDateTime = '';
 
     /** The ending date and time of the campaign. */
-    protected string $endDateTime = '';
+    protected ?string $endDateTime = '';
 
     public function setName(string $name): self
     {

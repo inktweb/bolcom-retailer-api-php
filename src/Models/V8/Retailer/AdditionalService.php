@@ -18,7 +18,7 @@ final class AdditionalService extends Model
      * An additional service type that the customer selected when purchasing
      * this order item.
      */
-    protected string $serviceType = '';
+    protected ?string $serviceType = '';
 
     public function setServiceType(?string $serviceType): self
     {

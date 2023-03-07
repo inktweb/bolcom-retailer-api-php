@@ -16,10 +16,10 @@ use Inktweb\Bolcom\RetailerApi\Enums\Models\V7\Advertiser\UpdateTargetProductReq
 final class UpdateTargetProductRequest extends Model
 {
     /** The current state of the target product. */
-    protected State $state;
+    protected ?State $state = null;
 
     /** The bid price. The price should always have two decimals of precision. */
-    protected float $bid = 0;
+    protected ?float $bid = 0;
 
     public function setState(?State $state): self
     {

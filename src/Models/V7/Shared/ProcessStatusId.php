@@ -15,7 +15,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class ProcessStatusId extends Model
 {
     /** The process status id. */
-    protected string $processStatusId = '';
+    protected ?string $processStatusId = '';
 
     public function setProcessStatusId(?string $processStatusId): self
     {

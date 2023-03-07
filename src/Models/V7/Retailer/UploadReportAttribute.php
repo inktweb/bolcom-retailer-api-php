@@ -26,10 +26,10 @@ final class UploadReportAttribute extends Model
     protected Status $status;
 
     /** The reason code explaining why the value was rejected. */
-    protected SubStatus $subStatus;
+    protected ?SubStatus $subStatus = null;
 
     /** The reason explaining why the value was rejected. */
-    protected string $subStatusDescription = '';
+    protected ?string $subStatusDescription = '';
 
     public function setId(string $id): self
     {

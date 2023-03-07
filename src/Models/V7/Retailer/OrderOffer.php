@@ -15,10 +15,10 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class OrderOffer extends Model
 {
     /** Unique identifier for an offer. */
-    protected string $offerId = '';
+    protected ?string $offerId = '';
 
     /** A user-defined reference tied to the offer upon creating the offer. */
-    protected string $reference = '';
+    protected ?string $reference = '';
 
     public function setOfferId(?string $offerId): self
     {

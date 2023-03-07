@@ -33,7 +33,7 @@ final class Address extends Model
     protected string $countryCode = '';
 
     /** Name of the person responsible for this replenishment. */
-    protected string $attentionOf = '';
+    protected ?string $attentionOf = '';
 
     public function setStreetName(string $streetName): self
     {

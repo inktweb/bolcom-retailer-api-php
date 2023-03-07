@@ -15,19 +15,19 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class ShipmentTransport extends Model
 {
     /** The transport id. */
-    protected string $transportId = '';
+    protected ?string $transportId = '';
 
     /** Specify the transporter that will carry out the shipment. */
-    protected string $transporterCode = '';
+    protected ?string $transporterCode = '';
 
     /** The track and trace code that is associated with this transport. */
-    protected string $trackAndTrace = '';
+    protected ?string $trackAndTrace = '';
 
     /** The shipping label id. */
-    protected string $shippingLabelId = '';
+    protected ?string $shippingLabelId = '';
 
     /** @var TransportEvent[] */
-    protected array $transportEvents = [];
+    protected ?array $transportEvents = [];
 
     public function setTransportId(?string $transportId): self
     {

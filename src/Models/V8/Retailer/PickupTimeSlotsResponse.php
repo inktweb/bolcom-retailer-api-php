@@ -15,7 +15,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class PickupTimeSlotsResponse extends Model
 {
     /** @var PickupTimeSlot[] */
-    protected array $timeSlots = [];
+    protected ?array $timeSlots = [];
 
     public function setTimeSlots(?PickupTimeSlot ...$timeSlots): self
     {

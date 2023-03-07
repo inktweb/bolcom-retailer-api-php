@@ -33,7 +33,7 @@ final class ProductDestinationAddress extends Model
     protected string $attentionOf = '';
 
     /** The house number extension of the bol.com warehouse address. */
-    protected string $houseNumberExtension = '';
+    protected ?string $houseNumberExtension = '';
 
     public function setStreetName(string $streetName): self
     {

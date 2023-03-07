@@ -30,7 +30,7 @@ final class SearchTerm extends Model
     protected array $periods = [];
 
     /** @var RelatedSearchTerm[] */
-    protected array $relatedSearchTerms = [];
+    protected ?array $relatedSearchTerms = [];
 
     public function setSearchTerm(string $searchTerm): self
     {

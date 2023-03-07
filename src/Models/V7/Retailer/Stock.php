@@ -19,14 +19,14 @@ final class Stock extends Model
      * retailers warehouse. Note: this should not be the FBB stock! Defaults
      * to 0.
      */
-    protected int $amount = 0;
+    protected ?int $amount = 0;
 
     /**
      * The amount of order items in stock minus handled order items and minus
      * open order items. As compared to the stock you sent us. When this
      * reaches 0, your offer will not be for sale on the shop.
      */
-    protected int $correctedStock = 0;
+    protected ?int $correctedStock = 0;
 
     /**
      * Configures whether the retailer manages the stock levels or that

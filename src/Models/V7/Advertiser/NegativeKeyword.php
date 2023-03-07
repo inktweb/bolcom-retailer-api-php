@@ -26,16 +26,16 @@ final class NegativeKeyword extends Model
     protected string $adGroupId = '';
 
     /** The state of the negative keyword. */
-    protected State $state;
+    protected ?State $state = null;
 
     /**
      * The text or phrase used in the negative keyword that caused the ad not
      * to be displayed to the user.
      */
-    protected string $keywordText = '';
+    protected ?string $keywordText = '';
 
     /** The match type that relates the negative keyword and the search term. */
-    protected MatchType $matchType;
+    protected ?MatchType $matchType = null;
 
     public function setKeywordId(string $keywordId): self
     {

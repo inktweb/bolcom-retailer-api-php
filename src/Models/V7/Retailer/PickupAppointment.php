@@ -16,7 +16,7 @@ use Inktweb\Bolcom\RetailerApi\Enums\Models\V7\Retailer\PickupAppointment\Cancel
 final class PickupAppointment extends Model
 {
     /** A comment to the transporter regarding the pickup appointment. */
-    protected string $commentToTransporter = '';
+    protected ?string $commentToTransporter = '';
     protected Address $address;
     protected ReplenishmentPickupTimeSlot $pickupTimeSlot;
 
@@ -24,13 +24,13 @@ final class PickupAppointment extends Model
      * The date and time in ISO 8601 format when this replenishment was
      * picked up by the transporter.
      */
-    protected string $pickupDateTime = '';
+    protected ?string $pickupDateTime = '';
 
     /**
      * In case of a pickup cancellation this field indicates the reason for
      * cancelling this pickup.
      */
-    protected CancellationReason $cancellationReason;
+    protected ?CancellationReason $cancellationReason = null;
 
     public function setCommentToTransporter(?string $commentToTransporter): self
     {

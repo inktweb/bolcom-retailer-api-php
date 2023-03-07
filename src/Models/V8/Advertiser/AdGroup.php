@@ -19,10 +19,10 @@ final class AdGroup extends Model
     protected string $adGroupId = '';
 
     /** The name of the ad group. */
-    protected string $name = '';
+    protected ?string $name = '';
 
     /** Unique identifier for the campaign. */
-    protected string $campaignId = '';
+    protected ?string $campaignId = '';
 
     /** The current state of the ad group. */
     protected State $state;
@@ -31,7 +31,7 @@ final class AdGroup extends Model
      * The default bid price. The price should always have two decimals
      * precision.
      */
-    protected float $defaultBid = 0;
+    protected ?float $defaultBid = 0;
 
     public function setAdGroupId(string $adGroupId): self
     {

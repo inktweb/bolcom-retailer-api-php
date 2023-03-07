@@ -26,7 +26,7 @@ final class Fulfilment extends Model
      * The delivery promise that applies to this offer. This value will only
      * be used in combination with fulfilmentMethod 'FBR'.
      */
-    protected DeliveryCode $deliveryCode;
+    protected ?DeliveryCode $deliveryCode = null;
 
     public function setMethod(Method $method): self
     {

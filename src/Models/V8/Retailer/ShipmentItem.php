@@ -18,19 +18,19 @@ final class ShipmentItem extends Model
      * A unique identifier for the item of the order that was shipped in this
      * shipment.
      */
-    protected string $orderItemId = '';
-    protected ShipmentFulfilment $fulfilment;
-    protected OrderOffer $offer;
-    protected OrderProduct $product;
+    protected ?string $orderItemId = '';
+    protected ?ShipmentFulfilment $fulfilment = null;
+    protected ?OrderOffer $offer = null;
+    protected ?OrderProduct $product = null;
 
     /** Amount of the product being ordered. */
-    protected int $quantity = 0;
+    protected ?int $quantity = 0;
 
     /** The selling price to the customer of a single unit including VAT. */
-    protected float $unitPrice = 0;
+    protected ?float $unitPrice = 0;
 
     /** The commission. */
-    protected float $commission = 0;
+    protected ?float $commission = 0;
 
     public function setOrderItemId(?string $orderItemId): self
     {

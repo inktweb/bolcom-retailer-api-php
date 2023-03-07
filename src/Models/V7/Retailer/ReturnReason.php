@@ -16,16 +16,16 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class ReturnReason extends Model
 {
     /** The main reason describing why the customer returned this product. */
-    protected string $mainReason = '';
+    protected ?string $mainReason = '';
 
     /**
      * The sub reason describing why the customer returned this product in
      * more detail.
      */
-    protected string $detailedReason = '';
+    protected ?string $detailedReason = '';
 
     /** Additional details from the customer as to why this item was returned. */
-    protected string $customerComments = '';
+    protected ?string $customerComments = '';
 
     public function setMainReason(?string $mainReason): self
     {

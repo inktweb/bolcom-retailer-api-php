@@ -20,58 +20,58 @@ use Inktweb\Bolcom\RetailerApi\Enums\Models\V7\Retailer\ShipmentDetails\Salutati
 final class ShipmentDetails extends Model
 {
     /** The name of Pick Up Point location this order needs to be shipped to. */
-    protected string $pickupPointName = '';
+    protected ?string $pickupPointName = '';
 
     /** The salutation of the customer. */
-    protected Salutation $salutation;
+    protected ?Salutation $salutation = null;
 
     /** The first name of the customer. */
-    protected string $firstName = '';
+    protected ?string $firstName = '';
 
     /** The surname of the customer. */
-    protected string $surname = '';
+    protected ?string $surname = '';
 
     /** The street name. */
-    protected string $streetName = '';
+    protected ?string $streetName = '';
 
     /** The house number. */
-    protected string $houseNumber = '';
+    protected ?string $houseNumber = '';
 
     /** The extension on the house number. */
-    protected string $houseNumberExtension = '';
+    protected ?string $houseNumberExtension = '';
 
     /**
      * Additional information related to the address that helps in delivering
      * the package.
      */
-    protected string $extraAddressInformation = '';
+    protected ?string $extraAddressInformation = '';
 
     /**
      * The ZIP code in '1234AB' format for NL orders and '0000' format for BE
      * orders.
      */
-    protected string $zipCode = '';
+    protected ?string $zipCode = '';
 
     /** The name of the city. */
-    protected string $city = '';
+    protected ?string $city = '';
 
     /** The country code. */
-    protected string $countryCode = '';
+    protected ?string $countryCode = '';
 
     /** A scrambled email address that can be used to contact the customer. */
-    protected string $email = '';
+    protected ?string $email = '';
 
     /** The company name. */
-    protected string $company = '';
+    protected ?string $company = '';
 
     /**
      * The delivery phone number of the customer. Filled in case the order
      * requires an appointment for delivering the goods.
      */
-    protected string $deliveryPhoneNumber = '';
+    protected ?string $deliveryPhoneNumber = '';
 
     /** The language of the customer in case of contact. */
-    protected Language $language;
+    protected ?Language $language = null;
 
     public function setPickupPointName(?string $pickupPointName): self
     {

@@ -20,10 +20,10 @@ final class Periods extends Model
      * Total number of customer visits on the product page when the offer had
      * the buy box over the requested period (excluding the current day).
      */
-    protected float $total = 0;
+    protected ?float $total = 0;
 
     /** @var OfferInsightsCountry[] */
-    protected array $countries = [];
+    protected ?array $countries = [];
 
     public function setPeriod(OfferInsightsPeriod $period): self
     {

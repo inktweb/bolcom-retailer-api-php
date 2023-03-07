@@ -27,70 +27,70 @@ final class ProductPerformance extends Model
     protected string $ean = '';
 
     /** The number of impressions for the ads in the ad group. */
-    protected int $impressions = 0;
+    protected ?int $impressions = 0;
 
     /** The number of clicks on ads in the ad group. */
-    protected int $clicks = 0;
+    protected ?int $clicks = 0;
 
     /**
      * The Click-Through Rate is a ratio of clicks versus impressions, with
      * four decimals of precision.
      */
-    protected float $ctr = 0;
+    protected ?float $ctr = 0;
 
     /**
      * The number of product sales that resulted from visitors viewing ads in
      * this ad group, up to 14 days after they viewed the ad.
      */
-    protected int $conversions = 0;
+    protected ?int $conversions = 0;
 
     /**
      * The conversion rate is a ratio of the number of visitors who bought
      * the product up to 14 days after viewing the ad, versus those who only
      * viewed the ad, with four decimals of precision.
      */
-    protected float $conversionRate = 0;
+    protected ?float $conversionRate = 0;
 
     /**
      * The value of sales in EUR that happened up to 14 days after the
      * visitor viewed an ad, with two decimals of precision.
      */
-    protected float $sales = 0;
+    protected ?float $sales = 0;
 
     /**
      * The number of conversions of similar products with a different EAN up
      * to 14 days after a visitor viewed an ad.
      */
-    protected float $conversionsOtherEan = 0;
+    protected ?float $conversionsOtherEan = 0;
 
     /**
      * The value of sales in EUR of similar products with a different EAN up
      * to 14 days after a visitor viewed an ad, with two decimals of
      * precision.
      */
-    protected float $salesOtherEan = 0;
+    protected ?float $salesOtherEan = 0;
 
     /**
      * The amount spent on the product in the ad group in EUR, with two
      * decimals of precision.
      */
-    protected float $spent = 0;
+    protected ?float $spent = 0;
 
     /** The average Cost Per Click in EUR, with two decimals of precision. */
-    protected float $cpc = 0;
+    protected ?float $cpc = 0;
 
     /**
      * The Advertising Cost Of Sale for the ad group is a ratio of the ad
      * spend versus sales revenue, with four decimals of precision.
      */
-    protected float $acos = 0;
+    protected ?float $acos = 0;
 
     /**
      * The Return on Advertising Spent for the products in the ad group is a
      * ratio of sales revenue versus ad spend, with four decimals of
      * precision.
      */
-    protected float $roas = 0;
+    protected ?float $roas = 0;
 
     public function setCampaignId(string $campaignId): self
     {

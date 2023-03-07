@@ -38,8 +38,8 @@ final class Promotion extends Model
      * Indicates whether the promotion is retailer specific or open to the
      * platform.
      */
-    protected bool $retailerSpecificPromotion = false;
-    protected Campaign $campaign;
+    protected ?bool $retailerSpecificPromotion = false;
+    protected ?Campaign $campaign = null;
 
     public function setPromotionId(string $promotionId): self
     {

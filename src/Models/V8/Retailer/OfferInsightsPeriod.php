@@ -15,13 +15,13 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class OfferInsightsPeriod extends Model
 {
     /** Day of the month. */
-    protected int $day = 0;
+    protected ?int $day = 0;
 
     /** Week of the year. */
-    protected int $week = 0;
+    protected ?int $week = 0;
 
     /** Month of the year. */
-    protected int $month = 0;
+    protected ?int $month = 0;
 
     /** Year. */
     protected int $year = 0;

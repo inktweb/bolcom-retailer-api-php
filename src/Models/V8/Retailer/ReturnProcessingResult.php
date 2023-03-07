@@ -18,7 +18,7 @@ final class ReturnProcessingResult extends Model
     protected int $quantity = 0;
 
     /** The processing result of the return. */
-    protected string $processingResult = '';
+    protected ?string $processingResult = '';
 
     /** The handling result requested by the retailer. */
     protected string $handlingResult = '';

@@ -19,13 +19,13 @@ final class KeySet extends Model
      * Key identifier. Maps to the keyId value in the signature header of the
      * push request.
      */
-    protected string $id = '';
+    protected ?string $id = '';
 
     /** Key encryption type. */
-    protected Type $type;
+    protected ?Type $type = null;
 
     /** The Base64 encoded public key to use when verifying the signature. */
-    protected string $publicKey = '';
+    protected ?string $publicKey = '';
 
     public function setId(?string $id): self
     {

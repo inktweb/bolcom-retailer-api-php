@@ -15,13 +15,13 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class ReducedShipment extends Model
 {
     /** A unique identifier for this shipment. */
-    protected string $shipmentId = '';
+    protected ?string $shipmentId = '';
 
     /** The date and time in ISO 8601 format when the order item was shipped. */
-    protected string $shipmentDateTime = '';
+    protected ?string $shipmentDateTime = '';
 
     /** Reference supplied by the user when this item was shipped. */
-    protected string $shipmentReference = '';
+    protected ?string $shipmentReference = '';
     protected ReducedShipmentOrder $order;
 
     /** @var ReducedShipmentItem[] */

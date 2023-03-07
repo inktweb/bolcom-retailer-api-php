@@ -25,11 +25,11 @@ final class ShipmentRequest extends Model
      * Can be used for own administration purposes. Only 'null' or non-empty
      * strings accepted.
      */
-    protected string $shipmentReference = '';
+    protected ?string $shipmentReference = '';
 
     /** The identifier of the purchased shipping label. */
-    protected string $shippingLabelId = '';
-    protected TransportInstruction $transport;
+    protected ?string $shippingLabelId = '';
+    protected ?TransportInstruction $transport = null;
 
     public function setOrderItems(OrderItem ...$orderItems): self
     {

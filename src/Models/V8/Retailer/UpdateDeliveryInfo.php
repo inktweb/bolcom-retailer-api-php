@@ -18,7 +18,7 @@ final class UpdateDeliveryInfo extends Model
      * The expected delivery date of the shipment at the bol.com warehouse.
      * In ISO 8601 format.
      */
-    protected string $expectedDeliveryDate = '';
+    protected ?string $expectedDeliveryDate = '';
 
     public function setExpectedDeliveryDate(?string $expectedDeliveryDate): self
     {

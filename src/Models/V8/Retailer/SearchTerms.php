@@ -14,7 +14,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
  */
 final class SearchTerms extends Model
 {
-    protected SearchTerm $searchTerms;
+    protected ?SearchTerm $searchTerms = null;
 
     public function setSearchTerms(?SearchTerm $searchTerms): self
     {

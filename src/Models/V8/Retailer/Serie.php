@@ -15,7 +15,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class Serie extends Model
 {
     /** The name of the product serie(s) the EAN belongs to. */
-    protected string $name = '';
+    protected ?string $name = '';
 
     public function setName(?string $name): self
     {

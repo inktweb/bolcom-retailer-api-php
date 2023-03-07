@@ -15,23 +15,23 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class Shipment extends Model
 {
     /** A unique identifier for this shipment. */
-    protected string $shipmentId = '';
+    protected ?string $shipmentId = '';
 
     /** The date and time in ISO 8601 format when the order item was shipped. */
-    protected string $shipmentDateTime = '';
+    protected ?string $shipmentDateTime = '';
 
     /** Reference supplied by the user when this item was shipped. */
-    protected string $shipmentReference = '';
+    protected ?string $shipmentReference = '';
 
     /** Indicates whether this order is shipped to a Pick Up Point. */
-    protected bool $pickupPoint = false;
+    protected ?bool $pickupPoint = false;
     protected ShipmentOrder $order;
-    protected ShipmentDetails $shipmentDetails;
-    protected BillingDetails $billingDetails;
+    protected ?ShipmentDetails $shipmentDetails = null;
+    protected ?BillingDetails $billingDetails = null;
 
     /** @var ShipmentItem[] */
     protected array $shipmentItems = [];
-    protected ShipmentTransport $transport;
+    protected ?ShipmentTransport $transport = null;
 
     public function setShipmentId(?string $shipmentId): self
     {

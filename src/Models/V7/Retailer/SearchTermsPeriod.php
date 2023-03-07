@@ -15,16 +15,16 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class SearchTermsPeriod extends Model
 {
     /** Day number in the ISO-8601 standard. */
-    protected string $day = '';
+    protected ?string $day = '';
 
     /** Week number in the ISO-8601 standard. */
-    protected string $week = '';
+    protected ?string $week = '';
 
     /** Month number in the ISO-8601 standard. */
-    protected string $month = '';
+    protected ?string $month = '';
 
     /** Year number in the ISO-8601 standard. */
-    protected string $year = '';
+    protected ?string $year = '';
 
     public function setDay(?string $day): self
     {

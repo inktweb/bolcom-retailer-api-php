@@ -19,7 +19,7 @@ final class BulkCommissionQuery extends Model
     protected string $ean = '';
 
     /** The condition of the offer. */
-    protected Condition $condition;
+    protected ?Condition $condition = null;
 
     /**
      * The price of the product with a period as a decimal separator. The

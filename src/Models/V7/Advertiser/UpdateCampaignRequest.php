@@ -16,36 +16,36 @@ use Inktweb\Bolcom\RetailerApi\Enums\Models\V7\Advertiser\UpdateCampaignRequest\
 final class UpdateCampaignRequest extends Model
 {
     /** The name of the campaign. */
-    protected string $name = '';
+    protected ?string $name = '';
 
     /**
      * The start date of the campaign. Must be a current or future date and
      * will always be one full day.
      */
-    protected string $startDate = '';
+    protected ?string $startDate = '';
 
     /**
      * The end date of the campaign. Must be a future date that is at least
      * one day after the start date of the campaign, and will always be one
      * full day.
      */
-    protected string $endDate = '';
+    protected ?string $endDate = '';
 
     /** The state of the campaign. */
-    protected State $state;
+    protected ?State $state = null;
 
     /**
      * The maximum amount that can be spend in one day for this campaign. The
      * amount should always have two decimals precision.
      */
-    protected float $dailyBudget = 0;
+    protected ?float $dailyBudget = 0;
 
     /**
      * The total budget that can be spend for this campaign. The amount
      * should always have two decimals precision.
      */
-    protected float $totalBudget = 0;
-    protected UpdateBiddingModel $bidding;
+    protected ?float $totalBudget = 0;
+    protected ?UpdateBiddingModel $bidding = null;
 
     public function setName(?string $name): self
     {

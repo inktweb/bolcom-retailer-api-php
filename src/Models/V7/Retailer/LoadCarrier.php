@@ -16,10 +16,10 @@ use Inktweb\Bolcom\RetailerApi\Enums\Models\V7\Retailer\LoadCarrier\TransportSta
 final class LoadCarrier extends Model
 {
     /** The Serial Shipping Container Code (SSCC) for this load carrier. */
-    protected string $sscc = '';
+    protected ?string $sscc = '';
 
     /** The track and trace code for this load carrier. */
-    protected string $transportLabelTrackAndTrace = '';
+    protected ?string $transportLabelTrackAndTrace = '';
 
     /** The current state of the transport for this load carrier. */
     protected TransportState $transportState;

@@ -23,13 +23,13 @@ final class CreateBiddingModel extends Model
      * the bidding strategy will attempt to reach this ACoS. The format is a
      * number without decimals that represents a percentage.
      */
-    protected int $automaticBidDesiredAcosPercentage = 0;
+    protected ?int $automaticBidDesiredAcosPercentage = 0;
 
     /**
      * The default bid price. The price should always have two decimals
      * precision.
      */
-    protected float $defaultBid = 0;
+    protected ?float $defaultBid = 0;
 
     public function setStrategy(Strategy $strategy): self
     {

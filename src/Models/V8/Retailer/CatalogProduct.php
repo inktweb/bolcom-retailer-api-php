@@ -20,7 +20,7 @@ final class CatalogProduct extends Model
      */
     protected bool $published = false;
     protected Gpc $gpc;
-    protected Enrichment $enrichment;
+    protected ?Enrichment $enrichment = null;
 
     /** @var Attributes[] */
     protected array $attributes = [];
@@ -29,10 +29,10 @@ final class CatalogProduct extends Model
     protected array $parties = [];
 
     /** @var AudioTracks[] */
-    protected array $audioTracks = [];
+    protected ?array $audioTracks = [];
 
     /** @var Serie[] */
-    protected array $series = [];
+    protected ?array $series = [];
 
     public function setPublished(bool $published): self
     {

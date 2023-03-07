@@ -24,13 +24,13 @@ final class CreateAddress extends Model
     protected string $zipCode = '';
 
     /** The extension of the house number. */
-    protected string $houseNumberExtension = '';
+    protected ?string $houseNumberExtension = '';
 
     /** The city of the pickup address. */
     protected string $city = '';
 
     /** The ISO 3166-2 country code. */
-    protected string $countryCode = '';
+    protected ?string $countryCode = '';
 
     /** Name of the person responsible for this replenishment. */
     protected string $attentionOf = '';

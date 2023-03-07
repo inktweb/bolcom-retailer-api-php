@@ -29,7 +29,7 @@ final class RetailerOffer extends Model
      * when receiving data from us. This element can optionally be left empty
      * and has a maximum amount of 20 characters.
      */
-    protected string $reference = '';
+    protected ?string $reference = '';
 
     /**
      * Indicates whether or not you want to put this offer for sale on the
@@ -42,7 +42,7 @@ final class RetailerOffer extends Model
      * identify this particular product. Note: in case the product is known
      * to bol.com, the unknown product title will not be stored.
      */
-    protected string $unknownProductTitle = '';
+    protected ?string $unknownProductTitle = '';
     protected Pricing $pricing;
     protected Stock $stock;
     protected Fulfilment $fulfilment;

@@ -15,10 +15,10 @@ use Inktweb\Bolcom\RetailerApi\Enums\Models\V8\Retailer\ChangeTransportRequest\T
  */
 final class ChangeTransportRequest extends Model
 {
-    protected TransporterCode $transporterCode;
+    protected ?TransporterCode $transporterCode = null;
 
     /** The track and trace code that is associated with this transport. */
-    protected string $trackAndTrace = '';
+    protected ?string $trackAndTrace = '';
 
     public function setTransporterCode(?TransporterCode $transporterCode): self
     {

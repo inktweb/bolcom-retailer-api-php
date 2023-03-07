@@ -19,13 +19,13 @@ final class Product extends Model
     protected string $ean = '';
 
     /** @var RelevanceScore[] */
-    protected array $relevanceScores = [];
+    protected ?array $relevanceScores = [];
 
     /**
      * The maximum price a product can have in order to be part of the
      * promotion.
      */
-    protected float $maximumPrice = 0;
+    protected ?float $maximumPrice = 0;
 
     public function setEan(string $ean): self
     {

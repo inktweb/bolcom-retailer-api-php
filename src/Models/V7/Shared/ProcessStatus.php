@@ -16,13 +16,13 @@ use Inktweb\Bolcom\RetailerApi\Enums\Models\V7\Shared\ProcessStatus\Status;
 final class ProcessStatus extends Model
 {
     /** The process status id. */
-    protected string $processStatusId = '';
+    protected ?string $processStatusId = '';
 
     /**
      * The id of the object being processed. E.g. in case of a shipment
      * process id, you will receive the id of the order item being processed.
      */
-    protected string $entityId = '';
+    protected ?string $entityId = '';
 
     /** Name of the requested action that is being processed. */
     protected string $eventType = '';
@@ -34,7 +34,7 @@ final class ProcessStatus extends Model
     protected Status $status;
 
     /** Shows error message if applicable. */
-    protected string $errorMessage = '';
+    protected ?string $errorMessage = '';
 
     /** Time of creation of the response. */
     protected string $createTimestamp = '';

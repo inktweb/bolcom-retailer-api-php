@@ -30,7 +30,7 @@ final class UploadReportResponse extends Model
     protected array $attributes = [];
 
     /** @var UploadReportAsset[] */
-    protected array $assets = [];
+    protected ?array $assets = [];
 
     public function setUploadId(string $uploadId): self
     {

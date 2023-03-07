@@ -24,7 +24,7 @@ final class CreateAdGroupRequest extends Model
      * The default bid price. The price should always have two decimals
      * precision.
      */
-    protected float $defaultBid = 0;
+    protected ?float $defaultBid = 0;
 
     public function setName(string $name): self
     {

@@ -19,34 +19,34 @@ final class OrderOrderItem extends Model
      * The id for the order item. One order can have multiple order items,
      * but the list can only take one item.
      */
-    protected string $orderItemId = '';
+    protected ?string $orderItemId = '';
 
     /**
      * Indicates whether the order was cancelled on request of the customer
      * before the retailer has shipped it.
      */
-    protected bool $cancellationRequest = false;
-    protected OrderFulfilment $fulfilment;
-    protected OrderOffer $offer;
-    protected OrderProduct $product;
+    protected ?bool $cancellationRequest = false;
+    protected ?OrderFulfilment $fulfilment = null;
+    protected ?OrderOffer $offer = null;
+    protected ?OrderProduct $product = null;
 
     /** Amount of ordered products for this order item id. */
-    protected int $quantity = 0;
+    protected ?int $quantity = 0;
 
     /** Amount of shipped products for this order item id. */
-    protected int $quantityShipped = 0;
+    protected ?int $quantityShipped = 0;
 
     /** Amount of cancelled products for this order item id. */
-    protected int $quantityCancelled = 0;
+    protected ?int $quantityCancelled = 0;
 
     /** The selling price to the customer of a single unit including VAT. */
-    protected float $unitPrice = 0;
+    protected ?float $unitPrice = 0;
 
     /** The commission for all quantities of this order item. */
-    protected float $commission = 0;
+    protected ?float $commission = 0;
 
     /** @var AdditionalService[] */
-    protected array $additionalServices = [];
+    protected ?array $additionalServices = [];
 
     /**
      * The date and time in ISO 8601 format when the orderItem was last

@@ -18,62 +18,62 @@ use Inktweb\Bolcom\RetailerApi\Enums\Models\V8\Retailer\BillingDetails\Salutatio
 final class BillingDetails extends Model
 {
     /** The salutation of the customer. */
-    protected Salutation $salutation;
+    protected ?Salutation $salutation = null;
 
     /** The first name of the customer. */
-    protected string $firstName = '';
+    protected ?string $firstName = '';
 
     /** The surname of the customer. */
-    protected string $surname = '';
+    protected ?string $surname = '';
 
     /** The street name. */
-    protected string $streetName = '';
+    protected ?string $streetName = '';
 
     /** The house number. */
-    protected string $houseNumber = '';
+    protected ?string $houseNumber = '';
 
     /** The extension on the house number. */
-    protected string $houseNumberExtension = '';
+    protected ?string $houseNumberExtension = '';
 
     /**
      * Additional information related to the address that helps in delivering
      * the package.
      */
-    protected string $extraAddressInformation = '';
+    protected ?string $extraAddressInformation = '';
 
     /**
      * The ZIP code in '1234AB' format for NL orders and '0000' format for BE
      * orders.
      */
-    protected string $zipCode = '';
+    protected ?string $zipCode = '';
 
     /** The name of the city. */
-    protected string $city = '';
+    protected ?string $city = '';
 
     /** The country code. */
-    protected string $countryCode = '';
+    protected ?string $countryCode = '';
 
     /** A scrambled email address that can be used to contact the customer. */
-    protected string $email = '';
+    protected ?string $email = '';
 
     /** The company name. */
-    protected string $company = '';
+    protected ?string $company = '';
 
     /**
      * The Value Added Tax (VAT) / BTW number for business sellers situated
      * in the Netherlands.
      */
-    protected string $vatNumber = '';
+    protected ?string $vatNumber = '';
 
     /**
      * The Kamer van Koophandel (kvk) number for organizations situated in
      * the Netherlands or ondernemingsnummer for organizations situated in
      * Belgium.
      */
-    protected string $kvkNumber = '';
+    protected ?string $kvkNumber = '';
 
     /** The order reference specified by the customer when ordering a product. */
-    protected string $orderReference = '';
+    protected ?string $orderReference = '';
 
     public function setSalutation(?Salutation $salutation): self
     {

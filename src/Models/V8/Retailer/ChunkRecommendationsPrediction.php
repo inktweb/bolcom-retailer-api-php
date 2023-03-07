@@ -21,7 +21,7 @@ final class ChunkRecommendationsPrediction extends Model
      * The probability of the predicted chunk as a ratio, with eleven
      * decimals of precision.
      */
-    protected float $probability = 0;
+    protected ?float $probability = 0;
 
     public function setChunkId(string $chunkId): self
     {

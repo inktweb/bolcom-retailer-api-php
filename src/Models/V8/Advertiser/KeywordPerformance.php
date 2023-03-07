@@ -15,81 +15,81 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class KeywordPerformance extends Model
 {
     /** The identifier of the parent-campaign for this ad group. */
-    protected string $campaignId = '';
+    protected ?string $campaignId = '';
 
     /** The identifier of the ad group. */
     protected string $adGroupId = '';
 
     /** The identifier of the adgroup. */
-    protected string $keywordId = '';
+    protected ?string $keywordId = '';
 
     /**
      * The text or phrase used in the keyword that caused the ad to be
      * displayed to the user.
      */
-    protected string $keywordText = '';
+    protected ?string $keywordText = '';
 
     /** The number of impressions from this keyword for ads in the ad group. */
-    protected int $impressions = 0;
+    protected ?int $impressions = 0;
 
     /** The number of clicks from this keyword on ads in the ad group. */
-    protected int $clicks = 0;
+    protected ?int $clicks = 0;
 
     /**
      * The Click-Through Rate is a ratio of clicks versus impressions from
      * this keyword, with four decimals of precision.
      */
-    protected float $ctr = 0;
+    protected ?float $ctr = 0;
 
     /**
      * The number of product sales that resulted from visitors viewing ads
      * with this keyword, up to 14 days after they viewed the ad.
      */
-    protected int $conversions = 0;
+    protected ?int $conversions = 0;
 
     /**
      * The conversion rate is a ratio of the number of visitors who bought
      * the product up to 14 days after viewing the ad with this keyword,
      * versus those who only viewed the ad, with four decimals of precision.
      */
-    protected float $conversionRate = 0;
+    protected ?float $conversionRate = 0;
 
     /**
      * The value of sales in EUR that happened up to 14 days after the
      * visitor viewed an ad with this keyword, with two decimals of
      * precision.
      */
-    protected float $sales = 0;
+    protected ?float $sales = 0;
 
     /**
      * The amount spent on ads with this keyword in EUR, with two decimals of
      * precision.
      */
-    protected float $spent = 0;
+    protected ?float $spent = 0;
 
     /**
      * The average Cost Per Click of ads with this keyword in EUR, with two
      * decimals of precision.
      */
-    protected float $cpc = 0;
+    protected ?float $cpc = 0;
 
     /**
      * The Advertising Cost Of Sale for the ads with this keyword is a ratio
      * of the ad spend versus sales revenue, with four decimals of precision.
      */
-    protected float $acos = 0;
+    protected ?float $acos = 0;
 
     /**
      * The Return on Advertising Spent for ads with this keyword is a ratio
      * of sales revenue versus ad spend, with four decimals of precision.
      */
-    protected float $roas = 0;
+    protected ?float $roas = 0;
 
     /**
      * The value of the average winning bid for ads that used this keyword in
      * the ad group in EUR, with two decimals of precision.
      */
-    protected float $averageWinningBid = 0;
+    protected ?float $averageWinningBid = 0;
 
     public function setCampaignId(?string $campaignId): self
     {

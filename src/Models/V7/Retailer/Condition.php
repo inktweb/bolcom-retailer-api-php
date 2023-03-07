@@ -23,13 +23,13 @@ final class Condition extends Model
      * The category of the condition. If not given NEW or SECONDHAND is
      * derived from NAME.
      */
-    protected Category $category;
+    protected ?Category $category = null;
 
     /**
      * The description of the condition of the product. Only allowed if name
      * is not NEW and may not contain e-mail addresses.
      */
-    protected string $comment = '';
+    protected ?string $comment = '';
 
     public function setName(Name $name): self
     {

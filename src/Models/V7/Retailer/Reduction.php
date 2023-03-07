@@ -36,7 +36,7 @@ final class Reduction extends Model
      * The end date from which the commission reduction is not valid anymore,
      * in ISO 8601 format.
      */
-    protected string $endDate = '';
+    protected ?string $endDate = '';
 
     public function setMaximumPrice(float $maximumPrice): self
     {

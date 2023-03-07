@@ -25,13 +25,13 @@ final class TargetProduct extends Model
     protected string $adGroupId = '';
 
     /** The EAN associated with the target product. */
-    protected string $ean = '';
+    protected ?string $ean = '';
 
     /** The current state of the target product. */
-    protected State $state;
+    protected ?State $state = null;
 
     /** The bid price. The price should always have two decimals of precision. */
-    protected float $bid = 0;
+    protected ?float $bid = 0;
 
     public function setTargetProductId(string $targetProductId): self
     {

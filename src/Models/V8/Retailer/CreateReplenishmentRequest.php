@@ -19,7 +19,7 @@ final class CreateReplenishmentRequest extends Model
      * digit and only upper case characters allowed.
      */
     protected string $reference = '';
-    protected CreateDeliveryInfo $deliveryInfo;
+    protected ?CreateDeliveryInfo $deliveryInfo = null;
 
     /** Indicates whether the replenishment will be labeled by bol.com. */
     protected bool $labelingByBol = false;
@@ -29,7 +29,7 @@ final class CreateReplenishmentRequest extends Model
      * the bol.com pickup service, the maximum number is 20.
      */
     protected int $numberOfLoadCarriers = 0;
-    protected CreatePickupAppointment $pickupAppointment;
+    protected ?CreatePickupAppointment $pickupAppointment = null;
 
     /** @var CreateReplenishmentLine[] */
     protected array $lines = [];

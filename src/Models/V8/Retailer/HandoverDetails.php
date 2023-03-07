@@ -22,13 +22,13 @@ final class HandoverDetails extends Model
      * consequences on your performance score because the order will be
      * delivered too early or too late.
      */
-    protected bool $meetsCustomerExpectation = false;
+    protected ?bool $meetsCustomerExpectation = false;
 
     /**
      * The date and time at which the parcel can be earliest at the
      * transporter to make sure your parcel is delivered on time.
      */
-    protected string $earliestHandoverDateTime = '';
+    protected ?string $earliestHandoverDateTime = '';
 
     /**
      * The date and time at which the parcel must ultimately be at the
@@ -36,10 +36,10 @@ final class HandoverDetails extends Model
      * handover after this date you will receive a strike because you order
      * will be delivered too late.
      */
-    protected string $latestHandoverDateTime = '';
+    protected ?string $latestHandoverDateTime = '';
 
     /** The type of collection for this parcel. */
-    protected CollectionMethod $collectionMethod;
+    protected ?CollectionMethod $collectionMethod = null;
 
     public function setMeetsCustomerExpectation(?bool $meetsCustomerExpectation): self
     {

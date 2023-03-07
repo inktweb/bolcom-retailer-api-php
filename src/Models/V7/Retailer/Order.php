@@ -16,15 +16,15 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class Order extends Model
 {
     /** The identifier of the order. */
-    protected string $orderId = '';
+    protected ?string $orderId = '';
 
     /** Indicates whether this order is shipped to a Pick Up Point. */
-    protected bool $pickupPoint = false;
+    protected ?bool $pickupPoint = false;
 
     /** The date and time in ISO 8601 format when the order was placed. */
-    protected string $orderPlacedDateTime = '';
+    protected ?string $orderPlacedDateTime = '';
     protected ShipmentDetails $shipmentDetails;
-    protected BillingDetails $billingDetails;
+    protected ?BillingDetails $billingDetails = null;
 
     /** @var OrderOrderItem[] */
     protected array $orderItems = [];

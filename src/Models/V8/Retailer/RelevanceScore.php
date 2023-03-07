@@ -17,10 +17,10 @@ use Inktweb\Bolcom\RetailerApi\Enums\Models\V8\Retailer\RelevanceScore\CountryCo
 final class RelevanceScore extends Model
 {
     /** The country for which the relevance score has been calculated against. */
-    protected CountryCode $countryCode;
+    protected ?CountryCode $countryCode = null;
 
     /** The calculated relevance score for the product. */
-    protected int $relevanceScore = 0;
+    protected ?int $relevanceScore = 0;
 
     public function setCountryCode(?CountryCode $countryCode): self
     {

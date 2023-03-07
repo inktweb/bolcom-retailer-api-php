@@ -45,7 +45,7 @@ final class Commission extends Model
      * The total commission for selling this product at bol.com without
      * reductions including VAT.
      */
-    protected float $totalCostWithoutReduction = 0;
+    protected ?float $totalCostWithoutReduction = 0;
 
     /** @var Reduction[] */
     protected array $reductions = [];

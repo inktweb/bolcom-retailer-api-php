@@ -16,7 +16,7 @@ use Inktweb\Bolcom\RetailerApi\Enums\Models\V7\Advertiser\SearchTermPerformance\
 final class SearchTermPerformance extends Model
 {
     /** The identifier of the parent-campaign for this ad group. */
-    protected string $campaignId = '';
+    protected ?string $campaignId = '';
 
     /** The identifier of the ad group. */
     protected string $adGroupId = '';
@@ -25,86 +25,86 @@ final class SearchTermPerformance extends Model
      * The text or phrase used in the keyword that caused the ad to be
      * displayed to the user.
      */
-    protected string $keywordText = '';
+    protected ?string $keywordText = '';
 
     /**
      * The search term that is matched to the keyword that caused the ad to
      * be displayed to the user.
      */
-    protected string $searchTerm = '';
+    protected ?string $searchTerm = '';
 
     /**
      * The number of impressions from this search term for ads in the ad
      * group.
      */
-    protected int $impressions = 0;
+    protected ?int $impressions = 0;
 
     /**
      * The value of sales in EUR that happened up to 14 days after the
      * visitor viewed an ad with this search term, with two decimals of
      * precision.
      */
-    protected float $sales = 0;
+    protected ?float $sales = 0;
 
     /** The number of clicks from this search term on ads in the ad group. */
-    protected int $clicks = 0;
+    protected ?int $clicks = 0;
 
     /**
      * The Click-Through Rate is a ratio of clicks versus impressions from
      * this search term, with four decimals of precision.
      */
-    protected float $ctr = 0;
+    protected ?float $ctr = 0;
 
     /**
      * The number of product sales that resulted from visitors viewing ads
      * with this keyword, up to 14 days after they viewed the ad.
      */
-    protected int $conversions = 0;
+    protected ?int $conversions = 0;
 
     /**
      * The conversion rate is a ratio of the number of visitors who bought
      * the product up to 14 days after viewing the ad, versus those who only
      * viewed the ad, with four decimals of precision.
      */
-    protected float $conversionRate = 0;
+    protected ?float $conversionRate = 0;
 
     /**
      * The amount spent on ads that used this search term in EUR, with two
      * decimals of precision.
      */
-    protected float $spent = 0;
+    protected ?float $spent = 0;
 
     /**
      * The average Cost Per Clicks of ads that were viewed with this search
      * term in EUR, with two decimals of precision.
      */
-    protected float $cpc = 0;
+    protected ?float $cpc = 0;
 
     /**
      * The Advertising Cost Of Sale for the ads with this search term is a
      * ratio of the ad spend versus sales revenue, with four decimals of
      * precision.
      */
-    protected float $acos = 0;
+    protected ?float $acos = 0;
 
     /**
      * The Return on Advertising Spent for ads with this search term is a
      * ratio of sales revenue versus ad spend, with four decimals of
      * precision.
      */
-    protected float $roas = 0;
+    protected ?float $roas = 0;
 
     /**
      * The value of the average winning bid for ads with this search term in
      * an ad group in EUR, with two decimals of precision.
      */
-    protected float $averageWinningBid = 0;
+    protected ?float $averageWinningBid = 0;
 
     /** The number of searches on this search term. */
-    protected int $searchVolume = 0;
+    protected ?int $searchVolume = 0;
 
     /** The match type that relates the keyword and the search term. */
-    protected KeywordMatchType $keywordMatchType;
+    protected ?KeywordMatchType $keywordMatchType = null;
 
     public function setCampaignId(?string $campaignId): self
     {

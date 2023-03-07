@@ -21,7 +21,7 @@ final class PickupTimeSlotsAddress extends Model
     protected string $houseNumber = '';
 
     /** The extension of the house number. */
-    protected string $houseNumberExtension = '';
+    protected ?string $houseNumberExtension = '';
 
     /** The zip code in '1234AB' format for NL and '0000' for BE addresses. */
     protected string $zipCode = '';

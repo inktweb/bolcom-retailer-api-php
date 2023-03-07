@@ -32,13 +32,13 @@ final class ReturnItem extends Model
      * greater than 1 of the same product in the same customer order.
      */
     protected int $expectedQuantity = 0;
-    protected ReturnReason $returnReason;
+    protected ?ReturnReason $returnReason = null;
 
     /** The track and trace code that is associated with this transport. */
-    protected string $trackAndTrace = '';
+    protected ?string $trackAndTrace = '';
 
     /** The name of the transporter. */
-    protected string $transporterName = '';
+    protected ?string $transporterName = '';
 
     /** Indicates if this return item has been handled (by the retailer). */
     protected bool $handled = false;

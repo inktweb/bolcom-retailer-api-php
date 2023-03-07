@@ -21,7 +21,7 @@ final class CreateTargetProductRequest extends Model
     protected string $ean = '';
 
     /** The bid price. The price should always have two decimals of precision. */
-    protected float $bid = 0;
+    protected ?float $bid = 0;
 
     public function setAdGroupId(string $adGroupId): self
     {

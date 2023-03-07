@@ -15,31 +15,31 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class AudioTracks extends Model
 {
     /** The disc number within an album the audio track is stored on. */
-    protected string $discNumber = '';
+    protected ?string $discNumber = '';
 
     /** The track number on the album. */
-    protected string $trackNumber = '';
+    protected ?string $trackNumber = '';
 
     /** The disc side on which the audio track is stored on. */
-    protected string $discSide = '';
+    protected ?string $discSide = '';
 
     /** The title of the audio track. */
-    protected string $title = '';
+    protected ?string $title = '';
 
     /** The name of the artist(s) performing the audio track. */
-    protected string $artistName = '';
+    protected ?string $artistName = '';
 
     /** The play time of the audio track. */
-    protected string $playTime = '';
+    protected ?string $playTime = '';
 
     /**
      * The URL on which an audio clip of the audio track has been made
      * available.
      */
-    protected string $clipUrl = '';
+    protected ?string $clipUrl = '';
 
     /** The format in which the audio clip is available. */
-    protected string $clipType = '';
+    protected ?string $clipType = '';
 
     public function setDiscNumber(?string $discNumber): self
     {

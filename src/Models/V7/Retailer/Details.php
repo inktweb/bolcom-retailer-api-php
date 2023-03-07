@@ -21,7 +21,7 @@ final class Details extends Model
      * The score for this measurement. In case there are no scores for an
      * indicator, this element is omitted from the response.
      */
-    protected Score $score;
+    protected ?Score $score = null;
 
     /** Service norm for this indicator. */
     protected Norm $norm;

@@ -19,10 +19,10 @@ final class Violation extends Model
      * Describes the origin of the error, for instance a field or query
      * parameter validation error.
      */
-    protected string $name = '';
+    protected ?string $name = '';
 
     /** Detailed description of the validation error that caused the problem. */
-    protected string $reason = '';
+    protected ?string $reason = '';
 
     public function setName(?string $name): self
     {

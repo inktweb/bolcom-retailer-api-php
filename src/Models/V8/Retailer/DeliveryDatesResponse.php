@@ -18,7 +18,7 @@ final class DeliveryDatesResponse extends Model
      * Allowed delivery dates for shipments to the bol.com warehouse in ISO
      * 8601 format.
      */
-    protected array $deliveryDates = [];
+    protected ?array $deliveryDates = [];
 
     public function setDeliveryDates(?array $deliveryDates): self
     {

@@ -15,7 +15,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 final class Store extends Model
 {
     /** The product title for the product associated with this offer. */
-    protected string $productTitle = '';
+    protected ?string $productTitle = '';
 
     /** @var CountryCode[] */
     protected array $visible = [];

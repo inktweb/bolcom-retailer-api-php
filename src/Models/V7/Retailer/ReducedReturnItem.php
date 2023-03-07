@@ -29,10 +29,10 @@ final class ReducedReturnItem extends Model
      * greater than 1 of the same product in the same customer order.
      */
     protected int $expectedQuantity = 0;
-    protected ReturnReason $returnReason;
+    protected ?ReturnReason $returnReason = null;
 
     /** Indicates if this return item has been handled (by the retailer). */
-    protected bool $handled = false;
+    protected ?bool $handled = false;
 
     /** @var ReturnProcessingResult[] */
     protected array $processingResults = [];

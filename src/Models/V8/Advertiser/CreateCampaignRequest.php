@@ -30,7 +30,7 @@ final class CreateCampaignRequest extends Model
      * one day after the start date of the campaign, and will always be one
      * full day.
      */
-    protected string $endDate = '';
+    protected ?string $endDate = '';
 
     /** The state of the campaign. */
     protected State $state;
@@ -42,13 +42,13 @@ final class CreateCampaignRequest extends Model
      * The maximum amount that can be spend in one day for this campaign. The
      * amount should always have two decimals precision.
      */
-    protected float $dailyBudget = 0;
+    protected ?float $dailyBudget = 0;
 
     /**
      * The total budget that can be spend for this campaign. The amount
      * should always have two decimals precision.
      */
-    protected float $totalBudget = 0;
+    protected ?float $totalBudget = 0;
 
     /** @var CampaignCountry[] */
     protected array $countries = [];
