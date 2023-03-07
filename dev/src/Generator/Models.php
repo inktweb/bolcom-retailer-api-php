@@ -88,7 +88,12 @@ class Models extends Base
         foreach ($properties as $name => $property) {
             $classProperty = $class->addProperty($name)
                 ->setProtected()
-                ->addComment($this->wrapText($property['description'] ?? ''));
+                ->addComment($this->wrapText($property['description'] ?? ''))
+                ->setNullable(!in_array($name, $required));
+
+            if ($classProperty->isNullable()) {
+                $classProperty->setValue(null);
+            }
 
             $methodName = Str::ucfirst($name);
             $propertySetter = $class->addMethod("set{$methodName}")
@@ -102,7 +107,7 @@ class Models extends Base
                 ->addBody("return \$this->{$name};");
 
             $parameter = $propertySetter->addParameter($name)
-                ->setNullable(!in_array($name, $required));
+                ->setNullable($classProperty->isNullable());
 
             $propertyType = $property['type'] ?? null;
 
