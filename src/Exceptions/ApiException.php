@@ -7,7 +7,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 
 class ApiException extends RequestException
 {
-    protected ?Model $model;
+    protected ?Model $model = null;
 
     public function getModel(): ?Model
     {
@@ -16,10 +16,10 @@ class ApiException extends RequestException
 
     public function hasModel(): bool
     {
-        return $this->model !== null;
+        return isset($this->model);
     }
 
-    public function setModel(Model $model): self
+    public function setModel(?Model $model): self
     {
         $this->model = $model;
         return $this;
