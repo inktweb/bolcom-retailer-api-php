@@ -18,7 +18,7 @@ class EnumTest extends TestCase
         $enum = new class extends Enum {
             public const NOT_EMPTY = 'not empty';
 
-            protected $allowedValues = [self::NOT_EMPTY];
+            protected array $allowedValues = [self::NOT_EMPTY];
         };
 
         $this->assertTrue($enum->isEmpty());
@@ -41,7 +41,7 @@ class EnumTest extends TestCase
             public const SOMETHING = 'something';
             public const OTHER = 'other';
 
-            protected $allowedValues = [self::SOMETHING, self::OTHER];
+            protected array $allowedValues = [self::SOMETHING, self::OTHER];
         };
 
         $this->assertFalse($enum->is($enum::SOMETHING));
@@ -72,7 +72,7 @@ class EnumTest extends TestCase
             public const SOMETHING = 'something';
             public const OTHER = 'other';
 
-            protected $allowedValues = [self::SOMETHING, self::OTHER];
+            protected array $allowedValues = [self::SOMETHING, self::OTHER];
         };
 
         $this->assertFalse($enum->contains($enum::SOMETHING));
@@ -104,7 +104,7 @@ class EnumTest extends TestCase
             public const OTHER = 'other';
             public const THIRD_LEG = 'third leg';
 
-            protected $allowedValues = [self::SOMETHING, self::OTHER, self::THIRD_LEG];
+            protected array $allowedValues = [self::SOMETHING, self::OTHER, self::THIRD_LEG];
         };
 
         $this->assertTrue($enum->has());
