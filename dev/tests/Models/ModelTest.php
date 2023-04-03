@@ -52,9 +52,13 @@ class ModelTest extends TestCase
         }
     }
 
-    protected function getExampleData(array $properties, array $definitions): array
+    protected function getExampleData(array $properties, array $definitions, int $loop = 0): array
     {
         $data = [];
+
+        if ($loop > 25) {
+            return $data;
+        };
 
         foreach ($properties as $key => $value) {
             if (isset($value['example'])) {
@@ -75,7 +79,8 @@ class ModelTest extends TestCase
             ) {
                 $data[$key][] = $this->getExampleData(
                     $this->getDefinition($value['items']['$ref'], $definitions)['properties'],
-                    $definitions
+                    $definitions,
+                    $loop + 1
                 );
             }
         }
