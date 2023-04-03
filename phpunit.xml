@@ -18,6 +18,9 @@
         <testsuite name="endpoints">
             <directory suffix="Test.php">dev/tests/Endpoints</directory>
         </testsuite>
+        <testsuite name="enums">
+            <directory suffix="Test.php">dev/tests/Enums</directory>
+        </testsuite>
         <testsuite name="models">
             <directory suffix="Test.php">dev/tests/Models</directory>
         </testsuite>
