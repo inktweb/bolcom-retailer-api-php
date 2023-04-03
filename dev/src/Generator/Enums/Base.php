@@ -142,7 +142,7 @@ abstract class Base extends GeneratorBase
         $constantName = Str::upper(
             Str::snake(
                 Str::replace(
-                    '-',
+                    ['-', '/'],
                     '_',
                     $value
                 )
