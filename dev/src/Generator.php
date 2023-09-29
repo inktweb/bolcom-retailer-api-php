@@ -2,7 +2,7 @@
 
 namespace Inktweb\Bolcom\RetailerApi\Development;
 
-use Inktweb\Bolcom\RetailerApi\Development\Concerns\CheckSwaggerVersion;
+use Inktweb\Bolcom\RetailerApi\Development\Concerns\CheckOpenApiVersion;
 use Inktweb\Bolcom\RetailerApi\Development\Concerns\GetApiSpec;
 use Inktweb\Bolcom\RetailerApi\Development\Generator\Apis;
 use Inktweb\Bolcom\RetailerApi\Development\Generator\Clients;
@@ -13,7 +13,7 @@ use Inktweb\Bolcom\RetailerApi\Development\Generator\Models;
 class Generator
 {
     use GetApiSpec;
-    use CheckSwaggerVersion;
+    use CheckOpenApiVersion;
 
     public static function generate(): void
     {
@@ -33,7 +33,7 @@ class Generator
         $apis = new Apis($apiVersion);
 
         foreach ($apiSpec['namespaces'] as $namespace => $spec) {
-            $this->checkSwaggerVersion($spec['swagger'] ?? null);
+            $this->checkOpenApiVersion($spec['openapi'] ?? null);
 
             $modelEnums = new Enums\Models($apiVersion, $namespace, $spec['definitions'] ?? null);
             $models = new Models($apiVersion, $namespace, $spec['definitions'] ?? null, $modelEnums);

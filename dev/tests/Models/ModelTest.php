@@ -5,7 +5,7 @@ namespace Inktweb\Bolcom\RetailerApi\Development\Tests\Models;
 use Exception;
 use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
-use Inktweb\Bolcom\RetailerApi\Development\Concerns\CheckSwaggerVersion;
+use Inktweb\Bolcom\RetailerApi\Development\Concerns\CheckOpenApiVersion;
 use Inktweb\Bolcom\RetailerApi\Development\Concerns\GetApiSpec;
 use Inktweb\Bolcom\RetailerApi\Development\Concerns\GetClassName;
 use Inktweb\Bolcom\RetailerApi\Development\Config;
@@ -19,7 +19,7 @@ use RuntimeException;
 class ModelTest extends TestCase
 {
     use GetApiSpec;
-    use CheckSwaggerVersion;
+    use CheckOpenApiVersion;
     use GetClassName;
 
     /**
@@ -31,7 +31,7 @@ class ModelTest extends TestCase
             $apiVersion = $spec['version'];
 
             foreach ($spec['namespaces'] as $apiNamespace => $apiSpec) {
-                $this->checkSwaggerVersion($apiSpec['swagger'] ?? null);
+                $this->checkOpenApiVersion($apiSpec['openapi'] ?? null);
 
                 $path = Config::MODELS_PATH . DIRECTORY_SEPARATOR . $apiVersion;
                 $namespace = Config::MODELS_NAMESPACE . '\\' . $apiVersion . '\\' . $apiNamespace;
