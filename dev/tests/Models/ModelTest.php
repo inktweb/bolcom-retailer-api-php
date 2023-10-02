@@ -38,10 +38,10 @@ class ModelTest extends TestCase
 
                 $this->assertDirectoryExists($path);
 
-                foreach ($apiSpec['definitions'] as $definition => $data) {
-                    $className = $this->getClassName($definition);
+                foreach ($apiSpec['components']['schemas'] as $schema => $data) {
+                    $className = $this->getClassName($schema);
                     $className = "{$namespace}\\{$className}";
-                    $exampleData = $this->getExampleData($data['properties'], $apiSpec['definitions']);
+                    $exampleData = $this->getExampleData($data['properties'], $apiSpec['components']['schemas']);
 
                     /** @noinspection PhpUndefinedMethodInspection */
                     $class = $className::fromArray($exampleData);
@@ -52,7 +52,7 @@ class ModelTest extends TestCase
         }
     }
 
-    protected function getExampleData(array $properties, array $definitions, int $loop = 0): array
+    protected function getExampleData(array $properties, array $schemas, int $loop = 0): array
     {
         $data = [];
 
@@ -62,14 +62,20 @@ class ModelTest extends TestCase
 
         foreach ($properties as $key => $value) {
             if (isset($value['example'])) {
-                $data[$key] = $this->castToType($value['type'], $value['example']);
+                $data[$key] = $this->castToType(
+                    $value['type'],
+                    is_array($value['example'])
+                        ? $value['example'][0]
+                        : $value['example']
+                );
                 continue;
             }
 
             if (isset($value['$ref'])) {
                 $data[$key] = $this->getExampleData(
-                    $this->getDefinition($value['$ref'], $definitions)['properties'],
-                    $definitions
+                    $this->getSchema($value['$ref'], $schemas)['properties'],
+                    $schemas,
+                    $loop + 1
                 );
             }
 
@@ -78,8 +84,8 @@ class ModelTest extends TestCase
                 && isset($value['items']['$ref'])
             ) {
                 $data[$key][] = $this->getExampleData(
-                    $this->getDefinition($value['items']['$ref'], $definitions)['properties'],
-                    $definitions,
+                    $this->getSchema($value['items']['$ref'], $schemas)['properties'],
+                    $schemas,
                     $loop + 1
                 );
             }
@@ -88,15 +94,15 @@ class ModelTest extends TestCase
         return $data;
     }
 
-    protected function getDefinition(string $name, array $definitions): array
+    protected function getSchema(string $name, array $definitions): array
     {
-        $key = preg_replace('{^#/definitions/}', '', $name);
+        $key = preg_replace('{^#/components/schemas/}', '', $name);
 
         if (isset($definitions[$key])) {
             return $definitions[$key];
         }
 
-        throw new Exception("Definition '{$key}' not found.");
+        throw new Exception("Schema '{$key}' not found.");
     }
 
     protected function assertArrayEqualsObject(Model $class, array $exampleData): void
@@ -162,7 +168,7 @@ class ModelTest extends TestCase
                         return [$data];
                     }
                 }
-                // no break
+            // no break
 
             default:
                 throw new RuntimeException("Unknown casting type: {$type}");
