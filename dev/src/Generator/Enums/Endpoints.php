@@ -32,7 +32,11 @@ class Endpoints extends Base
                         ?? $parameter['items']['enum']
                         ?? null;
 
-                    if ($enum === null) {
+                    if (is_array($enum)) {
+                        $enum = array_filter($enum, fn($value) => $value !== null);
+                    }
+
+                    if (empty($enum)) {
                         continue;
                     }
 

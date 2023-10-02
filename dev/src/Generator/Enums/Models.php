@@ -4,7 +4,7 @@ namespace Inktweb\Bolcom\RetailerApi\Development\Generator\Enums;
 
 use Inktweb\Bolcom\RetailerApi\Contracts\Enum;
 use Inktweb\Bolcom\RetailerApi\Development\Config;
-use Inktweb\Bolcom\RetailerApi\Development\Exceptions\MissingDefinitionsException;
+use Inktweb\Bolcom\RetailerApi\Development\Exceptions\MissingSchemasException;
 
 class Models extends Base
 {
@@ -14,7 +14,7 @@ class Models extends Base
     protected function process(?array $data): array
     {
         if ($data === null) {
-            throw new MissingDefinitionsException();
+            throw new MissingSchemasException();
         }
 
         $enums = [];
@@ -29,7 +29,13 @@ class Models extends Base
             foreach ($definition['properties'] as $fieldName => $fieldData) {
                 $namespace = $this->getClassName($name);
 
-                if (!isset($fieldData['enum'])) {
+                $enum = $fieldData['enum'] ?? null;
+
+                if (is_array($enum)) {
+                    $enum = array_filter($enum, fn($value) => $value !== null);
+                }
+
+                if ($enum === null) {
                     continue;
                 }
 
@@ -37,7 +43,7 @@ class Models extends Base
 
                 $enums[$namespace][$fieldName] = $this->processEnum(
                     $fieldName,
-                    $fieldData['enum'],
+                    $enum,
                     $fieldData['minItems'] ?? ($required ? 1 : 0),
                     $fieldData['maxItems'] ?? ($fieldData['type'] === 'string' ? 1 : null),
                     $fieldData['uniqueItems'] ?? false,

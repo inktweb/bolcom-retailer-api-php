@@ -8,6 +8,8 @@ use Inktweb\Bolcom\RetailerApi\Client\Config as ClientConfig;
 use Inktweb\Bolcom\RetailerApi\Contracts\Endpoint;
 use Inktweb\Bolcom\RetailerApi\Development\Config;
 use Inktweb\Bolcom\RetailerApi\Development\Exceptions\MissingPathsException;
+use Inktweb\Bolcom\RetailerApi\Development\Exceptions\MissingResponseContentException;
+use Inktweb\Bolcom\RetailerApi\Development\Exceptions\MissingResponseSchemaException;
 use Inktweb\Bolcom\RetailerApi\Development\Exceptions\MissingTagException;
 use Inktweb\Bolcom\RetailerApi\Development\Exceptions\MissingValidResponseException;
 use Inktweb\Bolcom\RetailerApi\Development\Exceptions\TooManyBodyParametersException;
@@ -161,7 +163,7 @@ class Endpoints extends Base
                 ->setNullable($parameter['in'] !== 'body' && !$parameter['required'])
                 ->setType(
                     $this->resolveType(
-                        $parameter['type'] ?? null,
+                        $parameter['schema']['type'] ?? null,
                         $parameter['schema']['$ref'] ?? null,
                         $this->enums->getEnum($endpoint->getName(), $parameter['name'] ?? null)
                     )
@@ -217,6 +219,8 @@ class Endpoints extends Base
      * @throws TooManyValidResponsesException
      * @throws UnsupportedParameterTypeException
      * @throws UnresolvedTypeException
+     * @throws MissingResponseContentException
+     * @throws MissingResponseSchemaException
      */
     protected function processResponses(array $responses, Method $method): array
     {
@@ -239,11 +243,21 @@ class Endpoints extends Base
 
         $validResponse = $responses[$validResponses[0]];
 
+        $content = $validResponse['content'] ?? null;
+        if ($content === null) {
+            throw new MissingResponseContentException();
+        }
+
+        $schema = current($content)['schema'] ?? null;
+        if ($schema === null) {
+            throw new MissingResponseSchemaException();
+        }
+
         try {
             $method->setReturnType(
                 $this->resolveType(
-                    $validResponse['schema']['type'] ?? null,
-                    $validResponse['schema']['$ref'] ?? null
+                    $schema['type'] ?? null,
+                    $schema['$ref'] ?? null
                 )
             );
         } catch (UnresolvedTypeException $e) {
@@ -257,9 +271,19 @@ class Endpoints extends Base
                 continue;
             }
 
+            $content = $response['content'] ?? null;
+            if ($content === null) {
+                throw new MissingResponseContentException();
+            }
+
+            $schema = current($content)['schema'] ?? null;
+            if ($schema === null) {
+                throw new MissingResponseSchemaException();
+            }
+
             $errorResponses[$errorCode] = $this->resolveType(
-                $response['schema']['type'] ?? null,
-                $response['schema']['$ref'] ?? null
+                $schema['type'] ?? null,
+                $schema['$ref'] ?? null
             );
         }
 
@@ -297,9 +321,9 @@ class Endpoints extends Base
         $queryParameters = $this->getParameters('query', $parameters);
         $bodyParameters = $this->getParameters('body', $parameters);
 
-        $produces = $data['produces'] ?? null;
+        $produces = $this->getResponseContentTypes($data['responses'] ?? null);
         $responseHeaders = $this->getArray($produces);
-        $requestHeaders = $this->getArray($data['consumes'] ?? $produces);
+        $requestHeaders = $responseHeaders;
 
         $errorResponsesArray = $this->getErrorResponseExport($errorResponses);
 
@@ -398,5 +422,24 @@ CODE;
         return empty($result)
             ? '[]'
             : "[\n" . implode(",\n", $result) . ",\n]";
+    }
+
+    protected function getResponseContentTypes(?array $responses): array
+    {
+        if (empty($responses)) {
+            return [];
+        }
+
+        $responseContentTypes = [];
+
+        foreach ($responses as $content) {
+            if (!isset($content['content'])) {
+                continue;
+            }
+
+            $responseContentTypes[] = key($content['content']);
+        }
+
+        return array_unique($responseContentTypes);
     }
 }

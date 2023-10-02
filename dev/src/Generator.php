@@ -35,8 +35,10 @@ class Generator
         foreach ($apiSpec['namespaces'] as $namespace => $spec) {
             $this->checkOpenApiVersion($spec['openapi'] ?? null);
 
-            $modelEnums = new Enums\Models($apiVersion, $namespace, $spec['definitions'] ?? null);
-            $models = new Models($apiVersion, $namespace, $spec['definitions'] ?? null, $modelEnums);
+            $schemas = $spec['components']['schemas'] ?? null;
+
+            $modelEnums = new Enums\Models($apiVersion, $namespace, $schemas);
+            $models = new Models($apiVersion, $namespace, $schemas, $modelEnums);
             $endpointEnums = new Enums\Endpoints($apiVersion, $namespace, $spec['paths'] ?? null);
             $endpoints = new Endpoints($apiVersion, $namespace, $spec['paths'] ?? null, $models, $endpointEnums);
 

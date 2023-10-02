@@ -2,7 +2,7 @@
 
 namespace Inktweb\Bolcom\RetailerApi\Development\Exceptions;
 
-class MissingDefinitionsException extends DevelopmentException
+class MissingResponseSchemaException extends DevelopmentException
 {
     //
 }

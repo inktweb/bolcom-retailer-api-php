@@ -5,7 +5,7 @@ namespace Inktweb\Bolcom\RetailerApi\Development\Generator;
 use Illuminate\Support\Str;
 use Inktweb\Bolcom\RetailerApi\Contracts\Model;
 use Inktweb\Bolcom\RetailerApi\Development\Config;
-use Inktweb\Bolcom\RetailerApi\Development\Exceptions\MissingDefinitionsException;
+use Inktweb\Bolcom\RetailerApi\Development\Exceptions\MissingSchemasException;
 use Inktweb\Bolcom\RetailerApi\Development\Exceptions\ReferenceNotFoundException;
 use Inktweb\Bolcom\RetailerApi\Development\Exceptions\UnsupportedDefinitionTypeException;
 use Inktweb\Bolcom\RetailerApi\Development\Exceptions\UnsupportedPropertyTypeException;
@@ -35,20 +35,20 @@ class Models extends Base
     /**
      * @throws UnsupportedDefinitionTypeException
      * @throws UnsupportedPropertyTypeException
-     * @throws MissingDefinitionsException
+     * @throws MissingSchemasException
      * @throws ReferenceNotFoundException
      */
     protected function process(?array $data): array
     {
         if ($data === null) {
-            throw new MissingDefinitionsException();
+            throw new MissingSchemasException();
         }
 
         $classes = [];
         $deferredProperties = [];
 
         foreach ($data as $name => $definition) {
-            $key = "#/definitions/$name";
+            $key = "#/components/schemas/$name";
 
             if ($definition['type'] !== 'object') {
                 throw new UnsupportedDefinitionTypeException(
@@ -86,6 +86,7 @@ class Models extends Base
         $deferredProperties = [];
 
         foreach ($properties as $name => $property) {
+            $name = Str::camel($name);
             $classProperty = $class->addProperty($name)
                 ->setProtected()
                 ->addComment($this->wrapText($property['description'] ?? ''))
@@ -127,6 +128,7 @@ class Models extends Base
                         'property' => $classProperty,
                         'parameter' => $parameter,
                         'getter' => $propertyGetter,
+                        'setter' => $propertySetter,
                     ];
                     break;
                 case 'string':
@@ -175,6 +177,7 @@ class Models extends Base
                             'property' => $classProperty,
                             'parameter' => $parameter,
                             'getter' => $propertyGetter,
+                            'setter' => $propertySetter,
                         ];
                     }
                     break;
@@ -215,6 +218,9 @@ class Models extends Base
             /** @var Method $getter */
             $getter = $deferredProperty['getter'];
 
+            /** @var Method $setter */
+            $setter = $deferredProperty['setter'];
+
             switch ($type) {
                 case 'object':
                     $property->setType(
@@ -236,8 +242,8 @@ class Models extends Base
                         $this->getFullyQualifiedClassName(
                             $class->getName()
                         )
-                        . ' ...'
                     );
+                    $setter->setVariadic();
                     break;
                 default:
                     throw new UnsupportedPropertyTypeException(
