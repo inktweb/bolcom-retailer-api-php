@@ -1,0 +1,380 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "v10 - Advertising API",
+    "description": "The bol.com API for advertisers.\n\n# Authentication\nOur API requires authentication via OAuth2. The detailed steps to authenticate are explained [here](https://api.bol.com/retailer/public/Retailer-API/authentication.html) \n\n# Demo scenarios\nOur API specification includes examples of the responses you can expect. For more information as well as more examples, we refer you to the following resources:  \n- [Demo environment](https://api.bol.com/retailer/public/Retailer-API/demo/demo.html)\n- [Demo scenarios](https://api.bol.com/retailer/public/Retailer-API/demo/v10-index.html)\n",
+    "termsOfService": "https://api.bol.com/retailer/public/Retailer-API/legal/terms-of-service.html",
+    "contact": {
+      "name": "developers.bol.com",
+      "url": "https://developers.bol.com"
+    },
+    "version": "10.x",
+    "x-logo": {
+      "url": "https://api.bol.com/retailer/public/Retailer-API/_images/bolcom_logo.png",
+      "altText": "bol.com logo"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.bol.com"
+    }
+  ],
+  "security": [
+    {
+      "OAuth2": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Reporting",
+      "description": "Advertiser: Share of Voice resource"
+    },
+    {
+      "name": "Reporting",
+      "description": "Advertiser: Reporting resource"
+    }
+  ],
+  "paths": {
+    "/advertiser/sponsored-products/campaign-performance/reports": {
+      "post": {
+        "tags": [
+          "Reporting"
+        ],
+        "summary": "Request a campaign performance report (BETA)",
+        "description": "Request a campaign performance report for the period requested.",
+        "operationId": "post-campaign-performance-report",
+        "parameters": [
+          {
+            "name": "start-date",
+            "in": "query",
+            "description": "The start date for the reporting period. Period start date in ISO 8601 standard.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "2021-01-31"
+          },
+          {
+            "name": "end-date",
+            "in": "query",
+            "description": "The end date for the reporting period. This will be one day after the last full day that is included in the reporting. Period end date in ISO 8601 standard.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "2021-02-02"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted: Successfully scheduled the request for processing.",
+            "content": {
+              "application/vnd.advertiser.v10+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProcessStatus"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/advertiser/sponsored-products/campaign-performance/reports/{report-id}": {
+      "get": {
+        "tags": [
+          "Reporting"
+        ],
+        "summary": "Retrieve a campaign performance report by report id (BETA)",
+        "description": "Retrieve a campaign performance report by using the report id provided to you when requesting a campaign performance report",
+        "operationId": "get-campaign-performance-report",
+        "parameters": [
+          {
+            "name": "report-id",
+            "in": "path",
+            "description": "Unique identifier for a campaign performance report",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "5ab88bc0-2d7f-4f56-98cf-b1de09d79f04"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok: Successfully processed the request.",
+            "content": {
+              "application/vnd.advertiser.v10+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCampaignPerformanceReportResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found: The requested item could not be found.",
+            "content": {
+              "application/vnd.advertiser.v10+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCampaignPerformanceReportResponse"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Gone: The requested resource has been permanently removed.",
+            "content": {
+              "application/vnd.advertiser.v10+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCampaignPerformanceReportResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/advertiser/sponsored-products/share-of-voice/reports/category": {
+      "post": {
+        "tags": [
+          "Reporting"
+        ],
+        "summary": "Request a share of voice report for categories (BETA)",
+        "description": "Request a share of voice report on a category level for the last 14 days.",
+        "operationId": "create-share-of-voice-category-report",
+        "responses": {
+          "202": {
+            "description": "Accepted: Successfully scheduled the request for processing.",
+            "content": {
+              "application/vnd.advertiser.v10+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProcessStatus"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/advertiser/sponsored-products/share-of-voice/reports/search-term": {
+      "post": {
+        "tags": [
+          "Reporting"
+        ],
+        "summary": "Request a share of voice report for search terms (BETA)",
+        "description": "Request a share of voice report on a search term level for the last 14 days.",
+        "operationId": "create-share-of-voice-search-term-report",
+        "responses": {
+          "202": {
+            "description": "Accepted: Successfully scheduled the request for processing.",
+            "content": {
+              "application/vnd.advertiser.v10+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProcessStatus"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/advertiser/sponsored-products/share-of-voice/reports/{report-id}": {
+      "get": {
+        "tags": [
+          "Reporting"
+        ],
+        "summary": "Retrieve a share of voice report by report id (BETA)",
+        "description": "Retrieve a share of voice report by using the report id provided to you when requesting a share of voice report.",
+        "operationId": "get-share-of-voice-report",
+        "parameters": [
+          {
+            "name": "report-id",
+            "in": "path",
+            "description": "Unique identifier for a share of voice report",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "5ab88bc0-2d7f-4f56-98cf-b1de09d79f04"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok: Successfully processed the request.",
+            "content": {
+              "application/vnd.advertiser.v10+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetShareOfVoiceReportResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found: The requested item could not be found.",
+            "content": {
+              "application/vnd.advertiser.v10+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetShareOfVoiceReportResponse"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Gone: The requested resource has been permanently removed.",
+            "content": {
+              "application/vnd.advertiser.v10+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetShareOfVoiceReportResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Link": {
+        "required": [
+          "href",
+          "method",
+          "rel"
+        ],
+        "type": "object",
+        "properties": {
+          "rel": {
+            "type": "string",
+            "description": "The link relation.",
+            "example": "self"
+          },
+          "href": {
+            "type": "string",
+            "description": "The URI for the resource linked to.",
+            "example": "https://api.bol.com/shared/process-status/1234567"
+          },
+          "method": {
+            "type": "string",
+            "description": "The HTTP method to use when accessing the link.",
+            "example": "GET"
+          }
+        },
+        "description": "Lists available actions applicable to this endpoint."
+      },
+      "ProcessStatus": {
+        "required": [
+          "createTimestamp",
+          "description",
+          "eventType",
+          "links",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "processStatusId": {
+            "type": "string",
+            "description": "The process status id.",
+            "example": "1234567"
+          },
+          "entityId": {
+            "type": "string",
+            "description": "The id of the object being processed. For example, in case of a shipment process id, you will receive the id of the order item being processed.",
+            "example": "987654321"
+          },
+          "eventType": {
+            "type": "string",
+            "description": "Name of the requested action that is being processed.",
+            "example": "CONFIRM_SHIPMENT"
+          },
+          "description": {
+            "type": "string",
+            "description": "Describes the action that is being processed.",
+            "example": "Example process status description for processing 987654321."
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the action being processed.",
+            "example": "SUCCESS",
+            "enum": [
+              "PENDING",
+              "SUCCESS",
+              "FAILURE",
+              "TIMEOUT"
+            ]
+          },
+          "errorMessage": {
+            "type": "string",
+            "description": "Shows error message if applicable.",
+            "example": "Example process status error message."
+          },
+          "createTimestamp": {
+            "type": "string",
+            "description": "Time of creation of the response.",
+            "format": "date-time",
+            "example": "2018-11-14T09:34:41+01:00"
+          },
+          "links": {
+            "type": "array",
+            "description": "Lists available actions applicable to this endpoint.",
+            "items": {
+              "$ref": "#/components/schemas/Link"
+            }
+          }
+        }
+      },
+      "GetShareOfVoiceReportResponse": {
+        "type": "object",
+        "properties": {
+          "urlExpireDateTime": {
+            "type": "string",
+            "description": "The date and time when the url expires.",
+            "format": "date-time",
+            "example": "2022-11-14T09:34:41+01:00"
+          },
+          "reportExpireDateTime": {
+            "type": "string",
+            "description": "The date and time when the report expires.",
+            "format": "date-time",
+            "example": "2022-11-14T09:34:41+01:00"
+          },
+          "url": {
+            "type": "string",
+            "description": "The URL for downloading the requested report.",
+            "format": "uri",
+            "example": "https://example.com"
+          }
+        }
+      },
+      "GetCampaignPerformanceReportResponse": {
+        "type": "object",
+        "properties": {
+          "urlExpireDateTime": {
+            "type": "string",
+            "description": "The date and time when the url expires.",
+            "format": "date-time",
+            "example": "2022-11-14T09:34:41+01:00"
+          },
+          "reportExpireDateTime": {
+            "type": "string",
+            "description": "The date and time when the report expires.",
+            "format": "date-time",
+            "example": "2022-11-14T09:34:41+01:00"
+          },
+          "url": {
+            "type": "string",
+            "description": "The URL for downloading the requested report.",
+            "format": "uri",
+            "example": "https://example.com"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "OAuth2": {
+        "type": "http",
+        "description": "JWT-based access to api.bol.com",
+        "in": "header",
+        "scheme": "bearer"
+      }
+    }
+  }
+}
