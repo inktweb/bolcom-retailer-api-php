@@ -28,8 +28,8 @@ class Endpoints extends Base
                 foreach ($endpoint['parameters'] as $parameter) {
                     $namespace = $this->getClassName($endpoint['tags'][0]);
                     $name = $parameter['name'];
-                    $enum = $parameter['enum']
-                        ?? $parameter['items']['enum']
+                    $enum = $parameter['schema']['enum']
+                        ?? $parameter['schema']['items']['enum']
                         ?? null;
 
                     if (is_array($enum)) {

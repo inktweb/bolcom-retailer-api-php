@@ -115,10 +115,21 @@ class Models extends Base
             switch ($propertyType) {
                 case 'array':
                     $parameter->setType(Type::ARRAY);
+                    $classProperty->setType(Type::ARRAY);
                     $classProperty->setValue([]);
+                    $propertyGetter->setReturnType(Type::ARRAY);
+
+                    if (isset($property['items']['enum'])) {
+                        $type = $this->enums->getEnum($class->getName(), $classProperty->getName());
+
+                        $parameter->setType($type);
+                        $propertySetter->setVariadic();
+
+                        $this->uses->add($type);
+                        break;
+                    }
 
                     if (!isset($property['items']['$ref'])) {
-                        $classProperty->setType(Type::ARRAY);
                         break;
                     }
 
@@ -186,7 +197,11 @@ class Models extends Base
             }
 
             $propertyGetter
-                ->setReturnType($parameter->getType())
+                ->setReturnType(
+                    $propertySetter->isVariadic()
+                        ? $classProperty->getType()
+                        : $parameter->getType()
+                )
                 ->setReturnNullable($parameter->isNullable());
         }
 

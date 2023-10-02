@@ -29,7 +29,9 @@ class Models extends Base
             foreach ($definition['properties'] as $fieldName => $fieldData) {
                 $namespace = $this->getClassName($name);
 
-                $enum = $fieldData['enum'] ?? null;
+                $enum = $fieldData['enum']
+                    ?? $fieldData['items']['enum']
+                    ?? null;
 
                 if (is_array($enum)) {
                     $enum = array_filter($enum, fn($value) => $value !== null);
