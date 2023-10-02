@@ -18,7 +18,7 @@ specification as supplied by Bol.com.
 
 ## Supported versions
 
-Currently clients, endpoints, models and other related objects have been generated for API v7 and v8.
+Currently clients, endpoints, models and other related objects have been generated for API v8, v9 and v10.
 Later versions will be generated and released as soon as they go into production.
 Similarly, API versions removed by Bol.com will also be removed from this package to keep things nice and tidy.
 
@@ -34,7 +34,7 @@ All versions of the API will get their own namespace. So if you have to upgrade 
 in theory you could simply change the namespace from `V7` to `V8` or vice versa.
 
 ```php
-$client = new \Inktweb\Bolcom\RetailerApi\Clients\V7\Client(
+$client = new \Inktweb\Bolcom\RetailerApi\Clients\V10\Client(
     new \Inktweb\Bolcom\RetailerApi\Client\Config(
         "your-client-id",
         "your-client-secret",
@@ -52,16 +52,18 @@ $orders = $client->retailer()->orders()->getOrders();
 $orders = $client->retailer()->orders()->getOrders(
     null,
     null,
-    \Inktweb\Bolcom\RetailerApi\Enums\V7\Orders\Status::open()
+    \Inktweb\Bolcom\RetailerApi\Enums\V10\Orders\Status::open()
 );
 ```
 
 In the case of an error, the client will always throw an exception.
 
-**Note:** Bol.com introduced breaking changes starting with version 7. The API is now split off in three components:
-Advertiser, Retailer and Shared. If you are migrating from version 6 or lower, you should add the appropriate component
-to each call. Using the above example, in version 6 you would use `$client->orders()->getOrders()` whereas in version 7
-and up you should use `$client->retailer()->orders()->getOrders()`.
+**Note:** Bol.com uses the OpenAPI 3.0 format (instead of 2.0) starting with version 10.
+The generators had to be adjusted to process this format correctly, but are not backwards compatible.
+Because of this, the v8 and v9 specification files have been removed. The v8 and v9 classes will
+stay available in the library until their respective API versions get removed.
+See the [release schedule](https://api.bol.com/retailer/public/Retailer-API/release-planning.html) for
+more information.
 
 ## Available endpoints
 
