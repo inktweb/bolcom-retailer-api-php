@@ -186,4 +186,12 @@ abstract class Enum implements JsonSerializable
     {
         return implode(' ', $this->compile());
     }
+
+    /**
+     * @throws UnknownCollectionFormatException
+     */
+    public function __toString(): string
+    {
+        return $this->jsonSerialize();
+    }
 }

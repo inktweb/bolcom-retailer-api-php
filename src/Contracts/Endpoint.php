@@ -28,7 +28,8 @@ abstract class Endpoint
         ?Model $body,
         ?array $acceptedContentTypes,
         ?array $responseContentTypes,
-        array $errorResponseModels
+        array $errorResponseModels,
+        ?array $headerParameters = null
     ): ResponseInterface {
         try {
             $response = $this->client->request(
@@ -38,9 +39,15 @@ abstract class Endpoint
                     RequestOptions::BODY => $body === null
                         ? null
                         : json_encode($body),
-                    RequestOptions::HEADERS => [
-                        'Accept' => $acceptedContentTypes ?: '*/*',
-                    ],
+                    RequestOptions::HEADERS => array_merge(
+                        array_map(
+                            fn($parameter) => (string)$parameter,
+                            array_filter($headerParameters ?? [])
+                        ),
+                        [
+                            'Accept' => $acceptedContentTypes ?: '*/*',
+                        ]
+                    ),
                 ]
             );
         } catch (ApiException $e) {

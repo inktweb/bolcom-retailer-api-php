@@ -317,6 +317,7 @@ class Endpoints extends Base
         $sanitizedVerb = var_export($verb, true);
 
         $parameters = $data['parameters'] ?? null;
+        $headerParameters = $this->getParameters('header', $parameters);
         $pathParameters = $this->getParameters('path', $parameters);
         $queryParameters = $this->getParameters('query', $parameters);
         $bodyParameters = $this->getParameters('body', $parameters);
@@ -348,7 +349,8 @@ return {$prepend}
         $bodyParameters,
         $requestHeaders,
         $responseHeaders,
-        $errorResponsesArray
+        $errorResponsesArray,
+        $headerParameters
     )->getBody(){$append};
 CODE;
     }
