@@ -128,6 +128,7 @@ class Endpoints extends Base
                 $method->addComment($this->wrapText($data['description']));
                 $method->addComment('');
 
+                $this->processRequestBody($data['requestBody'] ?? null, $method);
                 $this->processParameters($data['parameters'] ?? null, $method, $endpoint);
                 $errorResponses = $this->processResponses($data['responses'], $method);
 
@@ -137,6 +138,31 @@ class Endpoints extends Base
         }
 
         return $endpoint;
+    }
+
+    /**
+     * @throws UnsupportedParameterTypeException
+     * @throws UnresolvedTypeException
+     */
+    protected function processRequestBody(?array $requestBody, Method $method): void
+    {
+        if (empty($requestBody) || !isset($requestBody['content'])) {
+            return;
+        }
+
+        $ref = current($requestBody['content'])['schema']['$ref'] ?? null;
+
+        if (empty($ref)) {
+            return;
+        }
+
+        $method
+            ->addParameter(
+                $this->getRefBasename($ref)
+            )
+            ->setType(
+                $this->resolveType(null, $ref)
+            );
     }
 
     /**
@@ -320,7 +346,7 @@ class Endpoints extends Base
         $headerParameters = $this->getParameters('header', $parameters);
         $pathParameters = $this->getParameters('path', $parameters);
         $queryParameters = $this->getParameters('query', $parameters);
-        $bodyParameters = $this->getParameters('body', $parameters);
+        $bodyParameters = $this->getBodyParameters($data);
 
         $produces = $this->getResponseContentTypes($data['responses'] ?? null);
         $responseHeaders = $this->getArray($produces);
@@ -353,6 +379,21 @@ return {$prepend}
         $headerParameters
     )->getBody(){$append};
 CODE;
+    }
+
+    public function getBodyParameters(array $data): string
+    {
+        $content = $data['requestBody']['content'] ?? null;
+
+        if ($content === null) {
+            return 'null';
+        }
+
+        $ref = current($content)['schema']['$ref'] ?? null;
+
+        return $ref !== null
+            ? "\${$this->getRefBasename($ref)}"
+            : 'null';
     }
 
     /**
@@ -443,5 +484,10 @@ CODE;
         }
 
         return array_unique($responseContentTypes);
+    }
+
+    protected function getRefBasename($ref): string
+    {
+        return Str::camel(basename($ref));
     }
 }
