@@ -43,13 +43,13 @@ final class Subscriptions extends Endpoint
                 [],
                 null,
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -76,13 +76,13 @@ final class Subscriptions extends Endpoint
                 [],
                 $body,
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -109,10 +109,10 @@ final class Subscriptions extends Endpoint
                 [],
                 null,
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 []
             )->getBody()->getJson()
@@ -137,18 +137,18 @@ final class Subscriptions extends Endpoint
                 'post',
                 'subscriptions/test/{subscription-id}',
                 [
-                'subscription-id' => $subscriptionId,
+                    'subscription-id' => $subscriptionId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -172,19 +172,19 @@ final class Subscriptions extends Endpoint
                 'get',
                 'subscriptions/{subscription-id}',
                 [
-                'subscription-id' => $subscriptionId,
+                    'subscription-id' => $subscriptionId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                404 => Problem::class,
-                400 => Problem::class,
+                    404 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -210,18 +210,18 @@ final class Subscriptions extends Endpoint
                 'put',
                 'subscriptions/{subscription-id}',
                 [
-                'subscription-id' => $subscriptionId,
+                    'subscription-id' => $subscriptionId,
                 ],
                 [],
                 $body,
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -244,18 +244,18 @@ final class Subscriptions extends Endpoint
                 'delete',
                 'subscriptions/{subscription-id}',
                 [
-                'subscription-id' => $subscriptionId,
+                    'subscription-id' => $subscriptionId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );

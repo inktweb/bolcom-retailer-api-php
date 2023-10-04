@@ -44,22 +44,24 @@ final class Inventory extends Endpoint
                 'inventory',
                 [],
                 [
-                'page' => $page,
-                'quantity' => $quantity,
-                'stock' => $stock,
-                'state' => $state,
-                'query' => $query,
+                    'page' => $page,
+                    'quantity' => $quantity,
+                    'stock' => $stock,
+                    'state' => $state,
+                    'query' => $query,
                 ],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }

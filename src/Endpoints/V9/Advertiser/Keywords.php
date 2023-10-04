@@ -40,18 +40,18 @@ final class Keywords extends Endpoint
                 '/advertiser/sponsored-products/keywords',
                 [],
                 [
-                'ad-group-id' => $adGroupId,
-                'page' => $page,
+                    'ad-group-id' => $adGroupId,
+                    'page' => $page,
                 ],
                 null,
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -77,13 +77,13 @@ final class Keywords extends Endpoint
                 [],
                 $body,
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -106,18 +106,18 @@ final class Keywords extends Endpoint
                 'get',
                 '/advertiser/sponsored-products/keywords/{keyword-id}',
                 [
-                'keyword-id' => $keywordId,
+                    'keyword-id' => $keywordId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -140,18 +140,18 @@ final class Keywords extends Endpoint
                 'put',
                 '/advertiser/sponsored-products/keywords/{keyword-id}',
                 [
-                'keyword-id' => $keywordId,
+                    'keyword-id' => $keywordId,
                 ],
                 [],
                 $body,
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -174,18 +174,18 @@ final class Keywords extends Endpoint
                 'delete',
                 '/advertiser/sponsored-products/keywords/{keyword-id}',
                 [
-                'keyword-id' => $keywordId,
+                    'keyword-id' => $keywordId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );

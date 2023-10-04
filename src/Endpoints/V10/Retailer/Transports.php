@@ -12,6 +12,7 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Endpoint;
 use Inktweb\Bolcom\RetailerApi\Exceptions\ApiException;
 use Inktweb\Bolcom\RetailerApi\Exceptions\Enum\UnknownCollectionFormatException;
 use Inktweb\Bolcom\RetailerApi\Exceptions\UnexpectedResponseContentTypeException;
+use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\ChangeTransportRequest;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\Problem;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\ProcessStatus;
 
@@ -29,26 +30,30 @@ final class Transports extends Endpoint
      * @throws UnexpectedResponseContentTypeException
      * @throws UnknownCollectionFormatException
      */
-    public function addTransportInformationByTransportId(string $transportId): ProcessStatus
-    {
+    public function addTransportInformationByTransportId(
+        string $transportId,
+        ChangeTransportRequest $changeTransportRequest
+    ): ProcessStatus {
         return ProcessStatus::fromArray(
             $this->request(
                 'put',
                 'transports/{transport-id}',
                 [
-                'transport-id' => $transportId,
+                    'transport-id' => $transportId,
                 ],
                 [],
-                null,
+                $changeTransportRequest,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }

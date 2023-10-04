@@ -39,18 +39,18 @@ final class Transports extends Endpoint
                 'put',
                 'transports/{transport-id}',
                 [
-                'transport-id' => $transportId,
+                    'transport-id' => $transportId,
                 ],
                 [],
                 $body,
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );

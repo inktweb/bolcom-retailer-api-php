@@ -34,20 +34,22 @@ final class Retailers extends Endpoint
                 'get',
                 'retailers/{retailer-id}',
                 [
-                'retailer-id' => $retailerId,
+                    'retailer-id' => $retailerId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
-                ]
+                    400 => Problem::class,
+                    404 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }

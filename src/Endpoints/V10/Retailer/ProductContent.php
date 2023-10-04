@@ -14,7 +14,9 @@ use Inktweb\Bolcom\RetailerApi\Exceptions\ApiException;
 use Inktweb\Bolcom\RetailerApi\Exceptions\Enum\UnknownCollectionFormatException;
 use Inktweb\Bolcom\RetailerApi\Exceptions\UnexpectedResponseContentTypeException;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\CatalogProduct;
+use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\ChunkRecommendationsRequest;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\ChunkRecommendationsResponse;
+use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\CreateProductContentSingleRequest;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\Problem;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\ProcessStatus;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\UploadReportResponse;
@@ -38,21 +40,25 @@ final class ProductContent extends Endpoint
                 'get',
                 'content/catalog-products/{ean}',
                 [
-                'ean' => $ean,
+                    'ean' => $ean,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
-                406 => Problem::class,
-                ]
+                    400 => Problem::class,
+                    404 => Problem::class,
+                    406 => Problem::class,
+                ],
+                [
+                    'Accept-Language' => $acceptLanguage,
+                ],
+                null
             )->getBody()->getJson()
         );
     }
@@ -67,7 +73,7 @@ final class ProductContent extends Endpoint
      * @throws UnexpectedResponseContentTypeException
      * @throws UnknownCollectionFormatException
      */
-    public function getChunkRecommendations(): ChunkRecommendationsResponse
+    public function getChunkRecommendations(ChunkRecommendationsRequest $chunkRecommendationsRequest): ChunkRecommendationsResponse
     {
         return ChunkRecommendationsResponse::fromArray(
             $this->request(
@@ -75,16 +81,18 @@ final class ProductContent extends Endpoint
                 'content/chunk-recommendations',
                 [],
                 [],
-                null,
+                $chunkRecommendationsRequest,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -99,7 +107,7 @@ final class ProductContent extends Endpoint
      * @throws UnexpectedResponseContentTypeException
      * @throws UnknownCollectionFormatException
      */
-    public function postProductContent(): ProcessStatus
+    public function postProductContent(CreateProductContentSingleRequest $createProductContentSingleRequest): ProcessStatus
     {
         return ProcessStatus::fromArray(
             $this->request(
@@ -107,16 +115,18 @@ final class ProductContent extends Endpoint
                 'content/products',
                 [],
                 [],
-                null,
+                $createProductContentSingleRequest,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -138,19 +148,21 @@ final class ProductContent extends Endpoint
                 'get',
                 'content/upload-report/{upload-id}',
                 [
-                'upload-id' => $uploadId,
+                    'upload-id' => $uploadId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                404 => Problem::class,
-                ]
+                    404 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }

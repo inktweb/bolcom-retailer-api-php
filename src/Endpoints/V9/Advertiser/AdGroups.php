@@ -39,19 +39,19 @@ final class AdGroups extends Endpoint
                 '/advertiser/sponsored-products/ad-groups',
                 [],
                 [
-                'campaign-id' => $campaignId,
-                'page' => $page,
+                    'campaign-id' => $campaignId,
+                    'page' => $page,
                 ],
                 null,
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
+                    400 => Problem::class,
+                    404 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -77,13 +77,13 @@ final class AdGroups extends Endpoint
                 [],
                 $body,
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -106,19 +106,19 @@ final class AdGroups extends Endpoint
                 'get',
                 '/advertiser/sponsored-products/ad-groups/{ad-group-id}',
                 [
-                'ad-group-id' => $adGroupId,
+                    'ad-group-id' => $adGroupId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
+                    400 => Problem::class,
+                    404 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -141,18 +141,18 @@ final class AdGroups extends Endpoint
                 'put',
                 '/advertiser/sponsored-products/ad-groups/{ad-group-id}',
                 [
-                'ad-group-id' => $adGroupId,
+                    'ad-group-id' => $adGroupId,
                 ],
                 [],
                 $body,
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );

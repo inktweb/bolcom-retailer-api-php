@@ -14,6 +14,7 @@ use Inktweb\Bolcom\RetailerApi\Enums\Endpoints\V10\Retailer\Orders\Status;
 use Inktweb\Bolcom\RetailerApi\Exceptions\ApiException;
 use Inktweb\Bolcom\RetailerApi\Exceptions\Enum\UnknownCollectionFormatException;
 use Inktweb\Bolcom\RetailerApi\Exceptions\UnexpectedResponseContentTypeException;
+use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\CancellationRequest;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\Order;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\Problem;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\ProcessStatus;
@@ -44,20 +45,22 @@ final class Orders extends Endpoint
                 'orders',
                 [],
                 [
-                'page' => $page,
-                'fulfilment-method' => $fulfilmentMethod,
-                'status' => $status,
-                'change-interval-minute' => $changeIntervalMinute,
-                'latest-change-date' => $latestChangeDate,
+                    'page' => $page,
+                    'fulfilment-method' => $fulfilmentMethod,
+                    'status' => $status,
+                    'change-interval-minute' => $changeIntervalMinute,
+                    'latest-change-date' => $latestChangeDate,
                 ],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
-                []
+                [],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -74,7 +77,7 @@ final class Orders extends Endpoint
      * @throws UnexpectedResponseContentTypeException
      * @throws UnknownCollectionFormatException
      */
-    public function cancelOrderItem(): ProcessStatus
+    public function cancelOrderItem(CancellationRequest $cancellationRequest): ProcessStatus
     {
         return ProcessStatus::fromArray(
             $this->request(
@@ -82,16 +85,18 @@ final class Orders extends Endpoint
                 'orders/cancellation',
                 [],
                 [],
-                null,
+                $cancellationRequest,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -115,19 +120,21 @@ final class Orders extends Endpoint
                 'get',
                 'orders/{order-id}',
                 [
-                'order-id' => $orderId,
+                    'order-id' => $orderId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                404 => Problem::class,
-                ]
+                    404 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }

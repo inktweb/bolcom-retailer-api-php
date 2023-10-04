@@ -41,14 +41,14 @@ final class Commissions extends Endpoint
                 [],
                 $body,
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
+                    400 => Problem::class,
+                    404 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -72,22 +72,22 @@ final class Commissions extends Endpoint
                 'get',
                 'commission/{ean}',
                 [
-                'ean' => $ean,
+                    'ean' => $ean,
                 ],
                 [
-                'condition' => $condition,
-                'unit-price' => $unitPrice,
+                    'condition' => $condition,
+                    'unit-price' => $unitPrice,
                 ],
                 null,
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
+                    400 => Problem::class,
+                    404 => Problem::class,
                 ]
             )->getBody()->getJson()
         );

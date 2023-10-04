@@ -15,6 +15,7 @@ use Inktweb\Bolcom\RetailerApi\Exceptions\UnexpectedResponseContentTypeException
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\KeySetResponse;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\Problem;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\ProcessStatus;
+use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\SubscriptionRequest;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\SubscriptionResponse;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\SubscriptionsResponse;
 
@@ -43,14 +44,16 @@ final class Subscriptions extends Endpoint
                 [],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -68,7 +71,7 @@ final class Subscriptions extends Endpoint
      * @throws UnexpectedResponseContentTypeException
      * @throws UnknownCollectionFormatException
      */
-    public function postPushNotificationSubscription(): ProcessStatus
+    public function postPushNotificationSubscription(SubscriptionRequest $subscriptionRequest): ProcessStatus
     {
         return ProcessStatus::fromArray(
             $this->request(
@@ -76,16 +79,18 @@ final class Subscriptions extends Endpoint
                 'subscriptions',
                 [],
                 [],
-                null,
+                $subscriptionRequest,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -111,12 +116,14 @@ final class Subscriptions extends Endpoint
                 [],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
-                []
+                [],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -139,19 +146,21 @@ final class Subscriptions extends Endpoint
                 'post',
                 'subscriptions/test/{subscription-id}',
                 [
-                'subscription-id' => $subscriptionId,
+                    'subscription-id' => $subscriptionId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -176,20 +185,22 @@ final class Subscriptions extends Endpoint
                 'get',
                 'subscriptions/{subscription-id}',
                 [
-                'subscription-id' => $subscriptionId,
+                    'subscription-id' => $subscriptionId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                404 => Problem::class,
-                400 => Problem::class,
-                ]
+                    404 => Problem::class,
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -207,26 +218,30 @@ final class Subscriptions extends Endpoint
      * @throws UnexpectedResponseContentTypeException
      * @throws UnknownCollectionFormatException
      */
-    public function putPushNotificationSubscription(string $subscriptionId): ProcessStatus
-    {
+    public function putPushNotificationSubscription(
+        string $subscriptionId,
+        SubscriptionRequest $subscriptionRequest
+    ): ProcessStatus {
         return ProcessStatus::fromArray(
             $this->request(
                 'put',
                 'subscriptions/{subscription-id}',
                 [
-                'subscription-id' => $subscriptionId,
+                    'subscription-id' => $subscriptionId,
                 ],
                 [],
-                null,
+                $subscriptionRequest,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -249,19 +264,21 @@ final class Subscriptions extends Endpoint
                 'delete',
                 'subscriptions/{subscription-id}',
                 [
-                'subscription-id' => $subscriptionId,
+                    'subscription-id' => $subscriptionId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }

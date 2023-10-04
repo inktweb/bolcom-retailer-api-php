@@ -13,9 +13,11 @@ use Inktweb\Bolcom\RetailerApi\Enums\Endpoints\V10\Retailer\Returns\FulfilmentMe
 use Inktweb\Bolcom\RetailerApi\Exceptions\ApiException;
 use Inktweb\Bolcom\RetailerApi\Exceptions\Enum\UnknownCollectionFormatException;
 use Inktweb\Bolcom\RetailerApi\Exceptions\UnexpectedResponseContentTypeException;
+use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\CreateReturnRequest;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\Problem;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\ProcessStatus;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\ReturnMerchandise;
+use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\ReturnRequest;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\ReturnsResponse;
 
 final class Returns extends Endpoint
@@ -43,20 +45,22 @@ final class Returns extends Endpoint
                 'returns',
                 [],
                 [
-                'page' => $page,
-                'handled' => $handled,
-                'fulfilment-method' => $fulfilmentMethod,
+                    'page' => $page,
+                    'handled' => $handled,
+                    'fulfilment-method' => $fulfilmentMethod,
                 ],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -73,7 +77,7 @@ final class Returns extends Endpoint
      * @throws UnexpectedResponseContentTypeException
      * @throws UnknownCollectionFormatException
      */
-    public function createReturn(): ProcessStatus
+    public function createReturn(CreateReturnRequest $createReturnRequest): ProcessStatus
     {
         return ProcessStatus::fromArray(
             $this->request(
@@ -81,16 +85,18 @@ final class Returns extends Endpoint
                 'returns',
                 [],
                 [],
-                null,
+                $createReturnRequest,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -112,19 +118,21 @@ final class Returns extends Endpoint
                 'get',
                 'returns/{return-id}',
                 [
-                'return-id' => $returnId,
+                    'return-id' => $returnId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                404 => Problem::class,
-                ]
+                    404 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -141,26 +149,28 @@ final class Returns extends Endpoint
      * @throws UnexpectedResponseContentTypeException
      * @throws UnknownCollectionFormatException
      */
-    public function handleReturn(int $rmaId): ProcessStatus
+    public function handleReturn(int $rmaId, ReturnRequest $returnRequest): ProcessStatus
     {
         return ProcessStatus::fromArray(
             $this->request(
                 'put',
                 'returns/{rma-id}',
                 [
-                'rma-id' => $rmaId,
+                    'rma-id' => $rmaId,
                 ],
                 [],
-                null,
+                $returnRequest,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }

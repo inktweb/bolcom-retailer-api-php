@@ -13,13 +13,18 @@ use Inktweb\Bolcom\RetailerApi\Enums\Endpoints\V10\Retailer\Replenishments\Label
 use Inktweb\Bolcom\RetailerApi\Exceptions\ApiException;
 use Inktweb\Bolcom\RetailerApi\Exceptions\Enum\UnknownCollectionFormatException;
 use Inktweb\Bolcom\RetailerApi\Exceptions\UnexpectedResponseContentTypeException;
+use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\CreateReplenishmentRequest;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\DeliveryDatesResponse;
+use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\PickupTimeSlotsRequest;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\PickupTimeSlotsResponse;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\Problem;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\ProcessStatus;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\ProductDestinationsResponse;
+use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\ProductLabelsRequest;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\ReplenishmentResponse;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\ReplenishmentsResponse;
+use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\RequestProductDestinationsRequest;
+use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\UpdateReplenishmentRequest;
 use Psr\Http\Message\StreamInterface;
 
 final class Replenishments extends Endpoint
@@ -48,23 +53,25 @@ final class Replenishments extends Endpoint
                 'replenishments',
                 [],
                 [
-                'reference' => $reference,
-                'ean' => $ean,
-                'start-date' => $startDate,
-                'end-date' => $endDate,
-                'state' => $state,
-                'page' => $page,
+                    'reference' => $reference,
+                    'ean' => $ean,
+                    'start-date' => $startDate,
+                    'end-date' => $endDate,
+                    'state' => $state,
+                    'page' => $page,
                 ],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -79,7 +86,7 @@ final class Replenishments extends Endpoint
      * @throws UnexpectedResponseContentTypeException
      * @throws UnknownCollectionFormatException
      */
-    public function postReplenishment(): ProcessStatus
+    public function postReplenishment(CreateReplenishmentRequest $createReplenishmentRequest): ProcessStatus
     {
         return ProcessStatus::fromArray(
             $this->request(
@@ -87,16 +94,18 @@ final class Replenishments extends Endpoint
                 'replenishments',
                 [],
                 [],
-                null,
+                $createReplenishmentRequest,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -121,14 +130,16 @@ final class Replenishments extends Endpoint
                 [],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -143,7 +154,7 @@ final class Replenishments extends Endpoint
      * @throws UnexpectedResponseContentTypeException
      * @throws UnknownCollectionFormatException
      */
-    public function postPickupTimeSlots(): PickupTimeSlotsResponse
+    public function postPickupTimeSlots(PickupTimeSlotsRequest $pickupTimeSlotsRequest): PickupTimeSlotsResponse
     {
         return PickupTimeSlotsResponse::fromArray(
             $this->request(
@@ -151,16 +162,18 @@ final class Replenishments extends Endpoint
                 'replenishments/pickup-time-slots',
                 [],
                 [],
-                null,
+                $pickupTimeSlotsRequest,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -175,7 +188,7 @@ final class Replenishments extends Endpoint
      * @throws UnexpectedResponseContentTypeException
      * @throws UnknownCollectionFormatException
      */
-    public function postRequestProductDestinations(): ProcessStatus
+    public function postRequestProductDestinations(RequestProductDestinationsRequest $requestProductDestinationsRequest): ProcessStatus
     {
         return ProcessStatus::fromArray(
             $this->request(
@@ -183,16 +196,18 @@ final class Replenishments extends Endpoint
                 'replenishments/product-destinations',
                 [],
                 [],
-                null,
+                $requestProductDestinationsRequest,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -215,20 +230,22 @@ final class Replenishments extends Endpoint
                 'get',
                 'replenishments/product-destinations/{product-destinations-id}',
                 [
-                'product-destinations-id' => $productDestinationsId,
+                    'product-destinations-id' => $productDestinationsId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
-                ]
+                    400 => Problem::class,
+                    404 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -243,7 +260,7 @@ final class Replenishments extends Endpoint
      * @throws UnexpectedResponseContentTypeException
      * @throws UnknownCollectionFormatException
      */
-    public function postProductLabels(): StreamInterface
+    public function postProductLabels(ProductLabelsRequest $productLabelsRequest): StreamInterface
     {
         return
             $this->request(
@@ -251,17 +268,19 @@ final class Replenishments extends Endpoint
                 'replenishments/product-labels',
                 [],
                 [],
-                null,
+                $productLabelsRequest,
                 [
-                'application/vnd.retailer.v10+pdf',
+                    'application/vnd.retailer.v10+pdf',
                 ],
                 [
-                'application/vnd.retailer.v10+pdf',
+                    'application/vnd.retailer.v10+pdf',
                 ],
                 [
-                404 => Problem::class,
-                400 => Problem::class,
-                ]
+                    404 => Problem::class,
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody();
     }
 
@@ -282,20 +301,22 @@ final class Replenishments extends Endpoint
                 'get',
                 'replenishments/{replenishment-id}',
                 [
-                'replenishment-id' => $replenishmentId,
+                    'replenishment-id' => $replenishmentId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                404 => Problem::class,
-                400 => Problem::class,
-                ]
+                    404 => Problem::class,
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -310,26 +331,30 @@ final class Replenishments extends Endpoint
      * @throws UnexpectedResponseContentTypeException
      * @throws UnknownCollectionFormatException
      */
-    public function putReplenishment(string $replenishmentId): ProcessStatus
-    {
+    public function putReplenishment(
+        string $replenishmentId,
+        UpdateReplenishmentRequest $updateReplenishmentRequest
+    ): ProcessStatus {
         return ProcessStatus::fromArray(
             $this->request(
                 'put',
                 'replenishments/{replenishment-id}',
                 [
-                'replenishment-id' => $replenishmentId,
+                    'replenishment-id' => $replenishmentId,
                 ],
                 [],
-                null,
+                $updateReplenishmentRequest,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -351,22 +376,24 @@ final class Replenishments extends Endpoint
                 'get',
                 'replenishments/{replenishment-id}/load-carrier-labels',
                 [
-                'replenishment-id' => $replenishmentId,
+                    'replenishment-id' => $replenishmentId,
                 ],
                 [
-                'label-type' => $labelType,
+                    'label-type' => $labelType,
                 ],
                 null,
                 [
-                'application/vnd.retailer.v10+pdf',
+                    'application/vnd.retailer.v10+pdf',
                 ],
                 [
-                'application/vnd.retailer.v10+pdf',
+                    'application/vnd.retailer.v10+pdf',
                 ],
                 [
-                404 => Problem::class,
-                400 => Problem::class,
-                ]
+                    404 => Problem::class,
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody();
     }
 
@@ -387,20 +414,22 @@ final class Replenishments extends Endpoint
                 'get',
                 'replenishments/{replenishment-id}/pick-list',
                 [
-                'replenishment-id' => $replenishmentId,
+                    'replenishment-id' => $replenishmentId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v10+pdf',
+                    'application/vnd.retailer.v10+pdf',
                 ],
                 [
-                'application/vnd.retailer.v10+pdf',
+                    'application/vnd.retailer.v10+pdf',
                 ],
                 [
-                404 => Problem::class,
-                400 => Problem::class,
-                ]
+                    404 => Problem::class,
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody();
     }
 }

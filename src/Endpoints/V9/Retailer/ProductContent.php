@@ -40,20 +40,20 @@ final class ProductContent extends Endpoint
                 'get',
                 'content/catalog-products/{ean}',
                 [
-                'ean' => $ean,
+                    'ean' => $ean,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
-                406 => Problem::class,
+                    400 => Problem::class,
+                    404 => Problem::class,
+                    406 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -79,13 +79,13 @@ final class ProductContent extends Endpoint
                 [],
                 $body,
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -111,13 +111,13 @@ final class ProductContent extends Endpoint
                 [],
                 $body,
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -140,18 +140,18 @@ final class ProductContent extends Endpoint
                 'get',
                 'content/upload-report/{upload-id}',
                 [
-                'upload-id' => $uploadId,
+                    'upload-id' => $uploadId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                404 => Problem::class,
+                    404 => Problem::class,
                 ]
             )->getBody()->getJson()
         );

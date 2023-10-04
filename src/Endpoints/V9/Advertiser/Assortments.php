@@ -36,17 +36,17 @@ final class Assortments extends Endpoint
                 '/advertiser/assortments',
                 [],
                 [
-                'page' => $page,
+                    'page' => $page,
                 ],
                 null,
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );

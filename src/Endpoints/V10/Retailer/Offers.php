@@ -12,9 +12,15 @@ use Inktweb\Bolcom\RetailerApi\Contracts\Endpoint;
 use Inktweb\Bolcom\RetailerApi\Exceptions\ApiException;
 use Inktweb\Bolcom\RetailerApi\Exceptions\Enum\UnknownCollectionFormatException;
 use Inktweb\Bolcom\RetailerApi\Exceptions\UnexpectedResponseContentTypeException;
+use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\CreateOfferExportRequest;
+use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\CreateOfferRequest;
+use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\CreateUnpublishedOfferReportRequest;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\Problem;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\ProcessStatus;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\RetailerOffer;
+use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\UpdateOfferPriceRequest;
+use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\UpdateOfferRequest;
+use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\UpdateOfferStockRequest;
 use Psr\Http\Message\StreamInterface;
 
 final class Offers extends Endpoint
@@ -31,7 +37,7 @@ final class Offers extends Endpoint
      * @throws UnexpectedResponseContentTypeException
      * @throws UnknownCollectionFormatException
      */
-    public function postOffer(): ProcessStatus
+    public function postOffer(CreateOfferRequest $createOfferRequest): ProcessStatus
     {
         return ProcessStatus::fromArray(
             $this->request(
@@ -39,16 +45,18 @@ final class Offers extends Endpoint
                 'offers',
                 [],
                 [],
-                null,
+                $createOfferRequest,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -63,7 +71,7 @@ final class Offers extends Endpoint
      * @throws UnexpectedResponseContentTypeException
      * @throws UnknownCollectionFormatException
      */
-    public function postOfferExport(): ProcessStatus
+    public function postOfferExport(CreateOfferExportRequest $createOfferExportRequest): ProcessStatus
     {
         return ProcessStatus::fromArray(
             $this->request(
@@ -71,16 +79,18 @@ final class Offers extends Endpoint
                 'offers/export',
                 [],
                 [],
-                null,
+                $createOfferExportRequest,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -102,20 +112,22 @@ final class Offers extends Endpoint
                 'get',
                 'offers/export/{report-id}',
                 [
-                'report-id' => $reportId,
+                    'report-id' => $reportId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v10+csv',
+                    'application/vnd.retailer.v10+csv',
                 ],
                 [
-                'application/vnd.retailer.v10+csv',
+                    'application/vnd.retailer.v10+csv',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
-                ]
+                    400 => Problem::class,
+                    404 => Problem::class,
+                ],
+                [],
+                null
             )->getBody();
     }
 
@@ -130,7 +142,7 @@ final class Offers extends Endpoint
      * @throws UnexpectedResponseContentTypeException
      * @throws UnknownCollectionFormatException
      */
-    public function postUnpublishedOfferReport(): ProcessStatus
+    public function postUnpublishedOfferReport(CreateUnpublishedOfferReportRequest $createUnpublishedOfferReportRequest): ProcessStatus
     {
         return ProcessStatus::fromArray(
             $this->request(
@@ -138,16 +150,18 @@ final class Offers extends Endpoint
                 'offers/unpublished',
                 [],
                 [],
-                null,
+                $createUnpublishedOfferReportRequest,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -170,20 +184,22 @@ final class Offers extends Endpoint
                 'get',
                 'offers/unpublished/{report-id}',
                 [
-                'report-id' => $reportId,
+                    'report-id' => $reportId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v10+csv',
+                    'application/vnd.retailer.v10+csv',
                 ],
                 [
-                'application/vnd.retailer.v10+csv',
+                    'application/vnd.retailer.v10+csv',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
-                ]
+                    400 => Problem::class,
+                    404 => Problem::class,
+                ],
+                [],
+                null
             )->getBody();
     }
 
@@ -205,19 +221,21 @@ final class Offers extends Endpoint
                 'get',
                 'offers/{offer-id}',
                 [
-                'offer-id' => $offerId,
+                    'offer-id' => $offerId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                404 => Problem::class,
-                ]
+                    404 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -233,26 +251,28 @@ final class Offers extends Endpoint
      * @throws UnexpectedResponseContentTypeException
      * @throws UnknownCollectionFormatException
      */
-    public function putOffer(string $offerId): ProcessStatus
+    public function putOffer(string $offerId, UpdateOfferRequest $updateOfferRequest): ProcessStatus
     {
         return ProcessStatus::fromArray(
             $this->request(
                 'put',
                 'offers/{offer-id}',
                 [
-                'offer-id' => $offerId,
+                    'offer-id' => $offerId,
                 ],
                 [],
-                null,
+                $updateOfferRequest,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -274,19 +294,21 @@ final class Offers extends Endpoint
                 'delete',
                 'offers/{offer-id}',
                 [
-                'offer-id' => $offerId,
+                    'offer-id' => $offerId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -301,26 +323,28 @@ final class Offers extends Endpoint
      * @throws UnexpectedResponseContentTypeException
      * @throws UnknownCollectionFormatException
      */
-    public function updateOfferPrice(string $offerId): ProcessStatus
+    public function updateOfferPrice(string $offerId, UpdateOfferPriceRequest $updateOfferPriceRequest): ProcessStatus
     {
         return ProcessStatus::fromArray(
             $this->request(
                 'put',
                 'offers/{offer-id}/price',
                 [
-                'offer-id' => $offerId,
+                    'offer-id' => $offerId,
                 ],
                 [],
-                null,
+                $updateOfferPriceRequest,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -335,26 +359,28 @@ final class Offers extends Endpoint
      * @throws UnexpectedResponseContentTypeException
      * @throws UnknownCollectionFormatException
      */
-    public function updateOfferStock(string $offerId): ProcessStatus
+    public function updateOfferStock(string $offerId, UpdateOfferStockRequest $updateOfferStockRequest): ProcessStatus
     {
         return ProcessStatus::fromArray(
             $this->request(
                 'put',
                 'offers/{offer-id}/stock',
                 [
-                'offer-id' => $offerId,
+                    'offer-id' => $offerId,
                 ],
                 [],
-                null,
+                $updateOfferStockRequest,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }

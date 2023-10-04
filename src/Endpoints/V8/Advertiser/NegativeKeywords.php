@@ -39,18 +39,18 @@ final class NegativeKeywords extends Endpoint
                 '/advertiser/sponsored-products/negative-keywords',
                 [],
                 [
-                'ad-group-id' => $adGroupId,
-                'page' => $page,
+                    'ad-group-id' => $adGroupId,
+                    'page' => $page,
                 ],
                 null,
                 [
-                'application/vnd.advertiser.v8+json',
+                    'application/vnd.advertiser.v8+json',
                 ],
                 [
-                'application/vnd.advertiser.v8+json',
+                    'application/vnd.advertiser.v8+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -76,13 +76,13 @@ final class NegativeKeywords extends Endpoint
                 [],
                 $body,
                 [
-                'application/vnd.advertiser.v8+json',
+                    'application/vnd.advertiser.v8+json',
                 ],
                 [
-                'application/vnd.advertiser.v8+json',
+                    'application/vnd.advertiser.v8+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -105,19 +105,19 @@ final class NegativeKeywords extends Endpoint
                 'get',
                 '/advertiser/sponsored-products/negative-keywords/{keyword-id}',
                 [
-                'keyword-id' => $keywordId,
+                    'keyword-id' => $keywordId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.advertiser.v8+json',
+                    'application/vnd.advertiser.v8+json',
                 ],
                 [
-                'application/vnd.advertiser.v8+json',
+                    'application/vnd.advertiser.v8+json',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
+                    400 => Problem::class,
+                    404 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -140,15 +140,15 @@ final class NegativeKeywords extends Endpoint
                 'delete',
                 '/advertiser/sponsored-products/negative-keywords/{keyword-id}',
                 [
-                'keyword-id' => $keywordId,
+                    'keyword-id' => $keywordId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.advertiser.v8+json',
+                    'application/vnd.advertiser.v8+json',
                 ],
                 [
-                'application/vnd.advertiser.v8+json',
+                    'application/vnd.advertiser.v8+json',
                 ],
                 []
             )->getBody()->getJson()

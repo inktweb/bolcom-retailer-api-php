@@ -38,18 +38,18 @@ final class Promotions extends Endpoint
                 'promotions',
                 [],
                 [
-                'promotion-type' => $promotionType,
-                'page' => $page,
+                    'promotion-type' => $promotionType,
+                    'page' => $page,
                 ],
                 null,
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -72,19 +72,19 @@ final class Promotions extends Endpoint
                 'get',
                 'promotions/{promotion-id}',
                 [
-                'promotion-id' => $promotionId,
+                    'promotion-id' => $promotionId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                404 => Problem::class,
-                400 => Problem::class,
+                    404 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -108,20 +108,20 @@ final class Promotions extends Endpoint
                 'get',
                 'promotions/{promotion-id}/products',
                 [
-                'promotion-id' => $promotionId,
+                    'promotion-id' => $promotionId,
                 ],
                 [
-                'page' => $page,
+                    'page' => $page,
                 ],
                 null,
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );

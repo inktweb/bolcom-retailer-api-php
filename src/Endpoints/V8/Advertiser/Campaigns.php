@@ -39,17 +39,17 @@ final class Campaigns extends Endpoint
                 '/advertiser/sponsored-products/campaigns',
                 [],
                 [
-                'page' => $page,
+                    'page' => $page,
                 ],
                 null,
                 [
-                'application/vnd.advertiser.v8+json',
+                    'application/vnd.advertiser.v8+json',
                 ],
                 [
-                'application/vnd.advertiser.v8+json',
+                    'application/vnd.advertiser.v8+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -75,13 +75,13 @@ final class Campaigns extends Endpoint
                 [],
                 $body,
                 [
-                'application/vnd.advertiser.v8+json',
+                    'application/vnd.advertiser.v8+json',
                 ],
                 [
-                'application/vnd.advertiser.v8+json',
+                    'application/vnd.advertiser.v8+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -104,19 +104,19 @@ final class Campaigns extends Endpoint
                 'get',
                 '/advertiser/sponsored-products/campaigns/{campaign-id}',
                 [
-                'campaign-id' => $campaignId,
+                    'campaign-id' => $campaignId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.advertiser.v8+json',
+                    'application/vnd.advertiser.v8+json',
                 ],
                 [
-                'application/vnd.advertiser.v8+json',
+                    'application/vnd.advertiser.v8+json',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
+                    400 => Problem::class,
+                    404 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -139,18 +139,18 @@ final class Campaigns extends Endpoint
                 'put',
                 '/advertiser/sponsored-products/campaigns/{campaign-id}',
                 [
-                'campaign-id' => $campaignId,
+                    'campaign-id' => $campaignId,
                 ],
                 [],
                 $body,
                 [
-                'application/vnd.advertiser.v8+json',
+                    'application/vnd.advertiser.v8+json',
                 ],
                 [
-                'application/vnd.advertiser.v8+json',
+                    'application/vnd.advertiser.v8+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );

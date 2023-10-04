@@ -48,21 +48,21 @@ final class ProcessStatus extends Endpoint
                 '/shared/process-status',
                 [],
                 [
-                'entity-id' => $entityId,
-                'event-type' => $eventType,
-                'page' => $page,
+                    'entity-id' => $entityId,
+                    'event-type' => $eventType,
+                    'page' => $page,
                 ],
                 null,
                 [
-                'application/vnd.retailer.v8+json',
-                'application/vnd.advertiser.v8+json',
+                    'application/vnd.retailer.v8+json',
+                    'application/vnd.advertiser.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
-                'application/vnd.advertiser.v8+json',
+                    'application/vnd.retailer.v8+json',
+                    'application/vnd.advertiser.v8+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -95,15 +95,15 @@ final class ProcessStatus extends Endpoint
                 [],
                 $body,
                 [
-                'application/vnd.retailer.v8+json',
-                'application/vnd.advertiser.v8+json',
+                    'application/vnd.retailer.v8+json',
+                    'application/vnd.advertiser.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
-                'application/vnd.advertiser.v8+json',
+                    'application/vnd.retailer.v8+json',
+                    'application/vnd.advertiser.v8+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -134,20 +134,20 @@ final class ProcessStatus extends Endpoint
                 'get',
                 '/shared/process-status/{process-status-id}',
                 [
-                'process-status-id' => $processStatusId,
+                    'process-status-id' => $processStatusId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v8+json',
-                'application/vnd.advertiser.v8+json',
+                    'application/vnd.retailer.v8+json',
+                    'application/vnd.advertiser.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
-                'application/vnd.advertiser.v8+json',
+                    'application/vnd.retailer.v8+json',
+                    'application/vnd.advertiser.v8+json',
                 ],
                 [
-                404 => Problem::class,
+                    404 => Problem::class,
                 ]
             )->getBody()->getJson()
         );

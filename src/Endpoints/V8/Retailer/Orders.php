@@ -46,18 +46,18 @@ final class Orders extends Endpoint
                 'orders',
                 [],
                 [
-                'page' => $page,
-                'fulfilment-method' => $fulfilmentMethod,
-                'status' => $status,
-                'change-interval-minute' => $changeIntervalMinute,
-                'latest-change-date' => $latestChangeDate,
+                    'page' => $page,
+                    'fulfilment-method' => $fulfilmentMethod,
+                    'status' => $status,
+                    'change-interval-minute' => $changeIntervalMinute,
+                    'latest-change-date' => $latestChangeDate,
                 ],
                 null,
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 []
             )->getBody()->getJson()
@@ -86,13 +86,13 @@ final class Orders extends Endpoint
                 [],
                 $body,
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -123,13 +123,13 @@ final class Orders extends Endpoint
                 [],
                 $body,
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -154,18 +154,18 @@ final class Orders extends Endpoint
                 'get',
                 'orders/{order-id}',
                 [
-                'order-id' => $orderId,
+                    'order-id' => $orderId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                404 => Problem::class,
+                    404 => Problem::class,
                 ]
             )->getBody()->getJson()
         );

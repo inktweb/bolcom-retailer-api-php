@@ -41,21 +41,23 @@ final class Insights extends Endpoint
                 'insights/offer',
                 [],
                 [
-                'offer-id' => $offerId,
-                'period' => $period,
-                'number-of-periods' => $numberOfPeriods,
-                'name' => $name,
+                    'offer-id' => $offerId,
+                    'period' => $period,
+                    'number-of-periods' => $numberOfPeriods,
+                    'name' => $name,
                 ],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -78,20 +80,22 @@ final class Insights extends Endpoint
                 'insights/performance/indicator',
                 [],
                 [
-                'name' => $name,
-                'year' => $year,
-                'week' => $week,
+                    'name' => $name,
+                    'year' => $year,
+                    'week' => $week,
                 ],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -115,19 +119,21 @@ final class Insights extends Endpoint
                 'insights/sales-forecast',
                 [],
                 [
-                'offer-id' => $offerId,
-                'weeks-ahead' => $weeksAhead,
+                    'offer-id' => $offerId,
+                    'weeks-ahead' => $weeksAhead,
                 ],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -158,21 +164,23 @@ final class Insights extends Endpoint
                 'insights/search-terms',
                 [],
                 [
-                'search-term' => $searchTerm,
-                'period' => $period,
-                'number-of-periods' => $numberOfPeriods,
-                'related-search-terms' => $relatedSearchTerms,
+                    'search-term' => $searchTerm,
+                    'period' => $period,
+                    'number-of-periods' => $numberOfPeriods,
+                    'related-search-terms' => $relatedSearchTerms,
                 ],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }

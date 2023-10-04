@@ -13,6 +13,7 @@ use Inktweb\Bolcom\RetailerApi\Enums\Endpoints\V10\Retailer\Commissions\Conditio
 use Inktweb\Bolcom\RetailerApi\Exceptions\ApiException;
 use Inktweb\Bolcom\RetailerApi\Exceptions\Enum\UnknownCollectionFormatException;
 use Inktweb\Bolcom\RetailerApi\Exceptions\UnexpectedResponseContentTypeException;
+use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\BulkCommissionRequest;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\BulkCommissionResponse;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\Commission;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\Problem;
@@ -30,7 +31,7 @@ final class Commissions extends Endpoint
      * @throws UnexpectedResponseContentTypeException
      * @throws UnknownCollectionFormatException
      */
-    public function getCommissions(): BulkCommissionResponse
+    public function getCommissions(BulkCommissionRequest $bulkCommissionRequest): BulkCommissionResponse
     {
         return BulkCommissionResponse::fromArray(
             $this->request(
@@ -38,17 +39,19 @@ final class Commissions extends Endpoint
                 'commission',
                 [],
                 [],
-                null,
+                $bulkCommissionRequest,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
-                ]
+                    400 => Problem::class,
+                    404 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -71,23 +74,25 @@ final class Commissions extends Endpoint
                 'get',
                 'commission/{ean}',
                 [
-                'ean' => $ean,
+                    'ean' => $ean,
                 ],
                 [
-                'condition' => $condition,
-                'unit-price' => $unitPrice,
+                    'condition' => $condition,
+                    'unit-price' => $unitPrice,
                 ],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
-                ]
+                    400 => Problem::class,
+                    404 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }

@@ -13,6 +13,7 @@ use Inktweb\Bolcom\RetailerApi\Enums\Endpoints\V10\Shared\ProcessStatus\EventTyp
 use Inktweb\Bolcom\RetailerApi\Exceptions\ApiException;
 use Inktweb\Bolcom\RetailerApi\Exceptions\Enum\UnknownCollectionFormatException;
 use Inktweb\Bolcom\RetailerApi\Exceptions\UnexpectedResponseContentTypeException;
+use Inktweb\Bolcom\RetailerApi\Models\V10\Shared\BulkProcessStatusRequest;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Shared\Problem;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Shared\ProcessStatus as ProcessStatusSharedModel;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Shared\ProcessStatusResponse;
@@ -47,20 +48,22 @@ final class ProcessStatus extends Endpoint
                 '/shared/process-status',
                 [],
                 [
-                'entity-id' => $entityId,
-                'event-type' => $eventType,
-                'page' => $page,
+                    'entity-id' => $entityId,
+                    'event-type' => $eventType,
+                    'page' => $page,
                 ],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -82,7 +85,7 @@ final class ProcessStatus extends Endpoint
      * @throws UnexpectedResponseContentTypeException
      * @throws UnknownCollectionFormatException
      */
-    public function getProcessStatusBulk(): ProcessStatusResponse
+    public function getProcessStatusBulk(BulkProcessStatusRequest $bulkProcessStatusRequest): ProcessStatusResponse
     {
         return ProcessStatusResponse::fromArray(
             $this->request(
@@ -90,16 +93,18 @@ final class ProcessStatus extends Endpoint
                 '/shared/process-status',
                 [],
                 [],
-                null,
+                $bulkProcessStatusRequest,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -129,19 +134,21 @@ final class ProcessStatus extends Endpoint
                 'get',
                 '/shared/process-status/{process-status-id}',
                 [
-                'process-status-id' => $processStatusId,
+                    'process-status-id' => $processStatusId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                404 => Problem::class,
-                ]
+                    404 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }

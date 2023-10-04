@@ -43,18 +43,18 @@ final class Invoices extends Endpoint
                 'invoices',
                 [],
                 [
-                'period-start-date' => $periodStartDate,
-                'period-end-date' => $periodEndDate,
+                    'period-start-date' => $periodStartDate,
+                    'period-end-date' => $periodEndDate,
                 ],
                 null,
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody();
     }
@@ -79,20 +79,20 @@ final class Invoices extends Endpoint
                 'get',
                 'invoices/{invoice-id}',
                 [
-                'invoice-id' => $invoiceId,
+                    'invoice-id' => $invoiceId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v8+json',
-                'application/vnd.retailer.v8+pdf',
+                    'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+pdf',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
-                'application/vnd.retailer.v8+pdf',
+                    'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+pdf',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody();
     }
@@ -118,23 +118,23 @@ final class Invoices extends Endpoint
                 'get',
                 'invoices/{invoice-id}/specification',
                 [
-                'invoice-id' => $invoiceId,
+                    'invoice-id' => $invoiceId,
                 ],
                 [
-                'page' => $page,
+                    'page' => $page,
                 ],
                 null,
                 [
-                'application/vnd.retailer.v8+json',
-                'application/vnd.retailer.v8+openxmlformats-officedocument.spreadsheetml.sheet',
+                    'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+openxmlformats-officedocument.spreadsheetml.sheet',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
-                'application/vnd.retailer.v8+openxmlformats-officedocument.spreadsheetml.sheet',
+                    'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+openxmlformats-officedocument.spreadsheetml.sheet',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
+                    400 => Problem::class,
+                    404 => Problem::class,
                 ]
             )->getBody();
     }

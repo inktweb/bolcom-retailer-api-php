@@ -53,22 +53,22 @@ final class Replenishments extends Endpoint
                 'replenishments',
                 [],
                 [
-                'reference' => $reference,
-                'ean' => $ean,
-                'start-date' => $startDate,
-                'end-date' => $endDate,
-                'state' => $state,
-                'page' => $page,
+                    'reference' => $reference,
+                    'ean' => $ean,
+                    'start-date' => $startDate,
+                    'end-date' => $endDate,
+                    'state' => $state,
+                    'page' => $page,
                 ],
                 null,
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -94,13 +94,13 @@ final class Replenishments extends Endpoint
                 [],
                 $body,
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -126,13 +126,13 @@ final class Replenishments extends Endpoint
                 [],
                 null,
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -158,13 +158,13 @@ final class Replenishments extends Endpoint
                 [],
                 $body,
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -190,13 +190,13 @@ final class Replenishments extends Endpoint
                 [],
                 $body,
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -220,19 +220,19 @@ final class Replenishments extends Endpoint
                 'get',
                 'replenishments/product-destinations/{product-destinations-id}',
                 [
-                'product-destinations-id' => $productDestinationsId,
+                    'product-destinations-id' => $productDestinationsId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
+                    400 => Problem::class,
+                    404 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -258,14 +258,14 @@ final class Replenishments extends Endpoint
                 [],
                 $body,
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                'application/vnd.retailer.v9+pdf',
+                    'application/vnd.retailer.v9+pdf',
                 ],
                 [
-                404 => Problem::class,
-                400 => Problem::class,
+                    404 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody();
     }
@@ -287,19 +287,19 @@ final class Replenishments extends Endpoint
                 'get',
                 'replenishments/{replenishment-id}',
                 [
-                'replenishment-id' => $replenishmentId,
+                    'replenishment-id' => $replenishmentId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                404 => Problem::class,
-                400 => Problem::class,
+                    404 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -322,18 +322,18 @@ final class Replenishments extends Endpoint
                 'put',
                 'replenishments/{replenishment-id}',
                 [
-                'replenishment-id' => $replenishmentId,
+                    'replenishment-id' => $replenishmentId,
                 ],
                 [],
                 $body,
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                'application/vnd.retailer.v9+json',
+                    'application/vnd.retailer.v9+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -356,21 +356,21 @@ final class Replenishments extends Endpoint
                 'get',
                 'replenishments/{replenishment-id}/load-carrier-labels',
                 [
-                'replenishment-id' => $replenishmentId,
+                    'replenishment-id' => $replenishmentId,
                 ],
                 [
-                'label-type' => $labelType,
+                    'label-type' => $labelType,
                 ],
                 null,
                 [
-                'application/vnd.retailer.v9+pdf',
+                    'application/vnd.retailer.v9+pdf',
                 ],
                 [
-                'application/vnd.retailer.v9+pdf',
+                    'application/vnd.retailer.v9+pdf',
                 ],
                 [
-                404 => Problem::class,
-                400 => Problem::class,
+                    404 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody();
     }
@@ -392,19 +392,19 @@ final class Replenishments extends Endpoint
                 'get',
                 'replenishments/{replenishment-id}/pick-list',
                 [
-                'replenishment-id' => $replenishmentId,
+                    'replenishment-id' => $replenishmentId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v9+pdf',
+                    'application/vnd.retailer.v9+pdf',
                 ],
                 [
-                'application/vnd.retailer.v9+pdf',
+                    'application/vnd.retailer.v9+pdf',
                 ],
                 [
-                404 => Problem::class,
-                400 => Problem::class,
+                    404 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody();
     }

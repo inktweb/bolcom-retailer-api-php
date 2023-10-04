@@ -23,6 +23,7 @@ use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\ProductAssetsResponse;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\ProductIdsResponse;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\ProductListFiltersRequest;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\ProductListFiltersResponse;
+use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\ProductListRequest;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\ProductListResponse;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\ProductPlacementResponse;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\ProductRatingsResponse;
@@ -39,26 +40,32 @@ final class Products extends Endpoint
      * @throws UnexpectedResponseContentTypeException
      * @throws UnknownCollectionFormatException
      */
-    public function getProductList(?AcceptLanguage $acceptLanguage = null): ProductListResponse
-    {
+    public function getProductList(
+        ?AcceptLanguage $acceptLanguage = null,
+        ProductListRequest $productListRequest
+    ): ProductListResponse {
         return ProductListResponse::fromArray(
             $this->request(
                 'post',
                 'products/list',
                 [],
                 [],
-                null,
+                $productListRequest,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
-                406 => Problem::class,
-                ]
+                    400 => Problem::class,
+                    404 => Problem::class,
+                    406 => Problem::class,
+                ],
+                [
+                    'Accept-Language' => $acceptLanguage,
+                ],
+                null
             )->getBody()->getJson()
         );
     }
@@ -87,23 +94,27 @@ final class Products extends Endpoint
                 'products/list-filters',
                 [],
                 [
-                'country-code' => $countryCode,
-                'search-term' => $searchTerm,
-                'category-id' => $categoryId,
-                'productListFiltersRequest' => $productListFiltersRequest,
+                    'country-code' => $countryCode,
+                    'search-term' => $searchTerm,
+                    'category-id' => $categoryId,
+                    'productListFiltersRequest' => $productListFiltersRequest,
                 ],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
-                406 => Problem::class,
-                ]
+                    400 => Problem::class,
+                    404 => Problem::class,
+                    406 => Problem::class,
+                ],
+                [
+                    'Accept-Language' => $acceptLanguage,
+                ],
+                null
             )->getBody()->getJson()
         );
     }
@@ -125,22 +136,24 @@ final class Products extends Endpoint
                 'get',
                 'products/{ean}/assets',
                 [
-                'ean' => $ean,
+                    'ean' => $ean,
                 ],
                 [
-                'usage' => $usage,
+                    'usage' => $usage,
                 ],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
-                ]
+                    400 => Problem::class,
+                    404 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -168,25 +181,27 @@ final class Products extends Endpoint
                 'get',
                 'products/{ean}/offers',
                 [
-                'ean' => $ean,
+                    'ean' => $ean,
                 ],
                 [
-                'page' => $page,
-                'country-code' => $countryCode,
-                'best-offer-only' => $bestOfferOnly,
-                'condition' => $condition,
+                    'page' => $page,
+                    'country-code' => $countryCode,
+                    'best-offer-only' => $bestOfferOnly,
+                    'condition' => $condition,
                 ],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
-                ]
+                    400 => Problem::class,
+                    404 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -212,23 +227,27 @@ final class Products extends Endpoint
                 'get',
                 'products/{ean}/placement',
                 [
-                'ean' => $ean,
+                    'ean' => $ean,
                 ],
                 [
-                'country-code' => $countryCode,
+                    'country-code' => $countryCode,
                 ],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
-                406 => Problem::class,
-                ]
+                    400 => Problem::class,
+                    404 => Problem::class,
+                    406 => Problem::class,
+                ],
+                [
+                    'Accept-Language' => $acceptLanguage,
+                ],
+                null
             )->getBody()->getJson()
         );
     }
@@ -250,20 +269,22 @@ final class Products extends Endpoint
                 'get',
                 'products/{ean}/price-star-boundaries',
                 [
-                'ean' => $ean,
+                    'ean' => $ean,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                404 => Problem::class,
-                400 => Problem::class,
-                ]
+                    404 => Problem::class,
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -285,20 +306,22 @@ final class Products extends Endpoint
                 'get',
                 'products/{ean}/product-ids',
                 [
-                'ean' => $ean,
+                    'ean' => $ean,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
-                ]
+                    400 => Problem::class,
+                    404 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -321,20 +344,22 @@ final class Products extends Endpoint
                 'get',
                 'products/{ean}/ratings',
                 [
-                'ean' => $ean,
+                    'ean' => $ean,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
-                ]
+                    400 => Problem::class,
+                    404 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }

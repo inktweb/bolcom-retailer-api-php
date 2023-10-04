@@ -40,18 +40,18 @@ final class TargetProducts extends Endpoint
                 '/advertiser/sponsored-products/target-products',
                 [],
                 [
-                'ad-group-id' => $adGroupId,
-                'page' => $page,
+                    'ad-group-id' => $adGroupId,
+                    'page' => $page,
                 ],
                 null,
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -77,13 +77,13 @@ final class TargetProducts extends Endpoint
                 [],
                 $body,
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -106,18 +106,18 @@ final class TargetProducts extends Endpoint
                 'get',
                 '/advertiser/sponsored-products/target-products/{target-product-id}',
                 [
-                'target-product-id' => $targetProductId,
+                    'target-product-id' => $targetProductId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -140,18 +140,18 @@ final class TargetProducts extends Endpoint
                 'put',
                 '/advertiser/sponsored-products/target-products/{target-product-id}',
                 [
-                'target-product-id' => $targetProductId,
+                    'target-product-id' => $targetProductId,
                 ],
                 [],
                 $body,
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );

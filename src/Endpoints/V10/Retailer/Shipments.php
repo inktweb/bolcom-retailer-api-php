@@ -18,7 +18,9 @@ use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\InvoiceRequestsResponse;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\Problem;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\ProcessStatus;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\Shipment;
+use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\ShipmentRequest;
 use Inktweb\Bolcom\RetailerApi\Models\V10\Retailer\ShipmentsResponse;
+use Psr\Http\Message\StreamInterface;
 
 final class Shipments extends Endpoint
 {
@@ -44,20 +46,22 @@ final class Shipments extends Endpoint
                 'shipments',
                 [],
                 [
-                'page' => $page,
-                'fulfilment-method' => $fulfilmentMethod,
-                'order-id' => $orderId,
+                    'page' => $page,
+                    'fulfilment-method' => $fulfilmentMethod,
+                    'order-id' => $orderId,
                 ],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -77,7 +81,7 @@ final class Shipments extends Endpoint
      * @throws UnexpectedResponseContentTypeException
      * @throws UnknownCollectionFormatException
      */
-    public function createShipment(): ProcessStatus
+    public function createShipment(ShipmentRequest $shipmentRequest): ProcessStatus
     {
         return ProcessStatus::fromArray(
             $this->request(
@@ -85,16 +89,18 @@ final class Shipments extends Endpoint
                 'shipments',
                 [],
                 [],
-                null,
+                $shipmentRequest,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                ]
+                    400 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -120,21 +126,23 @@ final class Shipments extends Endpoint
                 'shipments/invoices/requests',
                 [],
                 [
-                'shipment-id' => $shipmentId,
-                'page' => $page,
-                'state' => $state,
+                    'shipment-id' => $shipmentId,
+                    'page' => $page,
+                    'state' => $state,
                 ],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
-                ]
+                    400 => Problem::class,
+                    404 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -149,27 +157,34 @@ final class Shipments extends Endpoint
      * @throws UnexpectedResponseContentTypeException
      * @throws UnknownCollectionFormatException
      */
-    public function uploadInvoice(string $shipmentId): ProcessStatus
+    public function uploadInvoice(string $shipmentId, StreamInterface $invoice): ProcessStatus
     {
         return ProcessStatus::fromArray(
             $this->request(
                 'post',
                 'shipments/invoices/{shipment-id}',
                 [
-                'shipment-id' => $shipmentId,
+                    'shipment-id' => $shipmentId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
-                415 => Problem::class,
+                    400 => Problem::class,
+                    404 => Problem::class,
+                    415 => Problem::class,
+                ],
+                [],
+                [
+                    [
+                        'name' => 'invoice',
+                        'contents' => $invoice,
+                    ],
                 ]
             )->getBody()->getJson()
         );
@@ -192,19 +207,21 @@ final class Shipments extends Endpoint
                 'get',
                 'shipments/{shipment-id}',
                 [
-                'shipment-id' => $shipmentId,
+                    'shipment-id' => $shipmentId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                'application/vnd.retailer.v10+json',
+                    'application/vnd.retailer.v10+json',
                 ],
                 [
-                404 => Problem::class,
-                ]
+                    404 => Problem::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }

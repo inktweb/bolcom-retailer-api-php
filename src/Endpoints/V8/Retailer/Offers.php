@@ -47,13 +47,13 @@ final class Offers extends Endpoint
                 [],
                 $body,
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -79,13 +79,13 @@ final class Offers extends Endpoint
                 [],
                 $body,
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -108,19 +108,19 @@ final class Offers extends Endpoint
                 'get',
                 'offers/export/{report-id}',
                 [
-                'report-id' => $reportId,
+                    'report-id' => $reportId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v8+csv',
+                    'application/vnd.retailer.v8+csv',
                 ],
                 [
-                'application/vnd.retailer.v8+csv',
+                    'application/vnd.retailer.v8+csv',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
+                    400 => Problem::class,
+                    404 => Problem::class,
                 ]
             )->getBody();
     }
@@ -146,13 +146,13 @@ final class Offers extends Endpoint
                 [],
                 $body,
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -176,19 +176,19 @@ final class Offers extends Endpoint
                 'get',
                 'offers/unpublished/{report-id}',
                 [
-                'report-id' => $reportId,
+                    'report-id' => $reportId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v8+csv',
+                    'application/vnd.retailer.v8+csv',
                 ],
                 [
-                'application/vnd.retailer.v8+csv',
+                    'application/vnd.retailer.v8+csv',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
+                    400 => Problem::class,
+                    404 => Problem::class,
                 ]
             )->getBody();
     }
@@ -211,18 +211,18 @@ final class Offers extends Endpoint
                 'get',
                 'offers/{offer-id}',
                 [
-                'offer-id' => $offerId,
+                    'offer-id' => $offerId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                404 => Problem::class,
+                    404 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -246,18 +246,18 @@ final class Offers extends Endpoint
                 'put',
                 'offers/{offer-id}',
                 [
-                'offer-id' => $offerId,
+                    'offer-id' => $offerId,
                 ],
                 [],
                 $body,
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -280,18 +280,18 @@ final class Offers extends Endpoint
                 'delete',
                 'offers/{offer-id}',
                 [
-                'offer-id' => $offerId,
+                    'offer-id' => $offerId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -314,18 +314,18 @@ final class Offers extends Endpoint
                 'put',
                 'offers/{offer-id}/price',
                 [
-                'offer-id' => $offerId,
+                    'offer-id' => $offerId,
                 ],
                 [],
                 $body,
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -348,18 +348,18 @@ final class Offers extends Endpoint
                 'put',
                 'offers/{offer-id}/stock',
                 [
-                'offer-id' => $offerId,
+                    'offer-id' => $offerId,
                 ],
                 [],
                 $body,
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );

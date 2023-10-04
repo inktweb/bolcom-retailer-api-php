@@ -43,22 +43,22 @@ final class Reporting extends Endpoint
                 'get',
                 '/advertiser/sponsored-products/ad-group-performance/{ad-group-id}',
                 [
-                'ad-group-id' => $adGroupId,
+                    'ad-group-id' => $adGroupId,
                 ],
                 [
-                'start-date' => $startDate,
-                'end-date' => $endDate,
+                    'start-date' => $startDate,
+                    'end-date' => $endDate,
                 ],
                 null,
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
+                    400 => Problem::class,
+                    404 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -83,18 +83,18 @@ final class Reporting extends Endpoint
                 '/advertiser/sponsored-products/advertiser-performance',
                 [],
                 [
-                'start-date' => $startDate,
-                'end-date' => $endDate,
+                    'start-date' => $startDate,
+                    'end-date' => $endDate,
                 ],
                 null,
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -121,22 +121,22 @@ final class Reporting extends Endpoint
                 'get',
                 '/advertiser/sponsored-products/campaign-performance/{campaign-id}',
                 [
-                'campaign-id' => $campaignId,
+                    'campaign-id' => $campaignId,
                 ],
                 [
-                'start-date' => $startDate,
-                'end-date' => $endDate,
+                    'start-date' => $startDate,
+                    'end-date' => $endDate,
                 ],
                 null,
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
+                    400 => Problem::class,
+                    404 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -164,22 +164,22 @@ final class Reporting extends Endpoint
                 'get',
                 '/advertiser/sponsored-products/keyword-performance/{ad-group-id}',
                 [
-                'ad-group-id' => $adGroupId,
+                    'ad-group-id' => $adGroupId,
                 ],
                 [
-                'start-date' => $startDate,
-                'end-date' => $endDate,
+                    'start-date' => $startDate,
+                    'end-date' => $endDate,
                 ],
                 null,
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
+                    400 => Problem::class,
+                    404 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -207,22 +207,22 @@ final class Reporting extends Endpoint
                 'get',
                 '/advertiser/sponsored-products/product-performance/{ad-group-id}',
                 [
-                'ad-group-id' => $adGroupId,
+                    'ad-group-id' => $adGroupId,
                 ],
                 [
-                'start-date' => $startDate,
-                'end-date' => $endDate,
+                    'start-date' => $startDate,
+                    'end-date' => $endDate,
                 ],
                 null,
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
+                    400 => Problem::class,
+                    404 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -250,22 +250,22 @@ final class Reporting extends Endpoint
                 'get',
                 '/advertiser/sponsored-products/search-term-performance/{ad-group-id}',
                 [
-                'ad-group-id' => $adGroupId,
+                    'ad-group-id' => $adGroupId,
                 ],
                 [
-                'start-date' => $startDate,
-                'end-date' => $endDate,
+                    'start-date' => $startDate,
+                    'end-date' => $endDate,
                 ],
                 null,
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                'application/vnd.advertiser.v9+json',
+                    'application/vnd.advertiser.v9+json',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
+                    400 => Problem::class,
+                    404 => Problem::class,
                 ]
             )->getBody()->getJson()
         );

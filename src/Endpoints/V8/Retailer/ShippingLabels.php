@@ -42,13 +42,13 @@ final class ShippingLabels extends Endpoint
                 [],
                 $body,
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -75,14 +75,14 @@ final class ShippingLabels extends Endpoint
                 [],
                 $body,
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
+                    400 => Problem::class,
+                    404 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -108,19 +108,19 @@ final class ShippingLabels extends Endpoint
                 'get',
                 'shipping-labels/{shipping-label-id}',
                 [
-                'shipping-label-id' => $shippingLabelId,
+                    'shipping-label-id' => $shippingLabelId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v8+pdf',
+                    'application/vnd.retailer.v8+pdf',
                 ],
                 [
-                'application/vnd.retailer.v8+pdf',
+                    'application/vnd.retailer.v8+pdf',
                 ],
                 [
-                400 => Problem::class,
-                404 => Problem::class,
+                    400 => Problem::class,
+                    404 => Problem::class,
                 ]
             )->getBody();
     }

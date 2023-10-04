@@ -45,19 +45,19 @@ final class Returns extends Endpoint
                 'returns',
                 [],
                 [
-                'page' => $page,
-                'handled' => $handled,
-                'fulfilment-method' => $fulfilmentMethod,
+                    'page' => $page,
+                    'handled' => $handled,
+                    'fulfilment-method' => $fulfilmentMethod,
                 ],
                 null,
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -85,13 +85,13 @@ final class Returns extends Endpoint
                 [],
                 $body,
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -114,18 +114,18 @@ final class Returns extends Endpoint
                 'get',
                 'returns/{return-id}',
                 [
-                'return-id' => $returnId,
+                    'return-id' => $returnId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                404 => Problem::class,
+                    404 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -150,18 +150,18 @@ final class Returns extends Endpoint
                 'put',
                 'returns/{rma-id}',
                 [
-                'rma-id' => $rmaId,
+                    'rma-id' => $rmaId,
                 ],
                 [],
                 $body,
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );

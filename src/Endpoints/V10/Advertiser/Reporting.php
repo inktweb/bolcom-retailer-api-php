@@ -36,17 +36,19 @@ final class Reporting extends Endpoint
                 '/advertiser/sponsored-products/campaign-performance/reports',
                 [],
                 [
-                'start-date' => $startDate,
-                'end-date' => $endDate,
+                    'start-date' => $startDate,
+                    'end-date' => $endDate,
                 ],
                 null,
                 [
-                'application/vnd.advertiser.v10+json',
+                    'application/vnd.advertiser.v10+json',
                 ],
                 [
-                'application/vnd.advertiser.v10+json',
+                    'application/vnd.advertiser.v10+json',
                 ],
-                []
+                [],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -69,20 +71,22 @@ final class Reporting extends Endpoint
                 'get',
                 '/advertiser/sponsored-products/campaign-performance/reports/{report-id}',
                 [
-                'report-id' => $reportId,
+                    'report-id' => $reportId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.advertiser.v10+json',
+                    'application/vnd.advertiser.v10+json',
                 ],
                 [
-                'application/vnd.advertiser.v10+json',
+                    'application/vnd.advertiser.v10+json',
                 ],
                 [
-                404 => GetCampaignPerformanceReportResponse::class,
-                410 => GetCampaignPerformanceReportResponse::class,
-                ]
+                    404 => GetCampaignPerformanceReportResponse::class,
+                    410 => GetCampaignPerformanceReportResponse::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -108,12 +112,14 @@ final class Reporting extends Endpoint
                 [],
                 null,
                 [
-                'application/vnd.advertiser.v10+json',
+                    'application/vnd.advertiser.v10+json',
                 ],
                 [
-                'application/vnd.advertiser.v10+json',
+                    'application/vnd.advertiser.v10+json',
                 ],
-                []
+                [],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -139,12 +145,14 @@ final class Reporting extends Endpoint
                 [],
                 null,
                 [
-                'application/vnd.advertiser.v10+json',
+                    'application/vnd.advertiser.v10+json',
                 ],
                 [
-                'application/vnd.advertiser.v10+json',
+                    'application/vnd.advertiser.v10+json',
                 ],
-                []
+                [],
+                [],
+                null
             )->getBody()->getJson()
         );
     }
@@ -167,20 +175,22 @@ final class Reporting extends Endpoint
                 'get',
                 '/advertiser/sponsored-products/share-of-voice/reports/{report-id}',
                 [
-                'report-id' => $reportId,
+                    'report-id' => $reportId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.advertiser.v10+json',
+                    'application/vnd.advertiser.v10+json',
                 ],
                 [
-                'application/vnd.advertiser.v10+json',
+                    'application/vnd.advertiser.v10+json',
                 ],
                 [
-                404 => GetShareOfVoiceReportResponse::class,
-                410 => GetShareOfVoiceReportResponse::class,
-                ]
+                    404 => GetShareOfVoiceReportResponse::class,
+                    410 => GetShareOfVoiceReportResponse::class,
+                ],
+                [],
+                null
             )->getBody()->getJson()
         );
     }

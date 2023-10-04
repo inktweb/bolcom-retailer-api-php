@@ -41,19 +41,19 @@ final class Shipments extends Endpoint
                 'shipments',
                 [],
                 [
-                'page' => $page,
-                'fulfilment-method' => $fulfilmentMethod,
-                'order-id' => $orderId,
+                    'page' => $page,
+                    'fulfilment-method' => $fulfilmentMethod,
+                    'order-id' => $orderId,
                 ],
                 null,
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                400 => Problem::class,
+                    400 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
@@ -76,18 +76,18 @@ final class Shipments extends Endpoint
                 'get',
                 'shipments/{shipment-id}',
                 [
-                'shipment-id' => $shipmentId,
+                    'shipment-id' => $shipmentId,
                 ],
                 [],
                 null,
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                'application/vnd.retailer.v8+json',
+                    'application/vnd.retailer.v8+json',
                 ],
                 [
-                404 => Problem::class,
+                    404 => Problem::class,
                 ]
             )->getBody()->getJson()
         );
