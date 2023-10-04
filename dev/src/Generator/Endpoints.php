@@ -128,8 +128,8 @@ class Endpoints extends Base
                 $method->addComment($this->wrapText($data['description']));
                 $method->addComment('');
 
-                $this->processRequestBody($data['requestBody'] ?? null, $method);
                 $this->processParameters($data['parameters'] ?? null, $method, $endpoint);
+                $this->processRequestBody($data['requestBody'] ?? null, $method, $endpoint);
                 $errorResponses = $this->processResponses($data['responses'], $method);
 
                 $this->addRequestThrows($method);
@@ -144,13 +144,24 @@ class Endpoints extends Base
      * @throws UnsupportedParameterTypeException
      * @throws UnresolvedTypeException
      */
-    protected function processRequestBody(?array $requestBody, Method $method): void
+    protected function processRequestBody(?array $requestBody, Method $method, ClassType $endpoint): void
     {
         if (empty($requestBody) || !isset($requestBody['content'])) {
             return;
         }
 
-        $ref = current($requestBody['content'])['schema']['$ref'] ?? null;
+        $schema = current($requestBody['content'])['schema'] ?? null;
+
+        if (empty($schema)) {
+            return;
+        }
+
+        if (key($requestBody['content']) === 'multipart/form-data') {
+            $this->processRequestBodyProperties($schema['properties'] ?? null, $method, $endpoint);
+            return;
+        }
+
+        $ref = $schema['$ref'] ?? null;
 
         if (empty($ref)) {
             return;
@@ -163,6 +174,30 @@ class Endpoints extends Base
             ->setType(
                 $this->resolveType(null, $ref)
             );
+    }
+
+    protected function processRequestBodyProperties(?array $properties, Method $method, ClassType $endpoint): void
+    {
+        if (empty($properties)) {
+            return;
+        }
+
+        foreach ($properties as $name => $property) {
+            $type = $property['type'] ?? null;
+            $format = $property['format'] ?? null;
+
+            if ($type !== 'string' && $format !== 'binary') {
+                continue;
+            }
+
+            $name = Str::camel($name);
+
+            $method
+                ->addParameter($name)
+                ->setType(StreamInterface::class);
+
+            $this->uses->add(StreamInterface::class);
+        }
     }
 
     /**
@@ -347,6 +382,7 @@ class Endpoints extends Base
         $pathParameters = $this->getParameters('path', $parameters);
         $queryParameters = $this->getParameters('query', $parameters);
         $bodyParameters = $this->getBodyParameters($data);
+        $multipartFormParameters = $this->getMultipartFormParameters($data);
 
         $produces = $this->getResponseContentTypes($data['responses'] ?? null);
         $responseHeaders = $this->getArray($produces);
@@ -376,12 +412,13 @@ return {$prepend}
         $requestHeaders,
         $responseHeaders,
         $errorResponsesArray,
-        $headerParameters
+        $headerParameters,
+        $multipartFormParameters
     )->getBody(){$append};
 CODE;
     }
 
-    public function getBodyParameters(array $data): string
+    protected function getBodyParameters(array $data): string
     {
         $content = $data['requestBody']['content'] ?? null;
 
@@ -394,6 +431,41 @@ CODE;
         return $ref !== null
             ? "\${$this->getRefBasename($ref)}"
             : 'null';
+    }
+
+    protected function getMultipartFormParameters(array $data): string
+    {
+        $content = $data['requestBody']['content'] ?? null;
+
+        if ($content === null) {
+            return 'null';
+        }
+
+        if (key($content) !== 'multipart/form-data') {
+            return 'null';
+        }
+
+        $properties = current($content)['schema']['properties'] ?? [];
+        $parameters = [];
+
+        foreach ($properties as $name => $property) {
+            $type = $property['type'] ?? null;
+            $format = $property['format'] ?? null;
+
+            if ($type !== 'string' && $format !== 'binary') {
+                continue;
+            }
+
+            $name = Str::camel($name);
+            $parameters[] = <<<PARAMETER
+[
+    'name' => '{$name}',
+    'contents' => \${$name},
+],
+PARAMETER;
+        }
+
+        return "[\n" . implode("\n", $parameters) . "\n]";
     }
 
     /**

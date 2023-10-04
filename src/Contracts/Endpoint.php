@@ -29,7 +29,8 @@ abstract class Endpoint
         ?array $acceptedContentTypes,
         ?array $responseContentTypes,
         array $errorResponseModels,
-        ?array $headerParameters = null
+        ?array $headerParameters = null,
+        ?array $multipartFormParameters = null
     ): ResponseInterface {
         try {
             $response = $this->client->request(
@@ -48,6 +49,7 @@ abstract class Endpoint
                             'Accept' => $acceptedContentTypes ?: '*/*',
                         ]
                     ),
+                    RequestOptions::MULTIPART => $multipartFormParameters ?? null,
                 ]
             );
         } catch (ApiException $e) {
