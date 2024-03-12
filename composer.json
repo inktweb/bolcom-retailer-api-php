@@ -21,13 +21,13 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^7.4 || ^8.0",
+        "php": "^8.0",
         "ext-json": "*",
         "guzzlehttp/guzzle": "^7.3",
         "psr/log": "^1.1",
         "kamermans/guzzle-oauth2-subscriber": "^1.0",
         "psr/simple-cache": "^1.0",
-        "symfony/cache": "^5.3"
+        "symfony/cache": "^6.4"
     },
     "require-dev": {
         "nette/php-generator": "^3.5",
@@ -59,7 +59,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.0.x-dev"
+            "dev-master": "2.0.x-dev"
         }
     }
 }
